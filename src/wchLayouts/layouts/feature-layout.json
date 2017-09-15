@@ -1,0 +1,13 @@
+{
+  "id": "feature-layout",
+  "rev": "1-3a7cc115d0605ff8c6d4b759b25c508d",
+  "name": "Feature",
+  "classification": "layout",
+  "prerender": false,
+  "thumbnail": {
+    "path": "/layouts/thumbnails/feature_220.svg",
+    "url": "/authoring/v1/resources/59875d76f38f31327452dca15c1e3c58"
+  },
+  "template": "feature-layout",
+  "templateType": "angular"
+}

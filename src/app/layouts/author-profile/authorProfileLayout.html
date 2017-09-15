@@ -1,0 +1,9 @@
+<div class="about-the-author">
+	<div *ngIf="profilePicture">
+		<img [src]="getImageUrl()" [alt]="profilePicture.altText ? (onProfilePicture | async).altText : ''" [title]="profilePicture.altText ? (onProfilePicture | async).altText : ''"/>
+	</div>
+	<div>
+		<h5>{{(onName | async)}}</h5>
+		<div [innerHTML]="onShortBio | async | formattedText:html"></div>
+	</div>
+</div>

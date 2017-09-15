@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="220px" height="145px" viewBox="0 0 220 145" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>list_220</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Layout-Thumbnails" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="list_220">
+            <rect id="Rectangle-2" fill="#F7F7F7" x="78" y="0" width="65" height="145"></rect>
+            <g id="List-Item" transform="translate(83.000000, 51.000000)">
+                <rect id="Rectangle-2" fill="#D8D8D8" x="0" y="0" width="55" height="31"></rect>
+                <rect id="Rectangle-2" fill="#D8D8D8" x="0" y="32" width="55" height="10"></rect>
+                <g id="Image" transform="translate(20.000000, 8.000000)" fill-rule="nonzero" fill="#FFFFFF">
+                    <circle id="Oval" cx="11.2" cy="4" r="2.4"></circle>
+                    <polygon id="Shape" points="14.4 11.2 12 8 9.6 10.4 4.8 5.6 1.6 8.8 1.6 14.4 14.4 14.4"></polygon>
+                    <path d="M15.2,0.8 L15.2,15.2 L0.8,15.2 L0.8,0.8 L15.2,0.8 L15.2,0.8 Z M16,0 L0,0 L0,16 L16,16 L16,0 Z" id="Shape"></path>
+                </g>
+                <g id="Text" transform="translate(5.000000, 33.000000)" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="square">
+                    <path d="M0,0.75 L45,0.75" id="Line"></path>
+                    <path d="M0,3.75 L45,3.75" id="Line"></path>
+                    <path d="M0,6.75 L45,6.75" id="Line"></path>
+                </g>
+            </g>
+            <g id="List-Item" transform="translate(83.000000, 5.000000)">
+                <rect id="Rectangle-2" fill="#D8D8D8" x="0" y="0" width="55" height="31"></rect>
+                <rect id="Rectangle-2" fill="#D8D8D8" x="0" y="32" width="55" height="10"></rect>
+                <g id="Image" transform="translate(20.000000, 8.000000)" fill-rule="nonzero" fill="#FFFFFF">
+                    <circle id="Oval" cx="11.2" cy="4" r="2.4"></circle>
+                    <polygon id="Shape" points="14.4 11.2 12 8 9.6 10.4 4.8 5.6 1.6 8.8 1.6 14.4 14.4 14.4"></polygon>
+                    <path d="M15.2,0.8 L15.2,15.2 L0.8,15.2 L0.8,0.8 L15.2,0.8 L15.2,0.8 Z M16,0 L0,0 L0,16 L16,16 L16,0 Z" id="Shape"></path>
+                </g>
+                <g id="Text" transform="translate(5.000000, 33.000000)" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="square">
+                    <path d="M0,0.75 L45,0.75" id="Line"></path>
+                    <path d="M0,3.75 L45,3.75" id="Line"></path>
+                    <path d="M0,6.75 L45,6.75" id="Line"></path>
+                </g>
+            </g>
+            <g id="List-Item" transform="translate(83.000000, 98.000000)">
+                <rect id="Rectangle-2" fill="#D8D8D8" x="0" y="0" width="55" height="31"></rect>
+                <rect id="Rectangle-2" fill="#D8D8D8" x="0" y="32" width="55" height="10"></rect>
+                <g id="Image" transform="translate(20.000000, 8.000000)" fill-rule="nonzero" fill="#FFFFFF">
+                    <circle id="Oval" cx="11.2" cy="4" r="2.4"></circle>
+                    <polygon id="Shape" points="14.4 11.2 12 8 9.6 10.4 4.8 5.6 1.6 8.8 1.6 14.4 14.4 14.4"></polygon>
+                    <path d="M15.2,0.8 L15.2,15.2 L0.8,15.2 L0.8,0.8 L15.2,0.8 L15.2,0.8 Z M16,0 L0,0 L0,16 L16,16 L16,0 Z" id="Shape"></path>
+                </g>
+            </g>
+            <g id="Text" transform="translate(88.000000, 131.000000)" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="square">
+                <path d="M0,0.75 L45,0.75" id="Line"></path>
+                <path d="M0,3.75 L45,3.75" id="Line"></path>
+                <path d="M0,6.75 L45,6.75" id="Line"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,72 @@
+/*******************************************************************************
+ * Copyright IBM Corp. 2017
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
+
+.summary-card {
+  margin: 0 5px 10px 5px;
+}
+
+.summary-card:hover img {
+  transform: scale(1.15); /*Zoom effect*/
+}
+
+.summary-card-image img {
+  max-width: 100%;
+  height: auto;
+  transition: all .4s ease-in; /*Zoom effect*/
+}
+
+.summary-card-image {
+  margin-bottom: 10px;
+  overflow: hidden; /*Zoom effect*/
+}
+
+@media (min-width: 768px) {
+  .summary-card-image img {
+	max-width: 100%;
+	height: auto;
+  }
+}
+
+.summary-card a {
+  color: #222;
+}
+
+@media (max-width: 640px) {
+  .summary-card {
+
+	img {
+	  display: block;
+	  margin: 0 auto;
+	}
+	p {
+	  text-align: center;
+	}
+  }
+}
+
+/* Support for 4 columns at 1600px width */
+/*@media (min-width:1600px) {
+	.summary-card {
+		width:23.56687898%;
+		margin-right:1.9108280267%;
+	}
+	.summary-card:nth-child(3n) {
+		margin-right:1.9108280267%;
+	}
+	.summary-card:nth-child(4n) {
+		margin-right:0;
+	}
+}*/

@@ -1,0 +1,19 @@
+<div [id]="rContext.id" class="feature section" [ngClass]="getCssClasses()">
+	<div *ngIf="image.url" class="feature-copy">
+		<div class="feature-copy-content">
+			<h2 *ngIf="isHeaderSet()">{{onFeatureHeadline | async}}</h2>
+			<div class="text-content" [innerHTML]="onDescriptionOfFeature | async | formattedText:html"></div>
+			<a *ngIf="isButtonLinkSet()" class="button" [href]="(onReadMoreLink | async).linkURL">{{(onReadMoreLink | async).linkText}}</a>
+		</div>
+	</div>
+	<div *ngIf="!image.url" class="feature-no-image-copy grid-x grid-padding-x">
+		<div class="feature-no-image-copy-content medium-8 cell">
+			<h5 *ngIf="isHeaderSet()">{{onFeatureHeadline | async}}</h5>
+			<div class="text-content" [innerHTML]="onDescriptionOfFeature | async | formattedText:html"></div>
+			<a *ngIf="isButtonLinkSet()" class="button" [href]="(onReadMoreLink | async).linkURL">{{(onReadMoreLink | async).linkText}}</a>
+		</div>
+	</div>
+	<div *ngIf="image.url"  class="feature-img">
+		<img [src]="getImageUrl()" [alt]="(onImage | async).altText" [title]="(onImage | async).altText">
+	</div>
+</div>

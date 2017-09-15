@@ -1,0 +1,13 @@
+{
+  "id": "lead-image-with-information-layout",
+  "rev": "1-020edcd5260f3d8cf64d551122a05501",
+  "name": "Lead image with caption",
+  "classification": "layout",
+  "prerender": false,
+  "thumbnail": {
+    "path": "/layouts/thumbnails/lead-image_220.svg",
+    "url": "/authoring/v1/resources/148307518c41121791f27ea2bb472ec4"
+  },
+  "template": "lead-image-with-information-layout",
+  "templateType": "angular"
+}

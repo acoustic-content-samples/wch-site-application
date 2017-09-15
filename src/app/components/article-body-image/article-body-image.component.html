@@ -1,0 +1,4 @@
+<div *ngIf="rContext" [className]="getImageClass()" class="wrap-text-left">
+	<img [src]="utilsService.getImageUrl(rContext, IMAGE_KEY, imageSize)" [alt]="rContext.elements[CAPTION_KEY].value" [title]="rContext.elements[CAPTION_KEY].value">
+	<div class="caption">{{rContext.elements[CAPTION_KEY].value}} <span>{{rContext.elements[CREDIT_KEY].value}}</span></div>
+</div>

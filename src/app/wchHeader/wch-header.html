@@ -1,0 +1,39 @@
+<header>
+	<nav id="header" #navMenu>
+		<div #dropdownToggle class="title-bar" data-responsive-toggle="nav-menu" data-hide-for="large">
+			<button class="menu-icon" type="button" data-toggle="nav-menu"></button>
+			<div class="logo-container">
+				<a href="#">
+					<h1 *ngIf="isImageURLAvailable(LOGO)" class="logo" [style.background-image]="'url(' + getURL(LOGO) + ')'"></h1>
+				</a>
+			</div>
+		</div>
+		<div class="top-bar stacked-for-medium" id="nav-menu">
+			<div class="top-bar-left show-for-large">
+				<div class="logo-container">
+					<a href="#">
+						<h1 class="logo" *ngIf="isImageURLAvailable(LOGO)" [style.background-image]="'url(' + getURL(LOGO) + ')'">
+						</h1>
+					</a>
+				</div>
+			</div>
+			<div class="top-bar-right">
+				<ul id="nav-responsive-menu" #navLoop class="vertical medium-horizontal menu" data-responsive-menu="accordion large-dropdown">
+					<li class="top-level-nav-item" *ngFor="let page of rc?.context?.site.pages;let last='last'">
+						<a *ngIf="page" href [routerLink]="getRouteURL(page.route)" routerLinkActive="active">
+							<span (click)="menuItemSelected()" class="limit-page-name" title="{{page.name}}">{{page.name}}</span>
+						</a>
+						<ul class="vertical menu" *ngIf="page.children.length > 0">
+							<li *ngFor="let child of page.children">
+								<a (click)="menuItemSelected()" href [routerLink]="getRouteURL(child.route)" routerLinkActive="active">
+									<span class="limit-page-name" title="{{child.name}}">{{child.name}}</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</nav>
+</header>

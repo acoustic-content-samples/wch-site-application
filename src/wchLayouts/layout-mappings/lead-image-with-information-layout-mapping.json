@@ -1,0 +1,24 @@
+{
+  "id": "lead-image-with-information-layout-mapping",
+  "rev": "1-045b37a1c121e12d3fb18613f3dbadd9",
+  "name": "leadImageWithInformationLayoutMapping",
+  "classification": "layout-mapping",
+  "type": {
+    "id": "fe31fbf4-4bc4-4ffa-9b27-615af51d23fe",
+    "name": "Lead image with information"
+  },
+  "mappings": [
+    {
+      "defaultLayout": {
+        "id": "lead-image-with-information-layout",
+        "name": "leadImageWithInformationLayout"
+      },
+      "layouts": [
+        {
+          "id": "lead-image-with-information-layout",
+          "name": "leadImageWithInformationLayout"
+        }
+      ]
+    }
+  ]
+}

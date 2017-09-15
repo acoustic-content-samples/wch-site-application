@@ -1,0 +1,5 @@
+<div [id]="rContext.id" class="item-selection">
+	<h4 *ngIf="heading">{{onHeading | async}}</h4>
+	<app-list [renderingContexts]="contextList"></app-list>
+	<app-view-all [renderingContext]="renderingContext"></app-view-all>
+</div>

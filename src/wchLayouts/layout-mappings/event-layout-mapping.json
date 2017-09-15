@@ -1,0 +1,24 @@
+{
+  "id": "event-layout-mapping",
+  "rev": "1-380bb3458d4b570e461a83030002fe0b",
+  "name": "eventLayoutMapping",
+  "classification": "layout-mapping",
+  "type": {
+    "id": "10ed9f3f-ab41-45a9-ba24-d988974affa7",
+    "name": "Event"
+  },
+  "mappings": [
+    {
+      "defaultLayout": {
+        "id": "event-layout",
+        "name": "eventLayout"
+      },
+      "layouts": [
+        {
+          "id": "event-layout",
+          "name": "eventLayout"
+        }
+      ]
+    }
+  ]
+}

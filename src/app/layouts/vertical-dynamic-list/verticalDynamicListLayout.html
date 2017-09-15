@@ -1,0 +1,9 @@
+<div [id]="renderingContext.id" class="item-query">
+	<h4 *ngIf="listTitle">{{onListTitle | async}}</h4>
+	<div>
+		<wch-contentquery [query]="queryString" #q>
+			<app-list [renderingContexts]="q.onRenderingContexts | async | dateFilter:sortField:dateFilterStr | itemSort:sortField:sortOrderStr:maxItemsToDisplay"></app-list>
+			<app-view-all [renderingContext]="renderingContext"></app-view-all>
+		</wch-contentquery>
+	</div>
+</div>

@@ -1,0 +1,5 @@
+<div [id]="rContext.id" class="list-carousel item-selection">
+	<h3 *ngIf="heading">{{onHeading | async}}</h3>
+	<app-carousel [renderingContexts]="contextList"></app-carousel>
+	<app-view-all [renderingContext]="renderingContext"></app-view-all>
+</div>

@@ -1,0 +1,63 @@
+<footer>
+	<div class="wch-footer">
+		<div class="grid-container">
+			<div class="grid-x grid-padding-x">
+				<div class="medium-3 cell footer-logo">
+					<a href="#"><img *ngIf="isImageURLAvailable(LOGO_KEY)" [src]="getURL(LOGO_KEY)" /></a>
+				</div>
+				<div class="medium-3 cell footer-nav">
+					<h5>Menu</h5>
+					<ul>
+						<li *ngFor="let page of rc?.context?.site.pages">
+							<a href="javascript:void(0);" [routerLink]="page.route" title="{{page.name}}">{{page.name}}</a>
+						</li>
+					</ul>
+				</div>
+				<div class="medium-3 cell follow-us">
+					<h5>Follow us</h5>
+					<ul>
+						<li>
+							<a href="https://www.facebook.com">
+								<svg class="icon">
+									<use [attr.xlink:href]="icon.facebook"/>
+								</svg>
+								<span class="show-for-medium">Facebook</span>
+							</a>
+						</li>
+						<li>
+							<a href="https://twitter.com">
+								<svg class="icon">
+									<use [attr.xlink:href]="icon.twitter"/>
+								</svg>
+								<span class="show-for-medium">Twitter</span>
+							</a>
+						</li>
+						<li>
+							<a href="https://www.instagram.com">
+								<svg class="icon">
+									<use [attr.xlink:href]="icon.instagram"/>
+								</svg>
+								<span class="show-for-medium">Instagram</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="medium-3 cell contact-us">
+					<h5>Contact us</h5>
+					<ul>
+						<li><span>{{getElementValue(SALES_LABEL_KEY)}}</span> <a href="tel:{{salesTel}}">
+							{{getElementValue(SALES_NUMBER_KEY)}} </a></li>
+						<li><span>{{getElementValue(CUSTOMER_SERVICE_LABEL_KEY)}}</span> <a href="tel:{{serviceTel}}">
+							{{getElementValue(CUSTOMER_SERVICE_NUMBER_KEY)}}</a></li>
+						<li><span>email</span> <a href="mailto:{{getElementValue(EMAIL_KEY)}}">
+							{{getElementValue(EMAIL_KEY)}}</a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="grid-x legal">
+				<div class="copyright">&copy; <span>{{currentYear}}</span> {{getElementValue(COMPANY_NAME_KEY)}}</div>
+			</div>
+		</div>
+	</div>
+</footer>

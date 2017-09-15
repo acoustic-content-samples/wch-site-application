@@ -1,0 +1,20 @@
+<div #signUp [id]="rContext.id">
+	<div [id]="itemId" class="reveal" #revealModal data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+		<div [innerHTML]="dialogMessage | formattedText:html"></div>
+		<a class="close-button" data-close aria-label="Close">&#215;</a>
+	</div>
+
+	<section class="grid-container">
+		<div class="newsletter" [style.background-image]="'url(' + utilsService.getImageUrl(rContext, BACKGROUND_IMG_KEY, 'short') +')'">
+			<div class="call-to-action">
+				<h4>{{onText | async}}</h4>
+			</div>
+			<div class="wrap-inputs">
+				<form name="emailForm">
+					<input type="text" (keyup.enter)="openModal()" [(ngModel)]="emailAddress" class="text-content" placeholder="Email address" name="emailAddr" />
+					<button (click)="addEmail()" type="button" class="button news-btn float-right"  id="newsletter-subscribe"  [attr.data-open]="itemId">{{(onLink | async).linkText}}</button>
+				</form>
+			</div>
+		</div>
+	</section>
+</div>

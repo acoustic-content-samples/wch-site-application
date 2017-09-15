@@ -1,0 +1,24 @@
+{
+  "id": "error-page-layout-mapping",
+  "rev": "1-9733e7f30e0f06e17c2a8ed5cc5df7ed",
+  "name": "errorPageLayoutMapping",
+  "classification": "layout-mapping",
+  "type": {
+    "id": "16f3938f-90a7-44e9-baf0-751d861a6164",
+    "name": "Error page"
+  },
+  "mappings": [
+    {
+      "defaultLayout": {
+        "id": "error-page-layout",
+        "name": "errorPageLayout"
+      },
+      "layouts": [
+        {
+          "id": "error-page-layout",
+          "name": "errorPageLayout"
+        }
+      ]
+    }
+  ]
+}

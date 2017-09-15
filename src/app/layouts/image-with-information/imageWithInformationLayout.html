@@ -1,0 +1,4 @@
+<div *ngIf="rContext" [className]="getImageClass()" class="wrap-text-left">
+	<img [src]="utilsService.getImageUrl(rContext, IMAGE_KEY, imageSizeStr)" [alt]="onImageCaption | async" [title]="onImageCaption | async">
+	<div class="caption">{{onImageCaption | async}} <span>{{onImageCredit | async}}</span></div>
+</div>

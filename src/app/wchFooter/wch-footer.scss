@@ -1,0 +1,164 @@
+/*******************************************************************************
+ * Copyright IBM Corp. 2017
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
+@import '~foundation-sites/scss/foundation';
+
+/* Footer */
+$footer-background-color: #222;
+$footer-color: #dadada;
+$footer-anchor-color: #dadada;
+
+.wch-footer {
+	background: $footer-background-color;
+	color: $footer-color;
+	min-height: 240px;
+	padding: 40px 0 20px;
+	margin-top: 40px;
+	text-align: center;
+
+	a {
+		color: $footer-anchor-color;
+	}
+
+	h5 {
+		text-transform: uppercase;
+	}
+
+	ul {
+		list-style: none;
+		margin-top: 30px;
+	}
+}
+
+.footer-logo {
+	display: flex;
+	justify-content: center;
+	text-align: left;
+	order: 1;
+}
+
+.footer-nav {
+	order: 2;
+
+	li {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		margin-bottom: 10px;
+	}
+}
+
+.contact-us {
+	order: 3;
+
+	li {
+		margin-bottom: 10px;
+	}
+
+	span {
+		display: block;
+	}
+}
+
+.follow-us {
+	order: 3;
+
+	ul {
+		display: flex;
+		justify-content: center;
+	}
+
+	li {
+		display: block;
+		margin-right: 30px;
+
+		svg {
+			width: 30px;
+			height: 30px;
+			margin-bottom: -10px;
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}
+
+
+.follow-us,
+.contact-us,
+.footer-nav {
+	margin-top: 30px;
+}
+
+.legal {
+	margin-top: 40px;
+
+	.copyright {
+		margin: 0 auto;
+	}
+}
+
+@include breakpoint(medium) {
+	.wch-footer {
+		padding-top: 50px;
+		margin-top: 60px;
+	}
+
+	.footer-logo {
+		order: 1;
+
+		a {
+			display: inline-block;
+		}
+	}
+
+	.footer-nav {
+		order: 2;
+	}
+
+	.follow-us {
+		order: 4;
+
+		ul {
+			display: block;
+		}
+
+		li {
+			margin-bottom: 30px;
+
+			svg {
+				margin-right: 6px;
+			}
+		}
+	}
+
+	.contact-us {
+		order: 3;
+	}
+
+	.follow-us,
+	.contact-us,
+	.footer-nav {
+		margin-top: 0;
+		text-align: left;
+	}
+}
+
+@include breakpoint(large) {
+	.wch-footer {
+		margin-top: 80px;
+	}
+}

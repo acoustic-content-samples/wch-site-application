@@ -1,0 +1,7 @@
+<div class="article-lead-image">
+	<div class="image-container">
+		<img *ngIf="leadImage && leadImage.url" [src]="utilsService.getImageUrl(rContext, LEAD_IMAGE_KEY, 'lead')" [alt]="onLeadImageCaption | async"
+			 [title]="onLeadImageCaption | async">
+	</div>
+	<!--<div class="caption">{{onLeadImageCaption | async}} <span>{{(onLeadImageCredit | async)}}</span></div>-->
+</div>

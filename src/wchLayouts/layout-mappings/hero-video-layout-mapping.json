@@ -1,0 +1,24 @@
+{
+  "id": "hero-video-layout-mapping",
+  "rev": "1-6e8deaa5010b756f49b97b221c8a684a",
+  "name": "heroVideoLayoutMapping",
+  "classification": "layout-mapping",
+  "type": {
+    "id": "a47af09a-9315-4a01-ad30-cd998d341b0b",
+    "name": "Hero video"
+  },
+  "mappings": [
+    {
+      "defaultLayout": {
+        "id": "hero-video-layout",
+        "name": "heroVideoLayout"
+      },
+      "layouts": [
+        {
+          "id": "hero-video-layout",
+          "name": "heroVideoLayout"
+        }
+      ]
+    }
+  ]
+}

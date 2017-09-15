@@ -1,0 +1,24 @@
+{
+  "id": "author-profile-layout-mapping",
+  "rev": "1-151d2795bb2b9f64cb5fd7cf15f3cc42",
+  "name": "authorProfileLayoutMapping",
+  "classification": "layout-mapping",
+  "type": {
+    "id": "b0b91aad-8a9a-4d46-9aff-e35d004f0a1f",
+    "name": "Author profile"
+  },
+  "mappings": [
+    {
+      "defaultLayout": {
+        "id": "author-profile-layout",
+        "name": "authorProfileLayout"
+      },
+      "layouts": [
+        {
+          "id": "author-profile-layout",
+          "name": "authorProfileLayout"
+        }
+      ]
+    }
+  ]
+}

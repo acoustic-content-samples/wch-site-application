@@ -1,0 +1,24 @@
+<div id="{{rContext.id}}" [ngSwitch]="layoutMode">
+	<div *ngSwitchCase="constants.SUMMARY">
+		<app-design-article-summary [renderingContext]='onRenderingContext|async'></app-design-article-summary>
+	</div>
+	<div *ngSwitchCase="constants.DETAIL">
+		<wch-contentref *ngIf="mainImage" [renderingContext]="onMainImage | async"></wch-contentref>
+		<h2 class="headline">{{onHeading | async}}</h2>
+		<div class="article-details">
+			<div class="byline-and-date">
+				<span *ngIf="author">By <b class="author">{{onAuthor | async}}</b>, </span><span>{{ date | date:'yMMMMd'}}</span>
+			</div>
+			<app-share-social [renderingContext]="rContext"></app-share-social>
+		</div>
+		<div class="article-body" *ngFor="let item of onBody | async; let idx = index">
+			<div [innerHTML]="item | formattedText:html"></div>
+			<wch-contentref [renderingContext]="matchingBodyImages[idx]"></wch-contentref>
+		</div>
+		<div class="article-medium-image" *ngFor="let item of leftoverBodyImages">
+			<app-article-body-image [renderingContext]="item"></app-article-body-image>
+		</div>
+		<wch-contentref *ngIf="authorBio" [renderingContext]="onAuthorBio | async"></wch-contentref>
+	</div>
+</div>
+

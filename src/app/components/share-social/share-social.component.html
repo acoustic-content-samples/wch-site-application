@@ -1,0 +1,24 @@
+<div class="share-buttons">
+  <span class="twitter">
+    <!--
+    <div class="btn-o">
+    <a [href]="twitterUrl" class="btn" id="b">
+      <i></i>
+      <span class="label" id="l">Tweet</span></a>
+    </div>
+    -->
+    <iframe *ngIf="twitterLink"
+			[src]="twitterLink"
+			width="76"
+			height="25"
+			title="Twitter Tweet Button"
+			style="border: 0; overflow: hidden;">
+    </iframe>
+  </span>
+	<span class="facebook">
+  <iframe *ngIf="facebookLink" [src]="facebookLink" width="59" height="25" style="border:none;overflow:hidden"
+		  scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+  </span>
+
+
+</div> <!-- End .share-buttons -->

@@ -1,0 +1,9 @@
+<div [id]="rContext.id" class="wch-hero-image">
+	<img [src]="utilService.getImageUrl(rContext, IMAGE_KEY, 'short')" [alt]="image.altText ? (onImage | async).altText : ''" [title]="image.altText ? (onImage | async).altText : ''" />
+
+	<div class="hero-message">
+		<h1 class="text-hero">{{onText | async}}</h1>
+		<a *ngIf="userouterLink" [routerLink]="(onLink | async).linkURL" class="button hero-button">{{(onLink | async).linkText}}</a>
+		<a *ngIf="!userouterLink" target='_blank' [href]="(onLink | async).linkURL" class="button hero-button">{{(onLink | async).linkText}}</a>
+	</div>
+</div>

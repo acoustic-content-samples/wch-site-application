@@ -1,0 +1,11 @@
+<div class="grid-container grid-container-padded section" *ngIf="rc">
+  <div class="error-wrapper">
+    <div class="error-code">
+      404
+    </div>
+    <div class="error-code-message">
+					<p [innerHTML]="context?.elements?.errorMessage.value | formattedText:html"></p>
+      <a *ngIf="context?.elements?.goHomeButton.linkURL" class="button" [routerLink]="context.elements.goHomeButton.linkURL">{{context.elements.goHomeButton.linkText}}</a>
+    </div>
+  </div>
+</div>

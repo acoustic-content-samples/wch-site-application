@@ -1,0 +1,8 @@
+<div class="view-all"  *ngIf="isButtonLinkSet()">
+	<a *ngIf="!renderingContext.elements.viewAllLink.linkURL.startsWith('http')" class="button button-view-all" href [routerLink]="renderingContext.elements.viewAllLink.linkURL">
+		{{renderingContext.elements.viewAllLink.linkText}}
+	</a>
+	<a *ngIf="renderingContext.elements.viewAllLink.linkURL.startsWith('http')" class="button button-view-all" [href]="renderingContext.elements.viewAllLink.linkURL">
+		{{renderingContext.elements.viewAllLink.linkText}}
+	</a>
+</div>

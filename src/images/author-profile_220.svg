@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="220px" height="145px" viewBox="0 0 220 145" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>author-profile_220</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Layout-Thumbnails" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="author-profile_220">
+            <rect id="Rectangle-2" fill="#F7F7F7" x="0" y="35" width="220" height="75"></rect>
+            <g id="List-Item" transform="translate(5.000000, 40.000000)">
+                <rect id="Rectangle-2" fill="#D8D8D8" x="0" y="0" width="210" height="65"></rect>
+                <g id="Text" transform="translate(52.000000, 10.000000)" fill="#FFFFFF">
+                    <rect id="Rectangle" x="0" y="7" width="148" height="4"></rect>
+                    <rect id="Rectangle" x="0" y="14" width="148" height="4"></rect>
+                    <rect id="Rectangle" x="0" y="21" width="148" height="4"></rect>
+                    <rect id="Rectangle" x="0" y="28" width="148" height="4"></rect>
+                    <rect id="Rectangle" x="0" y="35" width="148" height="4"></rect>
+                    <rect id="Rectangle" x="0" y="42" width="83" height="4"></rect>
+                    <rect id="Rectangle" x="0" y="0" width="148" height="4"></rect>
+                </g>
+                <g id="Image" transform="translate(10.000000, 10.000000)" fill-rule="nonzero" fill="#FFFFFF">
+                    <circle id="Oval" cx="23" cy="8" r="5"></circle>
+                    <polygon id="Shape" points="29 22.4545455 24.125 15.9090909 19.25 20.8181818 9.5 11 3 17.5454545 3 29 29 29"></polygon>
+                    <path d="M30.4,1.6 L30.4,30.4 L1.6,30.4 L1.6,1.6 L30.4,1.6 L30.4,1.6 Z M32,0 L0,0 L0,32 L32,32 L32,0 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

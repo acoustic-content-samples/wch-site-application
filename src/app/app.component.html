@@ -1,0 +1,6 @@
+<!--<app-tool-bar></app-tool-bar>-->
+<wch-header [renderingContext]='onRenderingContext|async'></wch-header>
+<div class="content-placeholder">
+	<router-outlet (activate)='onActivate($event)'></router-outlet>
+</div>
+<wch-footer [renderingContext]='onRenderingContext|async'></wch-footer>

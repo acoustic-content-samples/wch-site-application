@@ -1,0 +1,8 @@
+<div class="wch-carousel">
+	<div class="carousel">
+		<div  #carousel class="carousel-item" *ngFor="let slide of renderingContexts">
+			<wch-contentref [layoutMode]="constants.SUMMARY" [renderingContext]="slide"></wch-contentref>
+		</div>
+	</div>
+</div>
+
