@@ -5,6 +5,10 @@ Source code for the Watson Content Hub sample site single page application - Osl
 
 From you cli make sure to install project dependencies by running `npm install`
 
+## Documentation
+
+See the documentation on developer works how to customize the sample website or creating your own.
+
 ### Changing the tenant
 
 You can set the tenant information, by changing the values in `src/app/Constants.ts`.
@@ -37,3 +41,7 @@ Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github
 
 Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `npm start`.
+
+## License
+
+See the included license file [License](LICENSE) .
