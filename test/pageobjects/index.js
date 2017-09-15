@@ -14,10 +14,9 @@
  * limitations under the License.
  *******************************************************************************/
 /**
- * This module provides the page objects for the prod-oob service.
+ * This module provides the page objects for the service.
  * <br/><br/>To install: <code>npm install oob-spa-ui-pageobjects</code>
  * <br/>To import it: <code>require('oob-spa-ui-pageobjects')</code>
- * <br/><br/>GitHub: {@link https://github.ibm.com/DX/prod-oob}
  *
  * @module oob-spa-ui-pageobjects
  */

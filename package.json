@@ -1,6 +1,6 @@
 {
-  "name": "prod-oob",
-  "version": "0.2.0",
+  "name": "wch-site-application",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
