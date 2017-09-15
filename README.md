@@ -1,13 +1,17 @@
 # wch-site-application
 Source code for the Watson Content Hub sample site single page application - Oslo. 
 
+## Documentation
+
+See the documentation on developer works how to customize the sample website or creating your own:
+
+[Developing your own website](http://developer.ibm.com/customer-engagement/docs/developing-your-own-website/)
+
+[Managing a web site in Watson Content Hub](https://www.ibm.com/support/knowledgecenter/SS3UMF/dch/admin/website_admin_std.html)
+
 ## Getting Setup
 
 From you cli make sure to install project dependencies by running `npm install`
-
-## Documentation
-
-See the documentation on developer works how to customize the sample website or creating your own.
 
 ### Changing the tenant
 
