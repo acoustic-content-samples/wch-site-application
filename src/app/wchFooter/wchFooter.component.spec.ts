@@ -14,41 +14,62 @@
  * limitations under the License.
  *******************************************************************************/
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Router } from '@angular/router';
+import { By } from '@angular/platform-browser';
+import { Location, CommonModule } from '@angular/common';
+import { RouterTestingModule } from '@angular/router/testing';
+
 import { WchFooterComponent } from './wchFooter.component';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { ConfigServiceService } from './../common/configService/config-service.service';
 import {
-  Http, HttpModule, XHRBackend, ResponseOptions,
-  Response, BaseRequestOptions
+	Http, HttpModule, XHRBackend, ResponseOptions,
+	Response, BaseRequestOptions
 } from '@angular/http';
 
-
 describe('WchFooterComponent', () => {
-  let component: WchFooterComponent;
-  let fixture: ComponentFixture<WchFooterComponent>;
+	let component: WchFooterComponent;
+	let fixture: ComponentFixture<WchFooterComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ WchFooterComponent ],
-      imports: [
-       HttpModule
-    ],
-      providers: [ConfigServiceService]
-    })
-  }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			imports: [
+				HttpModule,
+				CommonModule,
+				RouterTestingModule.withRoutes([
+					{ path: 'test/page/home', component: RouterMockTestComponent }
+				])
+			],
+			declarations: [WchFooterComponent, RouterMockTestComponent],
+			providers: [ConfigServiceService]
+		})
+	}));
 
-  beforeEach(() => {
-    fixture = TestBed.overrideComponent(WchFooterComponent, {
-      set: {
-        template: 'TODO'
-      }})
-      .createComponent(WchFooterComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(WchFooterComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  //TODO testing for directive
-  xit('create an instance', () => {
-    expect(component).toBeTruthy();
-  });
+	xit('create an instance', () => {
+		expect(component).toBeTruthy();
+	});
 });
+
+@Component({
+	template: `
+    <a routerLink="/test/page/{{pageName}}">link</a>
+    <router-outlet></router-outlet>
+  `
+})
+
+@Component({
+	template: ''
+})
+
+/**
+ * Mocks routerLink
+ */
+class RouterMockTestComponent {
+}

@@ -16,6 +16,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CarouselComponent } from './carousel.component';
+import 'rxjs/add/operator/filter';
 
 describe('CarouselComponent', () => {
   let component: CarouselComponent;

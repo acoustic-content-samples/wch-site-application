@@ -22,60 +22,72 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ViewAllComponent } from './view-all.component';
 import {WchNgModule, PageComponent, ComponentsService, RenderingContext} from 'ibm-wch-sdk-ng';
 
-@Component({
-  template: `
-    <a routerLink="/settings/{{collName}}/edit/{{item._id}}">link</a>
-    <router-outlet></router-outlet>
-  `
-})
-class TestComponent {
-  renderingContext = {"elements" : {"viewAllLink": {"linkURL" : "https://www.ibm.com"}}};
-  collName = 'testing';
-  item = {
-    _id: 1
-  };
-}
-
-@Component({
-  template: ''
-})
-class DummyComponent {
-}
-
 describe('ViewAllComponent', () => {
-  let component: ViewAllComponent;
-  let fixture: ComponentFixture<TestComponentWrapper>;
+	let component: ViewAllComponent;
+	let fixture: ComponentFixture<ViewAllComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        CommonModule,
-        RouterTestingModule.withRoutes([
-         { path: 'test/:page/edit/:item', component: DummyComponent }
-        ])
-      ],
-      declarations: [ ViewAllComponent, DummyComponent, TestComponentWrapper],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
-    .compileComponents();
-  }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			imports: [
+				CommonModule,
+				RouterTestingModule.withRoutes([
+					{ path: 'test/page/home', component: RouterMockTestComponent }
+				])
+			],
+			declarations: [ViewAllComponent, RouterMockTestComponent],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
+		})
+			.compileComponents();
+	}));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TestComponentWrapper);
-    component = fixture.debugElement.children[0].componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(ViewAllComponent);
+		component = fixture.componentInstance;
+		component.renderingContext = { "elements": { "viewAllLink": { "linkURL": "https://www.ibm.com" } } };
+		fixture.detectChanges();
+	});
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
+	it('should be created', () => {
+		//GIVEN required input value
 
-  });
+		//THEN component should be creted
+		expect(component).toBeTruthy();
+		//expect(component).toContain("www.ibm.com");
+
+		expect(component.isButtonLinkSet()).toBeTruthy();
+	});
+
+	it('isButtonLinkSet should return value based on the input', () => {
+		//GIVEN required input value
+		//AND
+		//component is created
+		expect(component).toBeTruthy();
+		//expect(component).toContain("www.ibm.com");
+		//THEN isButtonLinkSet should return true
+		expect(component.isButtonLinkSet()).toBeTruthy();
+
+		//WHEN linkURL is empty
+		component.renderingContext = { "elements": { "viewAllLink": { "linkURL": "" } } };
+		fixture.detectChanges();
+
+		//THEN isButtonLinkSet should return true
+		expect(component.isButtonLinkSet()).toBeFalsy();
+	});
 });
 
 @Component({
-  selector: 'test-component-wrapper',
-  template: '<a [href]="renderingContext.elements.viewAllLink.linkURL"></a>'
+	template: `
+    <a routerLink="/test/page/{{pageName}}">link</a>
+    <router-outlet></router-outlet>
+  `
 })
-class TestComponentWrapper {
-  renderingContext = {"elements" : {"viewAllLink": {"linkURL" : "https://www.ibm.com"}}};
+
+@Component({
+	template: ''
+})
+
+/**
+ * Mocks routerLink
+ */
+class RouterMockTestComponent {
 }
