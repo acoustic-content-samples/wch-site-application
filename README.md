@@ -9,7 +9,7 @@ See the documentation on developer works how to customize the sample website or 
 
 [Managing a web site in Watson Content Hub](https://www.ibm.com/support/knowledgecenter/SS3UMF/dch/admin/website_admin_std.html)
 
-## Getting Setup
+## Getting set up
 
 From you cli make sure to install project dependencies by running `npm install`
 
@@ -24,18 +24,14 @@ from.
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app
 will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-To use code scaffolding you will need the Angular CLI with this project. To
-install it globally run `npm install -g @angular/cli`.
-
-Run `ng generate component component-name` to generate a new component. You can
-also use `ng generate directive|pipe|service|class|module`.
-
 ## Build
 
 Run `npm run build` to build the project. The build artifacts will be stored in
 the `assets/` directory. Use the `-prod` flag for a production build.
+
+## Deployment to Watson Content Hub
+
+Run `npm run deploy` to deploy the built code to Watson Content Hub. There is also a shortcut for building and deploying in one step via `npm run build-deploy`.
 
 ## Running unit tests
 
@@ -45,6 +41,16 @@ Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github
 
 Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `npm start`.
+
+## Advanced
+
+### Code scaffolding
+
+To use code scaffolding you will want the Angular CLI with this project. To
+install it globally run `npm install -g @angular/cli`.
+
+Run `ng generate component component-name` to generate a new component. You can
+also use `ng generate directive|pipe|service|class|module`.
 
 ## License
 
