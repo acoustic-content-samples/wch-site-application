@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-import {AfterViewInit, Component, Output, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {RenderingContext} from "ibm-wch-sdk-ng";
 import 'rxjs/add/operator/filter';
 import {Observable} from "rxjs/Observable";
@@ -21,10 +21,7 @@ import {isNil} from 'lodash';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {Constants} from "./Constants";
 import {HighlightService} from "./common/highlightService/highlight.service";
-
-
-declare var version: string;
-declare var sdkVersion: string;
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
 	encapsulation: ViewEncapsulation.None,
@@ -33,13 +30,18 @@ declare var sdkVersion: string;
 	templateUrl: './app.component.html'
 
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 	@Output()
 	onRenderingContext: Observable<RenderingContext>;
 
-	constructor(router: Router, private highlightService: HighlightService) {
+	constructor(router: Router, private highlightService: HighlightService, private translate: TranslateService) {
 		console.info(`Build date: ${version}`);
 		console.info(`SDK version: ${sdkVersion}`);
+	}
+
+	ngOnInit () {
+		this.translate.setDefaultLang('en');
+		this.translate.use('en');
 	}
 
 	onActivate(aEvent: any) {

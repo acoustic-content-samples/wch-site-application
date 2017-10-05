@@ -35,10 +35,6 @@ import {ConfigServiceService} from "../common/configService/config-service.servi
 import {Constants} from "../Constants";
 import {Subscription} from "rxjs/Subscription";
 
-declare var $: any;
-declare var Foundation: any;
-
-
 @Component({
 	selector: 'wch-header',
 	styleUrls: ['./wch-header.scss'],
@@ -109,7 +105,6 @@ export class WchHeaderComponent implements AfterViewInit, OnDestroy, OnChanges {
 
 	ngAfterViewInit() {
 		this.navSub = this.navLoop.changes.subscribe(item => {
-			console.error('CRC navLoop change', this.navigationChanged);
 			if (this.navigationChanged) {
 				//Navigation possibly changed,  destroy the nav menu and rebuild.
 				try {

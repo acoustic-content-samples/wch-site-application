@@ -42,11 +42,17 @@ import { GenericLayoutModule } from './components/generic/generic.layout.module'
 
 import { ArticleBodyImageComponent } from './components/article-body-image/article-body-image.component';
 import { DesignArticleSummaryComponent } from './layouts/design-article-summary/design-article-summary.component';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 const pageRoutes: Routes = [
 	{path: '', redirectTo: '/home', pathMatch: 'full'},
 	{path: '**', component: PageComponent}
 ];
+
+export function HttpLoaderFactory(http: Http) {
+	return new TranslateHttpLoader(http, './oob-spa/locales/', '.json');
+}
 
 @NgModule({
 	imports: [
@@ -56,7 +62,14 @@ const pageRoutes: Routes = [
 		HttpModule,
 		WchNgModule.forRoot(environment),
 		SiteCommonModule,
-		GenericLayoutModule
+		GenericLayoutModule,
+		TranslateModule.forRoot({
+			loader: {
+				provide: TranslateLoader,
+				useFactory: HttpLoaderFactory,
+				deps: [ Http ]
+			}
+		})
 	],
 	declarations: [
 		AppComponent,

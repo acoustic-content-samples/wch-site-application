@@ -66,8 +66,16 @@ fsExtra.mkdirsSync('dist/assets/layouts/thumbnails', function(err){
 	}
 });
 
+fsExtra.mkdirsSync('dist/assets/oob-spa/locales', function(err){
+	if (err) {
+		console.log("cannot make directory dist/assets/oob-spa/locales: " + err);
+	} else {
+		console.log("successfully made dist/assets/oob-spa/locales");
+	}
+});
 
 var copyFiles = [
+	{src: 'src/locales', dest: 'dist/assets/oob-spa/locales'},
 	{src: 'src/favicon.ico', dest: 'dist/assets/favicon.ico'},
 	{src: 'src/wchLayouts/layout-mappings', dest: 'dist/layout-mappings'},
 	{src: 'src/wchLayouts/layouts', dest: 'dist/layouts'},
@@ -205,10 +213,11 @@ module.exports = {
 	]
   },
   "plugins": [
-		new DefinePlugin({
-			version: JSON.stringify((new Date()).toISOString().substr(0,10)),
-	  sdkVersion: JSON.stringify(require('./node_modules/ibm-wch-sdk-ng/package.json').version)
-		}),
+	new DefinePlugin({
+		ENV: JSON.stringify((process.env.NODE_ENV) ? process.env.NODE_ENV : 'production'),
+		version: JSON.stringify((new Date()).toISOString().substr(0,10)),
+		sdkVersion: JSON.stringify(require('./node_modules/ibm-wch-sdk-ng/package.json').version)
+	}),
 	new NoEmitOnErrorsPlugin(),
 	new GlobCopyWebpackPlugin({
 	  "patterns": [

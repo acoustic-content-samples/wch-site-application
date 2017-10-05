@@ -29,12 +29,14 @@ export class DateFilterPipe implements PipeTransform {
 		if(dateFilter === Constants.FUTURE_DATES && items){
 
 			return items.filter((item) => {
-				let date = item.elements[field].value;
-				if(date && item.elements[field].elementType === 'datetime'){
-					date = new Date(date);
-					return (date > currentDate);
+				if (item.elements[field]) {
+					let date = item.elements[field].value;
+					if(date && item.elements[field].elementType === 'datetime'){
+						date = new Date(date);
+						return (date > currentDate);
+					}
 				}
-			})
+			});
 		} else if(dateFilter === Constants.LAST_7_DAYS) {
 
 			return this._calculatePastDate(items, field, 7);
@@ -53,10 +55,15 @@ export class DateFilterPipe implements PipeTransform {
 		let currentDate = new Date();
 		let pastDate = new Date(currentDate.getTime() - (days * 24 * 60 * 60 * 1000));
 		let res = items.filter((item) => {
-			let date = item.elements[field].value;
-			if(date && item.elements[field].elementType === 'datetime'){
-				date = new Date(date);
-				return (pastDate < date && date < currentDate);
+			if (item.elements[field]) {
+				let date = item.elements[field].value;
+				if(date && item.elements[field].elementType === 'datetime'){
+					date = new Date(date);
+					return (pastDate < date && date < currentDate);
+				}
+			} else {
+				//Default to returning the item if it does not contain the field to sort
+				return true;
 			}
 		})
 		return res;

@@ -20,6 +20,7 @@ $sign-up-header-color: #fff;
 
 [type='text'] {
 	background-color: $sign-up-input-bg-color;
+	min-width: 0;
 }
 
 .newsletter {

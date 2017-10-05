@@ -7,14 +7,14 @@
 	</div>
 	<div *ngSwitchCase="constants.DETAIL" class="grid-container section-small">
 		<div id="{{rContext.id}}" class="grid-x grid-padding-x">
-			<div *ngIf="designTopic" class="medium-8 cell auto">
-				<div class="section">
+			<div class="medium-8 cell auto">
+				<div *ngIf="designTopic" class="section">
 					<wch-contentref [renderingContext]="onDesignTopic | async">
 					</wch-contentref>
 				</div>
 			</div>
-			<div *ngIf="relatedArticles" class="medium-4 cell shrink">
-				<div class="section">
+			<div class="medium-4 cell shrink">
+				<div *ngIf="relatedArticles" class="section">
 					<wch-contentref [renderingContext]="onRelatedArticles | async">
 					</wch-contentref>
 				</div>

@@ -33,26 +33,40 @@ export class ConfigServiceService {
 	getConfig(name: string): Observable<any> {
 		if (this.config.has(name)) {
 			return Observable.of(this.config.get(name));
-		} else {
-		
-			let apiUrl = (window.location.hostname==="localhost") ? Constants.apiUrl : `${window.location.protocol}//${window.location.hostname}/api/${window.location.pathname.split('/')[1]}`;
-			let searchURL = `${apiUrl}/delivery/v1/search?q=name:%22${name}%22&fl=document:%5Bjson%5D`;
-			return this.http.get(searchURL)
-				.map((response) => {
-					let res = response.json();
-					if(res && res.numFound > 0) {
-						return response.json().documents.shift().document
-					} else {
-						return {};
-					}
-				})
-				.do((res) => {
-					this.config.set(name, res);
-				})
+		}
+
+		let apiUrl = (window.location.hostname==="localhost") ? Constants.apiUrl : `${window.location.protocol}//${window.location.hostname}/api/${window.location.pathname.split('/')[1]}`;
+
+		if (name === Constants.HEADER_CONFIG) {
+			const headerId = '90d184ea-eb9c-4316-97a8-9d1ebc3029fc';
+			return this.http.get(`${apiUrl}/delivery/v1/content/${headerId}`)
+				.map(res => res.json()).do(res => this.config.set(name, res))
 				.publishReplay(1)
 				.refCount();
 		}
 
+		if (name === Constants.FOOTER_CONFIG) {
+			const footerId = 'ae72d304-ad18-4bf3-b213-4a79c829e458';
+			return this.http.get(`${apiUrl}/delivery/v1/content/${footerId}`)
+				.map(res => res.json()).do(res => this.config.set(name, res))
+				.publishReplay(1)
+				.refCount();
+		}
+
+		let searchURL = `${apiUrl}/delivery/v1/search?q=name:%22${name}%22&fl=document:%5Bjson%5D`;
+		return this.http.get(searchURL)
+			.map((response) => {
+				let res = response.json();
+				if(res && res.numFound > 0) {
+					return response.json().documents.shift().document
+				} else {
+					return {};
+				}
+			})
+			.do((res) => {
+				this.config.set(name, res);
+			})
+			.publishReplay(1)
 	}
 
 }

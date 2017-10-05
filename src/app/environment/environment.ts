@@ -16,7 +16,7 @@
 import { Constants } from '../Constants';
 
 export const environment = {
-  production: false,
+  production: (ENV === 'production') ? true : false,
   apiUrl: (window.location.hostname==="localhost") ? new URL(Constants['apiUrl']) : new URL(`${window.location.protocol}//${window.location.hostname}/api/${window.location.pathname.split('/')[1]}`),
   deliveryUrl: (window.location.hostname==="localhost") ? new URL(Constants['deliveryUrl']) : new URL(`${window.location.protocol}//${window.location.hostname}/${window.location.pathname.split('/')[1]}`),
     httpOptions: {

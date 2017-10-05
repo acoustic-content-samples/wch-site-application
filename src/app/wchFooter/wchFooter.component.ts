@@ -42,7 +42,6 @@ export class WchFooterComponent implements OnInit, OnDestroy {
 	configSub: Subscription;
 
 	public readonly LOGO_KEY: string = 'Logo';
-	public readonly COMPANY_NAME_KEY: string = 'companyName';
 	public readonly COPYRIGHT_KEY: string = 'copyright';
 	public readonly EMAIL_KEY: string = 'emailAddress';
 	public readonly SALES_LABEL_KEY: string = 'labelForSales';
