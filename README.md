@@ -56,6 +56,11 @@ install it globally run `npm install -g @angular/cli`.
 Run `ng generate component component-name` to generate a new component. You can
 also use `ng generate directive|pipe|service|class|module`.
 
+### Checking SDK and SPA build levels from the browser
+1. Open the dev console
+2. Search for `Build date` to get the current SPA level
+3. Search for `SDK version` to get the SDK version included in the SPA
+
 ## License
 
 See the included license file [License](LICENSE) .
