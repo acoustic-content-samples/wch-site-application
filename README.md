@@ -46,6 +46,42 @@ Run `npm run deploy` to deploy the built code to Watson Content Hub. There is al
 
 See the included detailed documentation on running tests [Running unit tests and end-to-end tests](RunningTest-README.md) .
 
+## Install Sample Site Components
+
+* The Oslo site provides scripting to ease the process of importing 3rd party components.  
+* In a first step we have provided the sample-active-site-components repository (https://github.com/ibm-wch/sample-active-site-components) that contains Youtube video players and customized Charts and an iframe component.
+* In the future we will provide additional components to download.
+
+### Structure of Sample Site Components
+* At the root of the `sample-active-site-components` project/zip, you can find the `content-artifacts` directory and the `site-application-files` directory.  
+* The `content-artifacts` directory contains content/pages required for the components in addition to the layout and layout-mappings files. The directory follows the WCH directory structure. `/catagories` stores assests in "Taxonomies". `/content` stores assests in "Content". `/types` stores content types. `/site` stores Oslo's pages' setting. `/layouts` and `/layout-mappings` store all layout settings created when you run `npm run create-layout`. You could find them in WCH by their "id" or "name" in json files after you deploy them into the tenant.
+* The `site-application-files` stores HTML/CSS/TS files needed for the sample components. You can customize the components by editing files in `site-application-files/src/app/layouts/<COMPONENT NAME>`.
+
+### InStallation steps
+1. Download `sample-active-site-components` package and change your directory to the root directory of that project.
+2. Go to the components `content-artifacts` directory and run `wchtools push` to deploy these artifacts to your tenant.  
+3. Switch back to wch-site-application and run `npm run install-layouts-from-folder <ABSOLUTE PATH OF sample-active-site-components DIRECTORY>` . This script will copy over the content from the `site-application-files` directory and overlay them into the Oslo application. Then it will use ibm-wch-sdk-cli to register the layouts in the Oslo application.
+
+## HTML5 style URLs
+
+The SPA will now use HTML5 style URLs and routing.  However there may be situations where the SPA will need to be reverted to the old hash (#) style.  This is true for tenants created before November of 2017.
+To do so the following steps can be taken:
+
+1. In index.html add the following after the title tag:<br  />
+`<base href="/">`
+
+2. In app.module.ts
+  1. Add the following import statement:<br  />
+`import {APP_BASE_HREF} from '@angular/common';`
+
+  2. Change the following line from:<br  />
+`RouterModule.forRoot(pageRoutes),`<br  />
+to:<br  />
+`RouterModule.forRoot(pageRoutes, {useHash: true}),`
+<br  />
+  3. Then locate the `providers` element and add the following element:<br  />
+`{provide: APP_BASE_HREF,useValue: '/'},`
+
 ## Advanced
 
 ### Code scaffolding
