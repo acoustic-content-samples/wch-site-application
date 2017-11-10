@@ -1,7 +1,13 @@
 <div class="summary-card">
 	<div *ngIf="rContext && rContext.reference[LEAD_IMG_KEY]" class="summary-card-image">
 		<!-- This sample shows the entire supplied image, so the correct aspect should be supplied by the user. -->
-		<wch-contentref [renderingContext]="rContext.reference[LEAD_IMG_KEY]"></wch-contentref>
+		<div class="article-lead-image">
+			<div class="image-container">
+				<img *ngIf="rContext.reference[LEAD_IMG_KEY].elements.leadImage && rContext.reference[LEAD_IMG_KEY].elements.leadImage.url" [src]="utils.getImageUrl(rContext.reference[LEAD_IMG_KEY], 'leadImage', 'card')" [alt]="rContext.reference[LEAD_IMG_KEY].elements.leadImageCaption.value"
+									[title]="rContext.reference[LEAD_IMG_KEY].elements.leadImageCaption.value">
+			</div>
+			<!--<div class="caption">{{onLeadImageCaption | async}} <span>{{(onLeadImageCredit | async)}}</span></div>-->
+		</div>
 	</div>
 	<p>{{rContext.elements[TOPIC_TITLE_KEY].value}}</p>
 </div>

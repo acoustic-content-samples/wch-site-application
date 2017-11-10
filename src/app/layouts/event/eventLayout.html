@@ -2,9 +2,9 @@
 
 	<div class="reveal" [id]="eventId" data-reveal>
 		<h2 class="event-popup-title" id="popup-title">{{onHeading | async}}</h2>
-		<p class="event-popup-description" id="popup-description" [innerHTML]="onEventDetails | async | formattedText:html"></p>
+		<p class="event-popup-description" id="popup-description" [innerHTML]="onEventDetails | async | formattedText:'html'"></p>
 		<p><strong>Location</strong>
-			<span [innerHTML]="onEventLocation | async | formattedText:html"></span>
+			<span [innerHTML]="onEventLocation | async | formattedText:'html'"></span>
 		</p>
 		<button class="close-button" data-close aria-label="Close modal" type="button">
 			<span aria-hidden="true">&times;</span>
@@ -17,7 +17,7 @@
 					<time [attr.datetime]="eventDate">{{eventDate | date:'longDate'}}</time>
 				</p>
 				<h5 class="event-title text-header">{{onHeading | async}}</h5>
-				<p class="event-description text-content" [innerHTML]="onBody | async | formattedText:html"></p>
+				<p class="event-description text-content" [innerHTML]="onBody | async | formattedText:'html'"></p>
 				<a class="button" [attr.data-open]="eventId">Details</a>
 			</div>
 		</div>

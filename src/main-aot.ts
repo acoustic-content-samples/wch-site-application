@@ -15,15 +15,16 @@
 	*******************************************************************************/
 import { enableProdMode } from '@angular/core';
 import { platformBrowser } from '@angular/platform-browser';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+// import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { AppModule } from './app/app.module';
+// import { AppModule } from './app/app.module';
 
-// import {AppModuleNgFactory} from './aot/app/app.module.ngfactory';
+
+import {AppModuleNgFactory} from './aot/app/app.module.ngfactory';
 
 if (ENV === 'production') {
 	enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule);
-// platformBrowser().bootstrapModuleFactory(AppModuleNgFactory);
+// platformBrowserDynamic().bootstrapModule(AppModule);
+platformBrowser().bootstrapModuleFactory(AppModuleNgFactory);

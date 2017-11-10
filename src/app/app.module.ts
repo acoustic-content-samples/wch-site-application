@@ -14,20 +14,19 @@
  * limitations under the License.
  *******************************************************************************/
 import { LAYOUTS } from './layouts';
+import { SAMPLE_MODULE } from './sample.module';
 import {NgModule, ViewEncapsulation} from '@angular/core';
-import {APP_BASE_HREF} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {FormsModule} from '@angular/forms';
 import {HttpModule, Http} from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 
+import { Ng2LoggerFactory } from './common/Ng2LoggerFactory';
 
-import 'script-loader!jquery';
 import 'script-loader!foundation-sites/dist/js/foundation.js';
-import 'script-loader!video.js/dist/video.js';
 
-import {WchNgModule, PageComponent, SiteBootstrap, Site} from 'ibm-wch-sdk-ng';
+import {WchNgModule, PageComponent, SiteBootstrap, Site, WchLoggerFactory} from 'ibm-wch-sdk-ng';
 
 
 import {WchHeaderComponent} from './wchHeader/wchHeader.component';
@@ -56,13 +55,14 @@ export function HttpLoaderFactory(http: Http) {
 
 @NgModule({
 	imports: [
-		RouterModule.forRoot(pageRoutes, {useHash: true}),
+		RouterModule.forRoot(pageRoutes),
 		BrowserModule,
 		FormsModule,
 		HttpModule,
 		WchNgModule.forRoot(environment),
 		SiteCommonModule,
 		GenericLayoutModule,
+		SAMPLE_MODULE,
 		TranslateModule.forRoot({
 			loader: {
 				provide: TranslateLoader,
@@ -78,15 +78,16 @@ export function HttpLoaderFactory(http: Http) {
 		PageNotFoundComponent,
 		ArticleBodyImageComponent,
 		DesignArticleSummaryComponent,
-	    ...LAYOUTS],
+		...LAYOUTS
+	],
 	providers: [
-		{provide: APP_BASE_HREF,
-			useValue: '/',},
+		{provide: WchLoggerFactory, useClass: Ng2LoggerFactory},
 		 HighlightService
 	],
 	entryComponents: [
 		PageNotFoundComponent
-	, ...LAYOUTS],
+	, ...LAYOUTS
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule {

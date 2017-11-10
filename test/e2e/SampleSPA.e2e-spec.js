@@ -115,13 +115,15 @@ describe('Sample OOB SPA tests', function() {
 
 	it('should be able to check if it is a 404 page', function() {
 
-		//GIVEN we are in error page
-		browser.get("http://localhost:4200/#/errorpage");
+		//GIVEN currentUrl
+		//WHEN navigating to error page
+		browser.getCurrentUrl().then(function(url) {
+			var currentUrl = url;
+			currentUrl += "error";
+			browser.get(currentUrl);
+		});
 
-
-		//THEN page should be visible
-		expect(this.spa.isPreviewVisible()).toEqual(true);
-		//AND it must be 404 page
+		//THEN 404 page must be displayed
 		var standardPage = this.spa.standardPage();
 		expect(standardPage.is404Page()).toEqual(true);
 	});

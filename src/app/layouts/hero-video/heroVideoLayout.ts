@@ -52,10 +52,14 @@ export class HeroVideoLayoutComponent extends TypeHeroVideoComponent implements 
 
 	constructor(public router: Router) {
 		super();
-		// this.routeSub = router.events.filter(e => e instanceof NavigationStart).subscribe((event: NavigationStart) => {
-		// 	// clean up your markup, unhook plugins, etc.
-		// 	this.player.dispose();
-		// });
+		 this.routeSub = router.events.filter(e => e instanceof NavigationStart).subscribe((event: NavigationStart) => {
+            // clean up your markup, unhook plugins, etc.
+		 	try {
+				this.player.dispose();
+			} catch(e){
+		 		console.error(e);
+			}
+		 });
 	}
 
 	ngOnInit() {
@@ -90,9 +94,6 @@ export class HeroVideoLayoutComponent extends TypeHeroVideoComponent implements 
 	}
 
 	ngOnDestroy() {
-		// this.routeSub.unsubscribe();
-		// console.log(this.player);
-		// console.log($(`#${this.itemId}`));
-		// this.player.dispose();
+		 this.routeSub.unsubscribe();
 	}
 }

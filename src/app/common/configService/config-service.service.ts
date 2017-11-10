@@ -35,7 +35,11 @@ export class ConfigServiceService {
 			return Observable.of(this.config.get(name));
 		}
 
-		let apiUrl = (window.location.hostname==="localhost") ? Constants.apiUrl : `${window.location.protocol}//${window.location.hostname}/api/${window.location.pathname.split('/')[1]}`;
+		let possibleTenant = window.location.pathname.split('/')[1],
+			baseUrl = possibleTenant.search(/\w{8}\-\w{4}\-\w{4}\-\w{4}\-\w{12}/) === 0 ? '/' + possibleTenant : '',
+			apiUrl = (window.location.hostname==="localhost") ? Constants.apiUrl : `${window.location.protocol}//${window.location.hostname}/api${baseUrl}`;
+
+console.warn('config-service.service.ts: possible tenant is %o and base url is %o', possibleTenant, baseUrl);
 
 		if (name === Constants.HEADER_CONFIG) {
 			const headerId = '90d184ea-eb9c-4316-97a8-9d1ebc3029fc';

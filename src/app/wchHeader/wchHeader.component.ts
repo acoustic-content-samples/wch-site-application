@@ -34,6 +34,7 @@ import {LayoutComponent, RenderingContext, AbstractRenderingComponent} from "ibm
 import {ConfigServiceService} from "../common/configService/config-service.service";
 import {Constants} from "../Constants";
 import {Subscription} from "rxjs/Subscription";
+Foundation.addToJquery($);
 
 @Component({
 	selector: 'wch-header',
@@ -91,7 +92,7 @@ export class WchHeaderComponent implements AfterViewInit, OnDestroy, OnChanges {
 	}
 
 	ngOnChanges(changes: SimpleChanges) {
-		
+
 		if (changes['renderingContext'].currentValue !== changes['renderingContext'].previousValue) {
 			this.navigationChanged = true;
 

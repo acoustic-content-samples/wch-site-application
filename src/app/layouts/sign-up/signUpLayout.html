@@ -1,6 +1,6 @@
 <div #signUp [id]="rContext.id">
 	<div [id]="itemId" class="reveal" #revealModal data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-		<div [innerHTML]="dialogMessage | formattedText:html"></div>
+		<div [innerHTML]="dialogMessage | formattedText:'html'"></div>
 		<a class="close-button" data-close aria-label="Close">&#215;</a>
 	</div>
 

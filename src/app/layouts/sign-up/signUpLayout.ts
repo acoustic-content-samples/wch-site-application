@@ -52,7 +52,7 @@ export class SignUpLayoutComponent extends TypeSignUpComponent implements OnInit
     readonly CONFIRMATION_KEY:string = 'dialogMessage';
 
 
-    constructor(private utilsService: UtilsService) {
+    constructor(public utilsService: UtilsService) {
         super();
     }
 

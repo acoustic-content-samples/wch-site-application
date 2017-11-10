@@ -4,6 +4,6 @@
 	</div>
 	<div>
 		<h5>{{(onName | async)}}</h5>
-		<div [innerHTML]="onShortBio | async | formattedText:html"></div>
+		<div [innerHTML]="onShortBio | async | formattedText:'html'"></div>
 	</div>
 </div>

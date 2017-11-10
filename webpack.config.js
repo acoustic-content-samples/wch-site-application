@@ -56,6 +56,34 @@ const postcssPlugins = function () {
 		].concat(minimizeCss ? [cssnano(minimizeOptions)] : []);
 	};
 
+let HtmlWebpackData = {
+				"template": "",
+				"filename": "./index.html",
+				"hash": false,
+				"inject": true,
+				"compile": true,
+				"minify": false,
+				"cache": true,
+				"showErrors": true,
+				"chunks": "all",
+				"excludeChunks": [],
+				"title": "Webpack App",
+				"xhtml": true,
+				"chunksSortMode": function sort(left, right) {
+					let leftIndex = entryPoints.indexOf(left.names[0]);
+					let rightindex = entryPoints.indexOf(right.names[0]);
+					if (leftIndex > rightindex) {
+						return 1;
+					}
+					else if (leftIndex < rightindex) {
+						return -1;
+					}
+					else {
+						return 0;
+					}
+				}
+			}
+
 
 fsExtra.removeSync('dist');
 fsExtra.mkdirsSync('dist/assets/layouts/thumbnails', function(err){
@@ -75,6 +103,7 @@ fsExtra.mkdirsSync('dist/assets/oob-spa/locales', function(err){
 });
 
 var copyFiles = [
+	// {src: 'src/build.js', dest: 'dist/assets/build.js'},
 	{src: 'src/locales', dest: 'dist/assets/oob-spa/locales'},
 	{src: 'src/favicon.ico', dest: 'dist/assets/favicon.ico'},
 	{src: 'src/wchLayouts/layout-mappings', dest: 'dist/layout-mappings'},
@@ -90,7 +119,6 @@ copyFiles.forEach(function (file) {
 	}
   });
 });
-
 
 module.exports = {
   "resolve": {
@@ -112,7 +140,7 @@ module.exports = {
   },
   "entry": {
 	"main": [
-	  "./src/main.ts"
+	  // "./src/main.ts"
 	],
 	"polyfills": [
 	  "./src/polyfills.ts"
@@ -131,7 +159,7 @@ module.exports = {
 		"loader": "source-map-loader",
 		"exclude": [
 		  /\/node_modules\//
-		]
+			]
 	  },
 	  {
 		"test": /\.json$/,
@@ -207,8 +235,8 @@ module.exports = {
 		]
 	  },
 	  {
-		"test": /\.ts$/,
-		"loader": "@ngtools/webpack"
+				"test": /\.ts$/,
+				"loader": "@ngtools/webpack"
 	  }
 	]
   },
@@ -237,33 +265,6 @@ module.exports = {
 	  "fallbackModuleFilenameTemplate": "[resource-path]?[hash]",
 	  "sourceRoot": "webpack:///"
 	}),
-	new HtmlWebpackPlugin({
-	  "template": "./src/index.html",
-	  "filename": "./index.html",
-	  "hash": false,
-	  "inject": true,
-	  "compile": true,
-	  "minify": false,
-	  "cache": true,
-	  "showErrors": true,
-	  "chunks": "all",
-	  "excludeChunks": [],
-	  "title": "Webpack App",
-	  "xhtml": true,
-	  "chunksSortMode": function sort(left, right) {
-		let leftIndex = entryPoints.indexOf(left.names[0]);
-		let rightindex = entryPoints.indexOf(right.names[0]);
-		if (leftIndex > rightindex) {
-			return 1;
-		}
-		else if (leftIndex < rightindex) {
-			return -1;
-		}
-		else {
-			return 0;
-		}
-	}
-	}),
 	new BaseHrefWebpackPlugin({}),
 	new CommonsChunkPlugin({
 	  "name": [
@@ -285,23 +286,7 @@ module.exports = {
 		"main"
 	  ]
 	}),
-	new NamedModulesPlugin({}),
-	new AotPlugin({
-	  "mainPath": "main.ts",
-	  "hostReplacementPaths": {
-		"environments/environment.ts": "environments/environment.ts"
-	  },
-	  "exclude": [],
-	  "tsConfigPath": "src/tsconfig.app.json",
-	  "skipCodeGeneration": true
-	})
-	, new UglifyJsPlugin({
-	 compress: {warnings: false},
-	 mangle: {
-	   except: ['require']
-	 },
-	 sourcemap: true
-	})
+	new NamedModulesPlugin({})
   ],
   "node": {
 	"fs": "empty",
@@ -320,3 +305,41 @@ module.exports = {
 	"https": false
   }
 };
+
+if(process.env.NODE_ENV === 'production'){
+	console.log('IN PROD')
+	HtmlWebpackData.template = './src/index.html';
+	module.exports.entry.main.push("./src/main-aot.ts");
+	module.exports.plugins.push(new HtmlWebpackPlugin(HtmlWebpackData));
+	module.exports.plugins.push(new AotPlugin({
+		"mainPath": "main-aot.ts",
+		"hostReplacementPaths": {
+			"environments/environment.ts": "environments/environment.ts"
+		},
+		"entryModule": path.resolve(__dirname, 'src/app/app.module#AppModule'),
+		"tsConfigPath": path.resolve(__dirname, "src/tsconfig.aot.json")
+	}));
+	module.exports.plugins.push(new UglifyJsPlugin({
+		compress: {warnings: false},
+		mangle: {
+			except: ['require']
+		},
+		sourceMap: false
+	}))
+}
+else {
+	console.log('IN DEV');
+	HtmlWebpackData.template = './src/index.html';
+	module.exports.entry.main.push("./src/main.ts");
+	module.exports.plugins.push(new HtmlWebpackPlugin(HtmlWebpackData));
+	module.exports.plugins.push(new AotPlugin({
+		"mainPath": "main.ts",
+		"hostReplacementPaths": {
+			"environments/environment.ts": "environments/environment.ts"
+		},
+		"exclude": [],
+		"tsConfigPath": "src/tsconfig.app.json",
+		"skipCodeGeneration": true
+	}));
+
+}
