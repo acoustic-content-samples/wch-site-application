@@ -57,10 +57,8 @@ See the included detailed documentation on running tests [Running unit tests and
 * The `content-artifacts` directory contains content/pages required for the components in addition to the layout and layout-mappings files. The directory follows the WCH directory structure. `/catagories` stores assests in "Taxonomies". `/content` stores assests in "Content". `/types` stores content types. `/site` stores Oslo's pages' setting. `/layouts` and `/layout-mappings` store all layout settings created when you run `npm run create-layout`. You could find them in WCH by their "id" or "name" in json files after you deploy them into the tenant.
 * The `site-application-files` stores HTML/CSS/TS files needed for the sample components. You can customize the components by editing files in `site-application-files/src/app/layouts/<COMPONENT NAME>`.
 
-### InStallation steps
-1. Download `sample-active-site-components` package and change your directory to the root directory of that project.
-2. Go to the components `content-artifacts` directory and run `wchtools push` to deploy these artifacts to your tenant.  
-3. Switch back to wch-site-application and run `npm run install-layouts-from-folder <ABSOLUTE PATH OF sample-active-site-components DIRECTORY>` . This script will copy over the content from the `site-application-files` directory and overlay them into the Oslo application. Then it will use ibm-wch-sdk-cli to register the layouts in the Oslo application.
+### Installation steps
+See the readme of sample-active-site-components for details: https://github.com/ibm-wch/sample-active-site-components
 
 ## HTML5 style URLs
 
