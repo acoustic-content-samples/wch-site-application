@@ -70,17 +70,19 @@ To do so the following steps can be taken:
 1. In index.html add the following after the title tag:<br  />
 `<base href="/">`
 
-2. In app.module.ts
-  1. Add the following import statement:<br  />
-`import {APP_BASE_HREF} from '@angular/common';`
+2. In app.module.ts:
 
-  2. Change the following line from:<br  />
-`RouterModule.forRoot(pageRoutes),`<br  />
-to:<br  />
-`RouterModule.forRoot(pageRoutes, {useHash: true}),`
-<br  />
-  3. Then locate the `providers` element and add the following element:<br  />
-`{provide: APP_BASE_HREF,useValue: '/'},`
+  A. Add the following import statement:<br  />
+  `import {APP_BASE_HREF} from '@angular/common';`
+  
+  B. Change the following line from:<br  />
+  `RouterModule.forRoot(pageRoutes),`<br  />
+  to:<br  />
+  `RouterModule.forRoot(pageRoutes, {useHash: true}),`
+  <br  />
+
+  C. Then locate the `providers` element and add the following element:<br  />
+  `{provide: APP_BASE_HREF,useValue: '/'},`
 
 ## Advanced
 
