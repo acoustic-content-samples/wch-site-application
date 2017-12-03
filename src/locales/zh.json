@@ -1,4 +1,7 @@
 {
-	"Details": "详细信息"
+	"Details": "详细信息",
+	"Problems rendering layout template": "呈现布局模板时发生问题",
+	"missingLayoutForType": "有关创建新布局的信息，请参阅<a target='_blank' href='https://developer.ibm.com/customer-engagement/tutorials/customizing-layouts-components-for-your-site/'>定制站点的布局和组件</a>",
+	"Layout missing for the specified content type. Make sure a layout exists for the content type:": "指定的内容类型缺少布局。请确保内容类型存在布局："
 }
 

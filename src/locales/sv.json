@@ -1,4 +1,7 @@
 {
-	"Details": "Detaljer"
+	"Details": "Detaljer",
+	"Problems rendering layout template": "Problem med att rendera layoutmall",
+	"missingLayoutForType": "Information om att skapa en ny layout finns i <a target='_blank' href='https://developer.ibm.com/customer-engagement/tutorials/customizing-layouts-components-for-your-site/'>Customizing the layouts and components for your site</a>",
+	"Layout missing for the specified content type. Make sure a layout exists for the content type:": "Layout saknas för den angivna innehållstypen. Kontrollera att det finns en layout för innehållstypen:"
 }
 

@@ -16,8 +16,9 @@
 import {
     LayoutComponent, RenderingContext
 } from 'ibm-wch-sdk-ng';
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import { TypeLeadImageWithInformationComponent } from './../../components/lead-image-with-information/typeLeadImageWithInformationComponent';
+import {Constants} from '../../Constants';
 import {Subscription} from "rxjs/Subscription";
 import {UtilsService} from "../../common/utils/utils.service";
 
@@ -37,9 +38,12 @@ export class LeadImageWithInformationLayoutComponent extends TypeLeadImageWithIn
 
 
     rContext: RenderingContext;
+    constants: any = Constants;
 
     public readonly LEAD_IMAGE_KEY: string = 'leadImage';
 
+
+    @Input() layoutMode: string;
 
     constructor(private utilsService: UtilsService) {
         super();
@@ -50,6 +54,7 @@ export class LeadImageWithInformationLayoutComponent extends TypeLeadImageWithIn
 
         this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
             this.rContext = renderingContext;
+            this.layoutMode = this.layoutMode || this.constants.DETAIL;
         })
     }
 

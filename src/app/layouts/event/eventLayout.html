@@ -1,10 +1,10 @@
 <div #event [id]="rContext.id">
 
 	<div class="reveal" [id]="eventId" data-reveal>
-		<h2 class="event-popup-title" id="popup-title">{{onHeading | async}}</h2>
-		<p class="event-popup-description" id="popup-description" [innerHTML]="onEventDetails | async | formattedText:'html'"></p>
+		<h2 wchEditable="heading" class="event-popup-title" id="popup-title">{{onHeading | async}}</h2>
+		<p wchEditable="eventDetails" class="event-popup-description" id="popup-description" [innerHTML]="onEventDetails | async | formattedText:'html'"></p>
 		<p><strong>Location</strong>
-			<span [innerHTML]="onEventLocation | async | formattedText:'html'"></span>
+			<span wchEditable="eventLocation" [innerHTML]="onEventLocation | async | formattedText:'html'"></span>
 		</p>
 		<button class="close-button" data-close aria-label="Close modal" type="button">
 			<span aria-hidden="true">&times;</span>
@@ -14,10 +14,10 @@
 		<div class="event">
 			<div class="event-content">
 				<p class="event-date text-content">
-					<time [attr.datetime]="eventDate">{{eventDate | date:'longDate'}}</time>
+					<time wchEditable="eventDate" [attr.datetime]="eventDate">{{eventDate | date:'longDate'}}</time>
 				</p>
-				<h5 class="event-title text-header">{{onHeading | async}}</h5>
-				<p class="event-description text-content" [innerHTML]="onBody | async | formattedText:'html'"></p>
+				<h5 wchEditable="heading" class="event-title text-header">{{onHeading | async}}</h5>
+				<p wchEditable="body" class="event-description text-content" [innerHTML]="onBody | async | formattedText:'html'"></p>
 				<a class="button" [attr.data-open]="eventId">Details</a>
 			</div>
 		</div>

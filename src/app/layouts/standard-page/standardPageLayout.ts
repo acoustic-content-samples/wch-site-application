@@ -45,7 +45,6 @@ export class StandardPageLayoutComponent extends TypeStandardPageComponent imple
 
 		this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
 			this.rContext = renderingContext;
-			window.scrollTo(0,0);
 		})
 	}
 

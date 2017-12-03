@@ -4,15 +4,15 @@
 	</div>
 	<div *ngSwitchCase="constants.DETAIL">
 		<wch-contentref *ngIf="mainImage" [renderingContext]="onMainImage | async"></wch-contentref>
-		<h2 class="headline">{{onHeading | async}}</h2>
+		<h2 wchEditable="heading" class="headline">{{onHeading | async}}</h2>
 		<div class="article-details">
 			<div class="byline-and-date">
-				<span *ngIf="author">By <b class="author">{{onAuthor | async}}</b>, </span><span>{{ date | date:'yMMMMd'}}</span>
+				<span *ngIf="author" wchEditable="author">By <b class="author">{{onAuthor | async}}</b>, </span><span wchEditable="date">{{ date | date:'yMMMMd'}}</span>
 			</div>
 			<app-share-social [renderingContext]="rContext"></app-share-social>
 		</div>
 		<div class="article-body" *ngFor="let item of onBody | async; let idx = index">
-			<div [innerHTML]="item | formattedText:html"></div>
+			<div [wchEditable]="'body[' + idx + ']'" [innerHTML]="item | formattedText:html"></div>
 			<wch-contentref [renderingContext]="matchingBodyImages[idx]"></wch-contentref>
 		</div>
 		<div class="article-medium-image" *ngFor="let item of leftoverBodyImages">

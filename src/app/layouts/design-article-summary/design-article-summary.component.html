@@ -3,11 +3,9 @@
 		<!-- This sample shows the entire supplied image, so the correct aspect should be supplied by the user. -->
 		<div class="article-lead-image">
 			<div class="image-container">
-				<img *ngIf="rContext.reference[LEAD_IMG_KEY].elements.leadImage && rContext.reference[LEAD_IMG_KEY].elements.leadImage.url" [src]="utils.getImageUrl(rContext.reference[LEAD_IMG_KEY], 'leadImage', 'card')" [alt]="rContext.reference[LEAD_IMG_KEY].elements.leadImageCaption.value"
-									[title]="rContext.reference[LEAD_IMG_KEY].elements.leadImageCaption.value">
+				<wch-contentref [layoutMode]="constants.SUMMARY" *ngIf="mainImage" [renderingContext]="onMainImage | async"></wch-contentref>
 			</div>
-			<!--<div class="caption">{{onLeadImageCaption | async}} <span>{{(onLeadImageCredit | async)}}</span></div>-->
 		</div>
 	</div>
-	<p>{{rContext.elements[TOPIC_TITLE_KEY].value}}</p>
+	<p wchEditable="heading">{{onHeading | async}}</p>
 </div>

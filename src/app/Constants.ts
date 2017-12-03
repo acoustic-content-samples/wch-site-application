@@ -17,7 +17,7 @@ export class Constants {
 // static readonly DOMAIN_NAME = 'your-domain-name.com';
 // static readonly CONTENT_HUB_ID = '0000000-0000-0000-0000-000000000000';
 
-  static readonly PROTOCOL = window.location.protocol;
+  static readonly PROTOCOL = 'https:';
   static readonly apiUrl = `${Constants.PROTOCOL}//${Constants['DOMAIN_NAME']}/api/${Constants['CONTENT_HUB_ID']}`;
   static readonly deliveryUrl = `${Constants.PROTOCOL}//${Constants['DOMAIN_NAME']}/${Constants['CONTENT_HUB_ID']}`;
 

@@ -15,13 +15,71 @@
  *******************************************************************************/
 
 import {Level, Log} from 'ng2-logger';
-import { Logger, LoggerFactory } from 'ibm-wch-sdk-ng';
+import {Logger, LoggerFactory} from 'ibm-wch-sdk-ng';
 
 export class Ng2LoggerFactory implements LoggerFactory {
+
+	private _loggingCookies: Map<string, Array<string>> = new Map();
+	private modules: string;
+	private level: string;
+
+
+	_getCookie = (cookie) => {
+		if (!this._loggingCookies.has(cookie)) {
+			//check for cookie logging
+			const cookieVal = encodeURIComponent(cookie);
+			let ret = null;
+			let regexp = new RegExp('(?:^' + cookie + '|;\\s*' + cookie + ')=(.*?)(?:;|$)', 'g');
+			let matches = regexp.exec(document.cookie);
+			if (matches && matches.length >= 2) {
+				ret = decodeURIComponent(matches[1]);
+			}
+			this._loggingCookies.set(cookie, ret);
+			return ret;
+		}
+		return null;
+	};
+
 	create = (name: string) => {
 		return Log.create(name);
+
+	};
+
+	constructor() {
+
+		this.level = this._getCookie('wch.sites.logging.level'),
+			this.modules = this._getCookie('wch.sites.logging.modules');
+		let levelsEnum = [];
+
+		if (this.modules) {
+			Log.onlyModules(...this.modules.split(','));
+		}
+
+
+		//DATA,INFO,WARN,ERROR
+		//document.cookie = 'wch.sites.logging.levels=info';
+		if(this.level) {
+			switch (this.level.toLowerCase()) {
+				case 'info':
+					levelsEnum.push(Level.INFO);
+				case 'warn':
+					levelsEnum.push(Level.WARN);
+				case 'error':
+					levelsEnum.push(Level.ERROR);
+				case 'data':
+					levelsEnum.push(Level.DATA);
+			}
+			if (levelsEnum.length > 0) {
+				Log.onlyLevel(...levelsEnum);
+			}
+		}
+
+		//no logging override so set production mode
+		if (ENV === 'production' && levelsEnum.length === 0) {
+			//Log.setProductionMode();
+			Log.onlyLevel(Level.ERROR, Level.WARN);
+		}
 	}
 
-	constructor(){
-	}
+
 }

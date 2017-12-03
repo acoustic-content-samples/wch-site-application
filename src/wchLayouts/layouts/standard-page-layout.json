@@ -1,11 +1,11 @@
 {
   "id": "standard-page-layout",
   "rev": "1-cd7e2d4e327a830e037d7412d43a8d3e",
-  "name": "One column",
+  "name": "Hero",
   "classification": "layout",
   "prerender": false,
   "thumbnail": {
-    "path": "/layouts/thumbnails/one-column_220.svg",
+    "path": "/layouts/thumbnails/standard-page-hero_220.svg",
     "url": "/authoring/v1/resources/0a8abd3f8bc17dcc0692dacbb71bcbf5"
   },
   "template": "standard-page-layout",

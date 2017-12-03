@@ -81,8 +81,6 @@ export class DesignArticleLayoutComponent extends TypeDesignArticleComponent imp
 					}
 				}
 			}
-
-			window.scrollTo(0,0);
 		});
 	}
 

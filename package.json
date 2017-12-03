@@ -1,5 +1,5 @@
 {
-  "name": "wch-site-application",
+  "name": "prod-oob",
   "version": "1.0.1",
   "license": "MIT",
   "engines": {
@@ -12,8 +12,8 @@
     "test": "karma start ./karma.conf.js",
     "lint": "ng lint",
     "e2e": "protractor ./protractor.conf.js",
-    "create-layout": "echo Pulling the content types. Enter the user password for your WCH tenant: && wchtools pull -tlm -I --dir src/wchLayouts && echo Creating the layout, layout mapping, and the angular component. && ibm-wch-sdk-cli create layout --data src/wchLayouts --src src/app --scss --flat",
-    "update-app-module": "echo Pulling the content types. Enter the user password for your WCH tenant: && wchtools pull -tlm -I --dir src/wchLayouts && echo Updating the layout settings for new components. && ibm-wch-sdk-cli create layout --data src/wchLayouts --src src/app --scss --flat",
+    "create-layout": "echo Pulling the content types. Enter the user password for your WCH tenant: && wchtools pull -tlm -I --dir src/wchLayouts && echo Creating the layout, layout mapping, and the angular component. && ibm-wch-sdk-cli create layout --data src/wchLayouts --src src/app --scss --flat --editable",
+    "update-app-module": "echo Pulling the content types. Enter the user password for your WCH tenant: && wchtools pull -tlm -I --dir src/wchLayouts && echo Updating the layout settings for new components. && ibm-wch-sdk-cli register layoutcomponents --src src/app --verbose",
     "pree2e": "webdriver-manager update --standalone false --gecko false --quiet",
     "deploy": "wchtools push -A -f -v --dir dist",
     "build-deploy": "npm run build && npm run deploy",
@@ -21,8 +21,9 @@
     "createSite": "ibm-wch-sdk-cli create site --name testpage --data ./dist/ ",
     "build-preload": " mkdir -p -m 777 temp_data && echo Pulling the site pages. Enter the user password for your WCH tenant: && wchtools pull -A --dir temp_data && npm run addPrefetch && rm -r temp_data &&  npm run build ",
     "build-preload-windows": " mkdir temp_data && echo Pulling the site pages. Enter the user password for your WCH tenant: && wchtools pull -A --dir temp_data && npm run addPrefetch && rmdir /S /Q temp_data &&  npm run build ",
-    "install-layouts-from-zip": "node layoutsFromZip.js ",
-    "install-layouts-from-folder": "node layoutsFromFolder.js "
+    "install-layouts-from-zip": "node scripts/layoutsFromZip.js ",
+    "install-layouts-from-folder": "node scripts/layoutsFromFolder.js ",
+    "install-layouts-from-git": "node scripts/layoutFromGit.js"
   },
   "private": true,
   "dependencies": {
@@ -39,7 +40,8 @@
     "@ngx-translate/http-loader": "^0.1.0",
     "core-js": "^2.4.1",
     "foundation-sites": "^6.4.1",
-    "ibm-wch-sdk-ng": "1.0.508",
+    "ibm-wch-sdk-ng": "*",
+    "ibm-wch-sdk-ng-edit": "*",
     "ng2-logger": "^1.0.3",
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.1.0",
@@ -63,7 +65,7 @@
     "file-loader": "^0.10.1",
     "fs-extra": "^3.0.1",
     "html-webpack-plugin": "^2.30.1",
-    "ibm-wch-sdk-cli": "1.0.508",
+    "ibm-wch-sdk-cli": "*",
     "istanbul-instrumenter-loader": "^2.0.0",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",

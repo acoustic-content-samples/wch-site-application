@@ -1,4 +1,7 @@
 {
-	"Details": "Dettagli"
+	"Details": "Dettagli",
+	"Problems rendering layout template": "Problemi nel rendering del modello di layout",
+	"missingLayoutForType": "Per informazioni sulla creazione di un nuovo layout, consultare <a target='_blank' href='https://developer.ibm.com/customer-engagement/tutorials/customizing-layouts-components-for-your-site/'>Personalizzazione dei layout e dei componenti per il sito</a>",
+	"Layout missing for the specified content type. Make sure a layout exists for the content type:": "Layout mancante per il tipo di contenuto specificato. Verificare che un layout esista per il tipo di contenuto:"
 }
 

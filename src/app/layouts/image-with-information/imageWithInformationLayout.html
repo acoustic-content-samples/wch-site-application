@@ -1,4 +1,4 @@
 <div *ngIf="rContext" [className]="getImageClass()" class="wrap-text-left">
-	<img [src]="utilsService.getImageUrl(rContext, IMAGE_KEY, imageSizeStr)" [alt]="onImageCaption | async" [title]="onImageCaption | async">
-	<div class="caption">{{onImageCaption | async}} <span>{{onImageCredit | async}}</span></div>
+	<img wchEditable="image" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY, imageSizeStr)" [alt]="rContext.elements[IMAGE_KEY].altText" [title]="rContext.elements[IMAGE_KEY].altText">
+	<div wchEditable="imageCaption" class="caption">{{onImageCaption | async}} <span wchEditable="imageCredit">{{onImageCredit | async}}</span></div>
 </div>

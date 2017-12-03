@@ -27,6 +27,7 @@ import { Ng2LoggerFactory } from './common/Ng2LoggerFactory';
 import 'script-loader!foundation-sites/dist/js/foundation.js';
 
 import {WchNgModule, PageComponent, SiteBootstrap, Site, WchLoggerFactory} from 'ibm-wch-sdk-ng';
+import {WchNgEditModule} from 'ibm-wch-sdk-ng-edit';
 
 
 import {WchHeaderComponent} from './wchHeader/wchHeader.component';
@@ -44,6 +45,7 @@ import { DesignArticleSummaryComponent } from './layouts/design-article-summary/
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+
 const pageRoutes: Routes = [
 	{path: '', redirectTo: '/home', pathMatch: 'full'},
 	{path: '**', component: PageComponent}
@@ -60,6 +62,7 @@ export function HttpLoaderFactory(http: Http) {
 		FormsModule,
 		HttpModule,
 		WchNgModule.forRoot(environment),
+		WchNgEditModule.forRoot(),
 		SiteCommonModule,
 		GenericLayoutModule,
 		SAMPLE_MODULE,

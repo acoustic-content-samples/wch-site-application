@@ -1,7 +1,7 @@
 <div [ngSwitch]="layoutMode">
 	<div *ngSwitchCase="constants.SUMMARY">
 		<a *ngIf="designTopic" class="read-more-link" href [routerLink]="navLink()">
-			<wch-contentref [layoutMode]="constants.SUMMARY" [renderingContext]="onDesignTopic | async">
+			<wch-contentref [wchEditable]="designTopic" [layoutMode]="constants.SUMMARY" [renderingContext]="onDesignTopic | async">
 			</wch-contentref>
 		</a>
 	</div>
@@ -9,13 +9,13 @@
 		<div id="{{rContext.id}}" class="grid-x grid-padding-x">
 			<div class="medium-8 cell auto">
 				<div *ngIf="designTopic" class="section">
-					<wch-contentref [renderingContext]="onDesignTopic | async">
+					<wch-contentref [wchEditable]="designTopic" [renderingContext]="onDesignTopic | async">
 					</wch-contentref>
 				</div>
 			</div>
 			<div class="medium-4 cell shrink">
 				<div *ngIf="relatedArticles" class="section">
-					<wch-contentref [renderingContext]="onRelatedArticles | async">
+					<wch-contentref [wchEditable]="relatedArticles" [renderingContext]="onRelatedArticles | async">
 					</wch-contentref>
 				</div>
 			</div>
