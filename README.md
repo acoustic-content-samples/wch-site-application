@@ -1,6 +1,16 @@
 # wch-site-application
 Source code for the Watson Content Hub sample site single page application - Oslo. 
 
+## Updates
+With the beginning of December we have updated the Oslo Single Page Application with the following features:
+- Performance improvements
+- bug fixes
+- Support for Google crawling of a given page in Oslo (more features planned in this area)
+- Additional layouts for the Standard page type
+- Removal of # from the URLs and now leveraging HTML 5 mode for URLs (i.e. https://myhost/design-topics/clean-design)
+- Enablement for Inline Editing in the Sites Composer
+- Ability to leverage Angular 5 instead of Angular 4
+
 ## Documentation
 
 See the documentation on developer works how to customize the sample website or creating your own:
@@ -62,25 +72,9 @@ See the readme of sample-active-site-components for details: https://github.com/
 
 ## HTML5 style URLs
 
-The SPA will now use HTML5 style URLs and routing.  However there may be situations where the SPA will need to be reverted to the old hash (#) style.  This is true for tenants created before November of 2017.
-To do so the following steps can be taken:
+The SPA will now use HTML5 style URLs and routing. Tenants created before November of 2017 do not leverage the new routing on the server side yet. For those tenants import first the latest Oslo WCh artifacts from here:
+https://greenhouse.lotus.com/plugins/plugincatalog.nsf/assetDetails.xsp?action=editDocument&documentId=B444A62EB5379C988525819C0021A994
 
-1. In index.html add the following after the title tag:<br  />
-`<base href="/">`
-
-2. In app.module.ts:
-
-  A. Add the following import statement:<br  />
-  `import {APP_BASE_HREF} from '@angular/common';`
-  
-  B. Change the following line from:<br  />
-  `RouterModule.forRoot(pageRoutes),`<br  />
-  to:<br  />
-  `RouterModule.forRoot(pageRoutes, {useHash: true}),`
-  <br  />
-
-  C. Then locate the `providers` element and add the following element:<br  />
-  `{provide: APP_BASE_HREF,useValue: '/'},`
 
 ## Advanced
 
@@ -96,6 +90,27 @@ also use `ng generate directive|pipe|service|class|module`.
 1. Open the dev console
 2. Search for `Build date` to get the current SPA level
 3. Search for `SDK version` to get the SDK version included in the SPA
+
+### Enabling logging
+
+The SPA uses the ng2-logger package for logging.  By default logging will be enabled when running locally and disabled when running in production mode on the tenant.  The logging level can be changed by setting a cookie in the browser.
+The available log levels are <br />
+- info
+- warn
+- error
+- data
+
+Setting the logging level will result in a waterfall effect, for example if setting ```warn``` logging will also be enabled for ```error``` and ```data```.
+
+To change the logging level you can enter the following into the browsers console developer tools<br />
+```document.cookie = 'wch.sites.logging.level=warn'```
+
+### Upgrade SPA from Angular 4 to Angular 5
+1. If you compiled the SPA locally before, you need to delete existing `node_modules` directory to avoid any version conflicts.
+2. In `package.json`, change the following dependencies and devDependencies' value to `"^5.0.0"`:
+"@angular/animations", "@angular/common", "@angular/compiler", "@angular/core", "@angular/forms", "@angular/http",  "@angular/platform-browser", "@angular/platform-browser-dynamic", "@angular/router", "@angular/compiler-cli", "@angular/language-service".
+3. In `package.json`, change value of "rxjs", "typescript" to "^5.5.2", "~2.4.2"
+4. In the root directory of SPA, run `npm install`.
 
 ## License
 
