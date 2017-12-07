@@ -1,8 +1,8 @@
 # wch-site-application
-Source code for the Watson Content Hub sample site single page application - Oslo. 
+Source code for the Watson Content Hub starter site application - Oslo. 
 
 ## Updates
-With the beginning of December we have updated the Oslo Single Page Application with the following features:
+At the beginning of December we have updated the Oslo starter site with the following features:
 - Performance improvements
 - bug fixes
 - Support for Google crawling of a given page in Oslo (more features planned in this area)
@@ -13,7 +13,11 @@ With the beginning of December we have updated the Oslo Single Page Application 
 
 ## Documentation
 
-See the documentation on developer works how to customize the sample website or creating your own:
+See this slide deck for an overview on customizing the starter site:
+
+[Watson Content Hub - Sites Development Overview](https://ibm.box.com/s/0od1ta7hsmkxzl2i8y08o06zqwa0pzbq)
+
+Documentation on developerWorks how to customize the sample website or creating your own:
 
 [Developing your own website](http://developer.ibm.com/customer-engagement/docs/developing-your-own-website/)
 
