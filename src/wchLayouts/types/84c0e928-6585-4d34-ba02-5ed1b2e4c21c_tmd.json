@@ -1,0 +1,74 @@
+{
+  "id": "84c0e928-6585-4d34-ba02-5ed1b2e4c21c",
+  "rev": "5-6f96c7758b6fa94328b25e75bdac8ddd",
+  "name": "Dynamic list",
+  "classification": "content-type",
+  "path": "/Dynamic-list",
+  "kind": [
+    "standalone"
+  ],
+  "thumbnail": {
+    "id": "da3d0b43-51ce-4118-aeed-05764bd0fbaf"
+  },
+  "contentThumbnail": {
+    "imageElement": "",
+    "source": "imageElementOrType"
+  },
+  "description": "The dynamic list lets you define what content to include without selecting specific content.  It keeps your website fresh without having to constantly care for it. In Oslo, the dynamic list is used on the latest design topics page.",
+  "creatorId": "ea5fc1e5-67c2-4f6e-a47c-6384a23e71e8",
+  "created": "2017-11-27T19:19:23.884Z",
+  "lastModifierId": "ea5fc1e5-67c2-4f6e-a47c-6384a23e71e8",
+  "lastModified": "2017-11-27T19:19:23.884Z",
+  "status": "ready",
+  "tags": [
+    "oslo",
+    "IBM sample",
+    "IBM sites kicker"
+  ],
+  "elements": [
+    {
+      "elementType": "text",
+      "fieldLabel": "Text",
+      "label": "List title",
+      "key": "listTitle"
+    },
+    {
+      "elementType": "category",
+      "label": "Content to include",
+      "key": "contentType",
+      "required": true,
+      "restrictedParents": [
+        "8a1cca57-4e5b-4d66-b8fa-668490b8e9b1"
+      ]
+    },
+    {
+      "elementType": "category",
+      "label": "Dates to include",
+      "key": "datesToInclude",
+      "restrictedParents": [
+        "111fd225-b22f-470c-8bfb-425f3f664b52"
+      ]
+    },
+    {
+      "elementType": "category",
+      "label": "List order",
+      "key": "sortOrder",
+      "restrictedParents": [
+        "52265429-9349-49fe-b35d-f7b71493190e"
+      ]
+    },
+    {
+      "elementType": "number",
+      "fieldType": "integer",
+      "fieldLabel": "Number",
+      "label": "Maximum number of list items",
+      "key": "maxItem"
+    },
+    {
+      "elementType": "link",
+      "fieldLabel": "Link",
+      "label": "View all link",
+      "key": "viewAllLink"
+    }
+  ]
+}

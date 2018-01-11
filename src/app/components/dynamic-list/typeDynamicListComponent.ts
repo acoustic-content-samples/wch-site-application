@@ -18,9 +18,9 @@ import {
 } from 'ibm-wch-sdk-ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { AbstractDynamicListComponent } from './abstractDynamicListComponent';
-import {Subscription} from "rxjs/Subscription";
-import {UtilsService} from "../../common/utils/utils.service";
-import {Constants} from "../../Constants";
+import {Subscription} from 'rxjs/Subscription';
+import {UtilsService} from '../../common/utils/utils.service';
+import {Constants} from '../../Constants';
 
 /**
  * @name Dynamic list
@@ -35,7 +35,7 @@ import {Constants} from "../../Constants";
 })
 */
 
-const ROWS: number = 100;
+const ROWS = 100;
 
 
 export class TypeDynamicListComponent extends AbstractDynamicListComponent implements OnInit, OnDestroy {
@@ -67,8 +67,8 @@ export class TypeDynamicListComponent extends AbstractDynamicListComponent imple
         this.rcSub = this.onRenderingContext
 			.subscribe((rc) => {
                 this.rContext = rc;
-                //Only search on the first "type" selected
-                let type = this.utilsService.getFirstCategory(rc, this.CONTENT_TYPE_KEY);
+                // Only search on the first "type" selected
+                const type = this.utilsService.getFirstCategory(rc, this.CONTENT_TYPE_KEY);
                 this.sortOrderStr = this.utilsService.getFirstCategory(rc, this.LIST_ORDER_KEY);
                 this.dateFilterStr = this.utilsService.getFirstCategory(rc, this.DATE_TO_INCLUDE_KEY);
                 this.sortField = (type === this.constants.ALPHABETICAL_ASCENDING || type === this.constants.ALPHABETICAL_DESCENDING) ? this.constants.ALPHABETICAL_FIELD : this.constants.DATE_FIELD;
@@ -78,7 +78,7 @@ export class TypeDynamicListComponent extends AbstractDynamicListComponent imple
             });
     }
 
-    ngOnDestroy(){
+    ngOnDestroy() {
         this.rcSub.unsubscribe();
     }
 

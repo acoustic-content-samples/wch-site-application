@@ -52,7 +52,32 @@ $logo-height-medium: 80px;
 		width: $logo-width-medium;
 		// height: 80px;
 	}
+
+  	.searchBox {
+	  height: 54px;
+	  width: 340px;
+	  margin-left: 26px;
+	}
 }
+
+@include breakpoint(small) {
+
+
+  .searchBox {
+	height: 54px;
+	width: 340px;
+	margin-left: 26px;
+  }
+}
+
+@include breakpoint(large) {
+  .searchBox {
+	float: right;
+	margin: 10px 0 0 16px;
+  }
+}
+
+
 header {
 	border-bottom: 1px solid $header-border-bottom-color;
 }

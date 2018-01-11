@@ -30,15 +30,13 @@ export class HighlightService {
 		if (this.lastId === elementId) {
 			// return new Promise((res, rej) => res('No need to do anything.'));
 			return this.toggleHighlight('add', elementId);
-		}
-		else {
+		} else {
 			if (typeof(this.lastId) === 'string') {
 				return this.toggleHighlight('remove', this.lastId).then(result => {
 					this.lastId = elementId;
 					return this.toggleHighlight('add', elementId);
 				})
-			}
-			else {
+			} else {
 				this.lastId = elementId;
 				return this.toggleHighlight('add', elementId);
 			}
@@ -52,13 +50,14 @@ export class HighlightService {
 				if (document.getElementById(elemId)) {
 					document.getElementById(elemId).classList[action]('highlight');
 				}
-				if (action === 'add')
+				if (action === 'add') {
 					$('html, body').animate({
 						scrollTop: $('#' + elemId).offset().top - 25
 					}, 'slow');
+				}
 				res('Done ' + action);
-			})
-		})
+			});
+		});
 	}
 
 	receiveMessage(event: any) {

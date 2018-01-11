@@ -14,14 +14,14 @@
  * limitations under the License.
  *******************************************************************************/
 import { Pipe, PipeTransform } from '@angular/core';
-import {DomSanitizer, SafeHtml, SafeStyle, SafeUrl} from "@angular/platform-browser";
+import {DomSanitizer, SafeHtml, SafeStyle, SafeUrl} from '@angular/platform-browser';
 
 @Pipe({
   name: 'formattedText'
 })
 export class FormattedTextPipe implements PipeTransform {
 
-  constructor(private sanitizer: DomSanitizer){
+  constructor(private sanitizer: DomSanitizer) {
 
   }
 
@@ -30,7 +30,7 @@ export class FormattedTextPipe implements PipeTransform {
    */
   transform(value: any, type?: any): SafeHtml | SafeStyle | SafeUrl | SafeUrl {
     type = type || 'html';
-    //if(value) {
+    // if(value) {
       switch (type) {
         case 'html':
           return this.sanitizer.bypassSecurityTrustHtml(value);
@@ -45,7 +45,7 @@ export class FormattedTextPipe implements PipeTransform {
       }
    // }
 
-    //return '';
+    // return '';
 
   }
 

@@ -5,7 +5,7 @@
 				controls
 				class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9">
 			<!-- Supporting WebM and MP4 is the recommended way for best browser coverage. -->
-			<source [src]="renderingContext?.context.hub.deliveryUrl.origin + videoNewChanges?.url"
+			<source [src]="renderingContext?.context.hub.deliveryUrl + videoNewChanges?.url"
 					[type]="mediaType">
 			Your browser doesn't support HTML5 video.
 		</video>

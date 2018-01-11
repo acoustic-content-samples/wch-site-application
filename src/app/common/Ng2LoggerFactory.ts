@@ -26,11 +26,11 @@ export class Ng2LoggerFactory implements LoggerFactory {
 
 	_getCookie = (cookie) => {
 		if (!this._loggingCookies.has(cookie)) {
-			//check for cookie logging
+			// check for cookie logging
 			const cookieVal = encodeURIComponent(cookie);
 			let ret = null;
-			let regexp = new RegExp('(?:^' + cookie + '|;\\s*' + cookie + ')=(.*?)(?:;|$)', 'g');
-			let matches = regexp.exec(document.cookie);
+			const regexp = new RegExp('(?:^' + cookie + '|;\\s*' + cookie + ')=(.*?)(?:;|$)', 'g');
+			const matches = regexp.exec(document.cookie);
 			if (matches && matches.length >= 2) {
 				ret = decodeURIComponent(matches[1]);
 			}
@@ -49,34 +49,38 @@ export class Ng2LoggerFactory implements LoggerFactory {
 
 		this.level = this._getCookie('wch.sites.logging.level'),
 			this.modules = this._getCookie('wch.sites.logging.modules');
-		let levelsEnum = [];
+		const levelsEnum = [];
 
 		if (this.modules) {
 			Log.onlyModules(...this.modules.split(','));
 		}
 
 
-		//DATA,INFO,WARN,ERROR
-		//document.cookie = 'wch.sites.logging.levels=info';
-		if(this.level) {
+		// DATA,INFO,WARN,ERROR
+		// document.cookie = 'wch.sites.logging.levels=info';
+		if (this.level) {
 			switch (this.level.toLowerCase()) {
 				case 'info':
 					levelsEnum.push(Level.INFO);
+					break;
 				case 'warn':
 					levelsEnum.push(Level.WARN);
+					break;
 				case 'error':
 					levelsEnum.push(Level.ERROR);
+					break;
 				case 'data':
 					levelsEnum.push(Level.DATA);
+					break;
 			}
 			if (levelsEnum.length > 0) {
 				Log.onlyLevel(...levelsEnum);
 			}
 		}
 
-		//no logging override so set production mode
+		// no logging override so set production mode
 		if (ENV === 'production' && levelsEnum.length === 0) {
-			//Log.setProductionMode();
+			// Log.setProductionMode();
 			Log.onlyLevel(Level.ERROR, Level.WARN);
 		}
 	}

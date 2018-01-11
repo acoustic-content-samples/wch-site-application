@@ -25,7 +25,7 @@ import { Component, Input } from '@angular/core';
 })
 export class Link {
 
-	@Input() href: string; 
+	@Input() href: string;
 	@Input() classString: string;
 	@Input() text: string;
 

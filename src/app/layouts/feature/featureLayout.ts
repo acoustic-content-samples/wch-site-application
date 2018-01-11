@@ -17,8 +17,8 @@ import {
     LayoutComponent, RenderingContext, RenderingContextBinding
 } from 'ibm-wch-sdk-ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { TypeFeatureComponent } from './../../components/feature/typeFeatureComponent';
-import {UtilsService} from "../../common/utils/utils.service";
+import { TypeFeatureComponent } from '../../components/feature/typeFeatureComponent';
+import {UtilsService} from '../../common/utils/utils.service';
 
 /**
  * @name featureLayout
@@ -32,17 +32,17 @@ import {UtilsService} from "../../common/utils/utils.service";
   templateUrl: './featureLayout.html',
   styleUrls: ['./featureLayout.scss']
 })
-export class FeatureLayoutComponent extends TypeFeatureComponent implements OnInit, OnDestroy{
+export class FeatureLayoutComponent extends TypeFeatureComponent implements OnInit, OnDestroy {
 
     rContext: RenderingContext;
     imagePlacementValue: string;
 
-    readonly HEADLINE_KEY:string = 'featureHeadline';
-    readonly DESCRIPTION_KEY:string = 'descriptionOfFeature';
-    readonly IMAGE_KEY:string = 'image';
-    readonly IMAGE_PLACEMENT_KEY:string = 'imagePlacement';
-    readonly IMAGE_SIZE_KEY:string = 'imageSize';
-    readonly READ_MORE_KEY:string = 'readMoreLink';
+    readonly HEADLINE_KEY: string = 'featureHeadline';
+    readonly DESCRIPTION_KEY: string = 'descriptionOfFeature';
+    readonly IMAGE_KEY: string = 'image';
+    readonly IMAGE_PLACEMENT_KEY: string = 'imagePlacement';
+    readonly IMAGE_SIZE_KEY: string = 'imageSize';
+    readonly READ_MORE_KEY: string = 'readMoreLink';
 
 
     constructor(private utilsService: UtilsService) {
@@ -63,23 +63,23 @@ export class FeatureLayoutComponent extends TypeFeatureComponent implements OnIn
 
 
 
-    isHeaderSet() : boolean {
-        return (this.rContext.elements[this.HEADLINE_KEY].value && this.featureHeadline.length > 0) ? true : false;
+    isHeaderSet(): boolean {
+        return (this.rContext.elements[this.HEADLINE_KEY].value && this.featureHeadline.length > 0);
     }
 
-    isButtonLinkSet() : boolean {
-        return (this.rContext.elements[this.READ_MORE_KEY].linkURL && this.readMoreLink.linkURL.length > 0) ? true : false;
+    isButtonLinkSet(): boolean {
+        return !!(this.rContext.elements[this.READ_MORE_KEY].linkURL && this.readMoreLink.linkURL.length > 0);
     }
 
-    getImageSize() : string {
+    getImageSize(): string {
         return this.utilsService.getFirstCategory(this.rContext, this.IMAGE_SIZE_KEY, 'medium', true);
     }
 
-    getImageUrl() : string {
+    getImageUrl(): string {
         return this.utilsService.getImageUrl(this.rContext, this.IMAGE_KEY, this.getImageSize());
     }
 
-    getCssClasses(){
+    getCssClasses() {
         return `feature-img-${this.imagePlacementValue} feature-${this.getImageSize()}`;
     }
 

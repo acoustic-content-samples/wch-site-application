@@ -1,10 +1,10 @@
 node_modules/
 bower_components/
 dist/
+public/
 scan/
 coverage/
 artifacts
-src/wchLayouts/types/
 
 *.log
 *.log.*

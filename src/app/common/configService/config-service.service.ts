@@ -14,15 +14,18 @@
  * limitations under the License.
  *******************************************************************************/
 import {Injectable} from '@angular/core';
-import {Observable} from "rxjs/Observable";
+import {Observable} from 'rxjs/Observable';
 import {Constants} from '../../Constants';
-import {Http} from "@angular/http";
-import {ReplaySubject} from "rxjs/ReplaySubject";
+import {Http} from '@angular/http';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/publishReplay';
 
 @Injectable()
 export class ConfigServiceService {
 
-	//cache config results
+	// cache config results
 	public config: Map<string, any> = new Map();
 
 
@@ -35,9 +38,9 @@ export class ConfigServiceService {
 			return Observable.of(this.config.get(name));
 		}
 
-		let possibleTenant = window.location.pathname.split('/')[1],
+		const possibleTenant = window.location.pathname.split('/')[1],
 			baseUrl = possibleTenant.search(/\w{8}\-\w{4}\-\w{4}\-\w{4}\-\w{12}/) === 0 ? '/' + possibleTenant : '',
-			apiUrl = (window.location.hostname==="localhost") ? Constants.apiUrl : `${window.location.protocol}//${window.location.hostname}/api${baseUrl}`;
+			apiUrl = (window.location.hostname === 'localhost') ? Constants.apiUrl : `${window.location.protocol}//${window.location.hostname}/api${baseUrl}`;
 
 console.warn('config-service.service.ts: possible tenant is %o and base url is %o', possibleTenant, baseUrl);
 
@@ -57,11 +60,11 @@ console.warn('config-service.service.ts: possible tenant is %o and base url is %
 				.refCount();
 		}
 
-		let searchURL = `${apiUrl}/delivery/v1/search?q=name:%22${name}%22&fl=document:%5Bjson%5D`;
+		const searchURL = `${apiUrl}/delivery/v1/search?q=name:%22${name}%22&fl=document:%5Bjson%5D`;
 		return this.http.get(searchURL)
 			.map((response) => {
-				let res = response.json();
-				if(res && res.numFound > 0) {
+				const res = response.json();
+				if (res && res.numFound > 0) {
 					return response.json().documents.shift().document
 				} else {
 					return {};

@@ -37,8 +37,8 @@ export class TypeListComponent extends AbstractListComponent implements OnInit {
     rContext: RenderingContext;
     contextList: RenderingContext[] = [];
 
-    readonly LIST_TITLE_KEY:string = 'heading';
-    readonly LIST_ITEMS_KEY:string = 'items';
+    readonly LIST_TITLE_KEY: string = 'heading';
+    readonly LIST_ITEMS_KEY: string = 'items';
 
     constructor() {
         super();
@@ -48,12 +48,13 @@ export class TypeListComponent extends AbstractListComponent implements OnInit {
         super.ngOnInit();
 					 	 this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
             this.rContext = renderingContext;
-            if(renderingContext.references && renderingContext.references.items)
-                this.contextList = renderingContext.references.items;
+            if (renderingContext.references && renderingContext.references.items) {
+													this.contextList = renderingContext.references.items;
+												}
         });
     }
 
-    isButtonLinkSet() : boolean {
+    isButtonLinkSet(): boolean {
         return (this.renderingContext.elements.viewAllLink && this.renderingContext.elements.viewAllLink.linkURL && this.renderingContext.elements.viewAllLink.linkURL.length > 0) ? true : false;
     }
 }

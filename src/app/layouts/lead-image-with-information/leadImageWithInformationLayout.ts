@@ -17,10 +17,9 @@ import {
     LayoutComponent, RenderingContext
 } from 'ibm-wch-sdk-ng';
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import { TypeLeadImageWithInformationComponent } from './../../components/lead-image-with-information/typeLeadImageWithInformationComponent';
+import { TypeLeadImageWithInformationComponent } from '../../components/lead-image-with-information/typeLeadImageWithInformationComponent';
 import {Constants} from '../../Constants';
-import {Subscription} from "rxjs/Subscription";
-import {UtilsService} from "../../common/utils/utils.service";
+import {UtilsService} from '../../common/utils/utils.service';
 
 /**
  * @name leadImageWithInformationLayout
@@ -34,7 +33,7 @@ import {UtilsService} from "../../common/utils/utils.service";
   templateUrl: './leadImageWithInformationLayout.html',
   styleUrls: ['./leadImageWithInformationLayout.scss']
 })
-export class LeadImageWithInformationLayoutComponent extends TypeLeadImageWithInformationComponent implements OnInit, OnDestroy{
+export class LeadImageWithInformationLayoutComponent extends TypeLeadImageWithInformationComponent implements OnInit, OnDestroy {
 
 
     rContext: RenderingContext;

@@ -17,9 +17,8 @@ import {
     LayoutComponent, RenderingContext
 } from 'ibm-wch-sdk-ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { TypeImageWithInformationComponent } from './../../components/image-with-information/typeImageWithInformationComponent';
-import {Subscription} from "rxjs/Subscription";
-import {UtilsService} from "../../common/utils/utils.service";
+import { TypeImageWithInformationComponent } from '../../components/image-with-information/typeImageWithInformationComponent';
+import {UtilsService} from '../../common/utils/utils.service';
 
 /**
  * @name imageWithInformationLayout
@@ -33,7 +32,7 @@ import {UtilsService} from "../../common/utils/utils.service";
   templateUrl: './imageWithInformationLayout.html',
   styleUrls: ['./imageWithInformationLayout.scss']
 })
-export class ImageWithInformationLayoutComponent extends TypeImageWithInformationComponent implements OnInit, OnDestroy{
+export class ImageWithInformationLayoutComponent extends TypeImageWithInformationComponent implements OnInit, OnDestroy {
 
     public readonly IMAGE_KEY: string = 'image';
     public readonly IMAGE_SIZE_KEY: string = 'imageSize';
@@ -64,7 +63,7 @@ export class ImageWithInformationLayoutComponent extends TypeImageWithInformatio
         super.ngOnDestroy();
     }
 
-    getImageClass(){
+    getImageClass() {
         return `article-${this.imageSizeStr}-image place-image-${this.imagePlacementStr}`;
     }
 

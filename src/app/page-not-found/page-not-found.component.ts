@@ -16,7 +16,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ComponentsService, LayoutComponent, RenderingContext} from 'ibm-wch-sdk-ng';
 import {ConfigServiceService} from '../common/configService/config-service.service';
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from 'rxjs/Subscription';
 
 @LayoutComponent({
   selector: ComponentsService.PAGE_NOT_FOUND_LAYOUT
@@ -49,7 +49,7 @@ export class PageNotFoundComponent implements OnInit, OnDestroy {
   ngOnInit() {
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.configSub.unsubscribe();
   }
 

@@ -1,8 +1,5 @@
-<div class="wch-carousel">
-	<div class="carousel">
-		<div  #carousel class="carousel-item" *ngFor="let slide of renderingContexts">
-			<wch-contentref [layoutMode]="constants.SUMMARY" [renderingContext]="slide"></wch-contentref>
-		</div>
+<wch-slick *ngIf="slides && slides.length > 0" class="carousel" [config]="slideConfig">
+	<div wchSlickSlide class="slide" *ngFor="let slide of slides;trackBy: trackById">
+		<wch-contentref [layoutMode]="constants.SUMMARY" [renderingContext]="slide"></wch-contentref>
 	</div>
-</div>
-
+</wch-slick>

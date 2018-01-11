@@ -15,8 +15,8 @@
  *******************************************************************************/
 import {
 	Component, ViewContainerRef, Input, OnChanges, OnDestroy, ViewChild, SimpleChanges } from '@angular/core';
-import {RenderingContext} from "ibm-wch-sdk-ng";
-import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
+import {RenderingContext} from 'ibm-wch-sdk-ng';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 declare var window: any;
 
@@ -44,7 +44,7 @@ export class ShareSocialComponent implements OnChanges, OnDestroy {
 
 
 	ngOnChanges(changes: SimpleChanges) {
-		//change the iFrame when the article changes
+		// change the iFrame when the article changes
 		if (changes['renderingContext'].currentValue !== changes['renderingContext'].previousValue) {
 
 			if (this.rc.elements.heading.value) {
@@ -64,7 +64,7 @@ export class ShareSocialComponent implements OnChanges, OnDestroy {
 					mobile_iframe: false
 				};
 
-				//build the iFrame urls for the social media links
+				// build the iFrame urls for the social media links
 				this.facebookLink = this.sanitizer.bypassSecurityTrustResourceUrl(`${facebookOptions.baseUrl}?href=${facebookOptions.url}&layout=${facebookOptions.layout}&size=${facebookOptions.size}&mobile_iframe=${facebookOptions.mobile_iframe}&appId`);
 				this.twitterLink = this.sanitizer.bypassSecurityTrustResourceUrl(`${tweetOptions.baseUrl}?size=${tweetOptions.buttonSize}&url=${tweetOptions.url}&text=${tweetOptions.text}&hashtags=${tweetOptions.hashtags}`);
 			}

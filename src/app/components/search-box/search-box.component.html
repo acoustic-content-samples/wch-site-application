@@ -1,0 +1,7 @@
+<div class="searchWrapper">
+  <form class="search-form" id="search-form" name="search-form">
+    <input type="search" [(ngModel)]="query" name="queryInput" [ngClass]="{'active-input': query.length > 0}">
+    <button class="search-button" (click)="search()"></button>
+    <div class="search-input-clear" (click)="clearSearch()"  [ngClass]="{'show-clear-button': query.length > 0}"></div>
+  </form>
+</div>

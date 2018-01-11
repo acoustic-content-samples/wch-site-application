@@ -32,7 +32,7 @@ describe('FormattedTextPipe', () => {
     fixture.detectChanges();
   });
 
-  //TODO testing for directive
+  // TODO testing for directive
   xit('create an instance', () => {
     expect(component).toBeTruthy();
   });

@@ -18,6 +18,7 @@ import { SAMPLE_MODULE } from './sample.module';
 import {NgModule, ViewEncapsulation} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import {HttpModule, Http} from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
@@ -45,6 +46,8 @@ import { DesignArticleSummaryComponent } from './layouts/design-article-summary/
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+import { SearchBoxComponent } from './components/search-box/search-box.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 const pageRoutes: Routes = [
 	{path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -65,6 +68,8 @@ export function HttpLoaderFactory(http: Http) {
 		WchNgEditModule.forRoot(),
 		SiteCommonModule,
 		GenericLayoutModule,
+		InfiniteScrollModule,
+		BrowserAnimationsModule,
 		SAMPLE_MODULE,
 		TranslateModule.forRoot({
 			loader: {
@@ -81,8 +86,8 @@ export function HttpLoaderFactory(http: Http) {
 		PageNotFoundComponent,
 		ArticleBodyImageComponent,
 		DesignArticleSummaryComponent,
-		...LAYOUTS
-	],
+		SearchBoxComponent,
+	    ...LAYOUTS],
 	providers: [
 		{provide: WchLoggerFactory, useClass: Ng2LoggerFactory},
 		 HighlightService

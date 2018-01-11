@@ -17,7 +17,7 @@ import {
     LayoutComponent
 } from 'ibm-wch-sdk-ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { TypeListComponent } from './../../components/list/typeListComponent';
+import { TypeListComponent } from '../../components/list/typeListComponent';
 
 /**
  * @name carouselList

@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 import {Component, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
-import {AbstractRenderingComponent, LayoutComponent, RenderingContext} from "ibm-wch-sdk-ng";
-import {TypeDesignArticleComponent} from './../../components/design-article/typeDesignArticleComponent';
+import {AbstractRenderingComponent, LayoutComponent, RenderingContext} from 'ibm-wch-sdk-ng';
+import {TypeDesignArticleComponent} from '../../components/design-article/typeDesignArticleComponent';
 import {Constants} from '../../Constants';
 import {UtilsService} from '../../common/utils/utils.service';
 import {Subscription} from 'rxjs/Subscription';

@@ -16,11 +16,11 @@
 import {
 	RenderingContext
 } from 'ibm-wch-sdk-ng';
-import {Component} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AbstractDesignPageComponent} from './abstractDesignPageComponent';
-import {UtilsService} from "../../common/utils/utils.service";
-import {Subscription} from "rxjs/Subscription";
-import {Constants} from "../../Constants";
+import {UtilsService} from '../../common/utils/utils.service';
+import {Subscription} from 'rxjs/Subscription';
+import {Constants} from '../../Constants';
 
 /**
  * @name Design page
@@ -34,7 +34,7 @@ import {Constants} from "../../Constants";
  styleUrls: ['./typeDesignPageComponent.scss']
  })
  */
-export class TypeDesignPageComponent extends AbstractDesignPageComponent {
+export class TypeDesignPageComponent extends AbstractDesignPageComponent implements OnInit, OnDestroy {
 	rContext: RenderingContext;
 	layoutMode: string;
 

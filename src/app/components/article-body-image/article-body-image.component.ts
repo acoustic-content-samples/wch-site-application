@@ -63,7 +63,7 @@ export class ArticleBodyImageComponent extends AbstractRenderingComponent implem
 		this.rcSub.unsubscribe();
 	}
 
-	getImageClass(){
+	getImageClass() {
 
 		return `article-${this.imageSize}-image wrap-text-${this.imagePlacement}`;
 	}

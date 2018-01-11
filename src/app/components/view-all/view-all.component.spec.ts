@@ -43,34 +43,34 @@ describe('ViewAllComponent', () => {
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ViewAllComponent);
 		component = fixture.componentInstance;
-		component.renderingContext = { "elements": { "viewAllLink": { "linkURL": "https://www.ibm.com" } } };
+		component.renderingContext = { 'elements': { 'viewAllLink': { 'linkURL': 'https://www.ibm.com' } } };
 		fixture.detectChanges();
 	});
 
 	it('should be created', () => {
-		//GIVEN required input value
+		// GIVEN required input value
 
-		//THEN component should be creted
+		// THEN component should be creted
 		expect(component).toBeTruthy();
-		//expect(component).toContain("www.ibm.com");
+		// expect(component).toContain("www.ibm.com");
 
 		expect(component.isButtonLinkSet()).toBeTruthy();
 	});
 
 	it('isButtonLinkSet should return value based on the input', () => {
-		//GIVEN required input value
-		//AND
-		//component is created
+		// GIVEN required input value
+		// AND
+		// component is created
 		expect(component).toBeTruthy();
-		//expect(component).toContain("www.ibm.com");
-		//THEN isButtonLinkSet should return true
+		// expect(component).toContain("www.ibm.com");
+		// THEN isButtonLinkSet should return true
 		expect(component.isButtonLinkSet()).toBeTruthy();
 
-		//WHEN linkURL is empty
-		component.renderingContext = { "elements": { "viewAllLink": { "linkURL": "" } } };
+		// WHEN linkURL is empty
+		component.renderingContext = { 'elements': { 'viewAllLink': { 'linkURL': '' } } };
 		fixture.detectChanges();
 
-		//THEN isButtonLinkSet should return true
+		// THEN isButtonLinkSet should return true
 		expect(component.isButtonLinkSet()).toBeFalsy();
 	});
 });

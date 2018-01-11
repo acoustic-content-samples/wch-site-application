@@ -1,0 +1,100 @@
+{
+  "id": "a8fa51a3-4919-4308-a0b3-6cd31ae15d7e",
+  "rev": "1-bd5afe1fa023f43524ff4473184fdd05",
+  "name": "Design article",
+  "classification": "content-type",
+  "path": "/Design-article",
+  "kind": [
+    "standalone"
+  ],
+  "thumbnail": {
+    "id": "c98d44eb-5976-42a1-97d6-9a5840fa9fb4"
+  },
+  "contentThumbnail": {
+    "imageElement": "",
+    "source": "imageElementOrType"
+  },
+  "description": "",
+  "creatorId": "00000000-0000-0000-0000-000000000009",
+  "created": "2017-08-09T20:47:59.154Z",
+  "lastModifierId": "00000000-0000-0000-0000-000000000009",
+  "lastModified": "2017-12-01T13:41:12.389Z",
+  "status": "ready",
+  "tags": [
+    "oslo",
+    "IBM sample"
+  ],
+  "elements": [
+    {
+      "elementType": "text",
+      "fieldLabel": "Text",
+      "label": "Topic title",
+      "key": "heading",
+      "required": true,
+      "minLength": 1
+    },
+    {
+      "elementType": "reference",
+      "fieldLabel": "Content item",
+      "label": "Lead image",
+      "key": "mainImage",
+      "restrictTypes": [
+        {
+          "id": "fe31fbf4-4bc4-4ffa-9b27-615af51d23fe"
+        }
+      ],
+      "required": true
+    },
+    {
+      "elementType": "text",
+      "fieldLabel": "Text",
+      "label": "Author name",
+      "key": "author",
+      "helpText": ""
+    },
+    {
+      "elementType": "datetime",
+      "fieldLabel": "Date",
+      "label": "Date",
+      "key": "date",
+      "fieldType": "date-time",
+      "required": true,
+      "helpText": "Date and time is used when ordering a list of design articles.  The time will not display in the website."
+    },
+    {
+      "elementType": "formattedtext",
+      "fieldLabel": "Text chunk",
+      "label": "Text for body section",
+      "key": "body",
+      "allowMultipleValues": true,
+      "minimumValues": 1,
+      "helpText": "The design topic, when displayed in the website, will interleave the text chunks and images to create a fluid layout.",
+      "required": true
+    },
+    {
+      "elementType": "reference",
+      "fieldLabel": "Design article image",
+      "label": "Images for body section",
+      "key": "bodyImage",
+      "restrictTypes": [
+        {
+          "id": "f9e7f0b9-f57d-4d91-a257-54a64c1ff52f"
+        }
+      ],
+      "allowMultipleValues": true,
+      "minimumValues": 3,
+      "required": true
+    },
+    {
+      "elementType": "reference",
+      "fieldLabel": "Content item",
+      "label": "Author bio",
+      "key": "authorBio",
+      "restrictTypes": [
+        {
+          "id": "b0b91aad-8a9a-4d46-9aff-e35d004f0a1f"
+        }
+      ]
+    }
+  ]
+}

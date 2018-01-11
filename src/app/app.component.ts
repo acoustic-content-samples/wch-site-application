@@ -14,13 +14,13 @@
  * limitations under the License.
  *******************************************************************************/
 import {AfterViewInit, Component, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {RenderingContext} from "ibm-wch-sdk-ng";
+import {RenderingContext} from 'ibm-wch-sdk-ng';
 import 'rxjs/add/operator/filter';
-import {Observable} from "rxjs/Observable";
+import {Observable} from 'rxjs/Observable';
 import {isNil} from 'lodash';
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {Constants} from "./Constants";
-import {HighlightService} from "./common/highlightService/highlight.service";
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {Constants} from './Constants';
+import {HighlightService} from './common/highlightService/highlight.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
 		}
 	}
 
-	//This is the code in the parent page that contains SPA's iframe
+	// This is the code in the parent page that contains SPA's iframe
 	/*
 		var button = document.querySelector('button');
 		var iframe = document.querySelector('iframe');

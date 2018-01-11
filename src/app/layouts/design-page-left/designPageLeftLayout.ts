@@ -15,8 +15,8 @@
  *******************************************************************************/
 import {LayoutComponent} from 'ibm-wch-sdk-ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {TypeDesignPageComponent} from './../../components/design-page/typeDesignPageComponent';
-import {UtilsService} from "../../common/utils/utils.service";
+import {TypeDesignPageComponent} from '../../components/design-page/typeDesignPageComponent';
+import {UtilsService} from '../../common/utils/utils.service';
 
 /**
  * @name designPageLeft

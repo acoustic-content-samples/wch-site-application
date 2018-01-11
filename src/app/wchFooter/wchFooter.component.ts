@@ -15,13 +15,13 @@
  *******************************************************************************/
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 
-import {RenderingContext} from "ibm-wch-sdk-ng";
-import {ConfigServiceService} from "../common/configService/config-service.service";
-import {Constants} from "../Constants";
-import {Subscription} from "rxjs/Subscription";
-const facebook = require('../../images/icon-facebook-logo.svg');
-const twitter = require('../../images/icon-twitter-logo-white.svg');
-const instagram = require('../../images/icon-instagram-logo.svg');
+import {RenderingContext} from 'ibm-wch-sdk-ng';
+import {ConfigServiceService} from '../common/configService/config-service.service';
+import {Constants} from '../Constants';
+import {Subscription} from 'rxjs/Subscription';
+const facebook = require('./images/icon-facebook-logo.svg');
+const twitter = require('./images/icon-twitter-logo-white.svg');
+const instagram = require('./images/icon-instagram-logo.svg');
 
 @Component({
 	selector: 'wch-footer',
@@ -50,7 +50,7 @@ export class WchFooterComponent implements OnInit, OnDestroy {
 	public readonly CUSTOMER_SERVICE_NUMBER_KEY: string = 'customerServiceContactNumber';
 
 
-	//copyright date
+	// copyright date
 	currentYear: number = new Date().getFullYear();
 
 	@Input()
@@ -71,27 +71,31 @@ export class WchFooterComponent implements OnInit, OnDestroy {
 		});
 	}
 
+	trackByPageId (index, page) {
+		return page.pageID;
+	}
+
 	isImageURLAvailable(elem): boolean {
 		return (this.rc && this.footerConfig && this.footerConfig.elements && this.footerConfig.elements[elem]);
 	}
 
 	ngOnInit() {
-		//this.pages = (this.renderingContext.context['site']) ? this.renderingContext.context['site'].children : [];
+		// this.pages = (this.renderingContext.context['site']) ? this.renderingContext.context['site'].children : [];
 
 	}
 
-	ngOnDestroy(){
+	ngOnDestroy() {
 		this.configSub.unsubscribe();
 	}
 
 	getURL(img) {
-		//TODO add fallback logic for rendition
+		// TODO add fallback logic for rendition
 		return this.rc.context.hub.deliveryUrl['origin'] + this.footerConfig.elements[img].renditions.default.url;
 	}
 
 	getElementValue(elem): string {
 
-		if(this.footerConfig && this.footerConfig.elements[elem]){
+		if (this.footerConfig && this.footerConfig.elements[elem]) {
 			return this.footerConfig.elements[elem].value;
 		}
 		return '';

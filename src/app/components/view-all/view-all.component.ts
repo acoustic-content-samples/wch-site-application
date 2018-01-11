@@ -29,7 +29,7 @@ export class ViewAllComponent implements OnInit {
   ngOnInit() {
   }
 
-	isButtonLinkSet() : boolean {
+	isButtonLinkSet(): boolean {
 		return (this.renderingContext.elements.viewAllLink && this.renderingContext.elements.viewAllLink.linkURL && this.renderingContext.elements.viewAllLink.linkURL.length > 0) ? true : false;
 	}
 }

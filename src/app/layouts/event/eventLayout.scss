@@ -41,6 +41,10 @@ $event-text-color-gray: #737373;
   color: $event-text-color-gray;
   overflow: hidden;
 }
+  
+.location {
+  margin-bottom: 0;
+}
 
 @media (min-width: 640px) {
   .events {

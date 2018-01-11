@@ -18,8 +18,8 @@ import {
     LayoutComponent, RenderingContext
 } from 'ibm-wch-sdk-ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { TypeErrorPageComponent } from './../../components/error-page/typeErrorPageComponent';
-import {Subscription} from "rxjs/Subscription";
+import { TypeErrorPageComponent } from '../../components/error-page/typeErrorPageComponent';
+import {Subscription} from 'rxjs/Subscription';
 
 /**
  * @name errorPageLayout

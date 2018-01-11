@@ -108,7 +108,11 @@ var copyFiles = [
 	{src: 'src/favicon.ico', dest: 'dist/assets/favicon.ico'},
 	{src: 'src/wchLayouts/layout-mappings', dest: 'dist/layout-mappings'},
 	{src: 'src/wchLayouts/layouts', dest: 'dist/layouts'},
-	{src: 'src/wchLayouts/assets/layouts/thumbnails', dest: 'dist/assets/layouts/thumbnails'}
+	{src: 'src/wchLayouts/assets/layouts/thumbnails', dest: 'dist/assets/layouts/thumbnails'},
+	{src: 'src/wchLayouts/types', dest: 'dist/types'}
+
+
+
 ];
 copyFiles.forEach(function (file) {
   fsExtra.copy(file.src, file.dest, function (err) {
@@ -175,11 +179,13 @@ module.exports = {
 	  },
 		{
 			"test": /\.svg$/,
-			"exclude": [/src[\\\/]app[\\\/]components[\\\/]generic[\\\/]carousel[\\\/]images/],
+			"exclude": [/src[\\\/]app[\\\/]components[\\\/]generic[\\\/]carousel[\\\/]images/,
+						/src[\\\/]app[\\\/]components[\\\/]search-box[\\\/]images/],
 			"loader": 'svg-sprite-loader'
 		}, {
 			"test": /\.svg$/,
-			"include": [/src[\\\/]app[\\\/]components[\\\/]generic[\\\/]carousel[\\\/]images/],
+			"include": [/src[\\\/]app[\\\/]components[\\\/]generic[\\\/]carousel[\\\/]images/,
+						/src[\\\/]app[\\\/]components[\\\/]search-box[\\\/]images/],
 			"loader": 'file-loader'
 		},
 	  {
@@ -325,7 +331,7 @@ if(process.env.NODE_ENV === 'production'){
 			except: ['require']
 		},
 		sourceMap: false
-	}))
+	}));
 }
 else {
 	console.log('IN DEV');

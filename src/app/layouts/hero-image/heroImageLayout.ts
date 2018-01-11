@@ -17,9 +17,8 @@ import {
     LayoutComponent, RenderingContext
 } from 'ibm-wch-sdk-ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { TypeHeroImageComponent } from './../../components/hero-image/typeHeroImageComponent';
-import {Subscription} from "rxjs/Subscription";
-import {UtilsService} from "../../common/utils/utils.service";
+import { TypeHeroImageComponent } from '../../components/hero-image/typeHeroImageComponent';
+import {UtilsService} from '../../common/utils/utils.service';
 
 /**
  * @name heroImageLayout
@@ -33,13 +32,13 @@ import {UtilsService} from "../../common/utils/utils.service";
   templateUrl: './heroImageLayout.html',
   styleUrls: ['./heroImageLayout.scss']
 })
-export class HeroImageLayoutComponent extends TypeHeroImageComponent implements OnInit, OnDestroy{
+export class HeroImageLayoutComponent extends TypeHeroImageComponent implements OnInit, OnDestroy {
 
     rContext: RenderingContext;
 
-    public readonly IMAGE_KEY:string = 'image';
+    public readonly IMAGE_KEY: string = 'image';
 
-    userouterLink: boolean = false;
+    userouterLink = false;
 
     constructor(public utilService: UtilsService) {
         super();
@@ -50,8 +49,11 @@ export class HeroImageLayoutComponent extends TypeHeroImageComponent implements 
 
         this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
             this.rContext = renderingContext;
-            this.userouterLink = this.utilService.useRouterLink(this.link);
         });
+
+        this.safeSubscribe(this.onLink, (link) => {
+												this.userouterLink = this.utilService.useRouterLink(link);
+								});
 
     }
 

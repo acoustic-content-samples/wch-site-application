@@ -14,7 +14,7 @@
  * limitations under the License.
  *******************************************************************************/
 import { Pipe, PipeTransform } from '@angular/core';
-import {RenderingContext} from "ibm-wch-sdk-ng";
+import {RenderingContext} from 'ibm-wch-sdk-ng';
 import { Constants } from '../../Constants';
 
 @Pipe({
@@ -22,13 +22,13 @@ import { Constants } from '../../Constants';
 })
 export class ItemSortPipe implements PipeTransform {
 
-  transform(items: RenderingContext[], field: string, sortOrder:string, maxItemsToDisplay:number): any {
-    let itemType = (items && items[0] && items[0].elements[field]) ? items[0].elements[field].elementType : "";
-    //only sort if there is a valid field to sort on
-    if(itemType) {
+  transform(items: RenderingContext[], field: string, sortOrder: string, maxItemsToDisplay: number): any {
+    const itemType = (items && items[0] && items[0].elements[field]) ? items[0].elements[field].elementType : '';
+    // only sort if there is a valid field to sort on
+    if (itemType) {
       items.sort((a: RenderingContext, b: RenderingContext) => {
-        let itemA = a.elements[field].value;
-        let itemB = b.elements[field].value;
+        const itemA = a.elements[field].value;
+        const itemB = b.elements[field].value;
         switch (itemType) {
           case Constants.DATETIME: {
             return this.sortGeneric(new Date(itemA), new Date(itemB));
@@ -46,7 +46,7 @@ export class ItemSortPipe implements PipeTransform {
         items.reverse();
       }
 
-      if(maxItemsToDisplay){
+      if (maxItemsToDisplay) {
         items = items.slice(0, maxItemsToDisplay);
       }
     }
@@ -55,11 +55,13 @@ export class ItemSortPipe implements PipeTransform {
   }
 
 
-  sortGeneric(a:any, b:any){
-      if(a < b)
-        return -1;
-      if(a > b)
-        return 1;
+  sortGeneric(a: any, b: any) {
+      if (a < b) {
+							return -1;
+						}
+      if (a > b) {
+							return 1;
+						}
       return 0;
   }
 

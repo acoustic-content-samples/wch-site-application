@@ -1,0 +1,54 @@
+{
+  "id": "b0b91aad-8a9a-4d46-9aff-e35d004f0a1f",
+  "rev": "1-23b9909965c22bef27cf74a6685a804b",
+  "name": "Author profile",
+  "classification": "content-type",
+  "path": "/Author-profile",
+  "kind": [
+    "standalone"
+  ],
+  "thumbnail": {
+    "id": "89b59adf-2c26-4b9e-aebf-3cbd13ae9fa7"
+  },
+  "contentThumbnail": {
+    "imageElement": "profilePicture",
+    "source": "imageElementOrType"
+  },
+  "description": "",
+  "creatorId": "00000000-0000-0000-0000-000000000009",
+  "created": "2017-08-10T20:55:13.905Z",
+  "lastModifierId": "00000000-0000-0000-0000-000000000009",
+  "lastModified": "2017-12-01T13:41:12.899Z",
+  "status": "ready",
+  "tags": [
+    "oslo",
+    "IBM sample"
+  ],
+  "elements": [
+    {
+      "elementType": "text",
+      "fieldLabel": "Text",
+      "label": "Name",
+      "key": "name"
+    },
+    {
+      "elementType": "image",
+      "acceptType": [
+        "jpg",
+        "jpeg",
+        "png",
+        "gif"
+      ],
+      "fieldLabel": "Image",
+      "label": "Profile picture",
+      "key": "profilePicture",
+      "imageProfileId": "046c7734-3fca-4e0b-9233-d5208e767654"
+    },
+    {
+      "elementType": "formattedtext",
+      "fieldLabel": "Formatted Text",
+      "label": "Short bio",
+      "key": "shortBio"
+    }
+  ]
+}

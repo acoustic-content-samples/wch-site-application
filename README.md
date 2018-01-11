@@ -11,6 +11,12 @@ At the beginning of December we have updated the Oslo starter site with the foll
 - Enablement for Inline Editing in the Sites Composer
 - Ability to leverage Angular 5 instead of Angular 4
 
+At the beginning of January we have updated the Oslo starter site with the following features:
+- update of Angular to Angular 4.4.6
+- Introduced a new search component and added search of pages to the functionality - results are displayed on the new search page
+- Introduced the ability to hide pages from the navigation while still available via URL with a new flag that can be set in the page
+- Enhanced Inline Editing support
+
 ## Documentation
 
 See this slide deck for an overview on customizing the starter site:
@@ -54,7 +60,7 @@ the `assets/` directory. Use the `-prod` flag for a production build.
 
 ## Deployment to Watson Content Hub
 
-Run `npm run deploy` to deploy the built code to Watson Content Hub. There is also a shortcut for building and deploying in one step via `npm run build-deploy`.
+Run `npm run deploy` to deploy the built code to Watson Content Hub. There is also a shortcut for building and deploying in one step via `npm run build-deploy`. Note that publishing can take up to 20 minutes for all updates to be available.
 
 ## Running unit tests and end-to-end tests
 
@@ -62,9 +68,10 @@ See the included detailed documentation on running tests [Running unit tests and
 
 ## Install Sample Site Components
 
-* The Oslo site provides scripting to ease the process of importing 3rd party components.  
-* In a first step we have provided the sample-active-site-components repository (https://github.com/ibm-wch/sample-active-site-components) that contains Youtube video players and customized Charts and an iframe component.
-* In the future we will provide additional components to download.
+The Oslo site provides scripting to ease the process of importing 3rd party components.  
+We have provided a set of sample component repositories:
+* [Active Site components: Iframe, Charting Library, Youtube integration](https://github.com/ibm-wch/sample-active-site-components)
+* [Sample Article Layout](https://github.com/ibm-wch/sample-article-layouts)
 
 ### Structure of Sample Site Components
 * At the root of the `sample-active-site-components` project/zip, you can find the `content-artifacts` directory and the `site-application-files` directory.  

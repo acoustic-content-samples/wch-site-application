@@ -1,0 +1,72 @@
+{
+  "id": "073c6e08-5486-4d2c-9b98-6dee43911f76",
+  "rev": "3-832e589568ce5190bd436d7b4cdd79c9",
+  "name": "Slideshow",
+  "classification": "content-type",
+  "kind": [
+    "standalone"
+  ],
+  "description": "Assemble a slideshow for your website and define the interactions settings, such as transitions, speed, and more.",
+  "creatorId": "00000000-0000-0000-0000-000000000009",
+  "created": "2017-08-10T17:05:46.891Z",
+  "lastModifierId": "00000000-0000-0000-0000-000000000009",
+  "lastModified": "2017-08-28T11:59:57.348Z",
+  "status": "ready",
+  "tags": [
+    "oslo"
+  ],
+  "elements": [
+    {
+      "elementType": "reference",
+      "fieldLabel": "Slide",
+      "label": "Slides to include",
+      "key": "slides",
+      "allowMultipleValues": true,
+      "minimumValues": 2,
+      "required": true,
+      "restrictTypes": [
+        {
+          "id": "309b0c17-5a31-4108-97d0-25e6240e56a8"
+        }
+      ]
+    },
+    {
+      "elementType": "toggle",
+      "label": "Autoplay slides",
+      "key": "autoPlay",
+      "statement": "Do you want the slides to play automatically?"
+    },
+    {
+      "elementType": "number",
+      "fieldType": "integer",
+      "fieldLabel": "Number",
+      "label": "Slide duration (seconds)",
+      "key": "duration"
+    },
+    {
+      "elementType": "category",
+      "label": "Slide transition",
+      "key": "transition"
+    },
+    {
+      "elementType": "number",
+      "fieldType": "decimal",
+      "fieldLabel": "Number",
+      "label": "Transition speed",
+      "key": "speed"
+    },
+    {
+      "elementType": "toggle",
+      "label": "Paging indicator",
+      "key": "indicatorShown",
+      "statement": "Do you want to include paging indicators?",
+      "helpText": "When you turn this setting on, the slideshow will include visual indicators to communicate which slide is being shown and how many slides there are total."
+    },
+    {
+      "elementType": "toggle",
+      "label": "Pause control",
+      "key": "pauseShown",
+      "statement": "Can website vistors pause the slide show?"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "search-results-layout",
+  "rev": "2-f30cba6e9b538c69bd5c863c7e65a5fd",
+  "name": "searchResultsLayout",
+  "classification": "layout",
+  "prerender": false,
+  "thumbnail": {
+    "path": "/layouts/thumbnails/search-results-layout.jpg"
+  },
+  "template": "search-results-layout",
+  "templateType": "angular"
+}

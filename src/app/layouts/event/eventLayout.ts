@@ -20,8 +20,8 @@ import {
     AfterViewInit, Component, ElementRef, OnChanges, OnDestroy, OnInit, SimpleChanges,
     ViewChild
 } from '@angular/core';
-import { TypeEventComponent } from './../../components/event/typeEventComponent';
-import {Subscription} from "rxjs/Subscription";
+import { TypeEventComponent } from '../../components/event/typeEventComponent';
+import {Subscription} from 'rxjs/Subscription';
 
 declare var $: any;
 declare var Foundation: any;
@@ -44,13 +44,8 @@ export class EventLayoutComponent extends TypeEventComponent implements OnInit, 
     @ViewChild('event') eventElem: ElementRef;
 
     rContext: RenderingContext;
-    rcSub: Subscription;
     eventId: any;
     reveal: any;
-
-
-    @RenderingContextBinding(`elements.date.value`, new Date())
-    eventDate: Date;
 
 
     constructor() {
@@ -74,8 +69,12 @@ export class EventLayoutComponent extends TypeEventComponent implements OnInit, 
 
 
     ngOnDestroy () {
-        let elem = this.reveal.$element.foundation('destroy');
-        $(elem).remove();
+        try {
+            const elem = this.reveal.$element.foundation('destroy');
+            $(elem).remove();
+        }catch(e){
+
+        }
         super.ngOnDestroy();
 
 

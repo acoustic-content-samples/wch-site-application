@@ -18,22 +18,22 @@ import {
 	Input,
 	OnDestroy,
 	AfterViewInit,
-	AfterViewChecked,
 	ViewChildren,
 	ViewChild,
 	QueryList,
 	ElementRef,
-	ViewEncapsulation, OnChanges, SimpleChanges
+	ViewEncapsulation,
+	NgZone
 } from '@angular/core';
 
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-import {LayoutComponent, RenderingContext, AbstractRenderingComponent} from "ibm-wch-sdk-ng";
-import {ConfigServiceService} from "../common/configService/config-service.service";
-import {Constants} from "../Constants";
-import {Subscription} from "rxjs/Subscription";
+import {LayoutComponent, RenderingContext, AbstractRenderingComponent} from 'ibm-wch-sdk-ng';
+import {ConfigServiceService} from '../common/configService/config-service.service';
+import {Constants} from '../Constants';
+import {Subscription} from 'rxjs/Subscription';
 Foundation.addToJquery($);
 
 @Component({
@@ -42,14 +42,14 @@ Foundation.addToJquery($);
 	templateUrl: './wch-header.html',
 	encapsulation: ViewEncapsulation.None
 })
-export class WchHeaderComponent implements AfterViewInit, OnDestroy, OnChanges {
+export class WchHeaderComponent implements AfterViewInit, OnDestroy {
 	@Input()
 	public set renderingContext(aValue: RenderingContext) {
 		this.rc = aValue;
+		this.cachedChildren = new Map<string, any[]>();
 	}
 
 	@ViewChildren('navLoop') navLoop: QueryList<any>;
-	@ViewChild('navMenu') navMenu: ElementRef;
 	@ViewChild('dropdownToggle') dropdownToggle: ElementRef;
 
 	rc: RenderingContext;
@@ -57,15 +57,20 @@ export class WchHeaderComponent implements AfterViewInit, OnDestroy, OnChanges {
 	public readonly LOGO: string = 'websiteLogo';
 	configSub: Subscription;
 	navSub: Subscription;
-	navigationChanged: boolean = false;
+	navInitialized = false;
+	cachedChildren = new Map<string, any[]>();
 
 
-	constructor(configService: ConfigServiceService) {
+	constructor(configService: ConfigServiceService, private zone: NgZone) {
 
 		this.configSub = configService.getConfig(Constants.HEADER_CONFIG).subscribe((context) => {
 			this.headerConfig = context;
 		});
 
+	}
+
+	trackByPageId (index, page) {
+		return page.pageID;
 	}
 
 	isImageURLAvailable(elem): boolean {
@@ -75,11 +80,12 @@ export class WchHeaderComponent implements AfterViewInit, OnDestroy, OnChanges {
 	ngOnDestroy() {
 		this.configSub.unsubscribe();
 		this.navSub.unsubscribe();
-		$(this.navMenu.nativeElement).foundation('destroy');
+		$('#header').foundation('destroy');
+		this.navInitialized = false;
 	}
 
 	getURL(img) {
-		//TODO add fallback logic for rendition
+		// TODO add fallback logic for rendition
 		return this.rc.context.hub.deliveryUrl['origin'] + this.headerConfig.elements[img].renditions.default.url;
 	}
 
@@ -88,35 +94,46 @@ export class WchHeaderComponent implements AfterViewInit, OnDestroy, OnChanges {
 	}
 
 	menuItemSelected() {
-		$(this.dropdownToggle.nativeElement).foundation('toggleMenu');
+		this.zone.runOutsideAngular(() => {
+			$(this.dropdownToggle.nativeElement).foundation('toggleMenu');
+		});
 	}
 
-	ngOnChanges(changes: SimpleChanges) {
 
-		if (changes['renderingContext'].currentValue !== changes['renderingContext'].previousValue) {
-			this.navigationChanged = true;
-
-		}
-	}
-
-	getRouteURL(url){
+	getRouteURL(url) {
 		return decodeURI(url);
+	}
+
+	hasVisibleChildren(page) {
+		return this.getVisibleChildren(page).length > 0;
+
+	}
+
+	getVisibleChildren(page): any[] {
+		if(this.cachedChildren.get(page.id)){
+			return this.cachedChildren.get(page.id);
+		} else {
+			let visibleChildren = page.children.filter((child) => {
+				return !child.hideFromNavigation;
+			});
+			this.cachedChildren.set(page.id, visibleChildren);
+			return visibleChildren
+		}
 	}
 
 
 	ngAfterViewInit() {
 		this.navSub = this.navLoop.changes.subscribe(item => {
-			if (this.navigationChanged) {
-				//Navigation possibly changed,  destroy the nav menu and rebuild.
-				try {
-					this.navigationChanged = false;
-					$('#nav-responsive-menu').foundation('_destroy');
-					$('#nav-responsive-menu').foundation();
-				} catch (e) {
-					//if foundations was already destroyed this will throw an error but no need to log it
-				}
+			if (this.navInitialized) {
+				this.zone.runOutsideAngular(()=> {
+					Foundation.reInit(['dropdown-menu', 'responsive-menu', 'responsive-toggle'])
+				})
+			} else {
+				this.zone.runOutsideAngular(() => {
+					$('#header').foundation();
+					this.navInitialized = true;
+				});
 			}
-			$('#header').foundation();
 		});
 	}
 }

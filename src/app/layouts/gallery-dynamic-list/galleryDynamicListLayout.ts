@@ -17,9 +17,9 @@ import {
     LayoutComponent, RenderingContext
 } from 'ibm-wch-sdk-ng';
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import { TypeDynamicListComponent } from './../../components/dynamic-list/typeDynamicListComponent';
-import {Constants} from "../../Constants";
-import {UtilsService} from "../../common/utils/utils.service";
+import { TypeDynamicListComponent } from '../../components/dynamic-list/typeDynamicListComponent';
+import {Constants} from '../../Constants';
+import {UtilsService} from '../../common/utils/utils.service';
 
 /**
  * @name galleryDynamicList
@@ -37,7 +37,7 @@ export class GalleryDynamicListLayoutComponent extends TypeDynamicListComponent 
     @Input()
     renderingContext: RenderingContext;
 
-    constants:any = Constants;
+    constants: any = Constants;
 
     constructor(private utils: UtilsService) {
         super(utils);
@@ -47,7 +47,7 @@ export class GalleryDynamicListLayoutComponent extends TypeDynamicListComponent 
         super.ngOnInit();
     }
 
-    ngOnDestroy(){
+    ngOnDestroy() {
         super.ngOnDestroy();
     }
 

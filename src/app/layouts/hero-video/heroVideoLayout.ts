@@ -16,10 +16,10 @@
 import {
 	LayoutComponent, RenderingContext, RenderingContextBinding
 } from 'ibm-wch-sdk-ng';
-import {Component, OnChanges, OnDestroy, OnInit} from '@angular/core';
-import {TypeHeroVideoComponent} from './../../components/hero-video/typeHeroVideoComponent';
-import {Subscription} from "rxjs/Subscription";
-import {NavigationStart, Router} from "@angular/router";
+import {AfterViewInit, Component, OnChanges, OnDestroy, OnInit} from '@angular/core';
+import {TypeHeroVideoComponent} from '../../components/hero-video/typeHeroVideoComponent';
+import {Subscription} from 'rxjs/Subscription';
+import {NavigationStart, Router} from '@angular/router';
 declare var videojs: any;
 
 /**
@@ -34,7 +34,7 @@ declare var videojs: any;
 	templateUrl: './heroVideoLayout.html',
 	styleUrls: ['./heroVideoLayout.scss']
 })
-export class HeroVideoLayoutComponent extends TypeHeroVideoComponent implements OnInit, OnDestroy {
+export class HeroVideoLayoutComponent extends TypeHeroVideoComponent implements OnInit, OnDestroy, AfterViewInit {
 
 	/* default to video/mp4 if not set */
 	@RenderingContextBinding('video.video.asset.mediaType', 'video/mp4')
@@ -48,15 +48,13 @@ export class HeroVideoLayoutComponent extends TypeHeroVideoComponent implements 
 
 	videoNewChanges: any;
 
-	VIDEO_KEY: string = "video";
-
 	constructor(public router: Router) {
 		super();
 		 this.routeSub = router.events.filter(e => e instanceof NavigationStart).subscribe((event: NavigationStart) => {
             // clean up your markup, unhook plugins, etc.
 		 	try {
 				this.player.dispose();
-			} catch(e){
+			} catch (e) {
 		 		console.error(e);
 			}
 		 });
@@ -82,7 +80,7 @@ export class HeroVideoLayoutComponent extends TypeHeroVideoComponent implements 
 		});
 	}
 
-	isVideoSet(){
+	isVideoSet() {
 		return (this.video && this.video.url);
 	}
 

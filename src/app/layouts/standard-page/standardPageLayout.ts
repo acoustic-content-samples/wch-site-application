@@ -17,9 +17,7 @@ import {
 	LayoutComponent, RenderingContext
 } from 'ibm-wch-sdk-ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { TypeStandardPageComponent } from './../../components/standard-page/typeStandardPageComponent';
-import {ElementMap} from "ibm-wch-sdk-ng/src/interfaces/rendering-context";
-import {Subscription} from "rxjs/Subscription";
+import { TypeStandardPageComponent } from '../../components/standard-page/typeStandardPageComponent';
 
 /**
  * @name standardPageLayout

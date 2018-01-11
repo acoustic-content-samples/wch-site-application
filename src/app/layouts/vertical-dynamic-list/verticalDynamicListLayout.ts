@@ -17,8 +17,8 @@ import {
     LayoutComponent, RenderingContext
 } from 'ibm-wch-sdk-ng';
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import { TypeDynamicListComponent } from './../../components/dynamic-list/typeDynamicListComponent';
-import {UtilsService} from "../../common/utils/utils.service";
+import { TypeDynamicListComponent } from '../../components/dynamic-list/typeDynamicListComponent';
+import {UtilsService} from '../../common/utils/utils.service';
 
 /**
  * @name verticalDynamicList
@@ -45,7 +45,7 @@ export class VerticalDynamicListLayoutComponent extends TypeDynamicListComponent
         super.ngOnInit();
     }
 
-    ngOnDestroy(){
+    ngOnDestroy() {
         super.ngOnDestroy();
     }
 

@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-//This file is used as customized components for sample-active-site-components.
-//If you want to install sample customized components, you have to import customized modules here
+// This file is used as customized components for sample-active-site-components.
+// If you want to install sample customized components, you have to import customized modules here
 // e.g. import { ChartsModule } from 'ng2-charts/ng2-charts';
 
-//Export customized modules to app.module.ts
+// Export customized modules to app.module.ts
 export const SAMPLE_MODULE = [
 	// e.g. ChartsModule
 ];

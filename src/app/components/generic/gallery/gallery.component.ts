@@ -14,7 +14,7 @@
  * limitations under the License.
  *******************************************************************************/
 import {Component, Input, OnInit} from '@angular/core';
-import {RenderingContext} from "ibm-wch-sdk-ng";
+import {RenderingContext} from 'ibm-wch-sdk-ng';
 import {Constants} from '../../../Constants';
 
 @Component({
@@ -26,12 +26,10 @@ export class GalleryComponent implements OnInit {
   @Input()
   renderingContexts: RenderingContext[];
 
-  constants:any = Constants;
+  constants: any = Constants;
 
   constructor() { }
 
-  ngOnInit() {
-  	this.renderingContexts;
-  }
+  ngOnInit() { }
 
 }

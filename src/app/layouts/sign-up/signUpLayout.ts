@@ -16,10 +16,9 @@
 import {
     LayoutComponent, RenderingContext
 } from 'ibm-wch-sdk-ng';
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import { TypeSignUpComponent } from './../../components/sign-up/typeSignUpComponent';
-import {Subscription} from "rxjs/Subscription";
-import {UtilsService} from "../../common/utils/utils.service";
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import { TypeSignUpComponent } from '../../components/sign-up/typeSignUpComponent';
+import {UtilsService} from '../../common/utils/utils.service';
 
 declare var $: any;
 declare var Foundation: any;
@@ -36,20 +35,20 @@ declare var Foundation: any;
   templateUrl: './signUpLayout.html',
   styleUrls: ['./signUpLayout.scss']
 })
-export class SignUpLayoutComponent extends TypeSignUpComponent implements OnInit, OnDestroy{
+export class SignUpLayoutComponent extends TypeSignUpComponent implements OnInit, OnDestroy, AfterViewInit {
 
     @ViewChild('revealModal') revealModal: ElementRef;
 
-    emailAddress: string = '';
+    emailAddress = '';
 
     rContext: RenderingContext;
     itemId: string;
     reveal: any;
 
-    readonly BACKGROUND_IMG_KEY:string = 'backgroundImage';
-    readonly HEADLINE_KEY:string = 'text';
-    readonly CALL_TO_ACTION_KEY:string = 'link';
-    readonly CONFIRMATION_KEY:string = 'dialogMessage';
+    readonly BACKGROUND_IMG_KEY: string = 'backgroundImage';
+    readonly HEADLINE_KEY: string = 'text';
+    readonly CALL_TO_ACTION_KEY: string = 'link';
+    readonly CONFIRMATION_KEY: string = 'dialogMessage';
 
 
     constructor(public utilsService: UtilsService) {
@@ -65,19 +64,19 @@ export class SignUpLayoutComponent extends TypeSignUpComponent implements OnInit
         })
     }
 
-    ngAfterViewInit(){
+    ngAfterViewInit() {
     	super.ngAfterViewInit();
         this.reveal = new Foundation.Reveal($(`#${this.itemId}`));
     }
 
     ngOnDestroy() {
-        //clean up reveal modal
-        let elem = this.reveal.$element.foundation('destroy');
+        // clean up reveal modal
+        const elem = this.reveal.$element.foundation('destroy');
         $(elem).remove();
     	super.ngOnDestroy();
     }
 
-    openModal(){
+    openModal() {
         this.addEmail();
         $(this.revealModal.nativeElement).foundation('open');
     }

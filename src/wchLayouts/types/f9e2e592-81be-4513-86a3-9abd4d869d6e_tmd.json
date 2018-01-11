@@ -1,0 +1,36 @@
+{
+  "id": "f9e2e592-81be-4513-86a3-9abd4d869d6e",
+  "rev": "3-2ad9feadd716b99f5af3661ddd9d6577",
+  "name": "Search Results",
+  "classification": "content-type",
+  "path": "/Search-Results",
+  "kind": [
+    "standalone"
+  ],
+  "description": "",
+  "creatorId": "58cdf944-54d0-4e4d-90f6-490125f404e8",
+  "created": "2017-12-12T15:24:32.814Z",
+  "lastModifierId": "9e9b04ca-a89d-4d34-949b-5c6dc8cc79e5",
+  "lastModified": "2017-12-14T19:48:47.397Z",
+  "status": "ready",
+  "tags": [
+    "oslo",
+    "IBM sample",
+    "IBM sites kicker"
+  ],
+  "elements": [
+    {
+      "elementType": "reference",
+      "label": "Suggested articles",
+      "key": "suggestedArticles",
+      "restrictTypes": [
+        {
+          "id": "84c0e928-6585-4d34-ba02-5ed1b2e4c21c"
+        },
+        {
+          "id": "9aeeecef-85ce-4d41-a797-1ad27735d0cb"
+        }
+      ]
+    }
+  ]
+}

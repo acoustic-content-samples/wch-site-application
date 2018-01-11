@@ -17,10 +17,9 @@ import {
 	LayoutComponent, RenderingContext
 } from 'ibm-wch-sdk-ng';
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import { TypeDesignArticleComponent } from './../../components/design-article/typeDesignArticleComponent';
+import { TypeDesignArticleComponent } from '../../components/design-article/typeDesignArticleComponent';
 import { UtilsService } from '../../common/utils/utils.service';
-import {Constants} from "../../Constants";
-import {Subscription} from "rxjs/Subscription";
+import {Constants} from '../../Constants';
 
 /**
  * @name designArticleLayout
@@ -34,21 +33,21 @@ import {Subscription} from "rxjs/Subscription";
 	templateUrl: './designArticleLayout.html',
 	styleUrls: ['./designArticleLayout.scss']
 })
-export class DesignArticleLayoutComponent extends TypeDesignArticleComponent implements OnInit, OnDestroy{
+export class DesignArticleLayoutComponent extends TypeDesignArticleComponent implements OnInit, OnDestroy {
 
-	rContext:RenderingContext;
-	matchingBodyImages:any[];
-	leftoverBodyImages:any[];
-	constants:any = Constants;
+	rContext: RenderingContext;
+	matchingBodyImages: any[];
+	leftoverBodyImages: any[];
+	constants: any = Constants;
 
-	readonly TOPIC_TITLE_KEY:string = 'heading';
-	readonly LEAD_IMG_KEY:string = 'mainImage';
-	readonly BYLINE_KEY:string = 'byline';
-	readonly AUTHOR_KEY:string = 'author';
-	readonly DATE_KEY:string = 'date';
-	readonly TEXT_FOR_BODY_KEY:string = 'body';
-	readonly IMAGE_FOR_BODY_KEY:string = 'bodyImage';
-	readonly AUTHOR_BIO_KEY:string = 'authorBio';
+	readonly TOPIC_TITLE_KEY: string = 'heading';
+	readonly LEAD_IMG_KEY: string = 'mainImage';
+	readonly BYLINE_KEY: string = 'byline';
+	readonly AUTHOR_KEY: string = 'author';
+	readonly DATE_KEY: string = 'date';
+	readonly TEXT_FOR_BODY_KEY: string = 'body';
+	readonly IMAGE_FOR_BODY_KEY: string = 'bodyImage';
+	readonly AUTHOR_BIO_KEY: string = 'authorBio';
 
 
 
@@ -67,12 +66,12 @@ export class DesignArticleLayoutComponent extends TypeDesignArticleComponent imp
 			this.layoutMode = this.layoutMode || this.constants.DETAIL;
 
 			this.matchingBodyImages = [];
-			//in draft the formattedtexts may not be populated
-			if(this.rContext.formattedtexts) {
-				let numOfBodyTexts = this.rContext.formattedtexts[this.TEXT_FOR_BODY_KEY].length;
+			// in draft the formattedtexts may not be populated
+			if (this.rContext.formattedtexts) {
+				const numOfBodyTexts = this.rContext.formattedtexts[this.TEXT_FOR_BODY_KEY].length;
 
 				if (this.rContext.references && this.rContext.references[this.IMAGE_FOR_BODY_KEY]) {
-					let numOfBodyImages = this.rContext.references[this.IMAGE_FOR_BODY_KEY].length;
+					const numOfBodyImages = this.rContext.references[this.IMAGE_FOR_BODY_KEY].length;
 					if (numOfBodyTexts > 0) {
 						this.matchingBodyImages = this.rContext.references[this.IMAGE_FOR_BODY_KEY].slice(0, numOfBodyTexts);
 					}

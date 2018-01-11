@@ -27,6 +27,8 @@ import { ListComponent } from './list/list.component';
 import { CarouselComponent } from './carousel/carousel.component';
 
 import { SiteCommonModule } from '../../common/site.common.module';
+import { WchSlickModule } from './carousel/wch-slick/wch-slick.module';
+
 
 @NgModule({
 	imports: [
@@ -34,7 +36,8 @@ import { SiteCommonModule } from '../../common/site.common.module';
 		CommonModule,
 		RouterModule,
 		FormsModule,
-		SiteCommonModule
+		SiteCommonModule,
+		WchSlickModule
 	],
 	declarations: [
 		CarouselComponent,

@@ -17,10 +17,10 @@ import {
     LayoutComponent, RenderingContext
 } from 'ibm-wch-sdk-ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { TypeAuthorProfileComponent } from './../../components/author-profile/typeAuthorProfileComponent';
-import {Constants} from "../../Constants";
-import {Subscription} from "rxjs/Subscription";
-import {UtilsService} from "../../common/utils/utils.service";
+import { TypeAuthorProfileComponent } from '../../components/author-profile/typeAuthorProfileComponent';
+import {Constants} from '../../Constants';
+import {Subscription} from 'rxjs/Subscription';
+import {UtilsService} from '../../common/utils/utils.service';
 
 /**
  * @name authorProfileLayout
@@ -36,12 +36,11 @@ import {UtilsService} from "../../common/utils/utils.service";
 })
 export class AuthorProfileLayoutComponent extends TypeAuthorProfileComponent implements OnInit, OnDestroy {
 
-    rContext:RenderingContext;
-    constants:any = Constants;
-    rcSub: Subscription;
+    rContext: RenderingContext;
+    constants: any = Constants;
 
-    readonly AUTHOR_PICTURE_KEY:string = 'profilePicture';
-    readonly AUTHOR_PICTURE_RENDITION_KEY:string = 'closeUp';
+    readonly AUTHOR_PICTURE_KEY: string = 'profilePicture';
+    readonly AUTHOR_PICTURE_RENDITION_KEY: string = 'closeUp';
 
     constructor(private utilsService: UtilsService) {
         super();
@@ -49,7 +48,6 @@ export class AuthorProfileLayoutComponent extends TypeAuthorProfileComponent imp
 
     ngOnInit() {
         super.ngOnInit();
-        
         this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
             this.rContext = renderingContext;
         })
@@ -59,7 +57,7 @@ export class AuthorProfileLayoutComponent extends TypeAuthorProfileComponent imp
         super.ngOnDestroy();
     }
 
-    getImageUrl() : string {
+    getImageUrl(): string {
         return this.utilsService.getImageUrl(this.rContext, this.AUTHOR_PICTURE_KEY, this.AUTHOR_PICTURE_RENDITION_KEY);
     }
 
