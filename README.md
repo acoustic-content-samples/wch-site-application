@@ -2,6 +2,13 @@
 Source code for the Watson Content Hub starter site application - Oslo. 
 
 ## Updates
+
+At the beginning of January we have updated the Oslo starter site with the following features:
+- update of Angular to Angular 4.4.6
+- Introduced a new search component and added search of pages to the functionality - results are displayed on the new search page
+- Introduced the ability to hide pages from the navigation while still available via URL with a new flag that can be set in the page
+- Enhanced Inline Editing support
+
 At the beginning of December we have updated the Oslo starter site with the following features:
 - Performance improvements
 - bug fixes
@@ -11,36 +18,36 @@ At the beginning of December we have updated the Oslo starter site with the foll
 - Enablement for Inline Editing in the Sites Composer
 - Ability to leverage Angular 5 instead of Angular 4
 
-At the beginning of January we have updated the Oslo starter site with the following features:
-- update of Angular to Angular 4.4.6
-- Introduced a new search component and added search of pages to the functionality - results are displayed on the new search page
-- Introduced the ability to hide pages from the navigation while still available via URL with a new flag that can be set in the page
-- Enhanced Inline Editing support
 
-## Documentation
-
-See this slide deck for an overview on customizing the starter site:
-
-[Watson Content Hub - Sites Development Overview](https://ibm.box.com/s/0od1ta7hsmkxzl2i8y08o06zqwa0pzbq)
-
-Documentation on developerWorks how to customize the sample website or creating your own:
-
-[Developing your own website](http://developer.ibm.com/customer-engagement/docs/developing-your-own-website/)
-
-[Managing a web site in Watson Content Hub](https://www.ibm.com/support/knowledgecenter/SS3UMF/dch/admin/website_admin_std.html)
-
-## Programming Model documentation
-
-See details here: [Programming Model documentation](/doc/README-programming-model.md)
+**Note:** We recommend to run npm install after getting the latest from this repository to get the latest prerequisites. 
 
 ## Prerequisites
 
-This github repository contains all the source code file like javascript, css and html but not the Oslo artifacts like pages, content types, categories, and content. WCH tenants created after September 18th 2017 will have the Oslo artifacts automatically deployed. For older tenants you need to manually deploy the artifacts from here: https://greenhouse.lotus.com/plugins/plugincatalog.nsf/assetDetails.xsp?action=editDocument&documentId=B444A62EB5379C988525819C0021A994
-Not sure if you have the Oslo artifacts? Log in to the your tenant and go to the Website menu and check if Oslo is rendering in the preview window.
+* A WCH tenant in Trial or Standard Tier
+* Node.js v6.11.1 or above
+
+## Overview
+This github repository contains all the source code files like javascript, css and html but not the Oslo artifacts like pages, content types, categories, and content.
+WCH tenants created after September 18th 2017 will have the Oslo artifacts automatically deployed. For older tenants you need to manually deploy the artifacts from here: https://greenhouse.lotus.com/plugins/plugincatalog.nsf/assetDetails.xsp?action=editDocument&documentId=B444A62EB5379C988525819C0021A994 
+Not sure if you have the Oslo artifacts? 
+
+* Log in to your tenant and go to the Website menu and check if Oslo is rendering in the preview window.
+* Check SDK and SPA build levels from the browser
+  * Open the dev console
+  * Search for 'Build date' to get the current SPA level
+  * Search for 'SDK version' to get the SDK version included in the SPA
+		
+## Documentation
+1. [Getting started with the sample site – Oslo](https://developer.ibm.com/customer-engagement/tutorials/getting-started-sample-site-oslo/)
+2. [Site structure (Content model-How the sample site is built)](https://developer.ibm.com/customer-engagement/docs/wch/developing-your-own-website/content-model-oslo-website/)
+3. [Programming Model](/doc/README-programming-model.md)
+4. [Watson Content Hub - Sites Development Overview](https://ibm.box.com/s/0od1ta7hsmkxzl2i8y08o06zqwa0pzbq)
+5. [Customizing the sample website](https://developer.ibm.com/customer-engagement/docs/wch/developing-your-own-website/customizing-sample-site/)
+6. [Resources](#resources)
 
 ## Getting set up
 
-From you cli make sure to install project dependencies by running `npm install`
+From your cli make sure to install project dependencies by running `npm install`
 
 ### Changing the tenant
 
@@ -97,11 +104,6 @@ install it globally run `npm install -g @angular/cli`.
 Run `ng generate component component-name` to generate a new component. You can
 also use `ng generate directive|pipe|service|class|module`.
 
-### Checking SDK and SPA build levels from the browser
-1. Open the dev console
-2. Search for `Build date` to get the current SPA level
-3. Search for `SDK version` to get the SDK version included in the SPA
-
 ### Enabling logging
 
 The SPA uses the ng2-logger package for logging.  By default logging will be enabled when running locally and disabled when running in production mode on the tenant.  The logging level can be changed by setting a cookie in the browser.
@@ -116,12 +118,21 @@ Setting the logging level will result in a waterfall effect, for example if sett
 To change the logging level you can enter the following into the browsers console developer tools<br />
 ```document.cookie = 'wch.sites.logging.level=warn'```
 
-### Upgrade SPA from Angular 4 to Angular 5
-1. If you compiled the SPA locally before, you need to delete existing `node_modules` directory to avoid any version conflicts.
-2. In `package.json`, change the following dependencies and devDependencies' value to `"^5.0.0"`:
-"@angular/animations", "@angular/common", "@angular/compiler", "@angular/core", "@angular/forms", "@angular/http",  "@angular/platform-browser", "@angular/platform-browser-dynamic", "@angular/router", "@angular/compiler-cli", "@angular/language-service".
-3. In `package.json`, change value of "rxjs", "typescript" to "^5.5.2", "~2.4.2"
-4. In the root directory of SPA, run `npm install`.
+## Resources
+Find more details on the WCH development environment, technical documentation, sample applications, APIs and other information to jumpstart your development project.
+### Tools
+* [WCH tools](https://github.com/ibm-wch/wchtools-cli)
+* [NodeJS](https://developer.ibm.com/node/sdk/v6/)
+### API
+* [API Explorer](https://developer.ibm.com/api/view/id-618:title-IBM_Watson_Content_Hub_API)
+### Documentation
+* [Developer documentation](https://developer.ibm.com/customer-engagement/docs/wch/)
+* [Help](https://www.ibm.com/support/knowledgecenter/SS3UMF/dch/welcome/dch_welcome.html) 
+* [Videos](https://developer.ibm.com/customer-engagement/videos/category/watson-content-hub/)
+### Samples
+* [WCH samples](https://developer.ibm.com/customer-engagement/watson-content-hub/samples/)
+### Support forum
+* [dW Answers](https://developer.ibm.com/answers/smart-spaces/301/watson-content-hub.html)
 
 ## License
 
