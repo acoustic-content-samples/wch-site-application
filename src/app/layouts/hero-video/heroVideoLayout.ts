@@ -20,6 +20,7 @@ import {AfterViewInit, Component, OnChanges, OnDestroy, OnInit} from '@angular/c
 import {TypeHeroVideoComponent} from '../../components/hero-video/typeHeroVideoComponent';
 import {Subscription} from 'rxjs/Subscription';
 import {NavigationStart, Router} from '@angular/router';
+import {logger} from "codelyzer/util/logger";
 declare var videojs: any;
 
 /**
@@ -52,32 +53,30 @@ export class HeroVideoLayoutComponent extends TypeHeroVideoComponent implements 
 		super();
 		 this.routeSub = router.events.filter(e => e instanceof NavigationStart).subscribe((event: NavigationStart) => {
             // clean up your markup, unhook plugins, etc.
-		 	try {
-				this.player.dispose();
-			} catch (e) {
-		 		console.error(e);
-			}
 		 });
 	}
 
 	ngOnInit() {
 		super.ngOnInit();
+
 		this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
 			this.rContext = renderingContext;
 			this.itemId = `hero-video-${this.renderingContext.id}`;
 		});
 
+
 		this.safeSubscribe(this.onVideo, (videoChanges) => {
 			this.videoNewChanges = videoChanges;
 			if (videoChanges && videoChanges.url) {
 				if (this.player) {
-					this.player.src({
-						type: this.mediaType,
-						src: this.rContext.context.hub.deliveryUrl['origin'] + this.videoNewChanges.url
-					});
+						this.player.src({
+							type: this.mediaType,
+							src: this.rContext.context.hub.deliveryUrl['origin'] + this.videoNewChanges.url
+						});
 				}
 			}
 		});
+
 	}
 
 	isVideoSet() {
@@ -92,6 +91,11 @@ export class HeroVideoLayoutComponent extends TypeHeroVideoComponent implements 
 	}
 
 	ngOnDestroy() {
+			try {
+				this.player.dispose();
+			} catch (e) {
+				console.error(e);
+			}
 		 this.routeSub.unsubscribe();
 	}
 }

@@ -61,9 +61,13 @@ export class EventLayoutComponent extends TypeEventComponent implements OnInit, 
         });
     }
 
-    ngAfterViewInit(){
+    ngAfterViewInit() {
         super.ngAfterViewInit();
-        this.reveal = new Foundation.Reveal($(`#${this.eventId}`));
+        try {
+									this.reveal = new Foundation.Reveal($(`#${this.eventId}`));
+								} catch (e) {
+        	console.error('error in eventLayout reveal ', e);
+								}
 
     }
 
@@ -72,8 +76,8 @@ export class EventLayoutComponent extends TypeEventComponent implements OnInit, 
         try {
             const elem = this.reveal.$element.foundation('destroy');
             $(elem).remove();
-        }catch(e){
-
+        } catch (e) {
+									console.error('error in eventLayout on destroy ', e);
         }
         super.ngOnDestroy();
 

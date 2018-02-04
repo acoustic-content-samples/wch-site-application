@@ -1,30 +1,11 @@
 # wch-site-application
 Source code for the Watson Content Hub starter site application - Oslo. 
 
-## Updates
-
-At the beginning of January we have updated the Oslo starter site with the following features:
-- update of Angular to Angular 4.4.6
-- Introduced a new search component and added search of pages to the functionality - results are displayed on the new search page
-- Introduced the ability to hide pages from the navigation while still available via URL with a new flag that can be set in the page
-- Enhanced Inline Editing support
-
-At the beginning of December we have updated the Oslo starter site with the following features:
-- Performance improvements
-- bug fixes
-- Support for Google crawling of a given page in Oslo (more features planned in this area)
-- Additional layouts for the Standard page type
-- Removal of # from the URLs and now leveraging HTML 5 mode for URLs (i.e. https://myhost/design-topics/clean-design)
-- Enablement for Inline Editing in the Sites Composer
-- Ability to leverage Angular 5 instead of Angular 4
-
-
-**Note:** We recommend to run npm install after getting the latest from this repository to get the latest prerequisites. 
-
 ## Prerequisites
 
 * A WCH tenant in Trial or Standard Tier
 * Node.js v6.11.1 or above
+**Note:** We recommend to run npm install after getting the latest from this repository to get the latest prerequisites. 
 
 ## Overview
 This github repository contains all the source code files like javascript, css and html but not the Oslo artifacts like pages, content types, categories, and content.
@@ -44,6 +25,27 @@ Not sure if you have the Oslo artifacts?
 4. [Watson Content Hub - Sites Development Overview](https://ibm.box.com/s/0od1ta7hsmkxzl2i8y08o06zqwa0pzbq)
 5. [Customizing the sample website](https://developer.ibm.com/customer-engagement/docs/wch/developing-your-own-website/customizing-sample-site/)
 6. [Resources](#resources)
+
+## Updates
+At the beginning of February we have updated the Oslo starter site with the following features:
+- added inline editing for links
+- bug fixes and performance improvements
+- also check out our new HTML snippet sample here: 
+
+At the beginning of January we have updated the Oslo starter site with the following features:
+- update of Angular to Angular 4.4.6
+- Introduced a new search component and added search of pages to the functionality - results are displayed on the new search page
+- Introduced the ability to hide pages from the navigation while still available via URL with a new flag that can be set in the page
+- Enhanced Inline Editing support
+
+At the beginning of December we have updated the Oslo starter site with the following features:
+- Performance improvements
+- bug fixes
+- Support for Google crawling of a given page in Oslo (more features planned in this area)
+- Additional layouts for the Standard page type
+- Removal of # from the URLs and now leveraging HTML 5 mode for URLs (i.e. https://myhost/design-topics/clean-design)
+- Enablement for Inline Editing in the Sites Composer
+- Ability to leverage Angular 5 instead of Angular 4
 
 ## Getting set up
 

@@ -36,6 +36,7 @@ export class FeatureLayoutComponent extends TypeFeatureComponent implements OnIn
 
     rContext: RenderingContext;
     imagePlacementValue: string;
+				useRouterLink: boolean = false;
 
     readonly HEADLINE_KEY: string = 'featureHeadline';
     readonly DESCRIPTION_KEY: string = 'descriptionOfFeature';
@@ -51,17 +52,18 @@ export class FeatureLayoutComponent extends TypeFeatureComponent implements OnIn
 
     ngOnInit() {
         super.ngOnInit();
-		this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
+								this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
             this.rContext = renderingContext;
             this.imagePlacementValue = this.utilsService.getFirstCategoryValue(this.imagePlacement, 'right', true)
         });
+								this.safeSubscribe(this.onReadMoreLink, (link) => {
+												this.useRouterLink = this.utilsService.useRouterLink(link);
+								})
     }
 
     ngOnDestroy () {
         super.ngOnDestroy();
     }
-
-
 
     isHeaderSet(): boolean {
         return (this.rContext.elements[this.HEADLINE_KEY].value && this.featureHeadline.length > 0);

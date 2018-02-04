@@ -58,7 +58,11 @@ export class WchSlickComponent implements OnDestroy, AfterViewInit {
 				//go to the first slide
 				this.carouselInstance.slickGoTo(0);
 			});
-			$(this.elem.nativeElement).slick(this.config);
+			try {
+				$(this.elem.nativeElement).slick(this.config);
+			} catch (e) {
+				console.error('error in carousel slick ', e);
+			}
 
 		})
 	}
@@ -94,8 +98,14 @@ export class WchSlickComponent implements OnDestroy, AfterViewInit {
 	}
 
 	public unslick() {
-		this.zone.run(() => {
-			this.carouselInstance.unslick();
+		this.zone.runOutsideAngular(() => {
+			if(this.carouselInstance) {
+				try {
+					this.carouselInstance.unslick();
+				} catch (e) {
+					console.error('error in carousel unslick ', e);
+				}
+			}
 		});
 	}
 

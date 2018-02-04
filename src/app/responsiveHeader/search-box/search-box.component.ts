@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, NavigationExtras, Router} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 import {Constants} from "../../Constants";
@@ -13,6 +13,8 @@ declare var $: any;
   styleUrls: ['./search-box.component.scss']
 })
 export class SearchBoxComponent implements OnDestroy {
+
+  @Output() onSearch = new EventEmitter<boolean>();
 
   query: string = '';
   navSub: Subscription;
@@ -33,8 +35,7 @@ export class SearchBoxComponent implements OnDestroy {
   }
 
   search(){
-
-    $('#toggleMenu').foundation('toggleMenu');
+    this.onSearch.emit();
     let navigationExtras: NavigationExtras = {
       queryParams: { 'searchTerm': this.query }
     };

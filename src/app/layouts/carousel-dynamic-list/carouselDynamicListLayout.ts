@@ -34,8 +34,6 @@ import {UtilsService} from '../../common/utils/utils.service';
   styleUrls: ['./carouselDynamicListLayout.scss']
 })
 export class CarouselDynamicListLayoutComponent extends TypeDynamicListComponent implements OnInit, OnDestroy {
-    @Input()
-    renderingContext: RenderingContext;
 
     constants: any = Constants;
 

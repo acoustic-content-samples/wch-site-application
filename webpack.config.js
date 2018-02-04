@@ -4,14 +4,16 @@ const path = require('path');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postcssUrl = require('postcss-url');
 const cssnano = require('cssnano');
 
 const { NoEmitOnErrorsPlugin, SourceMapDevToolPlugin, NamedModulesPlugin } = require('webpack');
 const { GlobCopyWebpackPlugin, BaseHrefWebpackPlugin } = require('@angular/cli/plugins/webpack');
-const { CommonsChunkPlugin, UglifyJsPlugin } = require('webpack').optimize;
+const { CommonsChunkPlugin } = require('webpack').optimize;
 const { AotPlugin } = require('@ngtools/webpack');
+
 
 const nodeModules = path.join(process.cwd(), 'node_modules');
 const realNodeModules = fs.realpathSync(nodeModules);
@@ -180,13 +182,18 @@ module.exports = {
 		{
 			"test": /\.svg$/,
 			"exclude": [/src[\\\/]app[\\\/]components[\\\/]generic[\\\/]carousel[\\\/]images/,
-						/src[\\\/]app[\\\/]components[\\\/]search-box[\\\/]images/],
+						/src[\\\/]app[\\\/]responsiveHeader[\\\/]search-box[\\\/]images/],
 			"loader": 'svg-sprite-loader'
 		}, {
 			"test": /\.svg$/,
 			"include": [/src[\\\/]app[\\\/]components[\\\/]generic[\\\/]carousel[\\\/]images/,
-						/src[\\\/]app[\\\/]components[\\\/]search-box[\\\/]images/],
-			"loader": 'file-loader'
+						/src[\\\/]app[\\\/]responsiveHeader[\\\/]search-box[\\\/]images/],
+			"loader": 'file-loader',
+			"options": {
+				"name": '[name].[ext]',
+				"publicPath": "oslo/svg/",
+				"outputPath": 'oslo/svg/'
+			}
 		},
 	  {
 		"test": /\.(jpg|png|gif|otf|ttf|woff|woff2|cur|ani)$/,
@@ -326,10 +333,6 @@ if(process.env.NODE_ENV === 'production'){
 		"tsConfigPath": path.resolve(__dirname, "src/tsconfig.aot.json")
 	}));
 	module.exports.plugins.push(new UglifyJsPlugin({
-		compress: {warnings: false},
-		mangle: {
-			except: ['require']
-		},
 		sourceMap: false
 	}));
 }

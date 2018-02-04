@@ -1,30 +1,31 @@
 <div id="{{renderingContext.id}}" class="grid-container">
-	<div *ngIf="numFound > 0" class="grid-x grid-margin-x">
-		<div *ngIf="!inFlight" class="large-10 medium-9 small-8 cell results">
-			<div *ngIf="numFound === 1"> {{numFound}} search result for <strong>"{{searchTerm}}"</strong></div>
-			<div *ngIf="numFound > 1"> {{numFound}} search results for <strong>"{{searchTerm}}"</strong></div>
-		</div>
-		<div *ngIf="inFlight" class="large-12 medium-12 small-12">
-			<div class="loading">searching...</div>
-		</div>
-		<div class="large-4 medium-6 cell search-result-item" *ngFor="let item of searchResults; trackBy: trackByComponentId" [@itemAnim]>
-			<wch-content 	[layoutMode]="constants.SUMMARY" [id]="item.contentId"></wch-content>
-		</div>
-	</div>
-
-	<div *ngIf="numFound === 0 || searchError" class="grid-x grid-margin-x">
-		<div class="medium-12 cell">
-			<div *ngIf="!inFlight" class="results">
-				<p>Searching for "{{searchTerm}}" doesn't return any good matches.</p>
-				<p>Try your search again with a different term or browse our recommendations.</p>
+	<div *ngIf="searchTerm">
+		<div *ngIf="numFound > 0 && !searchError" class="grid-x grid-margin-x">
+			<div *ngIf="!inFlight" class="large-10 medium-9 small-8 cell results">
+				<div *ngIf="numFound === 1"> {{numFound}} search result for <strong>"{{searchTerm}}"</strong></div>
+				<div *ngIf="numFound > 1"> {{numFound}} search results for <strong>"{{searchTerm}}"</strong></div>
 			</div>
 			<div *ngIf="inFlight" class="large-12 medium-12 small-12">
 				<div class="loading">searching...</div>
 			</div>
+			<div class="large-4 medium-6 cell search-result-item" *ngFor="let item of searchResults; trackBy: trackByComponentId" [@itemAnim]>
+				<wch-content 	[layoutMode]="constants.SUMMARY" [id]="item.contentId"></wch-content>
+			</div>
 		</div>
-		<div *ngIf="suggestedArticles" class="medium-12 cell">
-			<wch-contentref [renderingContext]="suggestedArticles">
-			</wch-contentref>
+		<div *ngIf="numFound === 0 || searchError" class="grid-x grid-margin-x">
+			<div class="medium-12 cell">
+				<div *ngIf="!inFlight" class="results">
+					<p>Searching for "{{searchTerm}}" doesn't return any good matches.</p>
+					<p>Try your search again with a different term or browse our recommendations.</p>
+				</div>
+				<div *ngIf="inFlight" class="large-12 medium-12 small-12">
+					<div class="loading">searching...</div>
+				</div>
+			</div>
+			<div *ngIf="suggestedArticles" class="medium-12 cell">
+				<wch-contentref [renderingContext]="suggestedArticles">
+				</wch-contentref>
+			</div>
 		</div>
 	</div>
 	<div *ngIf="!searchTerm" class="grid-x grid-margin-x">
@@ -32,6 +33,6 @@
 	</div>
 
 	<div id="loadIcon" #loadIcon >
-		<div *ngIf="moreToLoad() && !inFlight && !searchError" class="loading">Loading...</div>
+		<div *ngIf="moreToLoad() && searchTerm && !inFlight && !searchError" class="loading">Loading...</div>
 	</div>
 </div>

@@ -18,59 +18,63 @@ import {
 	Input,
 	OnDestroy,
 	AfterViewInit,
-	ViewChildren,
-	ViewChild,
-	QueryList,
-	ElementRef,
-	ViewEncapsulation,
-	NgZone
+	ViewEncapsulation
 } from '@angular/core';
 
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-import {LayoutComponent, RenderingContext, AbstractRenderingComponent} from 'ibm-wch-sdk-ng';
+import {RenderingContext} from 'ibm-wch-sdk-ng';
 import {ConfigServiceService} from '../common/configService/config-service.service';
 import {Constants} from '../Constants';
 import {Subscription} from 'rxjs/Subscription';
-Foundation.addToJquery($);
 
 @Component({
-	selector: 'wch-header',
-	styleUrls: ['./wch-header.scss'],
-	templateUrl: './wch-header.html',
+	selector: 'responsive-header',
+	styleUrls: ['./responsive-header.scss'],
+	templateUrl: './responsive-header.html',
 	encapsulation: ViewEncapsulation.None
 })
-export class WchHeaderComponent implements AfterViewInit, OnDestroy {
+export class ResponsiveHeaderComponent implements AfterViewInit, OnDestroy {
 	@Input()
 	public set renderingContext(aValue: RenderingContext) {
 		this.rc = aValue;
+		if(aValue) {
+			if(this._hasPagesChanged(aValue.context.site.pages)){
+				this.pages = aValue.context.site.pages;
+			}
+		}
 		this.cachedChildren = new Map<string, any[]>();
 	}
 
-	@ViewChildren('navLoop') navLoop: QueryList<any>;
-	@ViewChild('dropdownToggle') dropdownToggle: ElementRef;
 
 	rc: RenderingContext;
 	headerConfig: any;
 	public readonly LOGO: string = 'websiteLogo';
 	configSub: Subscription;
-	navSub: Subscription;
-	navInitialized = false;
 	cachedChildren = new Map<string, any[]>();
+	pageToggles = new Map<string, boolean>();
+	mobileNavToggle:boolean = false;
+	pages: Array<any> = [];
 
 
-	constructor(configService: ConfigServiceService, private zone: NgZone) {
-
+	constructor(configService: ConfigServiceService) {
 		this.configSub = configService.getConfig(Constants.HEADER_CONFIG).subscribe((context) => {
 			this.headerConfig = context;
 		});
 
 	}
 
-	trackByPageId (index, page) {
-		return page.pageID;
+	_hasPagesChanged(newPages){
+		let current = newPages || [];
+		let previous = this.pages || [];
+
+		return (JSON.stringify(current) != JSON.stringify(previous));
+	}
+
+	trackByPageId(index, page){
+		return `${page.id}:${page.url}`;
 	}
 
 	isImageURLAvailable(elem): boolean {
@@ -79,9 +83,6 @@ export class WchHeaderComponent implements AfterViewInit, OnDestroy {
 
 	ngOnDestroy() {
 		this.configSub.unsubscribe();
-		this.navSub.unsubscribe();
-		$('#header').foundation('destroy');
-		this.navInitialized = false;
 	}
 
 	getURL(img) {
@@ -89,14 +90,40 @@ export class WchHeaderComponent implements AfterViewInit, OnDestroy {
 		return this.rc.context.hub.deliveryUrl['origin'] + this.headerConfig.elements[img].renditions.default.url;
 	}
 
-	isSelected(page: any) {
-		return this.rc.id === page.contentId;
+	toggleMobileNav(){
+		this.mobileNavToggle = !this.mobileNavToggle;
+	}
+
+	/*
+		When the search form is submitted we want to force the mobileNav to collapse
+	 */
+	closeMobileNav() {
+		this.mobileNavToggle = false;
+	}
+
+	/*
+		Toggle submenu by parent page,  on mouseleave we want to force the submenu to close
+	 */
+	toggleSubmenu(page, forceClose) {
+		if(this.hasVisibleChildren(page)) {
+			if(forceClose){
+				this._setPageToggle(page, false);
+			} else {
+				this._setPageToggle(page, !this.getPageToggle(page));
+			}
+		}
+	}
+
+	getPageToggle(page){
+		return this.pageToggles.get(page) || false;
+	}
+
+	_setPageToggle(page, value) {
+		this.pageToggles.set(page, value);
 	}
 
 	menuItemSelected() {
-		this.zone.runOutsideAngular(() => {
-			$(this.dropdownToggle.nativeElement).foundation('toggleMenu');
-		});
+		this.toggleMobileNav();
 	}
 
 
@@ -123,17 +150,6 @@ export class WchHeaderComponent implements AfterViewInit, OnDestroy {
 
 
 	ngAfterViewInit() {
-		this.navSub = this.navLoop.changes.subscribe(item => {
-			if (this.navInitialized) {
-				this.zone.runOutsideAngular(()=> {
-					Foundation.reInit(['dropdown-menu', 'responsive-menu', 'responsive-toggle'])
-				})
-			} else {
-				this.zone.runOutsideAngular(() => {
-					$('#header').foundation();
-					this.navInitialized = true;
-				});
-			}
-		});
+
 	}
 }

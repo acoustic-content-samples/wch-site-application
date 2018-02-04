@@ -3,14 +3,16 @@
 		<div class="feature-copy-content">
 			<h2 wchEditable="featureHeadline" *ngIf="isHeaderSet()">{{onFeatureHeadline | async}}</h2>
 			<div wchEditable="descriptionOfFeature" class="text-content" [innerHTML]="onDescriptionOfFeature | async | formattedText:html"></div>
-			<a wchEditable="readMoreLink" *ngIf="isButtonLinkSet()" class="button" [href]="(onReadMoreLink | async).linkURL">{{(onReadMoreLink | async).linkText}}</a>
+			<a wchEditable="readMoreLink" *ngIf="isButtonLinkSet() && !useRouterLink" class="button" target="_blank" [href]="(onReadMoreLink | async).linkURL">{{(onReadMoreLink | async).linkText}}</a>
+			<a wchEditable="readMoreLink" *ngIf="isButtonLinkSet() && useRouterLink" class="button" [routerLink]="(onReadMoreLink | async).linkURL">{{(onReadMoreLink | async).linkText}}</a>
 		</div>
 	</div>
 	<div *ngIf="!image.url" class="feature-no-image-copy grid-x grid-padding-x">
 		<div class="feature-no-image-copy-content medium-8 cell">
 			<h5 wchEditable="featureHeadline" *ngIf="isHeaderSet()">{{onFeatureHeadline | async}}</h5>
 			<div wchEditable="descriptionOfFeature" class="text-content" [innerHTML]="onDescriptionOfFeature | async | formattedText:html"></div>
-			<a wchEditable="readMoreLink" *ngIf="isButtonLinkSet()" class="button" [href]="(onReadMoreLink | async).linkURL">{{(onReadMoreLink | async).linkText}}</a>
+			<a wchEditable="readMoreLink" *ngIf="isButtonLinkSet() && !useRouterLink" class="button" target="_blank" [href]="(onReadMoreLink | async).linkURL">{{(onReadMoreLink | async).linkText}}</a>
+			<a wchEditable="readMoreLink" *ngIf="isButtonLinkSet() && useRouterLink" class="button" [routerLink]="(onReadMoreLink | async).linkURL">{{(onReadMoreLink | async).linkText}}</a>
 		</div>
 	</div>
 	<div *ngIf="image.url"  class="feature-img">

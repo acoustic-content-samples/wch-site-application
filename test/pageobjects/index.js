@@ -18,6 +18,7 @@
  * <br/><br/>To install: <code>npm install oob-spa-ui-pageobjects</code>
  * <br/>To import it: <code>require('oob-spa-ui-pageobjects')</code>
  *
+ *
  * @module oob-spa-ui-pageobjects
  */
 

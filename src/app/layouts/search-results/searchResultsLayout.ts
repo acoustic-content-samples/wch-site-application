@@ -9,6 +9,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Http} from "@angular/http";
 import {Constants} from "../../Constants";
 
+const lucene = require('lucene-query-string-builder');
 
 import * as _ from 'lodash';
 
@@ -16,9 +17,9 @@ declare var $: any;
 
 
 /**
- * @name searchResultsLayout
- * @id search-results-layout
- */
+	* @name searchResultsLayout
+	* @id search-results-layout
+	*/
 @LayoutComponent({
 	selector: 'search-results-layout'
 })
@@ -40,7 +41,6 @@ export class SearchResultsLayoutComponent extends TypeSearchResultsComponent imp
 	numFound: number;
 	constants: any = Constants;
 	searchTerm: string = '';
-	searchKeywords: string[] = [];
 	navSub: Subscription;
 	inFlight: boolean;
 	searchError: boolean = false;
@@ -70,10 +70,6 @@ export class SearchResultsLayoutComponent extends TypeSearchResultsComponent imp
 					this.start = 0;
 					this.searchError = false;
 					this.searchTypes = Constants.PAGE_TYPES_SEARCHED;
-					this.searchKeywords = searchTerm.split(/[\s&#.,]/);
-					this.searchKeywords.forEach(function(word, index, array) {
-						array[index] = word.replace(/[-[\]{}()+\-*"&!~?:\\^|]/g, '\\$&');
-					});
 					this._search();
 				}
 			});
@@ -111,19 +107,55 @@ export class SearchResultsLayoutComponent extends TypeSearchResultsComponent imp
 		);
 	}
 
+	_getTerms(){
+		const builder = lucene.builder((str) => {
+			if((str.charAt(0) === '"') && str.charAt(str.length - 1) === '"'){
+				let term = str;
+				return lucene.group(lucene.or(
+					lucene.field('text', term),
+					lucene.field('name', term)
+				));
+			} else {
+				let fields = [];
+				str.trim().split(/[\s]/).forEach((term) => {
+					fields.push(lucene.group(
+						lucene.or(
+							lucene.field('text', term),
+							lucene.field('name', term)
+						)))
+				});
+				return lucene.group(lucene.and(...fields));
+			}
+		});
+		return encodeURIComponent(builder(this.searchTerm));
+	}
+
+	_getTypes() {
+		if (this.searchTypes.length === 0)	{
+			return '';
+		}
+
+		const builder = lucene.builder((str) => {
+				let fields = [];
+				this.searchTypes.forEach((item) => {
+					fields.push(lucene.field('type', lucene.term(item)));
+				});
+				return lucene.group(lucene.or(...fields));
+		});
+		return encodeURIComponent(`&fq=` + builder(this.searchTerm));
+	}
 
 	_search() {
 		let apiUrl = (window.location.hostname === 'localhost') ? Constants.apiUrl : `${window.location.protocol}//${window.location.hostname}/api/${window.location.pathname.split('/')[1]}`;
-		let textQuery = this.searchKeywords.reduce((query, currentVal) => `${query} AND (text:*${currentVal}* OR name:*${currentVal}*)`, '');
-		let typeQuery = this.searchTypes.reduce((types, currentVal, index) => {
-			return (index === 0) ? `&fq=type:"${currentVal}"` : `${types} OR type:"${currentVal}"`
-		}, '');
-
-		let searchURL = `${apiUrl}/delivery/v1/search?q=siteId:default`
-			+ typeQuery
-			+ `&fq={!join from=id to=aggregatedContentIds}classification:content`
-			+ textQuery
+		let baseUrl = `${apiUrl}/delivery/v1/search`;
+		let queryString = `?q=siteId:default`
+			+ this._getTypes()
+			+ `&fq={!join from=id to=aggregatedContentIds}classification:content AND ${this._getTerms()}`
 			+ `&rows=${this.rowsPerRequest}&start=${this.start * this.rowsPerRequest}&fl=*`;
+
+
+		let searchURL = `${baseUrl}${queryString}`;
+		console.log(`searchURL: ${searchURL}`);
 
 		this.start++;
 		this.http.get(searchURL).map((response) => {
@@ -137,6 +169,7 @@ export class SearchResultsLayoutComponent extends TypeSearchResultsComponent imp
 			},
 			(err) => {
 				this.searchError = true;
+				this.inFlight = false;
 			});
 	}
 
@@ -153,5 +186,9 @@ export class SearchResultsLayoutComponent extends TypeSearchResultsComponent imp
 	ngOnDestroy() {
 		super.ngOnDestroy();
 		this.navSub.unsubscribe();
+		$(window).off(
+			'scroll',
+			_.throttle(this._scrollHandler, 300)
+		);
 	}
 }

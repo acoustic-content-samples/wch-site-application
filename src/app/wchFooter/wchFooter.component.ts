@@ -72,7 +72,7 @@ export class WchFooterComponent implements OnInit, OnDestroy {
 	}
 
 	trackByPageId (index, page) {
-		return page.pageID;
+		return page.id;
 	}
 
 	isImageURLAvailable(elem): boolean {

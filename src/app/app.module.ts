@@ -25,14 +25,14 @@ import {RouterModule, Routes} from '@angular/router';
 
 import { Ng2LoggerFactory } from './common/Ng2LoggerFactory';
 
+import 'script-loader!jquery';
 import 'script-loader!foundation-sites/dist/js/foundation.js';
 
 import {WchNgModule, PageComponent, SiteBootstrap, Site, WchLoggerFactory} from 'ibm-wch-sdk-ng';
 import {WchNgEditModule} from 'ibm-wch-sdk-ng-edit';
 
-
-import {WchHeaderComponent} from './wchHeader/wchHeader.component';
 import {WchFooterComponent} from './wchFooter/wchFooter.component';
+import { ResponsiveHeaderModule } from './responsiveHeader/responsiveMenu.module';
 import {AppComponent} from './app.component';
 import {environment} from './environment/environment';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
@@ -46,7 +46,6 @@ import { DesignArticleSummaryComponent } from './layouts/design-article-summary/
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import { SearchBoxComponent } from './components/search-box/search-box.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 const pageRoutes: Routes = [
@@ -70,6 +69,7 @@ export function HttpLoaderFactory(http: Http) {
 		GenericLayoutModule,
 		InfiniteScrollModule,
 		BrowserAnimationsModule,
+		ResponsiveHeaderModule,
 		SAMPLE_MODULE,
 		TranslateModule.forRoot({
 			loader: {
@@ -81,12 +81,10 @@ export function HttpLoaderFactory(http: Http) {
 	],
 	declarations: [
 		AppComponent,
-		WchHeaderComponent,
 		WchFooterComponent,
 		PageNotFoundComponent,
 		ArticleBodyImageComponent,
 		DesignArticleSummaryComponent,
-		SearchBoxComponent,
 	    ...LAYOUTS],
 	providers: [
 		{provide: WchLoggerFactory, useClass: Ng2LoggerFactory},

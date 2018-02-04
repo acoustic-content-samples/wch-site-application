@@ -66,19 +66,31 @@ export class SignUpLayoutComponent extends TypeSignUpComponent implements OnInit
 
     ngAfterViewInit() {
     	super.ngAfterViewInit();
-        this.reveal = new Foundation.Reveal($(`#${this.itemId}`));
+    	try {
+						this.reveal = new Foundation.Reveal($(`#${this.itemId}`));
+					} catch (e) {
+    		console.error('error in signup layout afterview init ', e);
+					}
     }
 
     ngOnDestroy() {
         // clean up reveal modal
-        const elem = this.reveal.$element.foundation('destroy');
-        $(elem).remove();
+					try {
+						const elem = this.reveal.$element.foundation('destroy');
+						$(elem).remove();
+					} catch (e) {
+						console.error('error in signup layout ondestroy ', e);
+					}
     	super.ngOnDestroy();
     }
 
     openModal() {
         this.addEmail();
-        $(this.revealModal.nativeElement).foundation('open');
+					try {
+						$(this.revealModal.nativeElement).foundation('open');
+					} catch (e) {
+						console.error('error in signup layout openModal ', e);
+					}
     }
 
     addEmail() {

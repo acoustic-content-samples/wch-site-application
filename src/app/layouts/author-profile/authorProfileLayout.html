@@ -3,7 +3,7 @@
 		<img wchEditable="profilePicture" [src]="getImageUrl()" [alt]="profilePicture.altText ? (onProfilePicture | async).altText : ''" [title]="profilePicture.altText ? (onProfilePicture | async).altText : ''"/>
 	</div>
 	<div>
-		<h5 wchEditable="name">{{(onName | async)}}</h5>
+		<h5 wchEditable="name">{{(onName | async | uppercase)}}</h5>
 		<div wchEditable="shortBio" [innerHTML]="onShortBio | async | formattedText:'html'"></div>
 	</div>
 </div>
