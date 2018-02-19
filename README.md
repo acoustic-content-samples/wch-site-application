@@ -19,7 +19,7 @@ Not sure if you have the Oslo artifacts?
   * Search for 'SDK version' to get the SDK version included in the SPA
 		
 ## Documentation
-1. [Getting started with the sample site – Oslo](https://developer.ibm.com/customer-engagement/tutorials/getting-started-sample-site-oslo/)
+1. [Roadmap for developing your own site](https://developer.ibm.com/customer-engagement/tutorials/roadmap-developing-your-own-website/#tocoverview)
 2. [Site structure (Content model-How the sample site is built)](https://developer.ibm.com/customer-engagement/docs/wch/developing-your-own-website/content-model-oslo-website/)
 3. [Programming Model](/doc/README-programming-model.md)
 4. [Watson Content Hub - Sites Development Overview](https://ibm.box.com/s/0od1ta7hsmkxzl2i8y08o06zqwa0pzbq)
@@ -30,7 +30,7 @@ Not sure if you have the Oslo artifacts?
 At the beginning of February we have updated the Oslo starter site with the following features:
 - added inline editing for links
 - bug fixes and performance improvements
-- also check out our new HTML snippet sample here: 
+- also check out our new HTML snippet sample here: https://github.com/ibm-wch/sample-html-snippet
 
 At the beginning of January we have updated the Oslo starter site with the following features:
 - update of Angular to Angular 4.4.6
