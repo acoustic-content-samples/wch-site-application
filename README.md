@@ -19,7 +19,7 @@ Not sure if you have the Oslo artifacts?
   * Search for 'SDK version' to get the SDK version included in the SPA
 
 You can compare the Build date with the date shown in the "Update the sample site" widget on the Home page to see if your deployed sample is older than the latest sample code.
-Instructions on how to update Oslo to the latest can be found in the package that can be downloaded from the "Update the sample site" widget on the Home page of WCH.
+Instructions on how to update Oslo to the latest can be found here: [Updating your Oslo sample](https://developer.ibm.com/customer-engagement/tutorials/updating-oslo-sample/).
   
 ## Documentation
 1. [Roadmap for developing your own site](https://developer.ibm.com/customer-engagement/tutorials/roadmap-developing-your-own-website/#tocoverview)
@@ -28,6 +28,7 @@ Instructions on how to update Oslo to the latest can be found in the package tha
 4. [Watson Content Hub - Sites Development Overview](https://ibm.box.com/s/0od1ta7hsmkxzl2i8y08o06zqwa0pzbq)
 5. [Customizing the sample website](https://developer.ibm.com/customer-engagement/docs/wch/developing-your-own-website/customizing-sample-site/)
 6. [Resources](#resources)
+7. [Updating your Oslo sample](https://developer.ibm.com/customer-engagement/tutorials/updating-oslo-sample/)
 
 ## Updates
 At the end of February we have updated the Oslo starter site with the following features:
