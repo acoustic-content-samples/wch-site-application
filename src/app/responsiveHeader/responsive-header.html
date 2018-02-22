@@ -1,42 +1,28 @@
 <nav class="wch-responsive-menu grid-container">
-	<div id="wch-toggleMenu" class="title-bar hide-for-large">
-		<button class="menu-icon" type="button" (click)="toggleMobileNav()"></button>
-		<div class="logo-container">
-			<a href="#">
-				<h1 *ngIf="isImageURLAvailable(LOGO)" class="logo" [style.background-image]="'url(' + getURL(LOGO) + ')'"></h1>
-			</a>
-		</div>
-	</div>
-	<div class="top-bar stacked-for-medium" [class.mobileNav]="mobileNavToggle" id="wch-nav-menu">
-		<div class="top-bar-left show-for-large">
+		<div id="wch-toggleMenu" class="title-bar hide-for-large">
+			<button class="menu-icon" type="button" (click)="toggleMobileNav()"></button>
 			<div class="logo-container">
 				<a href="#">
-					<h1 class="logo" *ngIf="isImageURLAvailable(LOGO)" [style.background-image]="'url(' + getURL(LOGO) + ')'">
-					</h1>
+					<h1 *ngIf="isImageURLAvailable(LOGO)" class="logo" [style.background-image]="'url(' + getURL(LOGO) + ')'"></h1>
 				</a>
 			</div>
 		</div>
-		<div class="top-bar-right">
-			<div class="menu-container">
-				<ul class="wch-menu" role="menubar">
-					<li class="wch-menu-item" role="menuitem" [attr.aria-expanded]="getPageToggle(page)" (click)="toggleSubmenu(page)" (mouseenter)="toggleSubmenu(page)" (mouseleave)="toggleSubmenu(page, true)" *ngFor="let page of rc?.context?.site.pages;trackBy: trackByPageId"  [class.has-children]="hasVisibleChildren(page)">
-						<a *ngIf="page && !page.hideFromNavigation" href [routerLink]="getRouteURL(page.route)" routerLinkActive="active">
-							<span (click)="menuItemSelected()" class="limit-page-name" title="{{page.name}}">{{page.name}}</span>
-						</a>
-						<ul class="wch-menu wch-sub-menu" role="menu" *ngIf="getPageToggle(page)">
-							<li class="wch-menu-item" role="menuitem" *ngFor="let child of getVisibleChildren(page)">
-								<a (click)="menuItemSelected()" href [routerLink]="getRouteURL(child.route)" routerLinkActive="active">
-									<span class="limit-page-name" title="{{child.name}}">{{child.name}}</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<div class="searchBox">
-					<app-search-box (onSearch)="closeMobileNav()"></app-search-box>
+		<div class="top-bar stacked-for-medium" [class.mobileNav]="mobileNavToggle" id="wch-nav-menu">
+			<div class="top-bar-left show-for-large">
+				<div class="logo-container">
+					<a href="#">
+						<h1 class="logo" *ngIf="isImageURLAvailable(LOGO)" [style.background-image]="'url(' + getURL(LOGO) + ')'">
+						</h1>
+					</a>
+				</div>
+			</div>
+			<div class="top-bar-right">
+				<div class="menu-container">
+					<wch-menu (onMenuItemSelected)="toggleMobileNav()" [pages]="rc?.context?.site.pages"></wch-menu>
+					<div class="searchBox">
+						<app-search-box (onSearch)="closeMobileNav()"></app-search-box>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
 </nav>

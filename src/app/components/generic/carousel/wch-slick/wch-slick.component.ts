@@ -19,7 +19,7 @@ import {
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 
-declare var $: any;
+import * as $ from 'jquery';
 
 @Component({
 	selector: 'wch-slick',

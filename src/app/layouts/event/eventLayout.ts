@@ -14,75 +14,71 @@
  * limitations under the License.
  *******************************************************************************/
 import {
-    LayoutComponent, RenderingContext, RenderingContextBinding
+	LayoutComponent, RenderingContext, RenderingContextBinding
 } from 'ibm-wch-sdk-ng';
 import {
-    AfterViewInit, Component, ElementRef, OnChanges, OnDestroy, OnInit, SimpleChanges,
-    ViewChild
+	AfterViewInit, Component, ElementRef, OnChanges, OnDestroy, OnInit, SimpleChanges,
+	ViewChild
 } from '@angular/core';
-import { TypeEventComponent } from '../../components/event/typeEventComponent';
+import {TypeEventComponent} from '../../components/event/typeEventComponent';
 import {Subscription} from 'rxjs/Subscription';
 
-declare var $: any;
-declare var Foundation: any;
-
+import * as $ from 'jquery';
 
 /**
  * @name eventLayout
  * @id event-layout
  */
 @LayoutComponent({
-    selector: 'event-layout'
+	selector: 'event-layout'
 })
 @Component({
-  selector: 'app-event-layout-component',
-  templateUrl: './eventLayout.html',
-  styleUrls: ['./eventLayout.scss']
+	selector: 'app-event-layout-component',
+	templateUrl: './eventLayout.html',
+	styleUrls: ['./eventLayout.scss']
 })
 export class EventLayoutComponent extends TypeEventComponent implements OnInit, OnDestroy, AfterViewInit {
 
-    @ViewChild('event') eventElem: ElementRef;
+	@ViewChild('event') eventElem: ElementRef;
 
-    rContext: RenderingContext;
-    eventId: any;
-    reveal: any;
-
-
-    constructor() {
-        super();
-    }
-
-    ngOnInit() {
-        super.ngOnInit();
-
-        this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
-            this.rContext = renderingContext;
-            this.eventId = `event-card-${this.rContext.id}`;
-        });
-    }
-
-    ngAfterViewInit() {
-        super.ngAfterViewInit();
-        try {
-									this.reveal = new Foundation.Reveal($(`#${this.eventId}`));
-								} catch (e) {
-        	console.error('error in eventLayout reveal ', e);
-								}
-
-    }
+	rContext: RenderingContext;
+	eventId: any;
+	reveal: any;
 
 
-    ngOnDestroy () {
-        try {
-            const elem = this.reveal.$element.foundation('destroy');
-            $(elem).remove();
-        } catch (e) {
-									console.error('error in eventLayout on destroy ', e);
-        }
-        super.ngOnDestroy();
+	constructor() {
+		super();
+	}
+
+	ngOnInit() {
+		super.ngOnInit();
+
+		this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
+			this.rContext = renderingContext;
+			this.eventId = `event-card-${this.rContext.id}`;
+		});
+	}
+
+	ngAfterViewInit() {
+		super.ngAfterViewInit();
+		try {
+			this.reveal = new Foundation.Reveal($(`#${this.eventId}`));
+		} catch (e) {
+			console.error('error in eventLayout reveal ', e);
+		}
+
+	}
 
 
-    }
+	ngOnDestroy() {
+		try {
+			const elem = this.reveal.$element.foundation('destroy');
+			$(elem).remove();
+		} catch (e) {
+			console.error('error in eventLayout on destroy ', e);
+		}
+		super.ngOnDestroy();
+	}
 
 
 }

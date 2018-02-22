@@ -1,0 +1,3 @@
+<ul class="wch-menu"  [class.wch-sub-menu]="level > 1" role="menubar">
+	<wch-menu-item (onMenuItemSelected)="menuItemSelected($event)"  [page]="page" [level]="level" *ngFor="let page of pages;trackBy: trackByPageId"></wch-menu-item>
+</ul>

@@ -20,13 +20,14 @@ import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
-import {HttpModule, Http} from '@angular/http';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
+import {AngularSvgIconModule} from 'angular-svg-icon';
 
 import { Ng2LoggerFactory } from './common/Ng2LoggerFactory';
 
-import 'script-loader!jquery';
-import 'script-loader!foundation-sites/dist/js/foundation.js';
+import 'jquery';
+import 'foundation-sites';
 
 import {WchNgModule, PageComponent, SiteBootstrap, Site, WchLoggerFactory} from 'ibm-wch-sdk-ng';
 import {WchNgEditModule} from 'ibm-wch-sdk-ng-edit';
@@ -53,16 +54,17 @@ const pageRoutes: Routes = [
 	{path: '**', component: PageComponent}
 ];
 
-export function HttpLoaderFactory(http: Http) {
+export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http, './oob-spa/locales/', '.json');
 }
 
 @NgModule({
 	imports: [
+		AngularSvgIconModule,
 		RouterModule.forRoot(pageRoutes),
 		BrowserModule,
 		FormsModule,
-		HttpModule,
+		HttpClientModule,
 		WchNgModule.forRoot(environment),
 		WchNgEditModule.forRoot(),
 		SiteCommonModule,
@@ -75,7 +77,7 @@ export function HttpLoaderFactory(http: Http) {
 			loader: {
 				provide: TranslateLoader,
 				useFactory: HttpLoaderFactory,
-				deps: [ Http ]
+				deps: [ HttpClient ]
 			}
 		})
 	],

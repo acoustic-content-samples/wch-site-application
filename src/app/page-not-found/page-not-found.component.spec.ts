@@ -16,7 +16,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ConfigServiceService } from './../common/configService/config-service.service';
 import { PageNotFoundComponent } from './page-not-found.component';
-import {HttpModule, Http} from '@angular/http';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
 
 
 describe('PageNotFoundComponent', () => {
@@ -27,7 +27,7 @@ describe('PageNotFoundComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ PageNotFoundComponent ],
       imports: [
-        HttpModule
+        HttpClientModule
       ],
       providers: [ConfigServiceService]
     });

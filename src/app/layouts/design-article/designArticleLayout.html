@@ -7,7 +7,7 @@
 		<h2 wchEditable="heading" class="headline">{{onHeading | async}}</h2>
 		<div class="article-details">
 			<div class="byline-and-date">
-				<span *ngIf="author">By <b wchEditable="author" class="author">{{onAuthor | async}}</b>, </span><span wchEditable="date">{{ date | date:'yMMMMd'}}</span>
+				<span *ngIf="author">By <b wchEditable="author" class="author">{{onAuthor | async}}</b>, </span><span wchEditable="date">{{ date | date:'MMMM d, y'}}</span>
 			</div>
 			<app-share-social [renderingContext]="rContext"></app-share-social>
 		</div>

@@ -20,8 +20,7 @@ import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from
 import { TypeSignUpComponent } from '../../components/sign-up/typeSignUpComponent';
 import {UtilsService} from '../../common/utils/utils.service';
 
-declare var $: any;
-declare var Foundation: any;
+import * as $ from 'jquery';
 
 /**
  * @name signUpLayout

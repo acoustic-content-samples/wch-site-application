@@ -13,15 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-import {AfterViewInit, Component, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import { environment } from '../environments/environment';
+
+import {Component, OnDestroy, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {RenderingContext} from 'ibm-wch-sdk-ng';
 import 'rxjs/add/operator/filter';
 import {Observable} from 'rxjs/Observable';
 import {isNil} from 'lodash';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {Constants} from './Constants';
+import {NavigationEnd, Router} from '@angular/router';
 import {HighlightService} from './common/highlightService/highlight.service';
 import { TranslateService } from '@ngx-translate/core';
+import {Subscription} from "rxjs/Subscription";
+import { Ng2LoggerFactory } from './common/Ng2LoggerFactory';
+import { Logger } from 'ibm-wch-sdk-ng';
 
 @Component({
 	encapsulation: ViewEncapsulation.None,
@@ -30,18 +34,29 @@ import { TranslateService } from '@ngx-translate/core';
 	templateUrl: './app.component.html'
 
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 	@Output()
 	onRenderingContext: Observable<RenderingContext>;
+	routerSub: Subscription;
+	logger: Logger = new Ng2LoggerFactory().create('AppComponent');
 
 	constructor(router: Router, private highlightService: HighlightService, private translate: TranslateService) {
-		console.info(`Build date: ${version}`);
-		console.info(`SDK version: ${sdkVersion}`);
+		console.info(`Build date: ${environment.version}`);
+		console.info(`SDK version: ${environment.sdkVersion}`);
+		this.routerSub = router.events
+			.filter(event => event instanceof NavigationEnd)
+			.subscribe(( event: NavigationEnd ) => {
+				this.logger.info('SPA navigation changed', event.url);
+			})
 	}
 
 	ngOnInit () {
 		this.translate.setDefaultLang('en');
 		this.translate.use('en');
+	}
+
+	ngOnDestroy () {
+		this.routerSub.unsubscribe();
 	}
 
 	onActivate(aEvent: any) {

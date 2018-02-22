@@ -19,9 +19,6 @@ import {RenderingContext} from 'ibm-wch-sdk-ng';
 import {ConfigServiceService} from '../common/configService/config-service.service';
 import {Constants} from '../Constants';
 import {Subscription} from 'rxjs/Subscription';
-const facebook = require('./images/icon-facebook-logo.svg');
-const twitter = require('./images/icon-twitter-logo-white.svg');
-const instagram = require('./images/icon-instagram-logo.svg');
 
 @Component({
 	selector: 'wch-footer',
@@ -33,11 +30,6 @@ const instagram = require('./images/icon-instagram-logo.svg');
 export class WchFooterComponent implements OnInit, OnDestroy {
 
 	pages: any[] = [];
-	icon: any = {
-		facebook: `#${facebook.default.id}`,
-		twitter: `#${twitter.default.id}`,
-		instagram: `#${instagram.default.id}`
-	};
 
 	configSub: Subscription;
 

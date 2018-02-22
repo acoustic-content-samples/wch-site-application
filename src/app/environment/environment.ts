@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
+import { environment as env } from '../../environments/environment';
 import { Constants } from '../Constants';
 
 const possibleTenant = window.location.pathname.split('/')[1],
@@ -21,7 +22,7 @@ const possibleTenant = window.location.pathname.split('/')[1],
 console.warn('environment.ts: possible tenant is %o and base url is %o', possibleTenant, baseUrl);
 
 export const environment = {
-  production: (ENV === 'production') ? true : false,
+  production: (env.production) ? true : false,
   apiUrl: (window.location.hostname === 'localhost') ? new URL(Constants['apiUrl']) : new URL(`${window.location.protocol}//${window.location.hostname}/api${baseUrl}`),
   deliveryUrl: (window.location.hostname === 'localhost') ? new URL(Constants['deliveryUrl']) : new URL(`${window.location.protocol}//${window.location.hostname}${baseUrl}`),
     httpOptions: {
@@ -29,3 +30,4 @@ export const environment = {
     retries: 5
   }
 };
+

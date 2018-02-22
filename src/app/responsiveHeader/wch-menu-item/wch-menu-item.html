@@ -1,0 +1,6 @@
+<li class="wch-menu-item" role="menuitem" [attr.aria-expanded]="getPageToggle(page)"  (click)="toggleSubmenu(page, false)" (mouseenter)="toggleSubmenu(page, false)" (mouseleave)="toggleSubmenu(page, true)" [class.sub-level]="level > 1" [class.has-children]="hasVisibleChildren(page)">
+	<a *ngIf="page && !page.hideFromNavigation" href [routerLink]="getRouteURL(page.route)" routerLinkActive="active">
+		<span (click)="menuItemSelected()" class="limit-page-name" title="{{page.name}}">{{page.name}}</span>
+	</a>
+	<wch-menu (onMenuItemSelected)="menuItemSelected()" *ngIf="displaySubmenu(page)" [pages]="getVisibleChildren(page)" [level]="level + 1"></wch-menu>
+</li>

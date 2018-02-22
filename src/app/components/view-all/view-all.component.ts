@@ -14,22 +14,37 @@
  * limitations under the License.
  *******************************************************************************/
 import { Component, Input, OnInit } from '@angular/core';
+import {AbstractRenderingComponent, Link, RenderingContextBinding} from "ibm-wch-sdk-ng";
+import {
+	Observable
+} from 'rxjs/Observable';
 
 @Component({
-  selector: 'app-view-all',
-  templateUrl: './view-all.component.html',
-  styleUrls: ['./view-all.component.scss']
+	selector: 'app-view-all',
+	templateUrl: './view-all.component.html',
+	styleUrls: ['./view-all.component.scss']
 })
-export class ViewAllComponent implements OnInit {
+export class ViewAllComponent extends AbstractRenderingComponent implements OnInit {
 
-	@Input() renderingContext;
+	@RenderingContextBinding('link.viewAllLink')
+	readonly onViewAllLink: Observable<Link>;
 
-  constructor() { }
+	/**
+	 * @see #onViewAllLink
+	 */
+	@RenderingContextBinding()
+	readonly viewAllLink: Link;
 
-  ngOnInit() {
-  }
+	constructor() {
+		super();
+	}
+
+	ngOnInit() {
+		super.ngOnInit();
+
+	}
 
 	isButtonLinkSet(): boolean {
-		return (this.renderingContext.elements.viewAllLink && this.renderingContext.elements.viewAllLink.linkURL && this.renderingContext.elements.viewAllLink.linkURL.length > 0) ? true : false;
+		return (this.viewAllLink && this.viewAllLink.linkURL && this.viewAllLink.linkURL.length > 0) ? true : false;
 	}
 }

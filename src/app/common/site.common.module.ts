@@ -32,6 +32,7 @@ import { UtilsService } from './utils/utils.service';
 import { Link } from './link.component';
 import { ViewAllComponent } from '../components/view-all/view-all.component';
 import { ShareSocialComponent } from '../components/share-social/share-social.component';
+import {WchNgEditModule} from 'ibm-wch-sdk-ng-edit';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ShareSocialComponent } from '../components/share-social/share-social.co
 		WchNgModule.forRoot(environment),
 		CommonModule,
 		RouterModule,
-		FormsModule
+		FormsModule,
+		WchNgEditModule.forRoot(),
 	],
 	declarations: [
 		FormattedTextPipe,

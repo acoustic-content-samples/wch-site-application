@@ -18,9 +18,11 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import { } from 'flex-layout'
+import { } from 'flex-layout';
 
 import { ResponsiveHeaderComponent } from './responsiveHeader.component';
+import { WCHMenuComponent } from './wch-menu/wchMenu.component';
+import { WCHMenuItemComponent } from './wch-menu-item/wchMenuItem.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 
 
@@ -34,7 +36,9 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 	],
 	declarations: [
 		ResponsiveHeaderComponent,
-		SearchBoxComponent
+		SearchBoxComponent,
+		WCHMenuComponent,
+		WCHMenuItemComponent
 	],
 	exports: [
 		ResponsiveHeaderComponent

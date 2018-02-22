@@ -7,7 +7,7 @@ global.waitForElement = require('./test/common/PageObject').waitForElement;
 exports.config = {
   allScriptsTimeout: 11000,
   specs: [
-    './test/e2e/**/*.e2e-spec.js'
+    './e2e/**/*.e2e-spec.ts'
   ],
   capabilities: {
     'browserName': 'chrome'
@@ -21,7 +21,9 @@ exports.config = {
     print: function() {}
   },
   onPrepare() {
-
+    require('ts-node').register({
+      project: 'e2e/tsconfig.e2e.json'
+    });
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
   }
 };

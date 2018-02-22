@@ -32,7 +32,6 @@ export class Link {
 	constructor () {}
 
 	isRouterLink () {
-		console.log(this.href);
 		return !this.href.startsWith('http');
 	}
 }

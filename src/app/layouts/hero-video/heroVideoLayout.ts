@@ -21,6 +21,7 @@ import {TypeHeroVideoComponent} from '../../components/hero-video/typeHeroVideoC
 import {Subscription} from 'rxjs/Subscription';
 import {NavigationStart, Router} from '@angular/router';
 import {logger} from "codelyzer/util/logger";
+
 declare var videojs: any;
 
 /**
@@ -44,6 +45,8 @@ export class HeroVideoLayoutComponent extends TypeHeroVideoComponent implements 
 	rContext: RenderingContext;
 	routeSub: Subscription;
 
+	videoJsLoaded: Promise<any>;
+
 	itemId: string;
 	player: any;
 
@@ -51,7 +54,30 @@ export class HeroVideoLayoutComponent extends TypeHeroVideoComponent implements 
 
 	constructor(public router: Router) {
 		super();
-		 this.routeSub = router.events.filter(e => e instanceof NavigationStart).subscribe((event: NavigationStart) => {
+
+		this.videoJsLoaded = new Promise((resolve, reject) => {
+			if (!document.getElementById('videojs-script-tag')) {
+				let styleTag = document.createElement('link');
+				styleTag.setAttribute('href', '//vjs.zencdn.net/6.2.8/video-js.css');
+				styleTag.setAttribute('rel', 'stylesheet');
+				styleTag.setAttribute('async', 'true');
+				document.head.appendChild(styleTag);
+
+				let scriptTag = document.createElement('script');
+				scriptTag.setAttribute('id', 'videojs-script-tag');
+				scriptTag.setAttribute('type', 'application/javascript');
+				scriptTag.setAttribute('async', 'true');
+				scriptTag.setAttribute('src', '//vjs.zencdn.net/6.2.8/video.js');
+				scriptTag.addEventListener('load', resolve);
+				scriptTag.addEventListener('error', () => reject('Error loading script.'));
+				scriptTag.addEventListener('abort', () => reject('Script loading aborted.'));
+				document.body.appendChild(scriptTag);
+			} else {
+				resolve();
+			}
+		});
+
+		this.routeSub = router.events.filter(e => e instanceof NavigationStart).subscribe((event: NavigationStart) => {
             // clean up your markup, unhook plugins, etc.
 		 });
 	}
@@ -86,7 +112,7 @@ export class HeroVideoLayoutComponent extends TypeHeroVideoComponent implements 
 	ngAfterViewInit() {
 		super.ngAfterViewInit();
 		if (!this.player) {
-			this.player = videojs(this.itemId);
+			this.videoJsLoaded.then(() => this.player = videojs(this.itemId));
 		}
 	}
 

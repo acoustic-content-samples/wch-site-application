@@ -14,6 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
+import {environment} from '../../environments/environment';
+
 import {Level, Log} from 'ng2-logger';
 import {Logger, LoggerFactory} from 'ibm-wch-sdk-ng';
 
@@ -40,7 +42,7 @@ export class Ng2LoggerFactory implements LoggerFactory {
 		return null;
 	};
 
-	create = (name: string) => {
+	public create = (name: string) => {
 		return Log.create(name);
 
 	};
@@ -79,7 +81,7 @@ export class Ng2LoggerFactory implements LoggerFactory {
 		}
 
 		// no logging override so set production mode
-		if (ENV === 'production' && levelsEnum.length === 0) {
+		if (environment.production && levelsEnum.length === 0) {
 			// Log.setProductionMode();
 			Log.onlyLevel(Level.ERROR, Level.WARN);
 		}

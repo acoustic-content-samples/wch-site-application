@@ -16,7 +16,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Constants} from '../../Constants';
-import {Http} from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -29,7 +29,7 @@ export class ConfigServiceService {
 	public config: Map<string, any> = new Map();
 
 
-	constructor(private http: Http) {
+	constructor(private http: HttpClient) {
 
 	}
 
@@ -47,7 +47,7 @@ console.warn('config-service.service.ts: possible tenant is %o and base url is %
 		if (name === Constants.HEADER_CONFIG) {
 			const headerId = '90d184ea-eb9c-4316-97a8-9d1ebc3029fc';
 			return this.http.get(`${apiUrl}/delivery/v1/content/${headerId}`)
-				.map(res => res.json()).do(res => this.config.set(name, res))
+				.do(res => this.config.set(name, res))
 				.publishReplay(1)
 				.refCount();
 		}
@@ -55,17 +55,16 @@ console.warn('config-service.service.ts: possible tenant is %o and base url is %
 		if (name === Constants.FOOTER_CONFIG) {
 			const footerId = 'ae72d304-ad18-4bf3-b213-4a79c829e458';
 			return this.http.get(`${apiUrl}/delivery/v1/content/${footerId}`)
-				.map(res => res.json()).do(res => this.config.set(name, res))
+				.do(res => this.config.set(name, res))
 				.publishReplay(1)
 				.refCount();
 		}
 
 		const searchURL = `${apiUrl}/delivery/v1/search?q=name:%22${name}%22&fl=document:%5Bjson%5D`;
 		return this.http.get(searchURL)
-			.map((response) => {
-				const res = response.json();
-				if (res && res.numFound > 0) {
-					return response.json().documents.shift().document
+			.map((response: any) => {
+				if (response && response.numFound > 0) {
+					return response.documents.shift().document
 				} else {
 					return {};
 				}

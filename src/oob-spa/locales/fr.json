@@ -4,4 +4,3 @@
 	"missingLayoutForType": "Pour plus d'informations sur la création d'une présentation, voir <a target='_blank' href='https://developer.ibm.com/customer-engagement/tutorials/customizing-layouts-components-for-your-site/'>Personnalisation des présentations et des composants de votre site</a>",
 	"Layout missing for the specified content type. Make sure a layout exists for the content type:": "Présentation manquante pour le type de contenu spécifié. Assurez-vous qu'une présentation existe pour le type de contenu :"
 }
-

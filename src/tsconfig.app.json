@@ -1,27 +1,13 @@
 {
-	"extends": "../tsconfig.json",
-	"compilerOptions": {
-		"outDir": "../out-tsc/app",
-		"module": "es2015",
-	  "experimentalDecorators": true,
-		"baseUrl": "",
-		"types": [
-			"node"
-		]
-	},
-	"exclude": [
-		"test.ts",
-		"**/*.spec.ts",
-		"aot/",
-		"src/main.ts"
-	],
-	"files": [
-		"app/app.module.ts",
-		"main.ts"
-	],
-	"angularCompilerOptions": {
-		"genDir": "aot/",
-		"skipMetadataEmit" : true
-	}
-
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "baseUrl": "./",
+    "module": "es2015",
+    "types": []
+  },
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ]
 }

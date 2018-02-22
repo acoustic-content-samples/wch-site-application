@@ -23,10 +23,13 @@ import { Constants } from '../../Constants';
 export class ItemSortPipe implements PipeTransform {
 
   transform(items: RenderingContext[], field: string, sortOrder: string, maxItemsToDisplay: number): any {
+
     const itemType = (items && items[0] && items[0].elements[field]) ? items[0].elements[field].elementType : '';
+    let clone = (items) ? items.splice(0) : [];
     // only sort if there is a valid field to sort on
     if (itemType) {
-      items.sort((a: RenderingContext, b: RenderingContext) => {
+
+      clone.sort((a: RenderingContext, b: RenderingContext) => {
         const itemA = a.elements[field].value;
         const itemB = b.elements[field].value;
         switch (itemType) {
@@ -43,15 +46,15 @@ export class ItemSortPipe implements PipeTransform {
        reverse Date so the latest dates are first in the list
        */
       if (sortOrder === Constants.LATEST_FIRST || sortOrder === Constants.ALPHABETICAL_DESCENDING) {
-        items.reverse();
+        clone.reverse();
       }
 
       if (maxItemsToDisplay) {
-        items = items.slice(0, maxItemsToDisplay);
+        clone = clone.slice(0, maxItemsToDisplay);
       }
     }
 
-    return items;
+    return clone;
   }
 
 

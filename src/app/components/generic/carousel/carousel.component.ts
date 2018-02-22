@@ -19,7 +19,7 @@ import {
 	ViewEncapsulation,
 } from '@angular/core';
 import {RenderingContext} from 'ibm-wch-sdk-ng';
-import 'script-loader!slick-carousel';
+import 'slick-carousel';
 import {Constants} from '../../../Constants';
 
 

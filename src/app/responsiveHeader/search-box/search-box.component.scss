@@ -2,14 +2,14 @@
 
 .searchWrapper {
 
-  width: 260px;
+  width: 200px;
 
 
   input, input:focus {
     float: left;
     border: none;
     box-shadow: none;
-    max-width: 300px;
+    max-width: 250px;
     padding: 0 0 0 10px;
   }
 
@@ -64,7 +64,7 @@
     box-shadow: none;
     line-height: 1;
     transition: width 0.5s ease-in-out;
-    width: 260px;
+    width: 200px;
   }
 
   [type=search] {
@@ -72,12 +72,12 @@
   }
   .active-input {
     border-bottom: 1px solid #222;
-    width: 260px; /*Keeps search box wide when "active". Prevents shrinking on blur.*/
+    width: 200px; /*Keeps search box wide when "active". Prevents shrinking on blur.*/
   }
   [type=search]:focus.active-input {
     box-shadow: none;
     border-bottom: 1px solid #222;
-    width: 260px; /*Transitions width of search input on focus*/
+    width: 200px; /*Transitions width of search input on focus*/
   }
   .active-input ~ .search-button {
     opacity: 1;

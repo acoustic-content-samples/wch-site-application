@@ -24,7 +24,8 @@ import { WchFooterComponent } from './wchFooter.component';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { ConfigServiceService } from './../common/configService/config-service.service';
 import {
-	Http, HttpModule, XHRBackend, ResponseOptions,
+	HttpClient, HttpClientModule} from '@angular/common/http';
+import { XHRBackend, ResponseOptions,
 	Response, BaseRequestOptions
 } from '@angular/http';
 
@@ -35,7 +36,7 @@ describe('WchFooterComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [
-				HttpModule,
+				HttpClientModule,
 				CommonModule,
 				RouterTestingModule.withRoutes([
 					{ path: 'test/page/home', component: RouterMockTestComponent }

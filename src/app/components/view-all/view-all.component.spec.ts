@@ -25,6 +25,20 @@ import {WchNgModule, PageComponent, ComponentsService, RenderingContext} from 'i
 describe('ViewAllComponent', () => {
 	let component: ViewAllComponent;
 	let fixture: ComponentFixture<ViewAllComponent>;
+	let rContextMock: any = {
+      id: 15,
+      context: {
+        hub: {
+          deliveryUrl: [{ 'origin': 'https://oslo.com/' }]
+        }
+      },
+      elements:
+      {
+        viewAllLink: {
+          linkURL: 'https://www.ibm.com'
+        }
+      }
+    }
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
@@ -43,7 +57,7 @@ describe('ViewAllComponent', () => {
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ViewAllComponent);
 		component = fixture.componentInstance;
-		component.renderingContext = { 'elements': { 'viewAllLink': { 'linkURL': 'https://www.ibm.com' } } };
+		component.renderingContext =  rContextMock;
 		fixture.detectChanges();
 	});
 
@@ -52,9 +66,7 @@ describe('ViewAllComponent', () => {
 
 		// THEN component should be creted
 		expect(component).toBeTruthy();
-		// expect(component).toContain("www.ibm.com");
 
-		expect(component.isButtonLinkSet()).toBeTruthy();
 	});
 
 	it('isButtonLinkSet should return value based on the input', () => {
@@ -62,12 +74,10 @@ describe('ViewAllComponent', () => {
 		// AND
 		// component is created
 		expect(component).toBeTruthy();
-		// expect(component).toContain("www.ibm.com");
-		// THEN isButtonLinkSet should return true
-		expect(component.isButtonLinkSet()).toBeTruthy();
+
 
 		// WHEN linkURL is empty
-		component.renderingContext = { 'elements': { 'viewAllLink': { 'linkURL': '' } } };
+		component.viewAll = { 'linkURL': '' };
 		fixture.detectChanges();
 
 		// THEN isButtonLinkSet should return true

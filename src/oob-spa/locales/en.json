@@ -1,6 +1,6 @@
 {
 	"Details": "Details",
 	"Problems rendering layout template": "Problems rendering layout template",
-	"missingLayoutForType": "For information on creating a new layout, see <a target='_blank' href='https://developer.ibm.com/customer-engagement/tutorials/customizing-layouts-components-for-your-site/'>Customizing the layouts and components for your site</a>",
+	"missingLayoutForType": "For information on creating a new layout, see <a target='_blank' href='https://developer.ibm.com/customer-engagement/docs/wch/developing-your-own-website/customizing-sample-site/customizing-layouts/'>Customizing the layouts and components for your site</a>",
 	"Layout missing for the specified content type. Make sure a layout exists for the content type:": "Layout missing for the specified content type. Make sure a layout exists for the content type:"
 }

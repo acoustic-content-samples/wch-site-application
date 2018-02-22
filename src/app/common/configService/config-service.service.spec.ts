@@ -16,13 +16,13 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { ConfigServiceService } from './config-service.service';
-import {HttpModule, Http} from '@angular/http';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
 
 describe('ConfigServiceService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpModule
+        HttpClientModule
       ],
       providers: [ConfigServiceService]
     });
