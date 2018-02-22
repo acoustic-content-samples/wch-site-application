@@ -9,7 +9,7 @@ Source code for the Watson Content Hub starter site application - Oslo.
 
 ## Overview
 This github repository contains all the source code files like javascript, css and html but not the Oslo artifacts like pages, content types, categories, and content.
-WCH tenants created after September 18th 2017 will have the Oslo artifacts automatically deployed. For older tenants you need to manually deploy the artifacts from here: https://greenhouse.lotus.com/plugins/plugincatalog.nsf/assetDetails.xsp?action=editDocument&documentId=B444A62EB5379C988525819C0021A994 
+WCH tenants created after September 18th 2017 will have the Oslo artifacts automatically deployed. For older tenants you need to manually deploy the artifacts by downloading the Oslo built artifacts from the home page of your tenant from the "Update the sample site" widget.
 Not sure if you have the Oslo artifacts? 
 
 * Log in to your tenant and go to the Website menu and check if Oslo is rendering in the preview window.
@@ -17,7 +17,10 @@ Not sure if you have the Oslo artifacts?
   * Open the dev console
   * Search for 'Build date' to get the current SPA level
   * Search for 'SDK version' to get the SDK version included in the SPA
-		
+
+You can compare the Build date with the date shown in the "Update the sample site" widget on the Home page to see if your deployed sample is older than the latest sample code.
+Instructions on how to update Oslo to the latest can be found in the package that can be downloaded from the "Update the sample site" widget on the Home page of WCH.
+  
 ## Documentation
 1. [Roadmap for developing your own site](https://developer.ibm.com/customer-engagement/tutorials/roadmap-developing-your-own-website/#tocoverview)
 2. [Site structure (Content model-How the sample site is built)](https://developer.ibm.com/customer-engagement/docs/wch/developing-your-own-website/content-model-oslo-website/)
@@ -27,6 +30,11 @@ Not sure if you have the Oslo artifacts?
 6. [Resources](#resources)
 
 ## Updates
+At the end of February we have updated the Oslo starter site with the following features:
+- upgrade to Angular 5.2
+- leveraging ng build versus separate webpack
+- bug fixes and performance improvements
+
 At the beginning of February we have updated the Oslo starter site with the following features:
 - added inline editing for links
 - bug fixes and performance improvements
@@ -92,8 +100,7 @@ See the readme of sample-active-site-components for details: https://github.com/
 
 ## HTML5 style URLs
 
-The SPA will now use HTML5 style URLs and routing. Tenants created before November of 2017 do not leverage the new routing on the server side yet. For those tenants import first the latest Oslo WCh artifacts from here:
-https://greenhouse.lotus.com/plugins/plugincatalog.nsf/assetDetails.xsp?action=editDocument&documentId=B444A62EB5379C988525819C0021A994
+The SPA will now use HTML5 style URLs and routing. 
 
 
 ## Advanced
