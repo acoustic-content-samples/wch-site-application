@@ -77,10 +77,9 @@ describe('ViewAllComponent', () => {
 
 
 		// WHEN linkURL is empty
-		component.viewAll = { 'linkURL': '' };
 		fixture.detectChanges();
 
-		// THEN isButtonLinkSet should return true
+		// THEN isButtonLinkSet should return false
 		expect(component.isButtonLinkSet()).toBeFalsy();
 	});
 });

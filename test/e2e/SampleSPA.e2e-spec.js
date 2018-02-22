@@ -66,8 +66,6 @@ describe('Sample OOB SPA tests', function() {
 
 		//THEN About us page should be visible
 		expect(standardPage.isPageVisible()).toBeTruthy();
-		//AND video is displayed
-		expect(standardPage.heroVideo()).toContain("2bb721664cc722a496c103153b334aea.mp4");
 
 		//WHEN navigate back to home page
 		this.header.navigation().navigateTo("Home");
@@ -113,19 +111,16 @@ describe('Sample OOB SPA tests', function() {
 
 	});
 
-	it('should be able to check if it is a 404 page', function() {
+	it('should be able to use the Search in Oslo to show Design Page', function() {
+		//GIVEN we are in home page
+    let searchTerm = "maximizing";
 
-		//GIVEN currentUrl
-		//WHEN navigating to error page
-		browser.getCurrentUrl().then(function(url) {
-			var currentUrl = url;
-			currentUrl += "error";
-			browser.get(currentUrl);
-		});
+    //WHEN user search for 'maximizing'
+    var searchResultsPage = this.header.navigation().search(searchTerm);
 
-		//THEN 404 page must be displayed
-		var standardPage = this.spa.standardPage();
-		expect(standardPage.is404Page()).toEqual(true);
+    //THEN Search result page should display 1 search result
+    expect(searchResultsPage.results()).toContain('1 search result for "maximizing"');
+
 	});
 
 });

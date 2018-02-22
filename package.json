@@ -10,7 +10,7 @@
     "es5": "tsc --target es5 --skipLibCheck true --allowJs dist/assets/main_original.bundle.js --out dist/assets/main.bundle.js",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
+    "e2e": "protractor ./protractor.conf.js",
     "create-layout": "echo Pulling the content types. Enter the user password for your WCH tenant: && wchtools pull -tlm -I --dir src/wchLayouts && echo Creating the layout, layout mapping, and the angular component. && ibm-wch-sdk-cli create layout --data src/wchLayouts --src src/app --scss --flat --editable",
     "update-app-module": "echo Pulling the content types. Enter the user password for your WCH tenant: && wchtools pull -tlm -I --dir src/wchLayouts && echo Updating the layout settings for new components. && ibm-wch-sdk-cli register layoutcomponents --src src/app --verbose",
     "deploy": "wchtools push -A -f -v --dir dist",
