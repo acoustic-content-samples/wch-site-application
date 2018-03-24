@@ -17,6 +17,20 @@ fsExtra.mkdirsSync('dist/assets/layouts/thumbnails', function(err){
 // 	}
 // });
 
+/*Write build date into buildDate.json*/
+const dateObj = {
+  "buildDate": new Date().toISOString()
+};
+fs.writeFile("dist/assets/oob-spa/buildDate.json", JSON.stringify(dateObj), function(error) {
+  if(error) {
+    return console.log(" cannot create buildDate.json, ", error);
+  }
+
+  console.log(" successfully created buildDate.json and copied to dist/assets/buildDate.json");
+});
+
+
+
 var copyFiles = [
 	// {src: 'src/build.js', dest: 'dist/assets/build.js'},
 	// {src: 'src/locales', dest: 'dist/assets/oob-spa/locales'},

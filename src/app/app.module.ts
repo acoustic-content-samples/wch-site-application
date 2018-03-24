@@ -47,8 +47,6 @@ import { DesignArticleSummaryComponent } from './layouts/design-article-summary/
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-
 const pageRoutes: Routes = [
 	{path: '', redirectTo: '/home', pathMatch: 'full'},
 	{path: '**', component: PageComponent}
@@ -69,7 +67,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 		WchNgEditModule.forRoot(),
 		SiteCommonModule,
 		GenericLayoutModule,
-		InfiniteScrollModule,
 		BrowserAnimationsModule,
 		ResponsiveHeaderModule,
 		SAMPLE_MODULE,

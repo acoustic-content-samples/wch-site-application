@@ -31,6 +31,10 @@ Instructions on how to update Oslo to the latest can be found here: [Updating yo
 7. [Updating your Oslo sample](https://developer.ibm.com/customer-engagement/tutorials/updating-oslo-sample/)
 
 ## Updates
+At the end of March we have updated the Oslo starter site with the following features:
+- performance improvements - reducing the size of the generated scripts
+- Added support for script applications
+
 At the end of February we have updated the Oslo starter site with the following features:
 - upgrade to Angular 5.2
 - leveraging ng build versus separate webpack

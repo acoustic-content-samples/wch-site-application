@@ -19,6 +19,7 @@ import { HeroVideoLayoutComponent } from './layouts/hero-video/heroVideoLayout';
 import { ImageWithInformationLayoutComponent } from './layouts/image-with-information/imageWithInformationLayout';
 import { LeadImageWithInformationLayoutComponent } from './layouts/lead-image-with-information/leadImageWithInformationLayout';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ScriptAppLayoutComponent } from './layouts/script-app/scriptAppLayout';
 import { SearchResultsLayoutComponent } from './layouts/search-results/searchResultsLayout';
 import { SignUpLayoutComponent } from './layouts/sign-up/signUpLayout';
 import { StandardPageHero2BlocksLayoutComponent } from './layouts/standard-page-hero-2-blocks/standardPageHero2BlocksLayout';
@@ -46,6 +47,7 @@ export const LAYOUTS = [
   ImageWithInformationLayoutComponent,
   LeadImageWithInformationLayoutComponent,
   PageNotFoundComponent,
+  ScriptAppLayoutComponent,
   SearchResultsLayoutComponent,
   SignUpLayoutComponent,
   StandardPageHero2BlocksLayoutComponent,

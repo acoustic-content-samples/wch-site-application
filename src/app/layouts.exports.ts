@@ -20,6 +20,7 @@ export { ImageWithInformationLayoutComponent } from './layouts/image-with-inform
 export { LeadImageWithInformationLayoutComponent } from './layouts/lead-image-with-information/leadImageWithInformationLayout';
 export { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 export { SearchResultsLayoutComponent } from './layouts/search-results/searchResultsLayout';
+export { ScriptAppLayoutComponent } from './layouts/script-app/scriptAppLayout';
 export { SignUpLayoutComponent } from './layouts/sign-up/signUpLayout';
 export { StandardPageHero2BlocksLayoutComponent } from './layouts/standard-page-hero-2-blocks/standardPageHero2BlocksLayout';
 export { StandardPageHero4BlocksLayoutComponent } from './layouts/standard-page-hero-4-blocks/standardPageHero4BlocksLayout';

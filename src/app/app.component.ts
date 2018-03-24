@@ -19,11 +19,10 @@ import {Component, OnDestroy, OnInit, Output, ViewEncapsulation} from '@angular/
 import {RenderingContext} from 'ibm-wch-sdk-ng';
 import 'rxjs/add/operator/filter';
 import {Observable} from 'rxjs/Observable';
-import {isNil} from 'lodash';
 import {NavigationEnd, Router} from '@angular/router';
 import {HighlightService} from './common/highlightService/highlight.service';
 import { TranslateService } from '@ngx-translate/core';
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from 'rxjs/Subscription';
 import { Ng2LoggerFactory } from './common/Ng2LoggerFactory';
 import { Logger } from 'ibm-wch-sdk-ng';
 
@@ -38,7 +37,10 @@ export class AppComponent implements OnInit, OnDestroy {
 	@Output()
 	onRenderingContext: Observable<RenderingContext>;
 	routerSub: Subscription;
+	rcontextSub: Subscription;
 	logger: Logger = new Ng2LoggerFactory().create('AppComponent');
+	soloMode = false;
+	readonly LANDING_PAGE_KIND = 'landing-page';
 
 	constructor(router: Router, private highlightService: HighlightService, private translate: TranslateService) {
 		console.info(`Build date: ${environment.version}`);
@@ -57,12 +59,21 @@ export class AppComponent implements OnInit, OnDestroy {
 
 	ngOnDestroy () {
 		this.routerSub.unsubscribe();
+		this.rcontextSub.unsubscribe();
 	}
 
 	onActivate(aEvent: any) {
 		const onRenderingContext = aEvent.onRenderingContext;
-		if (!isNil(onRenderingContext)) {
+		if (!(onRenderingContext == null)) {
 			this.onRenderingContext = onRenderingContext;
+			this.soloMode = false;
+			this.rcontextSub = this.onRenderingContext
+				.filter((rContext: any) => {
+					return (rContext && rContext.kind) ? rContext.kind.indexOf(this.LANDING_PAGE_KIND) > -1 : false;
+				})
+				.subscribe((isLandingPage) => {
+					this.soloMode = true;
+				});
 		}
 	}
 

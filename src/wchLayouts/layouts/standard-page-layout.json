@@ -1,7 +1,7 @@
 {
   "id": "standard-page-layout",
   "rev": "1-cd7e2d4e327a830e037d7412d43a8d3e",
-  "name": "Hero",
+  "name": "One column",
   "classification": "layout",
   "prerender": false,
   "thumbnail": {

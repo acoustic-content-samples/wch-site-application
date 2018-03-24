@@ -5,12 +5,13 @@ import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from
 import {trigger, style, transition, animate, group} from '@angular/animations';
 import {TypeSearchResultsComponent} from './../../components/search-results/typeSearchResultsComponent';
 import {Subscription} from "rxjs/Subscription";
+import {Observable} from 'rxjs/Observable';
+import {throttle} from 'rxjs/operators';
+import {interval} from 'rxjs/observable/interval';
+import 'rxjs/add/observable/fromEvent';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Constants} from "../../Constants";
-
-
-import * as _ from 'lodash';
 
 declare var $: any;
 
@@ -45,6 +46,7 @@ export class SearchResultsLayoutComponent extends TypeSearchResultsComponent imp
   inFlight: boolean;
   searchError: boolean = false;
   searchTypes: string[] = [];
+  scrollEvent: Subscription;
 
 
   //rowsPerRequest is used for customization purpose. It defines the # of search results returned from server per API request. In default, it is 3.
@@ -105,26 +107,28 @@ export class SearchResultsLayoutComponent extends TypeSearchResultsComponent imp
 
   ngAfterViewInit() {
     //throttle the scroll event to improve performance
-    $(window).on(
-      'scroll',
-      _.throttle(this._scrollHandler, 300)
-    );
+    let scroll = Observable.fromEvent(window, 'scroll');
+    scroll = scroll.pipe(throttle(value => interval(300)));
+    this.scrollEvent =  scroll.subscribe(() => this._scrollHandler());
   }
 
 
   _search() {
     let apiUrl = (window.location.hostname === 'localhost') ? Constants.apiUrl : `${window.location.protocol}//${window.location.hostname}/api/${window.location.pathname.split('/')[1]}`;
-    let textQuery = this.searchKeywords.reduce((query, currentVal) => `${query} AND (text:*${currentVal}* OR name:*${currentVal}*)`, '');
+    let textQuery = this.searchKeywords.reduce((query, currentVal,index) => {
+      return (index === 0) ? `${currentVal}` : `${query} AND ${currentVal}`;
+    },'');
     let typeQuery = this.searchTypes.reduce((types, currentVal, index) => {
-      return (index === 0) ? `&fq=type:"${currentVal}"` : `${types} OR type:"${currentVal}"`
+      return (index === 0) ? `&fq=type:"${currentVal}"` : `${types} OR type:"${currentVal}"`;
     }, '');
 
-    let searchURL = `${apiUrl}/delivery/v1/search?q=siteId:default`
+    let searchURL = `${apiUrl}/delivery/v1/search?q=classification:page`
       + typeQuery
-      + `&fq={!join from=id to=aggregatedContentIds}classification:content`
-      + textQuery
+      + `&fq={!join%20from=id%20to=aggregatedIds}`
+      + `text:(${textQuery})`
       + `&rows=${this.rowsPerRequest}&start=${this.start * this.rowsPerRequest}&fl=*`;
 
+    console.log(`searchURL: ${searchURL}`);
     this.start++;
     this.http.get(searchURL).subscribe(
       (res: any) => {
@@ -151,9 +155,6 @@ export class SearchResultsLayoutComponent extends TypeSearchResultsComponent imp
 	ngOnDestroy() {
 		super.ngOnDestroy();
 		this.navSub.unsubscribe();
-		$(window).off(
-			'scroll',
-			_.throttle(this._scrollHandler, 300)
-		);
+    this.scrollEvent.unsubscribe();
 	}
 }

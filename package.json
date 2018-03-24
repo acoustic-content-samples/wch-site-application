@@ -5,9 +5,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "postbuild": "node copyFiles.js && npm run es5",
+    "postbuild": "node copyFiles.js && npm run es5 && npm run minify-es5",
     "build": "ng build --prod --output-hashing none --build-optimizer true",
     "es5": "tsc --target es5 --skipLibCheck true --allowJs dist/assets/main_original.bundle.js --out dist/assets/main.bundle.js",
+    "minify-es5": "node scripts/minify-es5.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "protractor ./protractor.conf.js",
@@ -43,11 +44,9 @@
     "angular-svg-icon": "^5.0.0",
     "core-js": "^2.4.1",
     "foundation-sites": "^6.4.3",
-    "ibm-wch-sdk-ng": "1.0.830",
-    "ibm-wch-sdk-ng-edit": "1.0.830",
-    "lodash": "^4.17.4",
+    "ibm-wch-sdk-ng": "5.0.226",
+    "ibm-wch-sdk-ng-edit": "5.0.226",
     "ng2-logger": "^2.0.29",
-    "ngx-infinite-scroll": "^0.8.2",
     "rxjs": "^5.5.6",
     "shelljs": "^0.7.8",
     "slick-carousel": "^1.8.1",
@@ -74,10 +73,11 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "minifier": "~0.8.1",
     "protractor": "~5.1.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3",
-    "ibm-wch-sdk-cli": "1.0.830"
+    "ibm-wch-sdk-cli": "5.0.226"
   }
 }

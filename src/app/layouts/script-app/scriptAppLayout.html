@@ -1,0 +1,3 @@
+<div [id]="renderingContext.id">
+  <iframe #scriptApp *ngIf="kickerUrl" class="script-app" [src]="kickerUrl | formattedText:'resourceUrl'" [height]="iframeHeight" frameborder="0" (load)="this.iframeLoaded()"></iframe>
+</div>
