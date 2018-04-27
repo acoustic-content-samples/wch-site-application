@@ -1,0 +1,26 @@
+<div class="login-form grid-x">
+    <div class="cell medium-8">
+        <h3 *ngIf="title" wchEditable="title">{{ title }}</h3>
+        <div *ngIf="loginError" class="invalid-login" role="alert">{{ loginFailedErrorMessage }}
+        </div>
+        <form *ngIf="!authService.isPreviewMode" name="signInForm" #signInForm="ngForm" [ngClass]="{'show-invalid-input': signInForm.submitted}" (ngSubmit)="signInForm.form.valid && login()">
+            <label *ngIf="emailLabel" wchEditable="emailLabel">{{ emailLabel }}
+                <input [disabled]="authService.isPreviewMode" type="email" [placeholder]="emailPlaceholder" name="username" [(ngModel)]="user.username"
+                       #username="ngModel" commerce-maxlength=256 email required />
+            </label>
+            <label *ngIf="passwordLabel" wchEditable="passwordLabel">{{ passwordLabel }}
+                <input [disabled]="authService.isPreviewMode" type="password" placeholder=""  name="password" [(ngModel)]="user.password" #password="ngModel"
+                       required />
+            </label>
+            <br>
+            <button [disabled]="authService.isPreviewMode" class="button button-dark expanded" type="submit" *ngIf="loginButtonLabel" wchEditable="loginButtonLabel">{{ loginButtonLabel }}
+            </button>
+        </form>
+        <div *ngIf="authService.isPreviewMode">
+            <div class="preview-msg-container">
+                <p class="previewMessage" *ngIf="previewLoginMessage" wchEditable="previewLoginMessage">{{ previewLoginMessage }}</p>
+                <div class="button button-dark expanded" (click)="login()" *ngIf="previewLoginButton" wchEditable="previewLoginButton">{{ previewLoginButton }}</div>
+            </div>
+        </div>
+    </div>
+</div>

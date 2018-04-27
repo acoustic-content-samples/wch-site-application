@@ -1,4 +1,4 @@
-<nav class="wch-responsive-menu grid-container">
+<nav class="wch-responsive-menu grid-container" *ngIf="rc">
 		<div id="wch-toggleMenu" class="title-bar hide-for-large">
 			<button class="menu-icon" type="button" (click)="toggleMobileNav()"></button>
 			<div class="logo-container">
@@ -18,9 +18,16 @@
 			</div>
 			<div class="top-bar-right">
 				<div class="menu-container">
-					<wch-menu (onMenuItemSelected)="toggleMobileNav()" [pages]="rc?.context?.site.pages"></wch-menu>
+					<wch-menu (onMenuItemSelected)="toggleMobileNav()" [pages]="pages"></wch-menu>
 					<div class="searchBox">
 						<app-search-box (onSearch)="closeMobileNav()"></app-search-box>
+					</div>
+					<div class="sign-in">
+						<svg-icon src="oob-spa/images/icon-account.svg"></svg-icon>
+						<a *ngIf="!authService.isLoggedIn()" (click)="login()" >
+							<span> Sign in</span></a>
+						<a *ngIf="authService.isLoggedIn()" (click)="logout()">
+							<span> Sign out</span></a>
 					</div>
 				</div>
 			</div>

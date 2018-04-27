@@ -1,0 +1,3 @@
+<iframe #snippet *ngIf="html" [id]="renderingContext.id" [srcdoc]="(onHtml | async) + '<style>'+ (onCss | async) + '</style>' + '<script>' + (onJs | async) + '</script>'| formattedText:'html'" frameborder="0" scrolling="{{showScrollBars ? 'yes' : 'no'}}" [attr.allowFullScreen]="allowFullScreen" [height]="iframeHeight" [width]="iframeWidth">
+  <p>Your browser does not support iframes.</p>
+</iframe>

@@ -1,0 +1,20 @@
+<div id="{{renderingContext.id}}" class="social-component grid-x">
+  <div class="section cell">
+    <!--social component's title-->
+    <h2 *ngIf="title" wchEditable="title">{{ title }}</h2>
+  </div>
+  <div class="icons-group grid-x section cell">
+    <!--facebook image with link-->
+    <a class="small-12 medium-4 columns" wchEditable="facebook" [href]="facebook.linkURL" [title]="facebook.linkDescription">{{ facebook.linkText }}
+      <img *ngIf="fbImage.url" class="social-icon" wchEditable="fbImage" [src]="renderingContext.context.hub.deliveryUrl.origin + fbImage.url" [alt]="fbImage.altText" [title]="fbImage.asset.fileName">
+    </a>
+    <!--twitter image with link-->
+    <a class="small-12 medium-4 columns" wchEditable="twitter" [href]="twitter.linkURL" [title]="twitter.linkDescription">{{ twitter.linkText }}
+      <img *ngIf="twitterImage.url" class="social-icon" wchEditable="twitterImage" [src]="renderingContext.context.hub.deliveryUrl.origin + twitterImage.url" [alt]="twitterImage.altText" [title]="twitterImage.asset.fileName">
+    </a>
+    <!--instagram image with link-->
+    <a class="small-12 medium-4 columns" wchEditable="instagram" [href]="instagram.linkURL" [title]="instagram.linkDescription">{{ instagram.linkText }}
+      <img *ngIf="instagramImage.url" class="social-icon" wchEditable="instagramImage" [src]="renderingContext.context.hub.deliveryUrl.origin + instagramImage.url" [alt]="instagramImage.altText" [title]="instagramImage.asset.fileName">
+    </a>
+  </div>
+</div>

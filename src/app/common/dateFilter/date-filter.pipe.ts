@@ -51,6 +51,7 @@ export class DateFilterPipe implements PipeTransform {
 	}
 
 	_calculatePastDate(items: RenderingContext[], field: string, days: number) {
+		items = items || [];
 		const currentDate = new Date();
 		const pastDate = new Date(currentDate.getTime() - (days * 24 * 60 * 60 * 1000));
 		const res = items.filter((item) => {

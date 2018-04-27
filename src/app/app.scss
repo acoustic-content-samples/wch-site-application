@@ -19,6 +19,7 @@
 
 @include foundation-everything;
 
+
 html, body {
 	display: flex;
 	flex-direction: column;
@@ -92,9 +93,9 @@ when dropping components into a page. */
 body {
   line-height:1;
 }
-ul {
-  margin:0;
-}
+//ul {
+//  margin:0;
+//}
 /*.grid-container {
   max-width:1800px;
 }
@@ -229,4 +230,16 @@ body {
 
 body.is-reveal-open {
   margin-right: 15px;
+}
+
+
+
+.ng-invalid:not(form).ng-touched  {
+  border-left: 5px solid $form-alert;
+}
+
+form.show-invalid-input {
+  .ng-invalid:not(form){
+	border-left: 5px solid $form-alert;
+  }
 }

@@ -1,5 +1,8 @@
 <div class="grid-container grid-container-padded section" *ngIf="rc">
   <div class="error-wrapper">
+    <div *ngIf="!authService.isLoggedIn()">
+      <p>Oops! This page may not exist or your account does not have access to the page. First, check the URL for a typo. Then, try signing in.</p>
+    </div>
     <div class="error-code">
       404
     </div>

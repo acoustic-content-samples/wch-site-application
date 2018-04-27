@@ -2,7 +2,9 @@
 
 .searchWrapper {
 
-  width: 200px;
+  //width: 200px;
+  display: flex;
+  justify-content: flex-start;
 
 
   input, input:focus {
@@ -114,5 +116,17 @@
   .search-result-tools select {
     width: auto;
     padding-left: 20px;
+  }
+}
+
+/* Medium and up */
+@media screen and (min-width: 40em) {
+
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {
+  .searchWrapper {
+    justify-content: flex-end;
   }
 }

@@ -27,7 +27,6 @@ $background-color: #f6f6f6;
 	img {
 		max-width: 90px;
 		float: left;
-		margin-right: 10px;
 	}
 
 	h4 {
@@ -35,22 +34,26 @@ $background-color: #f6f6f6;
 	}
 }
 
+.profile-picture-div {
+	margin-right: 10px;
+}
+
 @media (min-width:720px) {
 	.about-the-author {
 		padding: 20px;
+	}
 
-		img {
-			margin-right: 20px;
-		}
+	.profile-picture-div {
+		margin-right: 20px;
 	}
 }
 
 @media (min-width:1200px) {
 	.about-the-author {
 		padding: 40px;
-
-		img {
-			margin-right: 40px;
-		}
+	}
+	
+	.profile-picture-div {
+		margin-right: 40px;
 	}
 }

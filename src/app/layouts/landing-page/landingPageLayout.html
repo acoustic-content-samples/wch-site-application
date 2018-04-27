@@ -1,0 +1,88 @@
+<div id="{{renderingContext.id}}" class="landing-page grid-x">
+  <div *ngIf="heroImage || heroHeadline" class="hero-section cell">
+    <div class="section">
+      <div class="hero-message">
+        <a wchEditable="heroLink" [href]="heroLink.linkURL" [target]="_blank" [title]="heroLink.linkDescription">
+          <h1 *ngIf="heroHeadline" class="hero-headline" wchEditable="heroHeadline" [innerHTML]="heroHeadline"></h1>
+        </a>
+      </div>
+        <img *ngIf="heroImage.url" wchEditable="heroImage" [src]="renderingContext.context.hub.deliveryUrl.origin + heroImage.url" [alt]="heroImage.altText" [title]="heroImage.asset.fileName">
+    </div>
+  </div>
+  <div class="section grid-container cell">
+    <div class="show-for-large feature-section grid-x">
+      <div class="featureText large-6 columns grid-container">
+        <h2 *ngIf="featureHeadline1" class="featureHeadline" wchEditable="featureHeadline1">{{ featureHeadline1 }}</h2>
+        <div *ngIf="feature1" class="featureBody section" wchEditable="feature1" [innerHTML]="feature1"></div>
+      </div>
+      <img *ngIf="featureImage1.url" class="featureImage large-6 columns grid-container" wchEditable="featureImage1" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY_1, RENDITION_KEY)" [alt]="featureImage1.altText" [title]="featureImage1.asset.fileName">
+    </div>
+
+    <div class="hide-for-large feature-section grid-x">
+      <img *ngIf="featureImage1.url" class="featureImage grid-container" wchEditable="featureImage1" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY_1, RENDITION_KEY)" [alt]="featureImage1.altText" [title]="featureImage1.asset.fileName">
+      <div class="featureText grid-container">
+        <h2 *ngIf="featureHeadline1" class="featureHeadline" wchEditable="featureHeadline1">{{ featureHeadline1 }}</h2>
+        <div *ngIf="feature1" class="featureBody section" wchEditable="feature1" [innerHTML]="feature1"></div>
+      </div>
+    </div>
+  </div>
+  <div class="section grid-container cell">
+    <div class="show-for-large feature-section grid-x">
+      <img *ngIf="featureImage2.url" class="featureImage large-6 columns grid-container" wchEditable="featureImage2" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY_2, RENDITION_KEY)"[alt]="featureImage2.altText" [title]="featureImage2.asset.fileName">
+      <div class="featureText large-6 columns grid-container">
+        <h2 *ngIf="featureHeadline2" class="featureHeadline" wchEditable="featureHeadline2">{{ featureHeadline2 }}</h2>
+        <div *ngIf="feature2" class="featureBody section" wchEditable="feature2" [innerHTML]="feature2"></div>
+      </div>
+    </div>
+
+    <div class="hide-for-large feature-section grid-x">
+      <img *ngIf="featureImage2.url" class="featureImage grid-container" wchEditable="featureImage2" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY_2, RENDITION_KEY)" [alt]="featureImage2.altText" [title]="featureImage2.asset.fileName">
+      <div class="featureText grid-container">
+        <h2 *ngIf="featureHeadline2" class="featureHeadline" wchEditable="featureHeadline2">{{ featureHeadline2 }}</h2>
+        <div *ngIf="feature2" class="featureBody section" wchEditable="feature2" [innerHTML]="feature2"></div>
+      </div>
+    </div>
+  </div>
+  <div class="section grid-container cell">
+    <div class="show-for-large feature-section grid-x">
+      <div class="featureText large-6 columns grid-container">
+        <h2 *ngIf="featureHeadline3" class="featureHeadline" wchEditable="featureHeadline3">{{ featureHeadline3 }}</h2>
+        <div *ngIf="feature3" class="featureBody section" wchEditable="feature3" [innerHTML]="feature3"></div>
+      </div>
+      <img *ngIf="featureImage3.url" class="featureImage large-6 columns grid-container" wchEditable="featureImage3" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY_3, RENDITION_KEY)" [alt]="featureImage3.altText" [title]="featureImage3.asset.fileName">
+    </div>
+
+    <div class="hide-for-large feature-section grid-x">
+      <img *ngIf="featureImage3.url" class="featureImage grid-container" wchEditable="featureImage3" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY_3, RENDITION_KEY)" [alt]="featureImage3.altText" [title]="featureImage3.asset.fileName">
+      <div class="featureText grid-container">
+        <h2 *ngIf="featureHeadline3" class="featureHeadline" wchEditable="featureHeadline3">{{ featureHeadline3 }}</h2>
+        <div *ngIf="feature3" class="featureBody section" wchEditable="feature3" [innerHTML]="feature3"></div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="entryComponent" class="cell">
+    <div class="form-section section">
+      <div class="grid-container">
+        <wch-contentref [renderingContext]="entryComponent"></wch-contentref>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="shareComponent" class="cell">
+    <div class="section">
+      <div class="grid-container">
+        <wch-contentref [renderingContext]="shareComponent"></wch-contentref>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="contestRules" class="cell">
+    <div class="section">
+      <div class="grid-container">
+        <wch-contentref [renderingContext]="contestRules"></wch-contentref>
+      </div>
+    </div>
+  </div>
+</div>
+

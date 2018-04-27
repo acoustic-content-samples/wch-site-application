@@ -12,6 +12,7 @@ import 'rxjs/add/observable/fromEvent';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Constants} from "../../Constants";
+import {AuthService} from '../../common/authService/auth-service.service';
 
 declare var $: any;
 
@@ -57,7 +58,7 @@ export class SearchResultsLayoutComponent extends TypeSearchResultsComponent imp
   @ViewChild('loadIcon') loadIndicator: ElementRef;
   public readonly SEARCH_CONTENT_TYPE_KEY = 'pageTypesToSearch';
 
-  constructor(route: ActivatedRoute, private http: HttpClient) {
+  constructor(route: ActivatedRoute, private http: HttpClient, private authService: AuthService) {
     super();
 
     this.navSub = route
@@ -115,14 +116,15 @@ export class SearchResultsLayoutComponent extends TypeSearchResultsComponent imp
 
   _search() {
     let apiUrl = (window.location.hostname === 'localhost') ? Constants.apiUrl : `${window.location.protocol}//${window.location.hostname}/api/${window.location.pathname.split('/')[1]}`;
+    let deliveryQuery = this.authService.isLoggedIn() ? 'mydelivery' : 'delivery';
     let textQuery = this.searchKeywords.reduce((query, currentVal,index) => {
-      return (index === 0) ? `${currentVal}` : `${query} AND ${currentVal}`;
+      return (index === 0) ? `${currentVal}~1` : `${query} AND ${currentVal}~1`;
     },'');
     let typeQuery = this.searchTypes.reduce((types, currentVal, index) => {
       return (index === 0) ? `&fq=type:"${currentVal}"` : `${types} OR type:"${currentVal}"`;
     }, '');
 
-    let searchURL = `${apiUrl}/delivery/v1/search?q=classification:page`
+    let searchURL = `${apiUrl}/${deliveryQuery}/v1/search?q=classification:page`
       + typeQuery
       + `&fq={!join%20from=id%20to=aggregatedIds}`
       + `text:(${textQuery})`

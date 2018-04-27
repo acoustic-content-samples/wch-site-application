@@ -1,0 +1,127 @@
+@import '~foundation-sites/scss/foundation';
+
+.landing-page{
+
+  .hero-section{
+    position: relative;
+
+    .heroImage {
+      margin-top: -35px;
+      position: relative;
+      text-align: center;
+
+      img {
+        width: auto;
+        height: auto;
+        /*transform:scale(2);*/
+        transition: transform .3s ease-in;
+      }
+
+      .section {
+        padding-top: 0;
+        display: flex;
+      }
+
+    }
+
+
+    .hero-message {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+
+      h1 {
+        width: 90%;
+        margin-bottom: .25em;
+        color: #45567A;
+      }
+    }
+
+    .heroHeadline {
+      font-size: 1.75rem; /*28px*/
+      line-height: 1;
+      font-family: 'Vidaloka', georgia, 'Times New Roman', serif;
+    }
+
+    @include breakpoint(small) {
+      h1,
+      .heroHeadline {
+        font-size: 1.75rem; /*52px*/
+      }
+
+      .heroImage img {
+        /*transform:scale(1.5);*/
+      }
+
+      .hero-message h1 {
+        width: 80%;
+      }
+
+
+    }
+
+    @include breakpoint(medium) {
+      h1,
+      .heroHeadline {
+        font-size: 3.15rem; /*52px*/
+        line-height: 1.26;
+      }
+
+      .heroImage img {
+        /*transform:scale(1.5);*/
+      }
+
+      .hero-message h1 {
+        width: 80%;
+      }
+
+
+    }
+
+    @include breakpoint(large) {
+      .heroImage img {
+        /*transform:scale(1);*/
+      }
+
+      h1,
+      .heroHeadline {
+        font-size: 3.5rem; /*80px*/
+      }
+
+      .hero-message h1 {
+        max-width: 1200px;
+        margin-left: 3rem;
+
+      }
+    }
+  }
+
+  .feature-section{
+
+    .featureHeadline{
+      color: #45567A;
+    }
+
+    @include breakpoint(small only) {
+      .featureImage{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+  }
+
+  .form-section{
+    background-color: #9EB7D7;
+  }
+
+
+}
+
+

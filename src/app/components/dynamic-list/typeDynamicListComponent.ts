@@ -56,6 +56,7 @@ export class TypeDynamicListComponent extends AbstractDynamicListComponent imple
     constants: any;
     rcSub: Subscription;
     queryString: string;
+    hash = '';
 
     constructor(private utilsService: UtilsService) {
         super();
@@ -74,8 +75,16 @@ export class TypeDynamicListComponent extends AbstractDynamicListComponent imple
                 this.sortField = (type === this.constants.ALPHABETICAL_ASCENDING || type === this.constants.ALPHABETICAL_DESCENDING) ? this.constants.ALPHABETICAL_FIELD : this.constants.DATE_FIELD;
                 this.maxItemsToDisplay = (rc.number && rc.number[this.MAX_ITEM_KEY]) ? rc.number.maxItem : null;
 
-                this.queryString = `q=type:%22${type}%22&fq=classification:(content)&fq=isManaged:(%22true%22)&sort=lastModified desc&fl=document:%5Bjson%5D,lastModified&rows=${ROWS}`;
+                // In preview dynamic lists may not be updated when filtering changes
+                // sortOrderStr and dateFilterStr used to create a hash to update the query URL so that results are updated when filters change.
+                this.hash = this._createHash(`${this.sortOrderStr}+${this.dateFilterStr}`);
+
+                this.queryString = `q=type:%22${type}%22&fq=classification:(content)&fq=isManaged:(%22true%22)&sort=lastModified desc&fl=document:%5Bjson%5D,lastModified&rows=${ROWS}&spaFilter=${this.hash}`;
             });
+    }
+
+    _createHash(str) {
+        return window.btoa(encodeURIComponent(str));
     }
 
     ngOnDestroy() {

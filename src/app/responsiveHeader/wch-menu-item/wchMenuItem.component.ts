@@ -36,13 +36,18 @@ import {Subscription} from 'rxjs/Subscription';
 	encapsulation: ViewEncapsulation.None
 })
 export class WCHMenuItemComponent implements AfterViewInit, OnDestroy {
-	@Input() page: any;
+	@Input()
+	public set aPage(aValue){
+		this.page = aValue;
+		this.cachedChildren = new Map<string, any[]>();
+	}
 	@Input() level: number;
 	@Output() onMenuItemSelected = new EventEmitter<boolean>();
 
 	cachedChildren = new Map<string, any[]>();
 	pageToggles = new Map<string, boolean>();
 	pages: Array<any> = [];
+	page: any;
 
 	/* The maximum level of navigation to display  */
 	maxNavigationDepth = 2;

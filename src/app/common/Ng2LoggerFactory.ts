@@ -59,7 +59,7 @@ export class Ng2LoggerFactory implements LoggerFactory {
 
 
 		// DATA,INFO,WARN,ERROR
-		// document.cookie = 'wch.sites.logging.levels=info';
+		// document.cookie = 'wch.sites.logging.level=info';
 		if (this.level) {
 			switch (this.level.toLowerCase()) {
 				case 'info':

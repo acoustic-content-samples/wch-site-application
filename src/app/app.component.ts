@@ -72,7 +72,7 @@ export class AppComponent implements OnInit, OnDestroy {
 					return (rContext && rContext.kind) ? rContext.kind.indexOf(this.LANDING_PAGE_KIND) > -1 : false;
 				})
 				.subscribe((isLandingPage) => {
-					this.soloMode = true;
+					this.soloMode = isLandingPage;
 				});
 		}
 	}

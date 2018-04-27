@@ -1,5 +1,5 @@
 <div class="about-the-author">
-	<div *ngIf="profilePicture">
+	<div *ngIf="profilePicture" class="profile-picture-div">
 		<img wchEditable="profilePicture" [src]="getImageUrl()" [alt]="profilePicture.altText ? (onProfilePicture | async).altText : ''" [title]="profilePicture.altText ? (onProfilePicture | async).altText : ''"/>
 	</div>
 	<div>

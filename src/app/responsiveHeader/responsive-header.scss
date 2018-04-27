@@ -12,7 +12,18 @@ $logo-width-small: 85px;
 $logo-height-medium: 80px;
 
 
+
 .wch-responsive-menu {
+
+  .menu-container > wch-menu {
+	display: flex;
+  }
+
+  /*
+  .menu-container > wch-menu > ul {
+	border: 1px solid black;
+  }
+  */
 
   header {
 	border-bottom: 1px solid $header-border-bottom-color;
@@ -41,14 +52,41 @@ $logo-height-medium: 80px;
 	display: flex;
   }
 
-  wch-menu {
+  .menu-container > wch-menu {
 	margin-top: 54px;
+  }
+
+  wch-menu {
+	display: flex;
+	flex-shrink: 1;
   }
 
   .searchBox {
 	height: 54px;
 	width: 340px;
 	margin-left: 26px;
+	flex: 1 1 auto;
+  }
+
+  .sign-in {
+	display: flex;
+	flex-shrink: 3;
+	align-items: flex-start;
+	min-width: 115px;
+	justify-content: flex-end;
+	margin-top: 10px;
+	margin-right: 20%;
+
+	a, a:visited {
+	  color: inherit;
+	  padding-left: 10px;
+	  line-height: 38px;
+
+	  span {
+		white-space: nowrap;
+	  }
+	}
+
   }
 
   .limit-page-name {
@@ -88,8 +126,17 @@ $logo-height-medium: 80px;
 @media screen and (min-width: 64em) {
 
   .wch-responsive-menu {
+
+	.menu-container > wch-menu {
+	  margin-top: 0;
+	}
+
 	wch-menu {
 	  margin-top: 0;
+	}
+
+	.sign-in {
+	  margin-right: 0;
 	}
 
 	.logo-container {

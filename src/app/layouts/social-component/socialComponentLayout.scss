@@ -1,0 +1,36 @@
+@import '~foundation-sites/scss/foundation';
+
+.social-component{
+
+  h2,headline{
+    color: #45567A;
+    text-align: center;
+  }
+
+  .icons-group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .social-icon{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include breakpoint(medium) {
+    .social-icon{
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+
+  @include breakpoint(large) {
+    .social-icon{
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+  }
+
+}

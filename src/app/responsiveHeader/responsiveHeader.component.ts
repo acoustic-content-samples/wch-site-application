@@ -29,6 +29,9 @@ import {RenderingContext} from 'ibm-wch-sdk-ng';
 import {ConfigServiceService} from '../common/configService/config-service.service';
 import {Constants} from '../Constants';
 import {Subscription} from 'rxjs/Subscription';
+import {AuthService} from '../common/authService/auth-service.service';
+import {Router} from "@angular/router";
+import {RefreshService} from 'ibm-wch-sdk-ng';
 
 @Component({
 	selector: 'responsive-header',
@@ -59,9 +62,14 @@ export class ResponsiveHeaderComponent implements AfterViewInit, OnDestroy {
 	pages: Array<any> = [];
 
 
-	constructor(configService: ConfigServiceService) {
+	constructor(configService: ConfigServiceService, public authService: AuthService, private router: Router, private SDKRefreshService: RefreshService) {
 		this.configSub = configService.getConfig(Constants.HEADER_CONFIG).subscribe((context) => {
 			this.headerConfig = context;
+		});
+
+
+		authService.getCurrentUser().subscribe((res) => {
+			const name = (res && res.externalId) ? res.externalId : 'no user';
 		});
 
 	}
@@ -83,6 +91,18 @@ export class ResponsiveHeaderComponent implements AfterViewInit, OnDestroy {
 
 	ngOnDestroy() {
 		this.configSub.unsubscribe();
+	}
+
+	login() {
+		this.closeMobileNav();
+		this.router.navigate([Constants.SIGN_IN_PAGE]);
+	}
+
+	logout() {
+		this.authService.logout().subscribe((res) => {
+      this.SDKRefreshService.refresh();
+      console.log('SDK is refreshed after logging out');
+    });
 	}
 
 	getURL(img) {

@@ -40,44 +40,48 @@ wch-menu-item {
 	cursor: pointer;
 
   }
-}
 
   li {
-	width: 100%;
-	display: block;
+    width: 100%;
+    display: block;
   }
 
-  li.has-children > a::after {
-	display: block;
-	width: 0;
-	height: 0;
-	border: inset 6px;
-	content: '';
-	border-bottom-width: 0;
-	border-top-style: solid;
-	border-color: #323232 transparent transparent;
-	right: 5px;
-	left: auto;
-	margin-top: -3px;
-	position: absolute;
-	top: 50%;
-  }
+}
 
-  li.has-children[aria-expanded="true"] > a::after {
-	transform: rotate(180deg);
-	transform-origin: 50% 50%;
-  }
 
-  li.has-children[aria-expanded="false"] > a::after {
-	transform: rotate(0deg);
-	transform-origin: 50% 50%;
-  }
 
-  li.has-children > a {
-	position: relative;
-	padding-right: 1.5rem;
+li.has-children > a::after {
+  display: block;
+  width: 0;
+  height: 0;
+  border: inset 6px;
+  content: '';
+  border-bottom-width: 0;
+  border-top-style: solid;
+  border-color: #323232 transparent transparent;
+  right: 5px;
+  left: auto;
+  margin-top: -3px;
+  position: absolute;
+  top: 50%;
+}
 
-  }
+li.has-children[aria-expanded="true"] > a::after {
+  transform: rotate(180deg);
+  transform-origin: 50% 50%;
+}
+
+li.has-children[aria-expanded="false"] > a::after {
+  transform: rotate(0deg);
+  transform-origin: 50% 50%;
+}
+
+li.has-children > a {
+  position: relative;
+  padding-right: 1.5rem;
+
+}
+
 
 
 /* Large and up */

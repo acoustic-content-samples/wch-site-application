@@ -1,5 +1,6 @@
 const fs = require('fs');
 const fsExtra = require('fs-extra');
+const utils = require('./scripts/buildDateUtils');
 
 fsExtra.mkdirsSync('dist/assets/layouts/thumbnails', function(err){
 	if (err) {
@@ -16,6 +17,9 @@ fsExtra.mkdirsSync('dist/assets/layouts/thumbnails', function(err){
 // 		console.log("successfully made dist/assets/oob-spa/locales");
 // 	}
 // });
+
+//clear the build date version in environments.ts
+utils.clearBuildDate();
 
 /*Write build date into buildDate.json*/
 const dateObj = {

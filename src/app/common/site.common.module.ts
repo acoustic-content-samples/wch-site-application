@@ -32,7 +32,11 @@ import { UtilsService } from './utils/utils.service';
 import { Link } from './link.component';
 import { ViewAllComponent } from '../components/view-all/view-all.component';
 import { ShareSocialComponent } from '../components/share-social/share-social.component';
-import {WchNgEditModule} from 'ibm-wch-sdk-ng-edit';
+import { WchNgEditModule } from 'ibm-wch-sdk-ng-edit';
+import { AuthService } from './authService/auth-service.service';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {AuthHttpInterceptor} from './authService/auth-http-interceptor';
+
 
 
 @NgModule({
@@ -55,7 +59,13 @@ import {WchNgEditModule} from 'ibm-wch-sdk-ng-edit';
 	],
 	providers: [
 		ConfigServiceService,
-		UtilsService
+		UtilsService,
+		AuthService,
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: AuthHttpInterceptor,
+			multi: true
+		}
 	],
 	exports: [
 		FormattedTextPipe,

@@ -1,0 +1,40 @@
+@import '~foundation-sites/scss/foundation';
+
+.form-component{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .headline{
+    color: #45567A;
+    text-align: center;
+  }
+
+  form {
+    display: contents;
+
+    .input-group{
+      display: block;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+
+    .button{
+      background-color: #45567A;
+      border: none;
+      color: white;
+    }
+  }
+
+  @include breakpoint(small only) {
+    .reveal {
+      margin: 0 auto;
+      position: relative;
+      width: 75vw;
+      max-height: 30vh;
+      min-height: 10vh;
+    }
+  }
+}
+

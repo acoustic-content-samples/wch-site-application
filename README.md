@@ -31,6 +31,12 @@ Instructions on how to update Oslo to the latest can be found here: [Updating yo
 7. [Updating your Oslo sample](https://developer.ibm.com/customer-engagement/tutorials/updating-oslo-sample/)
 
 ## Updates
+At the end of April we have updated the Oslo starter site with the following features:
+- Added login and logout and the support for secured content and pages. If a page or content is marked secured 
+you can only see it when being logged in.
+- Added the HTML Edit functionality out of the box (formerly called sample-html-snippet)
+- Preparing the new landing page functionality
+
 At the end of March we have updated the Oslo starter site with the following features:
 - performance improvements - reducing the size of the generated scripts
 - Added support for script applications

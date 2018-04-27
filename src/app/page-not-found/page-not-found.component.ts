@@ -17,6 +17,7 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ComponentsService, LayoutComponent, RenderingContext} from 'ibm-wch-sdk-ng';
 import {ConfigServiceService} from '../common/configService/config-service.service';
 import {Subscription} from 'rxjs/Subscription';
+import {AuthService} from "../common/authService/auth-service.service";
 
 @LayoutComponent({
   selector: ComponentsService.PAGE_NOT_FOUND_LAYOUT
@@ -38,7 +39,7 @@ export class PageNotFoundComponent implements OnInit, OnDestroy {
   configSub: Subscription;
   rc: RenderingContext;
 
-  constructor(configService: ConfigServiceService) {
+  constructor(configService: ConfigServiceService, public authService: AuthService) {
 
     this.configSub = configService.getConfig('404 Error page').subscribe((context) => {
       this.context = context;

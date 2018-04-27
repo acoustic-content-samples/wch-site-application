@@ -46,9 +46,11 @@ import { ArticleBodyImageComponent } from './components/article-body-image/artic
 import { DesignArticleSummaryComponent } from './layouts/design-article-summary/design-article-summary.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {LoginFormLayoutComponent} from './login-form/loginFormLayout';
 
 const pageRoutes: Routes = [
 	{path: '', redirectTo: '/home', pathMatch: 'full'},
+	{path: 'sign-in', component: LoginFormLayoutComponent},
 	{path: '**', component: PageComponent}
 ];
 
@@ -80,6 +82,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 	],
 	declarations: [
 		AppComponent,
+		LoginFormLayoutComponent,
 		WchFooterComponent,
 		PageNotFoundComponent,
 		ArticleBodyImageComponent,
@@ -111,4 +114,3 @@ export class AppModule {
 		}]
 	}; */
 }
-
