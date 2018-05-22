@@ -13,9 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
+@import '../../settings';
+
 .section:nth-of-type(even){
   background-color: #f7f7f7;
 }
 .section:only-child{
   background-color: #ffffff;
 }
+
+

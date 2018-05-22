@@ -35,20 +35,36 @@ export class UtilsService {
 		}
 	}
 
-	getImageUrl (renderingContext: RenderingContext, imageKey: string, rendition: string): string {
-
+	getImageUrl (renderingContext: RenderingContext, imageKey: string, rendition: string, group?: string): string {
 		let renditionUrl = '';
-		if (renderingContext && renderingContext.elements[imageKey]) {
-			renditionUrl = renderingContext.elements[imageKey].url;
-		}
+		let elem = null;
 
-			if (renderingContext.elements[imageKey].renditions) {
-				const renditions = renderingContext.elements[imageKey].renditions;
-				renditionUrl = renditions.default.url;
-
-				if (renditions[rendition]) {renditionUrl = renditions[rendition].url;
+		if (group) {
+			if (renderingContext.group[group]) {
+				elem = renderingContext.group[group][imageKey];
 			}
 
+			if (!elem) {
+				// fallback and look in the base elements
+				elem = renderingContext.elements[imageKey];
+			}
+
+		} else {
+			elem = renderingContext.elements[imageKey];
+		}
+
+
+		if (elem) {
+			renditionUrl = elem.url;
+
+			if (elem.renditions) {
+				renditionUrl = elem.renditions.default.url;
+
+				if (elem.renditions[rendition]) {
+					renditionUrl = elem.renditions[rendition].url;
+				}
+
+			}
 		}
 		return `${renderingContext.context.hub.deliveryUrl['origin']}${renditionUrl}`;
 	}

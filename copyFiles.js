@@ -39,7 +39,6 @@ var copyFiles = [
 	// {src: 'src/build.js', dest: 'dist/assets/build.js'},
 	// {src: 'src/locales', dest: 'dist/assets/oob-spa/locales'},
 	// {src: 'src/favicon.ico', dest: 'dist/assets/favicon.ico'},
-	{src: 'dist/assets/main.bundle.js', dest: 'dist/assets/main_original.bundle.js'},
 	{src: 'src/wchLayouts/layout-mappings', dest: 'dist/layout-mappings'},
 	{src: 'src/wchLayouts/layouts', dest: 'dist/layouts'},
 	{src: 'src/wchLayouts/assets/layouts/thumbnails', dest: 'dist/assets/layouts/thumbnails'},

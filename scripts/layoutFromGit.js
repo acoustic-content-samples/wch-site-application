@@ -45,6 +45,10 @@ if (args.length != 1) {
 		output: process.stdout
 	});
 
+	const _wrap = (path) => {
+		return `"${path}"`;
+	}
+
 	//Inform user that this script will push content to their tenant
 	rl.question(`This script will publish content from project ${projectName} to your current tenant,  do you wish to continue? y/n: `, (answer) => {
 		if (answer && answer.toLowerCase() === 'y' || answer.toLowerCase() === 'yes') {
@@ -53,7 +57,7 @@ if (args.length != 1) {
 			fs.stat(projectDir, (err, stats) => {
 				if (err) {
 					console.log(`Project ${projectName} does not exist locally,  cloning ${repoUrl}`);
-					shell.exec(`git clone ${repoUrl} ${projectDir}`, (code, stdout, stderr) => {
+					shell.exec(`git clone ${repoUrl} ${_wrap(projectDir)}`, (code, stdout, stderr) => {
 						deployContent();
 
 					});

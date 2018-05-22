@@ -12,10 +12,12 @@
   }
 
   form {
-    display: contents;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     .input-group{
-      display: block;
+      display: inline-block;
       margin-left: 0.5rem;
       margin-right: 0.5rem;
     }
@@ -25,6 +27,8 @@
       border: none;
       color: white;
     }
+
+
   }
 
   @include breakpoint(small only) {

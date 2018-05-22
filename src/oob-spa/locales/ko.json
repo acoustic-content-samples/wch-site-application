@@ -1,7 +1,7 @@
 {
 	"Details": "세부사항",
 	"Problems rendering layout template": "레이아웃 템플리트 렌더링 문제점",
-	"missingLayoutForType": "새 레이아웃을 작성하는 데 대한 정보는 <a target='_blank' href='https://developer.ibm.com/customer-engagement/tutorials/customizing-layouts-components-for-your-site/'>사이트의 레이아웃 및 구성요소 사용자 정의</a>를 참조하십시오.",
+	"missingLayoutForType": "새 레이아웃을 작성하는 데 대한 정보는 <a target='_blank' href='https://developer.ibm.com/customer-engagement/docs/wch/developing-your-own-website/customizing-sample-site/customizing-layouts/'>사이트의 레이아웃 및 구성요소 사용자 정의</a>를 참조하십시오.",
 	"Layout missing for the specified content type. Make sure a layout exists for the content type:": "지정된 컨텐츠 유형에 누락된 레이아웃입니다. 컨텐츠 유형에 맞는 레이아웃이 있는지 확인하십시오."
 }
 

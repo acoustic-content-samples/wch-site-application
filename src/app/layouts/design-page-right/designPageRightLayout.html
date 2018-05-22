@@ -1,4 +1,4 @@
-<div [ngSwitch]="layoutMode">
+<div class="safe-padding" [ngSwitch]="layoutMode">
 	<div *ngSwitchCase="constants.SUMMARY">
 		<a  *ngIf="designTopic"  class="read-more-link" href [routerLink]="navLink()">
 			<wch-contentref wchEditable="designTopic" [layoutMode]="constants.SUMMARY" [renderingContext]="onDesignTopic | async">

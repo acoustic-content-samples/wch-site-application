@@ -16,7 +16,7 @@
 import { environment } from '../environments/environment';
 
 import {Component, OnDestroy, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {RenderingContext} from 'ibm-wch-sdk-ng';
+import {RenderingContext, ActivePageService} from 'ibm-wch-sdk-ng';
 import 'rxjs/add/operator/filter';
 import {Observable} from 'rxjs/Observable';
 import {NavigationEnd, Router} from '@angular/router';
@@ -40,6 +40,8 @@ export class AppComponent implements OnInit, OnDestroy {
 	rcontextSub: Subscription;
 	logger: Logger = new Ng2LoggerFactory().create('AppComponent');
 	soloMode = false;
+	lazyLoadFooter = true;
+	activePage = new ActivePageService() ;
 	readonly LANDING_PAGE_KIND = 'landing-page';
 
 	constructor(router: Router, private highlightService: HighlightService, private translate: TranslateService) {
@@ -49,7 +51,14 @@ export class AppComponent implements OnInit, OnDestroy {
 			.filter(event => event instanceof NavigationEnd)
 			.subscribe(( event: NavigationEnd ) => {
 				this.logger.info('SPA navigation changed', event.url);
-			})
+        this.lazyLoadFooter = true;
+			});
+
+		this.activePage.onRenderingContext.subscribe(() => {
+      setTimeout(() => {
+        this.lazyLoadFooter = false;
+      }, 1000);
+    });
 	}
 
 	ngOnInit () {

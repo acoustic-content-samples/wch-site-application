@@ -8,7 +8,7 @@
   </div>
 
   <h2 *ngIf="headline" wchEditable="headline" class="headline cell">{{ headline }}</h2>
-  <form class="section grid-x">
+  <form class="section small-12 columns grid-x">
     <div class="input-group name-group small-12 medium-4 large-4 columns">
       <div *ngIf="name" class="form-label" wchEditable="name">{{ name }}</div>
       <input type="text" (keyup.enter)="openModal()" [(ngModel)]="nameValue" class="form-input" id="name-input" name="name" placeholder="">

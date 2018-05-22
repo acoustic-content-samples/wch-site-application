@@ -3,4 +3,4 @@
 <div class="content-placeholder">
   <router-outlet (activate)='onActivate($event)'></router-outlet>
 </div>
-<wch-footer *ngIf="!soloMode" [renderingContext]='onRenderingContext|async'></wch-footer>
+<wch-footer *ngIf="!soloMode" [hidden]="lazyLoadFooter" [renderingContext]='onRenderingContext|async'></wch-footer>

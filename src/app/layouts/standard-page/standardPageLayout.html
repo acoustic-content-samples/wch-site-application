@@ -7,7 +7,7 @@
 		</div>
 	</div>
 	<div *ngIf="sectionOne" class="cell">
-		<div class="section" *ngFor="let item of onSectionOne | async; trackBy: trackByComponentId; let idx = index">
+		<div class="section safe-padding" *ngFor="let item of onSectionOne | async; trackBy: trackByComponentId; let idx = index">
 			<div class="grid-container">
 				<wch-contentref [wchEditable]="'sectionOne[' + idx + ']'" [renderingContext]="item">
 				</wch-contentref>
@@ -15,7 +15,7 @@
 		</div>
 	</div>
 	<div *ngIf="sectionTwo" class="cell">
-		<div class="section" *ngFor="let item of onSectionTwo | async; trackBy: trackByComponentId; let idx = index">
+		<div class="section safe-padding" *ngFor="let item of onSectionTwo | async; trackBy: trackByComponentId; let idx = index">
 			<div class="grid-container">
 				<wch-contentref [wchEditable]="'sectionTwo[' + idx + ']'" [renderingContext]="item">
 				</wch-contentref>

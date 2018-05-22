@@ -138,6 +138,31 @@ Setting the logging level will result in a waterfall effect, for example if sett
 To change the logging level you can enter the following into the browsers console developer tools<br />
 ```document.cookie = 'wch.sites.logging.level=warn'```
 
+## Manage your Oslo starter site template with a manifest
+
+To make it easier to remove the default Oslo site either completely or just the out of the box images, content, pages and assets, we created two sample manifest files, `oslo-complete.json` and `oslo-sample-artifacts.json` for the Oslo site. With these two manifest files, you can easily push and delete your Oslo contents listed in the manifest file with wchtools.
+
+* `oslo-complete.json` contains all Oslo code (web assets) and sample site content. 
+* `oslo-sample-artifacts.json` is a subset of oslo-complete.json. This manifest contains only the site assets, renditions, contents and pages. The manifest does not contain the source code, layouts, layout-mappings, content types, image-profiles, categories,  and basic rendering functions.
+
+To push, pull, and delete content by manifest, please refer to: https://github.com/ibm-wch/wchtools-cli#pushing-pulling-and-deleting-by-manifest 
+
+If you want to start with a new site skeleton without all of the Oslo artifacts that are not required you can delete the extra artifacts with the `oslo-sample-artifacts` manifest. The deletion will not remove referenced items in Oslo that are not part of the manifest. So, if you created content or other items that are using Oslo content types, content, or assets, these will not be removed by the delete command. 
+
+Note: Since the sample manifest files only work for the default Oslo starter site template, if you add new content to your site, you have to create your own manifest files. Details: https://github.com/ibm-wch/wchtools-cli#creating-a-new-manifest
+
+### Use cases
+##### You would like to clean out all sample images, renditions, content, and pages associated with Oslo, but leave Oslo layouts, content types and categories so that you can use these to build your custom site. This will leave any additional items that you may have created.
+* `wchtools delete -A -v --manifest oslo-sample-artifacts` 
+
+##### You would like to clean out all artifacts associated with Oslo, but leave any items that you have created. Delete all Oslo artifacts in your tenant:
+* `wchtools delete -A -v --manifest oslo-complete`
+
+##### You would like to update the complete Oslo manifest to include additional items that you created. Update `oslo-complete.json` after adding your customized content in your tenant:
+* `wchtools pull -A -v`
+* `wchtools list -A --write-manifest oslo-complete`
+* `wchtools push -w -v -f --path /dxconfig/manifests/`
+
 ## Resources
 Find more details on the WCH development environment, technical documentation, sample applications, APIs and other information to jumpstart your development project.
 ### Tools

@@ -15,7 +15,6 @@
  *******************************************************************************/
 @import 'settings';
 @import '~foundation-sites/scss/foundation';
-@import '~video.js/dist/video-js.css';
 
 @include foundation-everything;
 
@@ -34,6 +33,11 @@ app {
 
 .content-placeholder {
 	flex: 1;
+
+}
+
+responsive-header {
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 /* Section classes that wrap components to maintain consistent spacing

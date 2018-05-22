@@ -1,6 +1,7 @@
 {
 	"Details": "詳細",
 	"Problems rendering layout template": "レイアウト・テンプレートのレンダリング中に問題が発生しました",
-	"missingLayoutForType": "新規レイアウトの作成について詳しくは、<a target='_blank' href='https://developer.ibm.com/customer-engagement/tutorials/customizing-layouts-components-for-your-site/'>Customizing the layouts and components for your site</a> を参照してください。",
+	"missingLayoutForType": "新規レイアウトの作成について詳しくは、<a target='_blank' href='https://developer.ibm.com/customer-engagement/docs/wch/developing-your-own-website/customizing-sample-site/customizing-layouts/'>Customizing the layouts and components for your site</a> を参照してください。",
 	"Layout missing for the specified content type. Make sure a layout exists for the content type:": "指定されたコンテンツ・タイプにレイアウトがありません。 次のコンテンツ・タイプにレイアウトがあることを確認してください:"
 }
+

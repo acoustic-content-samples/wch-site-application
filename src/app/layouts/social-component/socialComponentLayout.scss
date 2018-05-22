@@ -19,18 +19,4 @@
     margin-right: auto;
   }
 
-  @include breakpoint(medium) {
-    .social-icon{
-      margin-left: 1rem;
-      margin-right: 1rem;
-    }
-  }
-
-  @include breakpoint(large) {
-    .social-icon{
-      margin-left: 2rem;
-      margin-right: 2rem;
-    }
-  }
-
 }
