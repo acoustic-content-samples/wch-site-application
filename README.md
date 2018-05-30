@@ -31,6 +31,11 @@ Instructions on how to update Oslo to the latest can be found here: [Updating yo
 7. [Updating your Oslo sample](https://developer.ibm.com/customer-engagement/tutorials/updating-oslo-sample/)
 
 ## Updates
+At the end of May we have updated the Oslo starter site with the following features:
+- Added landing page / micro web site support
+- Support for manifests and shipping out of the box manifest files to either delete Oslo completely or remove the sample pages and content
+- Performance improvements
+
 At the end of April we have updated the Oslo starter site with the following features:
 - Added login and logout and the support for secured content and pages. If a page or content is marked secured 
 you can only see it when being logged in.
@@ -89,6 +94,9 @@ the `assets/` directory. Use the `-prod` flag for a production build.
 ## Deployment to Watson Content Hub
 
 Run `npm run deploy` to deploy the built code to Watson Content Hub. There is also a shortcut for building and deploying in one step via `npm run build-deploy`. Note that publishing can take up to 20 minutes for all updates to be available.
+In case you do not want to wait for the server side akamai cache to time out you can flush the cache via:
+wchtools clear --cache
+More information can be found here: [Clearing the content delivery network cache](https://github.com/ibm-wch/wchtools-cli#clearing-the-watson-content-hub-content-delivery-network-cache)
 
 ## Running unit tests and end-to-end tests
 
@@ -139,6 +147,7 @@ To change the logging level you can enter the following into the browsers consol
 ```document.cookie = 'wch.sites.logging.level=warn'```
 
 ## Manage your Oslo starter site template with a manifest
+* Prerequisites: wchtools >= 2.7.1
 
 To make it easier to remove the default Oslo site either completely or just the out of the box images, content, pages and assets, we created two sample manifest files, `oslo-complete.json` and `oslo-sample-artifacts.json` for the Oslo site. With these two manifest files, you can easily push and delete your Oslo contents listed in the manifest file with wchtools.
 
@@ -153,10 +162,10 @@ Note: Since the sample manifest files only work for the default Oslo starter sit
 
 ### Use cases
 ##### You would like to clean out all sample images, renditions, content, and pages associated with Oslo, but leave Oslo layouts, content types and categories so that you can use these to build your custom site. This will leave any additional items that you may have created.
-* `wchtools delete -A -v --manifest oslo-sample-artifacts` 
+* `wchtools delete -A -v --server-manifest oslo-sample-artifacts` 
 
 ##### You would like to clean out all artifacts associated with Oslo, but leave any items that you have created. Delete all Oslo artifacts in your tenant:
-* `wchtools delete -A -v --manifest oslo-complete`
+* `wchtools delete -A -v --server-manifest oslo-complete`
 
 ##### You would like to update the complete Oslo manifest to include additional items that you created. Update `oslo-complete.json` after adding your customized content in your tenant:
 * `wchtools pull -A -v`
