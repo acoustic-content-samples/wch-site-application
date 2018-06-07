@@ -15,7 +15,7 @@
  *******************************************************************************/
 import {
     RenderingContext
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import { Component } from '@angular/core';
 import { AbstractLeadImageWithInformationComponent } from './abstractLeadImageWithInformationComponent';
 

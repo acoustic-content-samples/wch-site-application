@@ -15,10 +15,10 @@
  *******************************************************************************/
 import {
 	LayoutComponent, RenderingContext, RenderingContextBinding
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import {AfterViewInit, Component, OnChanges, OnDestroy, OnInit} from '@angular/core';
 import {TypeHeroVideoComponent} from '../../components/hero-video/typeHeroVideoComponent';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 import {NavigationStart, Router} from '@angular/router';
 import {logger} from "codelyzer/util/logger";
 

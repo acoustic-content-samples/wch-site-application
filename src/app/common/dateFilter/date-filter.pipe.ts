@@ -14,7 +14,7 @@
  * limitations under the License.
  *******************************************************************************/
 import {Pipe, PipeTransform} from '@angular/core';
-import {RenderingContext} from 'ibm-wch-sdk-ng';
+import {RenderingContext} from '@ibm-wch-sdk/ng';
 import { Constants } from '../../Constants';
 
 @Pipe({

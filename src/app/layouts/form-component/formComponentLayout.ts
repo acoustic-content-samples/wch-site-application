@@ -1,9 +1,9 @@
 import {
   LayoutComponent, RenderingContext
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { TypeFormComponent } from './../../components/form-component/typeFormComponent';
-import {WchInfoService} from 'ibm-wch-sdk-ng';
+import {WchInfoService} from '@ibm-wch-sdk/ng';
 import * as $ from "jquery";
 
 

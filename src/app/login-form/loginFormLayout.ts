@@ -16,7 +16,7 @@
 import {Component, Input} from '@angular/core';
 import {AuthService} from '../common/authService/auth-service.service';
 import {Router} from '@angular/router';
-import {ComponentsService, LayoutComponent, RefreshService, RenderingContext} from 'ibm-wch-sdk-ng';
+import {ComponentsService, LayoutComponent, RefreshService, RenderingContext} from '@ibm-wch-sdk/ng';
 
 
 @Component({

@@ -16,15 +16,15 @@
 import { environment } from '../environments/environment';
 
 import {Component, OnDestroy, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {RenderingContext, ActivePageService} from 'ibm-wch-sdk-ng';
+import {RenderingContext, ActivePageService} from '@ibm-wch-sdk/ng';
 import 'rxjs/add/operator/filter';
-import {Observable} from 'rxjs/Observable';
+
+import {Observable, Subscription} from 'rxjs';
 import {NavigationEnd, Router} from '@angular/router';
 import {HighlightService} from './common/highlightService/highlight.service';
 import { TranslateService } from '@ngx-translate/core';
-import {Subscription} from 'rxjs/Subscription';
 import { Ng2LoggerFactory } from './common/Ng2LoggerFactory';
-import { Logger } from 'ibm-wch-sdk-ng';
+import { Logger } from '@ibm-wch-sdk/ng';
 
 @Component({
 	encapsulation: ViewEncapsulation.None,

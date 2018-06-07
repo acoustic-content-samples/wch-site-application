@@ -14,10 +14,10 @@
  * limitations under the License.
  *******************************************************************************/
 import { Component, Input, OnInit } from '@angular/core';
-import {AbstractRenderingComponent, Link, RenderingContextBinding} from "ibm-wch-sdk-ng";
+import {AbstractRenderingComponent, Link, RenderingContextBinding} from "@ibm-wch-sdk/ng";
 import {
 	Observable
-} from 'rxjs/Observable';
+} from 'rxjs';
 
 @Component({
 	selector: 'app-view-all',

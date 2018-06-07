@@ -15,13 +15,13 @@
  *******************************************************************************/
 import {
 	LayoutComponent, RenderingContext, RenderingContextBinding
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import {
 	AfterViewInit, Component, ElementRef, OnChanges, OnDestroy, OnInit, SimpleChanges,
 	ViewChild
 } from '@angular/core';
 import {TypeEventComponent} from '../../components/event/typeEventComponent';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 
 import * as $ from 'jquery';
 

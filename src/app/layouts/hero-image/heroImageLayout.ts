@@ -15,7 +15,7 @@
  *******************************************************************************/
 import {
     LayoutComponent, RenderingContext
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { TypeHeroImageComponent } from '../../components/hero-image/typeHeroImageComponent';
 import {UtilsService} from '../../common/utils/utils.service';

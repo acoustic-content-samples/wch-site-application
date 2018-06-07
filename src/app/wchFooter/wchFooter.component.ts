@@ -15,10 +15,10 @@
  *******************************************************************************/
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 
-import {RenderingContext} from 'ibm-wch-sdk-ng';
+import {RenderingContext} from '@ibm-wch-sdk/ng';
 import {ConfigServiceService} from '../common/configService/config-service.service';
 import {Constants} from '../Constants';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 
 @Component({
 	selector: 'wch-footer',

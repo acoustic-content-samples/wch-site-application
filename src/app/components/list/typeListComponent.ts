@@ -15,7 +15,7 @@
  *******************************************************************************/
 import {
     RenderingContext
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import {Component, OnInit} from '@angular/core';
 import { AbstractListComponent } from './abstractListComponent';
 

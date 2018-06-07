@@ -15,7 +15,7 @@
  *******************************************************************************/
 import {
 	Component, ViewContainerRef, Input, OnChanges, OnDestroy, ViewChild, SimpleChanges } from '@angular/core';
-import {RenderingContext} from 'ibm-wch-sdk-ng';
+import {RenderingContext} from '@ibm-wch-sdk/ng';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 declare var window: any;

@@ -20,7 +20,7 @@ import { By } from '@angular/platform-browser';
 import { Location, CommonModule } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ViewAllComponent } from './view-all.component';
-import {WchNgModule, PageComponent, ComponentsService, RenderingContext} from 'ibm-wch-sdk-ng';
+import {WchNgModule, PageComponent, ComponentsService, RenderingContext} from '@ibm-wch-sdk/ng';
 
 describe('ViewAllComponent', () => {
 	let component: ViewAllComponent;

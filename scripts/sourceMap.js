@@ -19,9 +19,9 @@ const sourceMapName = 'source-map-explorer.html';
 const tempDirName = 'tempSrcMap';
 
 console.log('Building source map.\n');
-shell.exec('ng build --prod --vendor-chunk=false --sourcemaps --output-path ' + tempDirName);
+shell.exec('ng build --prod --vendor-chunk=false --source-map --output-path ' + tempDirName);
 console.log('\nGenerating html explorer file as ' + sourceMapName + '.\n');
-const sourceMapFile = shell.find(tempDirName + '/main.*.bundle.js')[0];
+const sourceMapFile = shell.find(tempDirName + '/main.*.js')[0];
 if (sourceMapFile) {
   shell.exec('source-map-explorer --html ' + sourceMapFile + ' > ' + sourceMapName);
   console.log('\nremoving ' + tempDirName + '\n');

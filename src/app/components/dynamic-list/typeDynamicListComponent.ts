@@ -15,10 +15,10 @@
  *******************************************************************************/
 import {
     RenderingContext, RenderingContextBinding
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { AbstractDynamicListComponent } from './abstractDynamicListComponent';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 import {UtilsService} from '../../common/utils/utils.service';
 import {Constants} from '../../Constants';
 

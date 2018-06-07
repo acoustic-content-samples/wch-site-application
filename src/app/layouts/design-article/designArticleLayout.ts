@@ -15,7 +15,7 @@
  *******************************************************************************/
 import {
 	LayoutComponent, RenderingContext
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import { TypeDesignArticleComponent } from '../../components/design-article/typeDesignArticleComponent';
 import { UtilsService } from '../../common/utils/utils.service';

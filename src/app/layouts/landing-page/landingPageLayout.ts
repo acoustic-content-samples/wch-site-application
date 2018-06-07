@@ -1,11 +1,11 @@
 import {
   LayoutComponent, RenderingContext
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import { Component } from '@angular/core';
 import { TypeLandingPageComponent } from './../../components/landing-page/typeLandingPageComponent';
 import {Constants} from '../../Constants';
-import {Subscription} from 'rxjs/Subscription';
-import {WchInfoService} from 'ibm-wch-sdk-ng';
+import {Subscription} from 'rxjs';
+import {WchInfoService} from '@ibm-wch-sdk/ng';
 import {UtilsService} from '../../common/utils/utils.service';
 
 

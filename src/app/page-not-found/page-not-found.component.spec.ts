@@ -18,7 +18,7 @@ import { ConfigServiceService } from './../common/configService/config-service.s
 import { PageNotFoundComponent } from './page-not-found.component';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {AuthService} from '../common/authService/auth-service.service';
-import {WchInfoService} from 'ibm-wch-sdk-ng';
+import {WchInfoService} from '@ibm-wch-sdk/ng';
 import { NavigationStart, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Router } from "@angular/router";

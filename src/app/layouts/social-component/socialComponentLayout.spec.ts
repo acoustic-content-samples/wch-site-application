@@ -15,7 +15,7 @@
  *******************************************************************************/
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SocialComponentLayoutComponent } from './socialComponentLayout';
-import {WchInfoService} from 'ibm-wch-sdk-ng';
+import {WchInfoService} from '@ibm-wch-sdk/ng';
 
 class MockWchInfoService {
   constructor() {}

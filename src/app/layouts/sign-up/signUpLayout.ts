@@ -15,7 +15,7 @@
  *******************************************************************************/
 import {
     LayoutComponent, RenderingContext
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { TypeSignUpComponent } from '../../components/sign-up/typeSignUpComponent';
 import {UtilsService} from '../../common/utils/utils.service';

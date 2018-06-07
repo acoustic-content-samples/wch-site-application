@@ -14,13 +14,13 @@
  * limitations under the License.
  *******************************************************************************/
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 import {
 	AbstractRenderingComponent,
 	LayoutComponent,
 	RenderingContext
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 
 import { UtilsService } from '../../common/utils/utils.service';
 

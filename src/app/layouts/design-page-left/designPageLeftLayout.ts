@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-import {LayoutComponent} from 'ibm-wch-sdk-ng';
+import {LayoutComponent} from '@ibm-wch-sdk/ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TypeDesignPageComponent} from '../../components/design-page/typeDesignPageComponent';
 import {UtilsService} from '../../common/utils/utils.service';

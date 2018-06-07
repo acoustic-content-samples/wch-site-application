@@ -325,9 +325,9 @@ The updated site application source should be stored in a source code management
 ### Adding inline edit functionality
 The Site Manager in Watson Content Hub offers an edit mode that allows a business user to make inline editing changes directly. The elements in a [Component](https://angular.io/api/core/Component) need the **wchEditable** directive to attach inline edit functionality.
 
-The directive assumes that the [Component](https://angular.io/api/core/Component) contains a `onRenderingContext` property that exposes the `RenderingContext` of the item currently edited. This contract is fulfilled automatically if the component extends [AbstractRenderingComponent](https://www.npmjs.com/package/ibm-wch-sdk-ng#_30d66fd25c62891da799936c1e1454566f3770b753be58d94b5621b01603a546).
+The directive assumes that the [Component](https://angular.io/api/core/Component) contains a `onRenderingContext` property that exposes the `RenderingContext` of the item currently edited. This contract is fulfilled automatically if the component extends [AbstractRenderingComponent](https://www.npmjs.com/package/@ibm-wch-sdk/ng#_30d66fd25c62891da799936c1e1454566f3770b753be58d94b5621b01603a546).
 
-The directive requires as a parameter a string identifying the editable property. This string must reference a property on the [Component](https://angular.io/api/core/Component) that has been bound to a field of the content item via a `@RenderingContextBinding` directive. This directive contains the actual selector of the field. Note that this binding is done automatically if the components are generated via the [CLI](https://www.npmjs.com/package/ibm-wch-sdk-cli).
+The directive requires as a parameter a string identifying the editable property. This string must reference a property on the [Component](https://angular.io/api/core/Component) that has been bound to a field of the content item via a `@RenderingContextBinding` directive. This directive contains the actual selector of the field. Note that this binding is done automatically if the components are generated via the [CLI](https://www.npmjs.com/package/@ibm-wch-sdk/cli).
 
 #### Example
 

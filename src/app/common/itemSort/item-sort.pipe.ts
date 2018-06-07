@@ -14,7 +14,7 @@
  * limitations under the License.
  *******************************************************************************/
 import { Pipe, PipeTransform } from '@angular/core';
-import {RenderingContext} from 'ibm-wch-sdk-ng';
+import {RenderingContext} from '@ibm-wch-sdk/ng';
 import { Constants } from '../../Constants';
 
 @Pipe({
@@ -25,7 +25,7 @@ export class ItemSortPipe implements PipeTransform {
   transform(items: RenderingContext[], field: string, sortOrder: string, maxItemsToDisplay: number): any {
 
     const itemType = (items && items[0] && items[0].elements[field]) ? items[0].elements[field].elementType : '';
-    let clone = (items) ? items.splice(0) : [];
+    let clone = (items) ? items.slice(0) : [];
     // only sort if there is a valid field to sort on
     if (itemType) {
 
@@ -48,10 +48,10 @@ export class ItemSortPipe implements PipeTransform {
       if (sortOrder === Constants.LATEST_FIRST || sortOrder === Constants.ALPHABETICAL_DESCENDING) {
         clone.reverse();
       }
+    }
 
-      if (maxItemsToDisplay) {
-        clone = clone.slice(0, maxItemsToDisplay);
-      }
+    if (maxItemsToDisplay) {
+      clone = clone.slice(0, maxItemsToDisplay);
     }
 
     return clone;

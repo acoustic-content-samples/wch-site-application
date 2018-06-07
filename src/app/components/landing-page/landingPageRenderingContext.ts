@@ -8,7 +8,7 @@ import {
     SingleReferenceElement,
     SingleTextElement,
     RenderingContext
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 
 export const KEY_HERO_IMAGE = 'heroImage';
 export const KEY_HERO_HEADLINE = 'heroHeadline';

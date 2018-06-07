@@ -20,7 +20,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 
 import {environment} from '../../environment/environment';
-import {WchNgModule, PageComponent, ComponentsService} from 'ibm-wch-sdk-ng';
+import {WchNgModule, PageComponent, ComponentsService} from '@ibm-wch-sdk/ng';
 
 import { GalleryComponent } from './gallery/gallery.component';
 import { ListComponent } from './list/list.component';

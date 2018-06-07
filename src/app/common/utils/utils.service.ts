@@ -15,7 +15,7 @@
  *******************************************************************************/
 import { Injectable } from '@angular/core';
 
-import {Category, Link, RenderingContext} from 'ibm-wch-sdk-ng';
+import {Category, Link, RenderingContext} from '@ibm-wch-sdk/ng';
 
 
 

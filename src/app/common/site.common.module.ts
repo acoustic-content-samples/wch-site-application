@@ -20,7 +20,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 
 import {environment} from '../environment/environment';
-import {WchNgModule, PageComponent, ComponentsService} from 'ibm-wch-sdk-ng';
+import {WchNgModule, PageComponent, ComponentsService} from '@ibm-wch-sdk/ng';
 
 /* utility pipes */
 import {FormattedTextPipe} from './formattedtext/formatted-text.pipe';
@@ -32,7 +32,7 @@ import { UtilsService } from './utils/utils.service';
 import { Link } from './link.component';
 import { ViewAllComponent } from '../components/view-all/view-all.component';
 import { ShareSocialComponent } from '../components/share-social/share-social.component';
-import { WchNgEditModule } from 'ibm-wch-sdk-ng-edit';
+import { WchNgEditModule } from '@ibm-wch-sdk/ng-edit';
 import { AuthService } from './authService/auth-service.service';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthHttpInterceptor} from './authService/auth-http-interceptor';

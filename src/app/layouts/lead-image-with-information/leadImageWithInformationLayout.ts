@@ -15,7 +15,7 @@
  *******************************************************************************/
 import {
     LayoutComponent, RenderingContext
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import { TypeLeadImageWithInformationComponent } from '../../components/lead-image-with-information/typeLeadImageWithInformationComponent';
 import {Constants} from '../../Constants';

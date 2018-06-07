@@ -49,6 +49,19 @@ if(args.length < 1 ){
 		{
 			copySuccessed =false;
 		}
+		// /elements (if the sample has this dir), check if this folder exists in the srcDir first
+		if (shell.test('-d', path.join(sampleSrcDir, 'elements'))) {
+			const elemDir = path.join(srcDir, 'elements');
+			if (!shell.test('-d', elemDir)) {
+				shell.mkdir('-p', elemDir);
+			}
+			console.log(`Copy files from ${sampleSrcDir}/elements to local src`);
+			result = shell.cp('-R', path.join(sampleSrcDir, 'elements', '*'), elemDir);
+			if (result.stderr != null)
+			{
+				copySuccessed =false;
+			}
+		}
 		// /images
 		const imagesDir = path.join(sampleDir, 'site-application-files', 'src', 'images')
 		if(fs.existsSync(imagesDir)) {

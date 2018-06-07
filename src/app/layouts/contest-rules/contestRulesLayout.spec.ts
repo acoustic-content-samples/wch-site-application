@@ -15,7 +15,7 @@
  *******************************************************************************/
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ContestRulesLayoutComponent } from './contestRulesLayout';
-import {WchInfoService} from 'ibm-wch-sdk-ng';
+import {WchInfoService} from '@ibm-wch-sdk/ng';
 
 class MockWchInfoService {
   constructor() {}

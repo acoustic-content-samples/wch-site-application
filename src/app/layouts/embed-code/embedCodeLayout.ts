@@ -1,6 +1,6 @@
 import {
     LayoutComponent
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import { TypeEmbedCodeComponent } from './../../components/embed-code/typeEmbedCodeComponent';
 

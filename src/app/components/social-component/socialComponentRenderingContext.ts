@@ -6,7 +6,7 @@ import {
     SingleLinkElement,
     SingleTextElement,
     RenderingContext
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 
 export const KEY_TITLE = 'title';
 export const KEY_FB_IMAGE = 'fbImage';

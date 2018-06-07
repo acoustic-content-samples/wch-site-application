@@ -7,10 +7,10 @@ import {
     isFormattedTextElement,
     isTextElement,
     AbstractRenderingComponent
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import {
     Observable
-} from 'rxjs/Observable';
+} from 'rxjs';
 import {
     ContestRulesRenderingContext
 } from './contestRulesRenderingContext';

@@ -16,11 +16,11 @@
 import {
   AbstractRenderingComponent,
   LayoutComponent, RenderingContext
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Ng2LoggerFactory } from '../../common/Ng2LoggerFactory';
-import { Logger } from 'ibm-wch-sdk-ng';
+import { Logger } from '@ibm-wch-sdk/ng';
 
 /**
  * @name scriptAppLayout

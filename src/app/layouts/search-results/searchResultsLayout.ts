@@ -1,13 +1,11 @@
 import {
   LayoutComponent
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {trigger, style, transition, animate, group} from '@angular/animations';
 import {TypeSearchResultsComponent} from './../../components/search-results/typeSearchResultsComponent';
-import {Subscription} from "rxjs/Subscription";
-import {Observable} from 'rxjs/Observable';
+import {Subscription, Observable, interval} from "rxjs";
 import {throttle} from 'rxjs/operators';
-import {interval} from 'rxjs/observable/interval';
 import 'rxjs/add/observable/fromEvent';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";

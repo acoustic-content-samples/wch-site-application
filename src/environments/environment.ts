@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  version: JSON.stringify((new Date()).toISOString().substr(0,10)),
+  version: JSON.stringify((new Date()).toString().substr(0,10)),
   sdkVersion: ''
 };

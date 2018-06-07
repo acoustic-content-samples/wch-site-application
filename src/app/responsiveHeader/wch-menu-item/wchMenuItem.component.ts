@@ -21,13 +21,13 @@ import {
 	ViewEncapsulation, EventEmitter, Output
 } from '@angular/core';
 
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
 
-import {RenderingContext} from 'ibm-wch-sdk-ng';
+
+
+
+import {RenderingContext} from '@ibm-wch-sdk/ng';
 import {Constants} from '../../Constants';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 
 @Component({
 	selector: 'wch-menu-item',

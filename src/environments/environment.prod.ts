@@ -1,4 +1,4 @@
-import sdkPackage from 'ibm-wch-sdk-ng/package.json';
+import sdkPackage from '@ibm-wch-sdk/ng/package.json';
 
 export const environment = {
   production: true,

@@ -16,8 +16,8 @@
 
 import {environment} from '../../environments/environment';
 
-import {Level, Log} from 'ng2-logger';
-import {Logger, LoggerFactory} from 'ibm-wch-sdk-ng';
+import {Level, Log} from 'ng2-logger/client';
+import {Logger, LoggerFactory} from '@ibm-wch-sdk/ng';
 
 export class Ng2LoggerFactory implements LoggerFactory {
 

@@ -27,11 +27,25 @@ import * as $ from 'jquery';
 })
 export class WchSlickComponent implements OnDestroy, AfterViewInit {
 
-	@Input() config: any;
+	@Input()
+	public set config(aValue: any) {
+		if (aValue) {
+
+			if(this.slideConfig && (this.slideConfig.slidesToShow !== aValue.slidesToShow || this.slideConfig.slidesToScroll !== aValue.slidesToScroll)) {
+				// slide was already initialized but the configuration changed
+				//update slides to show
+				this.carouselInstance.slickSetOption('slidesToShow', aValue.slidesToShow, true);
+				this.carouselInstance.slickSetOption('slidesToScroll', aValue.slidesToScroll, true);
+			}
+
+			this.slideConfig = aValue;
+		}
+	}
 
 	public slides: any[] = [];
 	public carouselInstance: any;
 	public carouselInitialized: boolean = false;
+	public slideConfig: any;
 
 	constructor(private elem: ElementRef, private zone: NgZone) {
 	}
@@ -59,7 +73,7 @@ export class WchSlickComponent implements OnDestroy, AfterViewInit {
 				this.carouselInstance.slickGoTo(0);
 			});
 			try {
-				$(this.elem.nativeElement).slick(this.config);
+				$(this.elem.nativeElement).slick(this.slideConfig);
 			} catch (e) {
 				console.error('error in carousel slick ', e);
 			}

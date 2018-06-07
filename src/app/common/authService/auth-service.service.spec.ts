@@ -24,7 +24,7 @@ import {
 import { MockBackend } from '@angular/http/testing';
 
 import { AuthService } from './auth-service.service';
-import {WchInfoService, WchNgModule} from 'ibm-wch-sdk-ng';
+import {WchInfoService, WchNgModule} from '@ibm-wch-sdk/ng';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import { Router } from "@angular/router";
 import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";

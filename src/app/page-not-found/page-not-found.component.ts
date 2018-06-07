@@ -14,9 +14,9 @@
  * limitations under the License.
  *******************************************************************************/
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {ComponentsService, LayoutComponent, RenderingContext} from 'ibm-wch-sdk-ng';
+import {ComponentsService, LayoutComponent, RenderingContext} from '@ibm-wch-sdk/ng';
 import {ConfigServiceService} from '../common/configService/config-service.service';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 import {AuthService} from "../common/authService/auth-service.service";
 
 @LayoutComponent({
@@ -52,6 +52,21 @@ export class PageNotFoundComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.configSub.unsubscribe();
+  }
+
+  //Check if home page exists
+  checkHomepage(){
+    if (!this.rc.context.site.pages || !this.context || !this.context.elements.goHomeButton.linkURL){
+      return false;
+    }
+
+    for (let i = 0; i < this.rc.context.site.pages.length; i++ ){
+      //check if there is a page that matches link in goHomeButton. In default, the link is /home
+      if (this.rc.context.site.pages[i]['path'] === this.context.elements.goHomeButton.linkURL){
+        return true;
+      }
+    }
+    return false;
   }
 
 }

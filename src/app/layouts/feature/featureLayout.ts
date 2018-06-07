@@ -15,7 +15,7 @@
  *******************************************************************************/
 import {
     LayoutComponent, RenderingContext, RenderingContextBinding
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { TypeFeatureComponent } from '../../components/feature/typeFeatureComponent';
 import {UtilsService} from '../../common/utils/utils.service';

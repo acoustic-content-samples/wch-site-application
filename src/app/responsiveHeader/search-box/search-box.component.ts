@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, NavigationExtras, Router} from "@angular/router";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 import {Constants} from "../../Constants";
 
 import "rxjs/add/operator/map";

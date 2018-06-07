@@ -14,13 +14,16 @@
  * limitations under the License.
  *******************************************************************************/
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {Constants} from '../../Constants';
 import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/publishReplay';
+
+
+
 
 @Injectable()
 export class ConfigServiceService {
@@ -60,8 +63,11 @@ console.warn('config-service.service.ts: possible tenant is %o and base url is %
 				.refCount();
 		}
 
-		const searchURL = `${apiUrl}/delivery/v1/search?q=name:%22${name}%22&fl=document:%5Bjson%5D`;
+		const searchURL = `${apiUrl}/delivery/v1/search?q=name:%22${encodeURIComponent(name)}%22&fl=document:%5Bjson%5D`;
 		return this.http.get(searchURL)
+			.do((res) => {
+				this.config.set(name, res);
+			})
 			.map((response: any) => {
 				if (response && response.numFound > 0) {
 					return response.documents.shift().document
@@ -69,10 +75,8 @@ console.warn('config-service.service.ts: possible tenant is %o and base url is %
 					return {};
 				}
 			})
-			.do((res) => {
-				this.config.set(name, res);
-			})
 			.publishReplay(1)
+			.refCount();
 	}
 
 }

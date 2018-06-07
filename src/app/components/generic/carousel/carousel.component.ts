@@ -15,14 +15,17 @@
  *******************************************************************************/
 import {
 	Component,
-	Input,
+	Input, OnDestroy,
 	ViewEncapsulation,
 } from '@angular/core';
-import {RenderingContext} from 'ibm-wch-sdk-ng';
+import {RenderingContext} from '@ibm-wch-sdk/ng';
 import 'slick-carousel';
 import {Constants} from '../../../Constants';
-
-
+import {Subscription} from 'rxjs/Subscription';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/observable/fromEvent';
 
 
 @Component({
@@ -31,7 +34,7 @@ import {Constants} from '../../../Constants';
 	templateUrl: './carousel.component.html',
 	styleUrls: ['./carousel.component.scss']
 })
-export class CarouselComponent  {
+export class CarouselComponent implements OnDestroy{
 
 	@Input()
 	public set renderingContexts(aValue: RenderingContext[]) {
@@ -42,32 +45,94 @@ export class CarouselComponent  {
 
 	constants: any = Constants;
 	slides: RenderingContext[] = [];
+	private resizeSub: Subscription;
+	private screenWidth: number;
+	slideConfig: any;
+	slidesToShow: number;
 
-	// set default configuration
-	slideConfig = {
-		'speed': 500, 'slidesToShow': 4, 'slidesToScroll': 4, 'dots': false, 'arrows': true,
-		'responsive': [{
-			'breakpoint': 1250,
-			'settings': {
-				'slidesToShow': 3,
-				'slidesToScroll': 3
+	constructor() {
+		this.resizeSub = Observable.fromEvent(window, 'resize')
+			.debounceTime(500)
+			.distinctUntilChanged()
+			.subscribe((screen: any) => {
+				this.screenWidth = screen.target.innerWidth;
+
+				this._initializeConfig();
+			});
+
+
+		this.screenWidth = window.innerWidth;
+
+
+		this._initializeConfig();
+	}
+
+	 _initializeConfig () {
+			// set default configuration
+			const slidesToShow = this.getSlidesToShow();
+
+			this.slideConfig = {
+				'speed': 500, 'slidesToShow': slidesToShow, 'slidesToScroll': slidesToShow, 'dots': false, 'arrows': true
+			};
+	}
+
+	isBreakpoint(breakpoint: string = '') {
+		let res = false;
+
+		switch (breakpoint.toLowerCase()) {
+			case 'small': {
+				res = (this.screenWidth <= 640);
+				break;
 			}
-		},
-			{
-				'breakpoint': 700,
-				'settings': {
-					'slidesToShow': 2,
-					'slidesToScroll': 2
-				}
-			},
-			{
-				'breakpoint': 400,
-				'settings': {
-					'slidesToShow': 1,
-					'slidesToScroll': 1
-				}
-			}]
-	};
+			case 'medium': {
+				res =  (641 <= this.screenWidth && this.screenWidth <= 1024);
+				break;
+			}
+			case 'large': {
+				res =  (1025 <= this.screenWidth && this.screenWidth <= 1440);
+				break;
+			}
+			case 'xlarge': {
+				res =  (1441 <= this.screenWidth && this.screenWidth <= 1920);
+				break;
+			}
+			case 'xxlarge': {
+				res =  (1921 <= this.screenWidth);
+				break;
+			}
+		}
+
+		return res;
+
+	}
+
+	getBreakpoint() {
+		if (this.screenWidth <= 640) {
+			return 'small';
+		} else if (641 <= this.screenWidth && this.screenWidth <= 1024) {
+			return 'medium';
+		} else if (1025 <= this.screenWidth && this.screenWidth <= 1440) {
+			return 'large';
+		} else if (1441 <= this.screenWidth && this.screenWidth <= 1920) {
+			return 'xlarge';
+		} else if (1921 <= this.screenWidth) {
+			return 'xxlarge';
+		}
+	}
+
+	getSlidesToShow() {
+		if (this.isBreakpoint('small')) {
+			return 1;
+		} else if ( this.isBreakpoint('medium')) {
+			return 2;
+		} else if ( this.isBreakpoint('large')) {
+			return 3;
+		} else if ( this.isBreakpoint('xlarge')) {
+			return 4;
+		}
+	}
+
+
 	/*
 	 speed: number <transition speed in milliseconds>
 	 slidesToShow: number <number of slides displayed at once>
@@ -78,6 +143,10 @@ export class CarouselComponent  {
 
 	trackById(index, item) {
 		return item.id;
+	}
+
+	ngOnDestroy() {
+		this.resizeSub.unsubscribe();
 	}
 
 

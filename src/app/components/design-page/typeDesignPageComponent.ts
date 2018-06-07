@@ -15,11 +15,11 @@
  *******************************************************************************/
 import {
 	RenderingContext
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AbstractDesignPageComponent} from './abstractDesignPageComponent';
 import {UtilsService} from '../../common/utils/utils.service';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 import {Constants} from '../../Constants';
 
 /**

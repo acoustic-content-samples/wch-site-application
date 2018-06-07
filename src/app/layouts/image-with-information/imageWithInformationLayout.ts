@@ -15,7 +15,7 @@
  *******************************************************************************/
 import {
     LayoutComponent, RenderingContext
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { TypeImageWithInformationComponent } from '../../components/image-with-information/typeImageWithInformationComponent';
 import {UtilsService} from '../../common/utils/utils.service';

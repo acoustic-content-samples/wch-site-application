@@ -22,10 +22,10 @@ import {
     Link,
     RenderingContextBinding,
     AbstractRenderingComponent
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import {
     Observable
-} from 'rxjs/Observable';
+} from 'rxjs';
 
 /**
  * @name Feature

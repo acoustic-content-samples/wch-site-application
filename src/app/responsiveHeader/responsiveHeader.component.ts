@@ -21,17 +21,17 @@ import {
 	ViewEncapsulation
 } from '@angular/core';
 
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
 
-import {RenderingContext} from 'ibm-wch-sdk-ng';
+
+
+
+import {RenderingContext} from '@ibm-wch-sdk/ng';
 import {ConfigServiceService} from '../common/configService/config-service.service';
 import {Constants} from '../Constants';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 import {AuthService} from '../common/authService/auth-service.service';
 import {Router} from "@angular/router";
-import {RefreshService} from 'ibm-wch-sdk-ng';
+import {RefreshService} from '@ibm-wch-sdk/ng';
 
 @Component({
 	selector: 'responsive-header',

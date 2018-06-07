@@ -1,6 +1,7 @@
-import 'rxjs/add/operator/do';
+
+import {throwError as observableThrowError, Observable} from 'rxjs';
+
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
 import {Router} from '@angular/router';
 import {Injectable} from '@angular/core';
 
@@ -16,7 +17,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
 			if (err instanceof HttpErrorResponse) {
 				if (err.status === 401 || err.status === 403) {
 					this.router.navigate(['sign-in']);
-					return Observable.throw(err);
+					return observableThrowError(err);
 				}
 			}
 		});

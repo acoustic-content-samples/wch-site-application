@@ -29,8 +29,8 @@ import { Ng2LoggerFactory } from './common/Ng2LoggerFactory';
 import 'jquery';
 import 'foundation-sites';
 
-import {WchNgModule, PageComponent, SiteBootstrap, Site, WchLoggerFactory} from 'ibm-wch-sdk-ng';
-import {WchNgEditModule} from 'ibm-wch-sdk-ng-edit';
+import {WchNgModule, PageComponent, SiteBootstrap, Site, WchLoggerFactory} from '@ibm-wch-sdk/ng';
+import {WchNgEditModule} from '@ibm-wch-sdk/ng-edit';
 
 import {WchFooterComponent} from './wchFooter/wchFooter.component';
 import { ResponsiveHeaderModule } from './responsiveHeader/responsiveMenu.module';

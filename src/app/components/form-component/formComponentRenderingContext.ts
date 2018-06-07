@@ -5,7 +5,7 @@ import {
     SingleLinkElement,
     SingleTextElement,
     RenderingContext
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 
 export const KEY_HEADLINE = 'headline';
 export const KEY_NAME = 'name';

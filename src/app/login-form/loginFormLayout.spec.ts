@@ -19,7 +19,7 @@ import {UtilsService} from '../common/utils/utils.service';
 import {AuthService} from '../common/authService/auth-service.service';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {WchInfoService, RefreshService} from 'ibm-wch-sdk-ng';
+import {WchInfoService, RefreshService} from '@ibm-wch-sdk/ng';
 import {Router} from '@angular/router';
 import { NavigationStart, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Observable';

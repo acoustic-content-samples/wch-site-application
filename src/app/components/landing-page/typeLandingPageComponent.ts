@@ -1,10 +1,10 @@
 import {
     RenderingContext
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { AbstractLandingPageComponent } from './abstractLandingPageComponent';
 import {UtilsService} from '../../common/utils/utils.service';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 
 /** Useful imports */
 // import 'rxjs/add/operator/map';

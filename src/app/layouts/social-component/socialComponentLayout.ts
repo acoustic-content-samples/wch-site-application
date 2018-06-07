@@ -1,9 +1,9 @@
 import {
     LayoutComponent
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import { Component } from '@angular/core';
 import { TypeSocialComponent } from './../../components/social-component/typeSocialComponent';
-import {WchInfoService} from 'ibm-wch-sdk-ng';
+import {WchInfoService} from '@ibm-wch-sdk/ng';
 
 
 /** Useful imports */

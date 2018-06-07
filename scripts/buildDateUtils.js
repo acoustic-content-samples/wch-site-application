@@ -8,7 +8,7 @@ const envFile = "src/environments/environment.prod.ts";
 		const options = {
 			files: file,
 			from: /version: '(.*)'/g,
-			to: "version: '" + new Date().toISOString() + "'",
+			to: "version: '" + new Date().toString() + "'",
 			allowEmptyPaths: false,
 		};
 

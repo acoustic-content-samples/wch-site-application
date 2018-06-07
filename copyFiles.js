@@ -23,9 +23,10 @@ utils.clearBuildDate();
 
 /*Write build date into buildDate.json*/
 const dateObj = {
-  "buildDate": new Date().toISOString()
+  "name": "Oslo",
+  "buildDate": new Date().toString()
 };
-fs.writeFile("dist/assets/oob-spa/buildDate.json", JSON.stringify(dateObj), function(error) {
+fs.writeFile("dist/assets/buildDate.json", JSON.stringify(dateObj, null, " "), function(error) {
   if(error) {
     return console.log(" cannot create buildDate.json, ", error);
   }

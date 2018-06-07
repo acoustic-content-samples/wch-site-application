@@ -31,16 +31,15 @@ const transpileForCrawling = () => {
 		})
 	};
 
-	findFile(assetsDir, /main.*\.bundle\.js$/, (err, files) => {
-		console.log(files.length);
+	findFile(assetsDir, /main.js$/, (err, files) => {
 		if (files.length === 1) {
 			const mainBundle = files[0];
-			console.log(mainBundle.file);
 
 			const src = path.join(assetsDir, mainBundle.file);
 			const dest = path.join(assetsDir, `${mainBundle.file}.original.js`);
 
-			fsExtra.copy(src, dest, function (err) {
+
+      fsExtra.copy(src, dest, function (err) {
 				if (err) {
 					console.error(' cannot copy "' + src + '": ' + err);
 				} else {
@@ -85,4 +84,4 @@ const transpileForCrawling = () => {
 
 transpileForCrawling();
 
-// "tsc --target es5 --skipLibCheck true --allowJs dist/assets/main_original.bundle.js --out dist/assets/main.bundle.js
+// "tsc --target es5 --skipLibCheck true --allowJs dist/assets/main_original.bundle.js --out dist/assets/main.js

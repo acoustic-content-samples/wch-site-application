@@ -1,6 +1,6 @@
 import {
     LayoutComponent
-} from 'ibm-wch-sdk-ng';
+} from '@ibm-wch-sdk/ng';
 import { Component } from '@angular/core';
 import { TypeStandardPageComponent } from '../../components/standard-page/typeStandardPageComponent';
 

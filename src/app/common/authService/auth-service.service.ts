@@ -17,11 +17,9 @@ import {Injectable, OnDestroy, OnInit} from '@angular/core';
 import {Constants} from '../../Constants';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {Observable} from 'rxjs/Observable';
-import {Subscription} from 'rxjs/Subscription';
-import {USE_PUBLIC_URL} from 'ibm-wch-sdk-ng';
-import {WchInfoService} from 'ibm-wch-sdk-ng';
+import {BehaviorSubject, Observable, Subscription} from 'rxjs';
+import {USE_PUBLIC_URL} from '@ibm-wch-sdk/ng';
+import {WchInfoService} from '@ibm-wch-sdk/ng';
 import {Ng2LoggerFactory} from '../Ng2LoggerFactory';
 
 import 'rxjs/add/operator/switchMap';

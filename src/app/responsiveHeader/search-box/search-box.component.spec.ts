@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { Location, CommonModule } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
-import {WchNgModule, PageComponent, ComponentsService, RenderingContext} from 'ibm-wch-sdk-ng';
+import {WchNgModule, PageComponent, ComponentsService, RenderingContext} from '@ibm-wch-sdk/ng';
 import { FormsModule } from '@angular/forms';
 
 import { SearchBoxComponent } from './search-box.component';
