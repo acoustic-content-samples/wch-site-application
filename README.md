@@ -156,6 +156,7 @@ To make it easier to remove the default Oslo site either completely or just the 
 
 * `oslo-complete.json` contains all Oslo code (web assets) and sample site content. 
 * `oslo-sample-artifacts.json` is a subset of oslo-complete.json. This manifest contains only the site assets, renditions, contents and pages. The manifest does not contain the source code, layouts, layout-mappings, content types, image-profiles, categories,  and basic rendering functions.
+* `oslo-minimum.json` contains minimum reusable artifacts that can be used to create your own SPA site. This manifest contains only source code, layouts, layout-mappings, content types, image-profiles, categories, generic components (header and footer), and generic page (404 error page) 
 
 To push, pull, and delete content by manifest, please refer to: https://github.com/ibm-wch/wchtools-cli#pushing-pulling-and-deleting-by-manifest 
 
@@ -174,6 +175,19 @@ Note: Since the sample manifest files only work for the default Oslo starter sit
 * `wchtools pull -A -v`
 * `wchtools list -A --write-manifest oslo-complete`
 * `wchtools push -w -v -f --path /dxconfig/manifests/`
+
+##### You would like to create your own SPA site with reusable artifacts from Oslo :
+* See section [Create your own SPA site based on Oslo minimum template](#create-your-own-spa-site-based-on-oslo-minimum-template)
+
+## Create your own SPA site based on Oslo minimum template
+* Prerequisites: wchtools >= 2.7.1
+1. Download the latest Oslo sample site artifacts from "Update the sample site" widget in your WCH homepage
+2. Unzip the package you downloaded and use your command line tool to change directory to this unzipped folder
+3. Configure your tenant information by running `wchtools init`
+4. Push Oslo minimum template to your tenant by running `wchtools push -A -v -f --manifest oslo-minimum`
+5. Open the live site of your tenant, you will see a starter site with only minimum reusable artifacts. Follow the instruction in the page to create your own content and page for your SPA site.
+
+Note: If you have older site in your tenant, you have to delete it first before pushing the Oslo minimum template. `wchtools delete -A -v --all` would be helpful if you want to clean up your tenant. 
 
 ## Resources
 Find more details on the WCH development environment, technical documentation, sample applications, APIs and other information to jumpstart your development project.
