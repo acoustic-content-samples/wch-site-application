@@ -26,10 +26,10 @@ import {
 
 
 import {RenderingContext} from '@ibm-wch-sdk/ng';
-import {ConfigServiceService} from '../common/configService/config-service.service';
+import {ConfigServiceService} from '@ibm-wch/components-ng-shared-utilities';
 import {Constants} from '../Constants';
 import {Subscription} from 'rxjs';
-import {AuthService} from '../common/authService/auth-service.service';
+import {AuthService} from '@ibm-wch/components-ng-shared-utilities';
 import {Router} from "@angular/router";
 import {RefreshService} from '@ibm-wch-sdk/ng';
 

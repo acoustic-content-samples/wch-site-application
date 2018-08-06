@@ -18,7 +18,7 @@ import {
 } from '@ibm-wch-sdk/ng';
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { TypeSignUpComponent } from '../../components/sign-up/typeSignUpComponent';
-import {UtilsService} from '../../common/utils/utils.service';
+import {UtilsService} from '@ibm-wch/components-ng-shared-utilities';
 
 import * as $ from 'jquery';
 

@@ -15,8 +15,7 @@
  *******************************************************************************/
 import {async, ComponentFixture, getTestBed, TestBed} from '@angular/core/testing';
 import { LoginFormLayoutComponent } from './loginFormLayout';
-import {UtilsService} from '../common/utils/utils.service';
-import {AuthService} from '../common/authService/auth-service.service';
+import { UtilsService, AuthService} from '@ibm-wch/components-ng-shared-utilities';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {WchInfoService, RefreshService} from '@ibm-wch-sdk/ng';

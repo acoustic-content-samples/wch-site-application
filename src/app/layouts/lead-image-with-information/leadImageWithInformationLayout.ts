@@ -19,7 +19,7 @@ import {
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import { TypeLeadImageWithInformationComponent } from '../../components/lead-image-with-information/typeLeadImageWithInformationComponent';
 import {Constants} from '../../Constants';
-import {UtilsService} from '../../common/utils/utils.service';
+import {UtilsService} from '@ibm-wch/components-ng-shared-utilities';
 
 /**
  * @name leadImageWithInformationLayout

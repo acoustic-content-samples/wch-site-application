@@ -21,7 +21,7 @@ import 'rxjs/add/operator/filter';
 
 import {Observable, Subscription} from 'rxjs';
 import {NavigationEnd, Router} from '@angular/router';
-import {HighlightService} from './common/highlightService/highlight.service';
+import {HighlightService} from '@ibm-wch/components-ng-shared-utilities';
 import { TranslateService } from '@ngx-translate/core';
 import { Ng2LoggerFactory } from './common/Ng2LoggerFactory';
 import { Logger } from '@ibm-wch-sdk/ng';

@@ -13,26 +13,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {NgModule} from '@angular/core';
+.preview-container {
+	padding: 30px;
+	margin-top: 35px;
+}
 
-import { WchSlickComponent, WchSlickSlideDirective } from './wch-slick.component';
+.msg {
+	padding: 15px 50px;
+	text-align: center;
+	
+	&.error {
+		color: #d32f2f;
+	}
 
-@NgModule({
-	imports: [
-		CommonModule,
-		FormsModule,
-	],
-	declarations: [
-		WchSlickComponent,
-		WchSlickSlideDirective
-	],
+	code {
+		background-color: #f2f2f2;
+	}
+}
 
-	exports: [
-		WchSlickComponent,
-		WchSlickSlideDirective
-	]
-})
-export class WchSlickModule {
+.create-thumbnail {
+	width: 100%;
+	padding: 10px;
+	background-color: #ddd;
+	border-bottom: 1px solid black;
+	position: fixed;
+	z-index: 1000;
+
+	&:hover {
+		background-color: #ccc;
+	}
+
+	&:active {
+		background-color: #bbb;
+	}
+}
+
+.download-thumbnail {
+	display: none;
 }

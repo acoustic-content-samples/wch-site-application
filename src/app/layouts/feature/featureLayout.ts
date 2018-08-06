@@ -18,7 +18,13 @@ import {
 } from '@ibm-wch-sdk/ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { TypeFeatureComponent } from '../../components/feature/typeFeatureComponent';
-import {UtilsService} from '../../common/utils/utils.service';
+import {UtilsService} from '@ibm-wch/components-ng-shared-utilities';
+import { shareLast } from '@ibm-wch-sdk/utils';
+import { combineLatest } from 'rxjs';
+import { distinctUntilChanged, map } from 'rxjs/operators';
+
+
+
 
 /**
  * @name featureLayout
@@ -35,8 +41,7 @@ import {UtilsService} from '../../common/utils/utils.service';
 export class FeatureLayoutComponent extends TypeFeatureComponent implements OnInit, OnDestroy {
 
     rContext: RenderingContext;
-    imagePlacementValue: string;
-				useRouterLink: boolean = false;
+    useRouterLink: boolean = false;
 
     readonly HEADLINE_KEY: string = 'featureHeadline';
     readonly DESCRIPTION_KEY: string = 'descriptionOfFeature';
@@ -44,6 +49,7 @@ export class FeatureLayoutComponent extends TypeFeatureComponent implements OnIn
     readonly IMAGE_PLACEMENT_KEY: string = 'imagePlacement';
     readonly IMAGE_SIZE_KEY: string = 'imageSize';
     readonly READ_MORE_KEY: string = 'readMoreLink';
+    onCssClasses: any;
 
 
     constructor(private utilsService: UtilsService) {
@@ -52,13 +58,13 @@ export class FeatureLayoutComponent extends TypeFeatureComponent implements OnIn
 
     ngOnInit() {
         super.ngOnInit();
-								this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
+        this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
             this.rContext = renderingContext;
-            this.imagePlacementValue = this.utilsService.getFirstCategoryValue(this.imagePlacement, 'right', true)
+            this.updateCssClass();
         });
-								this.safeSubscribe(this.onReadMoreLink, (link) => {
-												this.useRouterLink = this.utilsService.useRouterLink(link);
-								})
+        this.safeSubscribe(this.onReadMoreLink, (link) => {
+          this.useRouterLink = this.utilsService.useRouterLink(link);
+        });
     }
 
     ngOnDestroy () {
@@ -81,8 +87,27 @@ export class FeatureLayoutComponent extends TypeFeatureComponent implements OnIn
         return this.utilsService.getImageUrl(this.rContext, this.IMAGE_KEY, this.getImageSize());
     }
 
-    getCssClasses() {
-        return `feature-img-${this.imagePlacementValue} feature-${this.getImageSize()}`;
-    }
+    //Update Css class for feature layout by SDK
+    updateCssClass() {
+        this.onCssClasses = combineLatest(
+          this.onImagePlacement,
+          this.onImageSize
+        ).pipe(
+          map(
+            ([imgPlc, imgSize]) =>
+              `feature-img-${this.utilsService.getFirstCategoryValue(
+                imgPlc,
+                'right',
+                true
+              )} feature-${this.utilsService.getFirstCategoryValue(
+                imgSize,
+                'medium',
+                true
+              )}`
+          ),
+          distinctUntilChanged(),
+          shareLast()
+        );
+      }
 
 }

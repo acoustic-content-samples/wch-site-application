@@ -3,7 +3,6 @@ import {
 } from '@ibm-wch-sdk/ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { AbstractLandingPageComponent } from './abstractLandingPageComponent';
-import {UtilsService} from '../../common/utils/utils.service';
 import {Subscription} from 'rxjs';
 
 /** Useful imports */

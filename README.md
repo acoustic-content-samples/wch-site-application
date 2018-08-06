@@ -31,6 +31,10 @@ Instructions on how to update Oslo to the latest can be found here: [Updating yo
 7. [Updating your Oslo sample](https://developer.ibm.com/customer-engagement/tutorials/updating-oslo-sample/)
 
 ## Updates
+At the beginning of August we have updated the Oslo starter site with the following features:
+- Moved shared utilities that would not typically be updated from Oslo to https://www.npmjs.com/package/@ibm-wch/components-ng-shared-utilities
+- Moved components like embed-code that would not typically be updated from Oslo to https://www.npmjs.com/package/@ibm-wch/components-ng-shared-components
+
 At the beginning of June we have updated the Oslo starter site with the following features:
 - Upgrade to Angular 6.0
 

@@ -25,7 +25,7 @@ import { WCHMenuComponent } from './wch-menu/wchMenu.component';
 import { WCHMenuItemComponent } from './wch-menu-item/wchMenuItem.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SiteCommonModule } from '../common/site.common.module';
+import { SiteCommonModule } from '@ibm-wch/components-ng-shared-utilities';
 import {AngularSvgIconModule} from 'angular-svg-icon';
 
 

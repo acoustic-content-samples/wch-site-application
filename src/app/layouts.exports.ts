@@ -10,20 +10,15 @@ export { AbstractSocialComponent } from './components/social-component/abstractS
 export { AbstractStandardPageComponent } from './components/standard-page/abstractStandardPageComponent';
 export { ArticleBodyImageComponent } from './components/article-body-image/article-body-image.component';
 export { AuthorProfileLayoutComponent } from './layouts/author-profile/authorProfileLayout';
-export { CarouselDynamicListLayoutComponent } from './layouts/carousel-dynamic-list/carouselDynamicListLayout';
-export { CarouselListLayoutComponent } from './layouts/carousel-list/carouselListLayout';
 export { ContestRulesLayoutComponent } from './layouts/contest-rules/contestRulesLayout';
 export { DesignArticleLayoutComponent } from './layouts/design-article/designArticleLayout';
 export { DesignArticleSummaryComponent } from './layouts/design-article-summary/design-article-summary.component';
 export { DesignPageLeftLayoutComponent } from './layouts/design-page-left/designPageLeftLayout';
 export { DesignPageRightLayoutComponent } from './layouts/design-page-right/designPageRightLayout';
-export { EmbedCodeLayoutComponent } from './layouts/embed-code/embedCodeLayout';
 export { ErrorPageLayoutComponent } from './layouts/error-page/errorPageLayout';
 export { EventLayoutComponent } from './layouts/event/eventLayout';
 export { FeatureLayoutComponent } from './layouts/feature/featureLayout';
 export { FormComponentLayoutComponent } from './layouts/form-component/formComponentLayout';
-export { GalleryDynamicListLayoutComponent } from './layouts/gallery-dynamic-list/galleryDynamicListLayout';
-export { GalleryListLayoutComponent } from './layouts/gallery-list/galleryListLayout';
 export { HeroImageLayoutComponent } from './layouts/hero-image/heroImageLayout';
 export { HeroVideoLayoutComponent } from './layouts/hero-video/heroVideoLayout';
 export { ImageWithInformationLayoutComponent } from './layouts/image-with-information/imageWithInformationLayout';
@@ -42,5 +37,3 @@ export { TypeFormComponent } from './components/form-component/typeFormComponent
 export { TypeLandingPageComponent } from './components/landing-page/typeLandingPageComponent';
 export { TypeSocialComponent } from './components/social-component/typeSocialComponent';
 export { TypeStandardPageComponent } from './components/standard-page/typeStandardPageComponent';
-export { VerticalDynamicListLayoutComponent } from './layouts/vertical-dynamic-list/verticalDynamicListLayout';
-export { VerticalListLayoutComponent } from './layouts/vertical-list/verticalListLayout';

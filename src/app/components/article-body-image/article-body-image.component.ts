@@ -22,7 +22,7 @@ import {
 	RenderingContext
 } from '@ibm-wch-sdk/ng';
 
-import { UtilsService } from '../../common/utils/utils.service';
+import { UtilsService } from '@ibm-wch/components-ng-shared-utilities';
 
 @LayoutComponent({
 	selector: 'article-body-image'

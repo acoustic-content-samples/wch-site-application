@@ -17,7 +17,7 @@ import {Component, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/c
 import {AbstractRenderingComponent, LayoutComponent, RenderingContext} from '@ibm-wch-sdk/ng';
 import {TypeDesignArticleComponent} from '../../components/design-article/typeDesignArticleComponent';
 import {Constants} from '../../Constants';
-import {UtilsService} from '../../common/utils/utils.service';
+import {UtilsService} from '@ibm-wch/components-ng-shared-utilities';
 import {Subscription} from 'rxjs';
 
 

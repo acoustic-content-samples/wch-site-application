@@ -14,10 +14,10 @@
  * limitations under the License.
  *******************************************************************************/
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ConfigServiceService } from './../common/configService/config-service.service';
+import { ConfigServiceService } from '@ibm-wch/components-ng-shared-utilities';
 import { PageNotFoundComponent } from './page-not-found.component';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
-import {AuthService} from '../common/authService/auth-service.service';
+import {AuthService} from '@ibm-wch/components-ng-shared-utilities';
 import {WchInfoService} from '@ibm-wch-sdk/ng';
 import { NavigationStart, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Observable';

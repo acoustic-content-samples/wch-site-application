@@ -1,8 +1,0 @@
-<div class="view-all"  *ngIf="isButtonLinkSet()">
-	<a wchEditable="viewAllLink" *ngIf="!viewAllLink.linkURL.startsWith('http')" class="button button-view-all" href [routerLink]="viewAllLink.linkURL">
-		{{viewAllLink.linkText}}
-	</a>
-	<a wchEditable="viewAllLink" *ngIf="viewAllLink.linkURL.startsWith('http')" class="button button-view-all" [href]="viewAllLink.linkURL">
-		{{viewAllLink.linkText}}
-	</a>
-</div>

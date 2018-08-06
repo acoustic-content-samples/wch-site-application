@@ -5,15 +5,15 @@
   </div>
   <div class="icons-group grid-x section cell">
     <!--facebook image with link-->
-    <a class="small-12 medium-4 columns" wchEditable="facebook" [href]="facebook.linkURL" [title]="facebook.linkDescription">{{ facebook.linkText }}
+    <a class="small-12 medium-4 columns" wchEditable="facebook" [href]="facebook.linkURL" [title]="facebook.linkDescription">
       <img *ngIf="fbImage.url" class="social-icon" wchEditable="fbImage" [src]="renderingContext.context.hub.deliveryUrl.origin + fbImage.url" [alt]="fbImage.altText" [title]="fbImage.asset.fileName"  onError="this.alt='Image is not available yet';">
     </a>
     <!--twitter image with link-->
-    <a class="small-12 medium-4 columns" wchEditable="twitter" [href]="twitter.linkURL"  [title]="twitter.linkDescription">{{ twitter.linkText }}
+    <a class="small-12 medium-4 columns" wchEditable="twitter" [href]="twitter.linkURL"  [title]="twitter.linkDescription">
       <img *ngIf="twitterImage.url" class="social-icon" wchEditable="twitterImage" [src]="renderingContext.context.hub.deliveryUrl.origin + twitterImage.url" [alt]="twitterImage.altText" [title]="twitterImage.asset.fileName"  onError="this.alt='Image is not available yet';">
     </a>
     <!--instagram image with link-->
-    <a class="small-12 medium-4 columns" wchEditable="instagram" [href]="instagram.linkURL" [title]="instagram.linkDescription">{{ instagram.linkText }}
+    <a class="small-12 medium-4 columns" wchEditable="instagram" [href]="instagram.linkURL" [title]="instagram.linkDescription">
       <img *ngIf="instagramImage.url" class="social-icon" wchEditable="instagramImage" [src]="renderingContext.context.hub.deliveryUrl.origin + instagramImage.url" [alt]="instagramImage.altText" [title]="instagramImage.asset.fileName"  onError="this.alt='Image is not available yet';">
     </a>
   </div>

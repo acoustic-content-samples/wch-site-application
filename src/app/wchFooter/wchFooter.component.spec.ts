@@ -22,7 +22,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { WchFooterComponent } from './wchFooter.component';
 import { MockBackend, MockConnection } from '@angular/http/testing';
-import { ConfigServiceService } from './../common/configService/config-service.service';
+import { ConfigServiceService } from '@ibm-wch/components-ng-shared-utilities';
 import {
 	HttpClient, HttpClientModule} from '@angular/common/http';
 import { XHRBackend, ResponseOptions,

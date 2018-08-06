@@ -1,4 +1,4 @@
-<div [id]="rContext.id" class="feature section" [ngClass]="getCssClasses()">
+<div [id]="rContext.id" class="feature section" [ngClass]="onCssClasses | async">
 	<div *ngIf="image.url" class="feature-copy">
 		<div class="feature-copy-content">
 			<h2 wchEditable="featureHeadline" *ngIf="isHeaderSet()">{{onFeatureHeadline | async}}</h2>

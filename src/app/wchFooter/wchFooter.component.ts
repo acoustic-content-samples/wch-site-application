@@ -16,7 +16,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 
 import {RenderingContext} from '@ibm-wch-sdk/ng';
-import {ConfigServiceService} from '../common/configService/config-service.service';
+import {ConfigServiceService} from '@ibm-wch/components-ng-shared-utilities';
 import {Constants} from '../Constants';
 import {Subscription} from 'rxjs';
 

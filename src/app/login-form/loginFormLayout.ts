@@ -14,7 +14,7 @@
  * limitations under the License.
  *******************************************************************************/
 import {Component, Input} from '@angular/core';
-import {AuthService} from '../common/authService/auth-service.service';
+import {AuthService} from '@ibm-wch/components-ng-shared-utilities';
 import {Router} from '@angular/router';
 import {ComponentsService, LayoutComponent, RefreshService, RenderingContext} from '@ibm-wch-sdk/ng';
 

@@ -18,7 +18,7 @@ import {
 } from '@ibm-wch-sdk/ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AbstractDesignPageComponent} from './abstractDesignPageComponent';
-import {UtilsService} from '../../common/utils/utils.service';
+import {UtilsService} from '@ibm-wch/components-ng-shared-utilities';
 import {Subscription} from 'rxjs';
 import {Constants} from '../../Constants';
 

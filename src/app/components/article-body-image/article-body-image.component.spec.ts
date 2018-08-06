@@ -15,7 +15,7 @@
  *******************************************************************************/
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ArticleBodyImageComponent } from './article-body-image.component';
-import {UtilsService} from '../../common/utils/utils.service';
+import { UtilsService } from '@ibm-wch/components-ng-shared-utilities';
 
 
 describe('ArticleBodyImageComponent', () => {

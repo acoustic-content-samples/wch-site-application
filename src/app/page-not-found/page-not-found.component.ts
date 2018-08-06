@@ -15,9 +15,9 @@
  *******************************************************************************/
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ComponentsService, LayoutComponent, RenderingContext} from '@ibm-wch-sdk/ng';
-import {ConfigServiceService} from '../common/configService/config-service.service';
+import {ConfigServiceService} from '@ibm-wch/components-ng-shared-utilities';
 import {Subscription} from 'rxjs';
-import {AuthService} from "../common/authService/auth-service.service";
+import {AuthService} from '@ibm-wch/components-ng-shared-utilities';
 
 @LayoutComponent({
   selector: ComponentsService.PAGE_NOT_FOUND_LAYOUT
@@ -56,13 +56,14 @@ export class PageNotFoundComponent implements OnInit, OnDestroy {
 
   //Check if home page exists
   checkHomepage(){
-    if (!this.rc.context.site.pages || !this.context || !this.context.elements.goHomeButton.linkURL){
+    const homeUrl = (this.context && this.context.elements && this.context.elements.goHomeButton) ? this.context.elements.goHomeButton.linkURL : null;
+    if (!this.rc.context.site.pages || !this.context || !homeUrl){
       return false;
     }
 
     for (let i = 0; i < this.rc.context.site.pages.length; i++ ){
       //check if there is a page that matches link in goHomeButton. In default, the link is /home
-      if (this.rc.context.site.pages[i]['path'] === this.context.elements.goHomeButton.linkURL){
+      if (this.rc.context.site.pages[i]['path'] === homeUrl){
         return true;
       }
     }

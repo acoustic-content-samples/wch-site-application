@@ -37,20 +37,24 @@ import { ResponsiveHeaderModule } from './responsiveHeader/responsiveMenu.module
 import {AppComponent} from './app.component';
 import {environment} from './environment/environment';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import { SiteCommonModule } from './common/site.common.module';
-import { HighlightService } from './common/highlightService/highlight.service';
+import { HighlightService } from '@ibm-wch/components-ng-shared-utilities';
 
-import { GenericLayoutModule } from './components/generic/generic.layout.module';
 
 import { ArticleBodyImageComponent } from './components/article-body-image/article-body-image.component';
 import { DesignArticleSummaryComponent } from './layouts/design-article-summary/design-article-summary.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {LoginFormLayoutComponent} from './login-form/loginFormLayout';
+import {PreviewComponent} from './preview-component/preview.component';
+import { ShareSocialComponent } from './components/share-social/share-social.component';
+import { SiteCommonModule } from '@ibm-wch/components-ng-shared-utilities';
+import { SPASharedComponentModule } from '@ibm-wch/components-ng-shared-components';
+
 
 const pageRoutes: Routes = [
 	{path: '', redirectTo: '/home', pathMatch: 'full'},
 	{path: 'sign-in', component: LoginFormLayoutComponent},
+	{path: 'component-preview', component: PreviewComponent},
 	{path: '**', component: PageComponent}
 ];
 
@@ -67,8 +71,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 		HttpClientModule,
 		WchNgModule.forRoot(environment),
 		WchNgEditModule.forRoot(),
-		SiteCommonModule,
-		GenericLayoutModule,
 		BrowserAnimationsModule,
 		ResponsiveHeaderModule,
 		SAMPLE_MODULE,
@@ -78,16 +80,21 @@ export function HttpLoaderFactory(http: HttpClient) {
 				useFactory: HttpLoaderFactory,
 				deps: [ HttpClient ]
 			}
-		})
+		}),
+		SiteCommonModule,
+		SPASharedComponentModule,
 	],
 	declarations: [
 		AppComponent,
 		LoginFormLayoutComponent,
 		WchFooterComponent,
 		PageNotFoundComponent,
+		PreviewComponent,
 		ArticleBodyImageComponent,
 		DesignArticleSummaryComponent,
-	    ...LAYOUTS],
+    ShareSocialComponent,
+    ...LAYOUTS
+  ],
 	providers: [
 		{provide: WchLoggerFactory, useClass: Ng2LoggerFactory},
 		 HighlightService

@@ -18,7 +18,7 @@ import {
 } from '@ibm-wch-sdk/ng';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { TypeHeroImageComponent } from '../../components/hero-image/typeHeroImageComponent';
-import {UtilsService} from '../../common/utils/utils.service';
+import {UtilsService} from '@ibm-wch/components-ng-shared-utilities';
 
 /**
  * @name heroImageLayout

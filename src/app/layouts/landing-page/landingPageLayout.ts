@@ -6,7 +6,7 @@ import { TypeLandingPageComponent } from './../../components/landing-page/typeLa
 import {Constants} from '../../Constants';
 import {Subscription} from 'rxjs';
 import {WchInfoService} from '@ibm-wch-sdk/ng';
-import {UtilsService} from '../../common/utils/utils.service';
+import {UtilsService} from '@ibm-wch/components-ng-shared-utilities';
 
 
 /** Useful imports */

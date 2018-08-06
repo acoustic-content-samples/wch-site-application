@@ -7,7 +7,7 @@
       <div *ngIf="authService.isLoggedIn()">
         <p>Oops! This page may not exist. Please log into IBM Waston Content Hub to create your page in Site Manager.</p>
       </div>
-      <p *ngIf="!checkHomepage() && context && context.elements.goHomeButton.linkText">Note: By default, a page with the url <b>/home</b> is selected so ensure you create one.</p>
+      <p *ngIf="!checkHomepage() && context && context.elements && context.elements.goHomeButton && context.elements.goHomeButton">Note: By default, a page with the url <b>/home</b> is selected so ensure you create one.</p>
       <div class="error-code">
         404
       </div>

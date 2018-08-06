@@ -20,7 +20,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import { TypeAuthorProfileComponent } from '../../components/author-profile/typeAuthorProfileComponent';
 import {Constants} from '../../Constants';
 import {Subscription} from 'rxjs';
-import {UtilsService} from '../../common/utils/utils.service';
+import {UtilsService} from '@ibm-wch/components-ng-shared-utilities';
 
 /**
  * @name authorProfileLayout

@@ -16,7 +16,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LandingPageLayoutComponent } from './landingPageLayout';
 import {WchInfoService} from '@ibm-wch-sdk/ng';
-import {UtilsService} from '../../common/utils/utils.service';
+import {UtilsService} from '@ibm-wch/components-ng-shared-utilities';
 
 class MockWchInfoService {
   constructor() {}

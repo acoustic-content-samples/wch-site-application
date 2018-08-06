@@ -1,0 +1,5 @@
+<h4 *ngIf="errorMsg" class="msg error">{{ errorMsg }}</h4>
+<button class="create-thumbnail" (click)="createThumbnail()">Capture a thumbnail from this preview</button>
+<div class="preview-container" id="preview-container">
+	<wch-contentref *ngIf="sampleRC" [renderingContext]="sampleRC"></wch-contentref>
+</div>
