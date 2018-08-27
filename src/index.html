@@ -3,9 +3,19 @@
 <head>
 
 	<script type='text/javascript'>
-		var possibleTenant = document.location.pathname.split('/')[1];
-		console.warn('index.html: possible tenant is %o and base url is %o', possibleTenant, possibleTenant.search(/\w{8}\-\w{4}\-\w{4}\-\w{4}\-\w{12}/) === 0 ? '/' + possibleTenant + '/' : '/');
-		var baseUrl = possibleTenant.search(/\w{8}\-\w{4}\-\w{4}\-\w{4}\-\w{12}/) === 0 ? '/' + possibleTenant + '/' : '/';
+		const dxSites = 'dxsites';
+		const siteIdRegexStr = '[\\w\\d_\\-%]';
+		const tenantIdRegexStr = `[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}`;
+		const baseUrlRegex = new RegExp(`^(?:\\/api)?(?:\\/(${tenantIdRegexStr}))?(?:(?:\\/${dxSites}\\/)(${siteIdRegexStr}+))?(?:\\/)?(?:.*)$`);
+		const [total, tenantId, siteId] = baseUrlRegex.exec(document.location.pathname);
+		const baseUrl = tenantId ? siteId
+			? `/${tenantId}/${dxSites}/${siteId}/`	// site and tenant
+			: `/${tenantId}/`						// just tenant
+		: siteId
+			? `/${dxSites}/${siteId}/`				// just site
+			: '/';									// no IDs
+
+		console.warn(`index.html: site id is "${siteId}", tenant id is "${tenantId}", and base url is "${baseUrl}"`);
 		document.write('<base href="' + baseUrl + '">');
 	</script>
 
