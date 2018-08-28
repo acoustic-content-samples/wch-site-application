@@ -95,7 +95,7 @@ will automatically reload if you change any of the source files.
 
 Use the `npm run start-dev-tools` command to load the developer tools UI. Read more [here](https://www.npmjs.com/package/wch-site-developer-tools).
 
-![developer tools UI](/doc/componentGallery.png)
+![developer tools UI](/doc/images/componentGallery.png)
 
 ## Build
 
