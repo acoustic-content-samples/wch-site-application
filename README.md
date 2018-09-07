@@ -4,7 +4,7 @@ Source code for the Watson Content Hub starter site application - Oslo.
 ## Prerequisites
 
 * A WCH tenant in Trial or Standard Tier
-* Node.js v6.11.1 or above
+* Node.js v8.10.0 or above
 **Note:** We recommend to run npm install after getting the latest from this repository to get the latest prerequisites. 
 
 ## Overview
