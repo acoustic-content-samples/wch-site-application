@@ -1,11 +1,12 @@
 <div class="summary-card">
-	<div *ngIf="rContext && rContext.reference && rContext.reference[LEAD_IMG_KEY]" class="summary-card-image">
+	<div *ngIf="rContext && rContext.group && rContext.group[LEAD_IMG_KEY]" class="summary-card-image">
 		<!-- This sample shows the entire supplied image, so the correct aspect should be supplied by the user. -->
 		<div class="article-lead-image">
 			<div class="image-container">
-				<wch-contentref [layoutMode]="constants.SUMMARY" *ngIf="mainImage" [renderingContext]="onMainImage | async"></wch-contentref>
+				<img *ngIf="mainImage && mainImage.leadImage && mainImage.leadImage.url" wchEditable="mainImage.leadImage" [src]="utils.getImageUrl(rContext, 'leadImage', 'card', 'mainImage')" [alt]="rContext.group[LEAD_IMG_KEY]['leadImage'].altText"
+					 [title]="rContext.group[LEAD_IMG_KEY]['leadImage'].altText">
 			</div>
 		</div>
 	</div>
-	<p wchEditable="heading">{{onHeading | async}}</p>
+	<p wchEditable="heading" wchFormat></p>
 </div>

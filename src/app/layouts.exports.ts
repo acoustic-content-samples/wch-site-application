@@ -8,7 +8,6 @@ export { AbstractFormComponent } from './components/form-component/abstractFormC
 export { AbstractLandingPageComponent } from './components/landing-page/abstractLandingPageComponent';
 export { AbstractSocialComponent } from './components/social-component/abstractSocialComponent';
 export { AbstractStandardPageComponent } from './components/standard-page/abstractStandardPageComponent';
-export { ArticleBodyImageComponent } from './components/article-body-image/article-body-image.component';
 export { AuthorProfileLayoutComponent } from './layouts/author-profile/authorProfileLayout';
 export { ContestRulesLayoutComponent } from './layouts/contest-rules/contestRulesLayout';
 export { DesignArticleLayoutComponent } from './layouts/design-article/designArticleLayout';
@@ -25,6 +24,7 @@ export { ImageWithInformationLayoutComponent } from './layouts/image-with-inform
 export { LandingPageLayoutComponent } from './layouts/landing-page/landingPageLayout';
 export { LeadImageWithInformationLayoutComponent } from './layouts/lead-image-with-information/leadImageWithInformationLayout';
 export { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+export { PreviewComponent } from './preview-component/preview.component';
 export { ScriptAppLayoutComponent } from './layouts/script-app/scriptAppLayout';
 export { SearchResultsLayoutComponent } from './layouts/search-results/searchResultsLayout';
 export { SignUpLayoutComponent } from './layouts/sign-up/signUpLayout';
@@ -33,7 +33,7 @@ export { StandardPageHero2BlocksLayoutComponent } from './layouts/standard-page-
 export { StandardPageHero4BlocksLayoutComponent } from './layouts/standard-page-hero-4-blocks/standardPageHero4BlocksLayout';
 export { StandardPageLayoutComponent } from './layouts/standard-page/standardPageLayout';
 export { TypeContestRulesComponent } from './components/contest-rules/typeContestRulesComponent';
-export { TypeFormComponent } from './components/form-component/typeFormComponent';
 export { TypeLandingPageComponent } from './components/landing-page/typeLandingPageComponent';
+export { TypeFormComponent } from './components/form-component/typeFormComponent';
 export { TypeSocialComponent } from './components/social-component/typeSocialComponent';
 export { TypeStandardPageComponent } from './components/standard-page/typeStandardPageComponent';

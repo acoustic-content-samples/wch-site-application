@@ -3,5 +3,6 @@
 		<img *ngIf="leadImage && leadImage.url" wchEditable="leadImage" [src]="utilsService.getImageUrl(rContext, LEAD_IMAGE_KEY, 'lead')" [alt]="rContext.elements[LEAD_IMAGE_KEY].altText"
 			 [title]="rContext.elements[LEAD_IMAGE_KEY].altText">
 	</div>
-	<div *ngIf="layoutMode === constants.DETAIL" class="caption" wchEditable="leadImageCaption">{{onLeadImageCaption | async}} <span wchEditable="leadImageCredit">{{(onLeadImageCredit | async)}}</span></div>
+	<div *ngIf="layoutMode === constants.DETAIL" class="caption" wchEditable="leadImageCaption" wchFormat></div>
+	<div *ngIf="layoutMode === constants.DETAIL" class="caption" wchEditable="leadImageCredit" wchFormat></div>
 </div>

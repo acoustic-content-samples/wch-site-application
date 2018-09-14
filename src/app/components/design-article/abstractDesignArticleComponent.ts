@@ -1,37 +1,31 @@
-/*******************************************************************************
- * Copyright IBM Corp. 2017
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *******************************************************************************/
 /**
- * Do not modify this file, it will be auto-generated.
+ * Do not modify this file, it is auto-generated.
  */
-import {
-    RenderingContext,
-    RenderingContextBinding,
-    AbstractRenderingComponent
-} from '@ibm-wch-sdk/ng';
 import {
     Observable
 } from 'rxjs';
+import { ImageWithInformationType } from './../../elements/image-with-information/imageWithInformationType';
+import { LeadImageWithInformationType } from './../../elements/lead-image-with-information/leadImageWithInformationType';
+import { DesignArticleRenderingContext, assertDesignArticleRenderingContext, isDesignArticleRenderingContext } from './designArticleRenderingContext';
+import { AbstractRenderingComponent, RenderingContext, RenderingContextBinding } from '@ibm-wch-sdk/ng';
 
-/**
+/*
  * @name Design article
  * @id a8fa51a3-4919-4308-a0b3-6cd31ae15d7e
  */
-export abstract class AbstractDesignArticleComponent extends AbstractRenderingComponent {
+abstract class AbstractDesignArticleComponent extends AbstractRenderingComponent {
 
     /**
+    * Strongly typed stream of the rendering contexts
+    */
+    readonly onRenderingContext: Observable<RenderingContext>;
+
+    /**
+    * Strongly typed rendering context
+    */
+    renderingContext: RenderingContext;
+
+    /*
      * {
      *   "elementType": "text",
      *   "fieldLabel": "Text",
@@ -44,36 +38,33 @@ export abstract class AbstractDesignArticleComponent extends AbstractRenderingCo
     @RenderingContextBinding('text.heading')
     readonly onHeading: Observable<string>;
 
-    /**
+    /*
      * @see #onHeading
      */
     @RenderingContextBinding()
     readonly heading: string;
 
-    /**
+    /*
      * {
-     *   "elementType": "reference",
-     *   "fieldLabel": "Content item",
+     *   "elementType": "group",
      *   "key": "mainImage",
      *   "label": "Lead image",
      *   "required": true,
-     *   "restrictTypes": [
-     *     {
-     *       "id": "fe31fbf4-4bc4-4ffa-9b27-615af51d23fe"
-     *     }
-     *   ]
+     *   "typeRef": {
+     *     "id": "fe31fbf4-4bc4-4ffa-9b27-615af51d23fe"
+     *   }
      * }
      */
-    @RenderingContextBinding('reference.mainImage')
-    readonly onMainImage: Observable<RenderingContext>;
+    @RenderingContextBinding('group.mainImage')
+    readonly onMainImage: Observable<LeadImageWithInformationType>;
 
-    /**
+    /*
      * @see #onMainImage
      */
     @RenderingContextBinding()
-    readonly mainImage: RenderingContext;
+    readonly mainImage: LeadImageWithInformationType;
 
-    /**
+    /*
      * {
      *   "elementType": "text",
      *   "fieldLabel": "Text",
@@ -85,13 +76,13 @@ export abstract class AbstractDesignArticleComponent extends AbstractRenderingCo
     @RenderingContextBinding('text.author', '')
     readonly onAuthor: Observable<string>;
 
-    /**
+    /*
      * @see #onAuthor
      */
     @RenderingContextBinding()
     readonly author: string;
 
-    /**
+    /*
      * {
      *   "elementType": "datetime",
      *   "fieldLabel": "Date",
@@ -105,13 +96,13 @@ export abstract class AbstractDesignArticleComponent extends AbstractRenderingCo
     @RenderingContextBinding('datetime.date')
     readonly onDate: Observable<Date>;
 
-    /**
+    /*
      * @see #onDate
      */
     @RenderingContextBinding()
     readonly date: Date;
 
-    /**
+    /*
      * {
      *   "allowMultipleValues": true,
      *   "elementType": "formattedtext",
@@ -126,38 +117,36 @@ export abstract class AbstractDesignArticleComponent extends AbstractRenderingCo
     @RenderingContextBinding('formattedtexts.body')
     readonly onBody: Observable<string[]>;
 
-    /**
+    /*
      * @see #onBody
      */
     @RenderingContextBinding()
     readonly body: string[];
 
-    /**
+    /*
      * {
      *   "allowMultipleValues": true,
-     *   "elementType": "reference",
+     *   "elementType": "group",
      *   "fieldLabel": "Design article image",
      *   "key": "bodyImage",
-     *   "label": "Images for body section",
+     *   "label": "images for body sections",
      *   "minimumValues": 3,
      *   "required": true,
-     *   "restrictTypes": [
-     *     {
-     *       "id": "f9e7f0b9-f57d-4d91-a257-54a64c1ff52f"
-     *     }
-     *   ]
+     *   "typeRef": {
+     *     "id": "f9e7f0b9-f57d-4d91-a257-54a64c1ff52f"
+     *   }
      * }
      */
-    @RenderingContextBinding('references.bodyImage')
-    readonly onBodyImage: Observable<RenderingContext[]>;
+    @RenderingContextBinding('groups.bodyImage')
+    readonly onBodyImage: Observable<ImageWithInformationType[]>;
 
-    /**
+    /*
      * @see #onBodyImage
      */
     @RenderingContextBinding()
-    readonly bodyImage: RenderingContext[];
+    readonly bodyImage: ImageWithInformationType[];
 
-    /**
+    /*
      * {
      *   "elementType": "reference",
      *   "fieldLabel": "Content item",
@@ -173,7 +162,7 @@ export abstract class AbstractDesignArticleComponent extends AbstractRenderingCo
     @RenderingContextBinding('reference.authorBio')
     readonly onAuthorBio: Observable<RenderingContext>;
 
-    /**
+    /*
      * @see #onAuthorBio
      */
     @RenderingContextBinding()
@@ -183,3 +172,13 @@ export abstract class AbstractDesignArticleComponent extends AbstractRenderingCo
         super();
     }
 }
+
+/**
+* 18acd1c9-888e-4c44-bd2c-a38c5a62bf45
+*/
+export {
+    DesignArticleRenderingContext,
+    isDesignArticleRenderingContext,
+    assertDesignArticleRenderingContext,
+    AbstractDesignArticleComponent
+};

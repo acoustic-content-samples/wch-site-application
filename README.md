@@ -31,6 +31,11 @@ Instructions on how to update Oslo to the latest can be found here: [Updating yo
 7. [Updating your Oslo sample](https://developer.ibm.com/customer-engagement/tutorials/updating-oslo-sample/)
 
 ## Updates
+At the beginning of September we have updated the Oslo starter site with the following features:
+- Transitioned some content types to custom elements. For more information see: https://www.ibm.com/support/knowledgecenter/en/SS3UMF/wch_q_a_watson_assistant/content_types.html#concept_km5_qd3_4cb
+- Added text placeholders
+- Included the component gallery developer tool
+
 At the beginning of August we have updated the Oslo starter site with the following features:
 - Moved shared utilities that would not typically be updated from Oslo to https://www.npmjs.com/package/@ibm-wch/components-ng-shared-utilities
 - Moved components like embed-code that would not typically be updated from Oslo to https://www.npmjs.com/package/@ibm-wch/components-ng-shared-components

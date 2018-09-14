@@ -1,6 +1,6 @@
 <div class="login-form grid-x">
     <div class="cell medium-8">
-        <h3 *ngIf="title" wchEditable="title">{{ title }}</h3>
+        <h3 *ngIf="title" wchEditable="title" wchFormat></h3>
         <div *ngIf="loginError" class="invalid-login" role="alert">{{ loginFailedErrorMessage }}
         </div>
         <form *ngIf="!authService.isPreviewMode" name="signInForm" #signInForm="ngForm" [ngClass]="{'show-invalid-input': signInForm.submitted}" (ngSubmit)="signInForm.form.valid && login()">
@@ -18,7 +18,7 @@
         </form>
         <div *ngIf="authService.isPreviewMode">
             <div class="preview-msg-container">
-                <p class="previewMessage" *ngIf="previewLoginMessage" wchEditable="previewLoginMessage">{{ previewLoginMessage }}</p>
+                <p class="previewMessage" *ngIf="previewLoginMessage" wchEditable="previewLoginMessage" wchFormat></p>
                 <div class="button button-dark expanded" (click)="login()" *ngIf="previewLoginButton" wchEditable="previewLoginButton">{{ previewLoginButton }}</div>
             </div>
         </div>

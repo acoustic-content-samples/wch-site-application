@@ -2,7 +2,7 @@
 	<img wchEditable="image" [src]="utilService.getImageUrl(rContext, IMAGE_KEY, 'short')" [alt]="image.altText ? (onImage | async).altText : ''" [title]="image.altText ? (onImage | async).altText : ''" />
 
 	<div class="hero-message">
-		<h1 wchEditable="text" class="text-hero">{{onText | async}}</h1>
+		<h1 wchEditable="text" class="text-hero" wchFormat></h1>
 		<a wchEditable="link" *ngIf="link.linkURL && userouterLink" [routerLink]="(onLink | async).linkURL" class="button hero-button">{{(onLink | async).linkText}}</a>
 		<a wchEditable="link" *ngIf="link.linkURL && !userouterLink" target='_blank' [href]="(onLink | async).linkURL" class="button hero-button">{{(onLink | async).linkText}}</a>
 	</div>

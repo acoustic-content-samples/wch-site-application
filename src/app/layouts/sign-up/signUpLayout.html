@@ -1,13 +1,13 @@
 <div #signUp [id]="rContext.id">
 	<div [id]="itemId" class="reveal" #revealModal data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-		<div wchEditable="dialogMessage" [innerHTML]="dialogMessage | formattedText:'html'"></div>
+		<div wchEditable="dialogMessage" wchFormat></div>
 		<a class="close-button" data-close aria-label="Close">&#215;</a>
 	</div>
 
 	<section class="grid-container">
 		<div wchEditable="backgroundImage" class="newsletter" [style.background-image]="'url(' + utilsService.getImageUrl(rContext, BACKGROUND_IMG_KEY, 'short') +')'">
 			<div class="call-to-action">
-				<h4 wchEditable="text">{{onText | async}}</h4>
+				<h4 wchEditable="text" wchFormat></h4>
 			</div>
 			<div class="wrap-inputs">
 				<form name="emailForm">

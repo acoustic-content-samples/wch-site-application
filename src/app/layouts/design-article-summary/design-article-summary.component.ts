@@ -42,6 +42,7 @@ export class DesignArticleSummaryComponent extends TypeDesignArticleComponent im
 
 
 
+
 	@Input() layoutMode: string;
 
 	constructor(public utils: UtilsService) {
@@ -52,7 +53,7 @@ export class DesignArticleSummaryComponent extends TypeDesignArticleComponent im
 		super.ngOnInit();
 		this.rcSub = this.onRenderingContext.subscribe((renderingContext) => {
 			this.rContext = renderingContext;
-            this.layoutMode = this.layoutMode || this.constants.SUMMARY;
+			this.layoutMode = this.layoutMode || this.constants.SUMMARY;
 		});
 	}
 

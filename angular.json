@@ -78,7 +78,8 @@
           "options": {
             "assets": [
               "src/oob-spa",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/assets"
             ],
             "karmaConfig": "./karma.conf.js",
             "main": "src/test.ts",

@@ -40,7 +40,6 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import { HighlightService } from '@ibm-wch/components-ng-shared-utilities';
 
 
-import { ArticleBodyImageComponent } from './components/article-body-image/article-body-image.component';
 import { DesignArticleSummaryComponent } from './layouts/design-article-summary/design-article-summary.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -70,7 +69,9 @@ export function HttpLoaderFactory(http: HttpClient) {
 		FormsModule,
 		HttpClientModule,
 		WchNgModule.forRoot(environment),
-		WchNgEditModule.forRoot(),
+		WchNgEditModule.forRoot({
+			defaultPlaceholderText: 'Enter some text'
+		}),
 		BrowserAnimationsModule,
 		ResponsiveHeaderModule,
 		SAMPLE_MODULE,
@@ -90,7 +91,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 		WchFooterComponent,
 		PageNotFoundComponent,
 		PreviewComponent,
-		ArticleBodyImageComponent,
 		DesignArticleSummaryComponent,
     ShareSocialComponent,
     ...LAYOUTS

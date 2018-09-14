@@ -1,10 +1,10 @@
 <div #event [id]="rContext.id">
 
 	<div class="reveal" [id]="eventId" data-reveal>
-		<h2 wchEditable="heading" class="event-popup-title" id="popup-title">{{onHeading | async}}</h2>
-		<p wchEditable="eventDetails" class="event-popup-description" id="popup-description" [innerHTML]="onEventDetails | async | formattedText:'html'"></p>
+		<h2 wchEditable="heading" class="event-popup-title" id="popup-title" wchFormat></h2>
+		<p wchEditable="eventDetails" class="event-popup-description" id="popup-description" wchFormat></p>
 		<p class="location"><strong>Location</strong></p>
-		<div wchEditable="eventLocation" [innerHTML]="onEventLocation | async | formattedText:'html'"></div>
+		<div wchEditable="eventLocation" wchFormat></div>
 		<button class="close-button" data-close aria-label="Close modal" type="button">
 			<span aria-hidden="true">&times;</span>
 		</button>
@@ -15,8 +15,8 @@
 				<p class="event-date text-content">
 					<time *ngIf="date" wchEditable="date" [attr.datetime]="date">{{date | date:'longDate'}}</time>
 				</p>
-				<h5 wchEditable="heading" class="event-title text-header">{{onHeading | async}}</h5>
-				<p wchEditable="body" class="event-description text-content" [innerHTML]="onBody | async | formattedText:'html'"></p>
+				<h5 wchEditable="heading" class="event-title text-header" wchFormat></h5>
+				<p wchEditable="body" class="event-description text-content" wchFormat></p>
 				<a class="button" [attr.data-open]="eventId">Details</a>
 			</div>
 		</div>

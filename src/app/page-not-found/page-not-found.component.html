@@ -5,7 +5,7 @@
         <p>Oops! This page may not exist or your account does not have access to the page. First, check the URL for a typo. Then, try signing in.</p>
       </div>
       <div *ngIf="authService.isLoggedIn()">
-        <p>Oops! This page may not exist. Please log into IBM Waston Content Hub to create your page in Site Manager.</p>
+        <p>Oops! This page may not exist. Please log into IBM Watson Content Hub to create your page in Site Manager.</p>
       </div>
       <p *ngIf="!checkHomepage() && context && context.elements && context.elements.goHomeButton && context.elements.goHomeButton">Note: By default, a page with the url <b>/home</b> is selected so ensure you create one.</p>
       <div class="error-code">
@@ -17,7 +17,7 @@
     </div>
     <!--Displaying error messages when in Oslo site skeleton template, which contains no contents and pages-->
     <div *ngIf="rc?.context?.site.pages && rc?.context?.site.pages.length === 0">
-      <p>Oops! No pages have been created yet. Please log into IBM Waston Content Hub to create your page in Site Manager.</p>
+      <p>Oops! No pages have been created yet. Please log into IBM Watson Content Hub to create your page in Site Manager.</p>
       <p>Note: By default, a page with the url <b>/home</b> is selected so ensure you create one.</p>
       <div class="error-code">
         404

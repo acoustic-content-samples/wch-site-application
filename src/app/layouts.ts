@@ -1,7 +1,6 @@
 /**
  * Do not modify this file, it will be auto-generated.
  */
-import { ArticleBodyImageComponent } from './components/article-body-image/article-body-image.component';
 import { AuthorProfileLayoutComponent } from './layouts/author-profile/authorProfileLayout';
 import { ContestRulesLayoutComponent } from './layouts/contest-rules/contestRulesLayout';
 import { DesignArticleLayoutComponent } from './layouts/design-article/designArticleLayout';
@@ -18,6 +17,7 @@ import { ImageWithInformationLayoutComponent } from './layouts/image-with-inform
 import { LandingPageLayoutComponent } from './layouts/landing-page/landingPageLayout';
 import { LeadImageWithInformationLayoutComponent } from './layouts/lead-image-with-information/leadImageWithInformationLayout';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PreviewComponent } from './preview-component/preview.component';
 import { ScriptAppLayoutComponent } from './layouts/script-app/scriptAppLayout';
 import { SearchResultsLayoutComponent } from './layouts/search-results/searchResultsLayout';
 import { SignUpLayoutComponent } from './layouts/sign-up/signUpLayout';
@@ -27,7 +27,6 @@ import { StandardPageHero4BlocksLayoutComponent } from './layouts/standard-page-
 import { StandardPageLayoutComponent } from './layouts/standard-page/standardPageLayout';
 
 export const LAYOUTS = [
-  ArticleBodyImageComponent,
   AuthorProfileLayoutComponent,
   ContestRulesLayoutComponent,
   DesignArticleLayoutComponent,
@@ -44,6 +43,7 @@ export const LAYOUTS = [
   LandingPageLayoutComponent,
   LeadImageWithInformationLayoutComponent,
   PageNotFoundComponent,
+  PreviewComponent,
   ScriptAppLayoutComponent,
   SearchResultsLayoutComponent,
   SignUpLayoutComponent,
