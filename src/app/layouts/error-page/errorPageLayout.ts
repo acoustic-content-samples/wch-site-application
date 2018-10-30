@@ -14,46 +14,43 @@
  * limitations under the License.
  *******************************************************************************/
 import {
-    ComponentsService,
-    LayoutComponent, RenderingContext
+	ComponentsService,
+	LayoutComponent,
+	RenderingContext,
 } from '@ibm-wch-sdk/ng';
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TypeErrorPageComponent } from '../../components/error-page/typeErrorPageComponent';
-import {Subscription} from 'rxjs';
+import { Subscription } from 'rxjs';
 
 /**
  * @name errorPageLayout
  * @id error-page-layout
  */
 @LayoutComponent({
-    selector: ComponentsService.DEFAULT_LAYOUT
+	selector: ComponentsService.DEFAULT_LAYOUT,
 })
-
 @Component({
-  selector: 'app-error-page-layout-component',
-  templateUrl: './errorPageLayout.html',
-  styleUrls: ['./errorPageLayout.scss']
+	selector: 'app-error-page-layout-component',
+	templateUrl: './errorPageLayout.html',
+	styleUrls: ['./errorPageLayout.scss'],
 })
-export class ErrorPageLayoutComponent extends TypeErrorPageComponent implements OnInit, OnDestroy {
-    rContext: RenderingContext;
-    rcSub: Subscription;
+export class ErrorPageLayoutComponent extends TypeErrorPageComponent
+	implements OnInit, OnDestroy {
+	rContext: RenderingContext;
+	rcSub: Subscription;
 
-    errorMessageStr: string;
+	errorMessageStr: string;
 
+	ngOnInit() {
+		super.ngOnInit();
+		this.rcSub = this.onRenderingContext.subscribe(renderingContext => {
+			this.rContext = renderingContext;
+			this.errorMessageStr = `Problems rendering layout template`;
+		});
+	}
 
-    ngOnInit() {
-
-        super.ngOnInit();
-        this.rcSub = this.onRenderingContext.subscribe((renderingContext) => {
-            this.rContext = renderingContext;
-            this.errorMessageStr = `Problems rendering layout template`;
-        });
-
-    }
-
-    ngOnDestroy() {
-        super.ngOnDestroy();
-        this.rcSub.unsubscribe();
-    }
-
+	ngOnDestroy() {
+		super.ngOnDestroy();
+		this.rcSub.unsubscribe();
+	}
 }

@@ -1,10 +1,15 @@
 <div class="summary-card">
-	<div *ngIf="rContext && rContext.group && rContext.group[LEAD_IMG_KEY]" class="summary-card-image">
+	<div class="summary-card-image">
 		<!-- This sample shows the entire supplied image, so the correct aspect should be supplied by the user. -->
 		<div class="article-lead-image">
 			<div class="image-container">
-				<img *ngIf="mainImage && mainImage.leadImage && mainImage.leadImage.url" wchEditable="mainImage.leadImage" [src]="utils.getImageUrl(rContext, 'leadImage', 'card', 'mainImage')" [alt]="rContext.group[LEAD_IMG_KEY]['leadImage'].altText"
-					 [title]="rContext.group[LEAD_IMG_KEY]['leadImage'].altText">
+				<wch-placeholder wchEditable="mainImage.leadImage">
+					<img *ngIf="rContext && mainImage && mainImage.leadImage.url" wchEditable="mainImage.leadImage"
+					 [src]="utils.getImageUrl(rContext, 'leadImage', 'card', 'mainImage')" [alt]="mainImage.leadImage.altText"
+					 [title]="mainImage.leadImage.altText">
+					<wch-placeholder-icon class="wch-placeholder" type="image" width="320" height="180" wchEditable="mainImage.leadImage">
+					</wch-placeholder-icon>
+				</wch-placeholder>
 			</div>
 		</div>
 	</div>

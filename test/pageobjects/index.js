@@ -22,29 +22,29 @@
  * @module oob-spa-ui-pageobjects
  */
 
- /**
+/**
  * {@link SPA}</br>
  * Serves as an entrypoint for SPA page objects
  */
- module.exports.SPA = require("./SPA");
+module.exports.SPA = require('./SPA');
 
 /**
-* {@link SPAHeader}</br>
-* The SPAHeader that appears at the top of the SPA pages
-* </br><img style="max-width:600px; max-height:600px" src='./doc-files/SPAHeader.png'/>
-*/
-module.exports.SPAHeader = require("./SPAHeader");
+ * {@link SPAHeader}</br>
+ * The SPAHeader that appears at the top of the SPA pages
+ * </br><img style="max-width:600px; max-height:600px" src='./doc-files/SPAHeader.png'/>
+ */
+module.exports.SPAHeader = require('./SPAHeader');
 
 /**
  * {@link SPAStandardPage} </br>
  * The standard page
  * </br><img style="max-width:600px; max-height:600px" src='./doc-files/SPAStandardPage.png'/>
  */
-module.exports.SPAStandardPage = require("./SPAStandardPage");
+module.exports.SPAStandardPage = require('./SPAStandardPage');
 
 /**
-* {@link SPAFooter}</br>
-* The SPAFooter that appears at the bottom of the page
-* </br><img style="max-width:600px; max-height:600px" src='./doc-files/SPAFooter.png'/>
-*/
-module.exports.SPAFooter = require("./SPAFooter");
+ * {@link SPAFooter}</br>
+ * The SPAFooter that appears at the bottom of the page
+ * </br><img style="max-width:600px; max-height:600px" src='./doc-files/SPAFooter.png'/>
+ */
+module.exports.SPAFooter = require('./SPAFooter');

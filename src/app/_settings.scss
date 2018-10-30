@@ -14,11 +14,11 @@
  * limitations under the License.
  *******************************************************************************/
 $foundation-palette: (
-  primary: #1779ba,
-  secondary: #767676,
-  success: #3adb76,
-  warning: #ffae00,
-  alert: #cc4b37,
+	primary: #1779ba,
+	secondary: #767676,
+	success: #3adb76,
+	warning: #ffae00,
+	alert: #cc4b37,
 );
 
 $form-alert: #cc4b37;
@@ -32,11 +32,15 @@ $topbar-background: white;
 $dropdown-menu-item-color-active: #323232;
 $dropdownmenu-arrow-color: #323232;
 
-$button-palette: map-merge($foundation-palette, (
-	news-btn: #000
-)) !default;
+$button-palette: map-merge(
+	$foundation-palette,
+	(
+		news-btn: #000,
+	)
+) !default;
 
 // test
 .safe-padding {
-	padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+	padding: env(safe-area-inset-top) env(safe-area-inset-right)
+		env(safe-area-inset-bottom) env(safe-area-inset-left);
 }

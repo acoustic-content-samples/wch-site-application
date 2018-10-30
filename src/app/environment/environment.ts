@@ -16,16 +16,43 @@
 import { environment as env } from '../../environments/environment';
 import { Constants } from '../Constants';
 
-const possibleTenant = window.location.pathname.split('/')[1],
-  baseUrl = possibleTenant.search(/\w{8}\-\w{4}\-\w{4}\-\w{4}\-\w{12}/) === 0 ? '/' + possibleTenant : '';
+const dxSites = 'dxsites';
+const siteIdRegexStr = '[\\w\\d_\\-%]';
+const tenantIdRegexStr = `[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}`;
+const baseUrlRegex = new RegExp(
+	`^(?:\\/api)?(?:\\/(${tenantIdRegexStr}))?(?:(?:\\/${dxSites}\\/)(${siteIdRegexStr}+))?(?:\\/)?(?:.*)$`
+);
+const [total, tenantId, siteId] = baseUrlRegex.exec(document.location.pathname);
+const baseUrl = tenantId
+	? siteId
+		? `/${tenantId}/${dxSites}/${siteId}/` // site and tenant
+		: `/${tenantId}/` // just tenant
+	: siteId
+		? `/${dxSites}/${siteId}/` // just site
+		: '/'; // no IDs
 
 export const environment = {
-  production: (env.production) ? true : false,
-  apiUrl: (window.location.hostname === 'localhost') ? new URL(Constants['apiUrl']) : new URL(`${window.location.protocol}//${window.location.hostname}/api${baseUrl}`),
-  deliveryUrl: (window.location.hostname === 'localhost') ? new URL(Constants['deliveryUrl']) : new URL(`${window.location.protocol}//${window.location.hostname}${baseUrl}`),
-    httpOptions: {
-    pollTime: 999999,
-    retries: 5
-  }
+	production: env.production ? true : false,
+	apiUrl:
+		window.location.hostname === 'localhost'
+			? new URL(Constants['apiUrl'])
+			: new URL(
+					`${window.location.protocol}//${
+						window.location.hostname
+					}/api${baseUrl}`
+			  ),
+	deliveryUrl:
+		window.location.hostname === 'localhost'
+			? new URL(Constants['deliveryUrl'])
+			: new URL(
+					`${window.location.protocol}//${
+						window.location.hostname
+					}${baseUrl}`
+			  ),
+	httpOptions: {
+		pollTime: 999999,
+		retries: 5,
+	},
 };
 
+console.log('environment: %o', environment);

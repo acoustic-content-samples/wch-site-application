@@ -1,72 +1,107 @@
 <div id="{{renderingContext.id}}" class="landing-page grid-x">
-  <div *ngIf="heroImage || heroHeadline" class="hero-section cell">
+  <div class="hero-section cell">
     <div class="section">
       <div class="hero-message">
-        <h1 *ngIf="heroHeadline" class="hero-headline" wchEditable="heroHeadline" wchFormat></h1>
+        <h1 class="hero-headline" wchEditable="heroHeadline" wchFormat></h1>
       </div>
-        <img *ngIf="heroImage.url" wchEditable="heroImage" [src]="renderingContext.context.hub.deliveryUrl.origin + heroImage.url" [alt]="heroImage.altText" [title]="heroImage.asset.fileName" onError="this.alt='Image is not available yet';" >
+      <wch-placeholder wchEditable="heroImage">
+        <img *ngIf="heroImage.url" wchEditable="heroImage" [src]="renderingContext.context.hub.deliveryUrl.origin + heroImage.url"
+          [alt]="heroImage.altText" [title]="heroImage.asset.fileName" onError="this.alt='Image is not available yet';">
+        <wch-placeholder-icon class="wch-placeholder" type="image" width="800" height="300" wchEditable="heroImage">
+        </wch-placeholder-icon>
+      </wch-placeholder>
     </div>
   </div>
   <div class="section grid-container cell">
     <div class="show-for-large feature-section grid-x">
       <div class="featureText large-6 columns grid-container">
-        <h2 *ngIf="featureHeadline1" class="featureHeadline" wchEditable="featureHeadline1" wchFormat></h2>
-        <div *ngIf="feature1" class="featureBody section" wchEditable="feature1" wchFormat></div>
+        <h2 class="featureHeadline" wchEditable="featureHeadline1" wchFormat></h2>
+        <div class="featureBody section" wchEditable="feature1" wchFormat></div>
       </div>
-      <div *ngIf="featureImage1.url" class=" featureImage large-6 columns grid-container" >
-      <img  wchEditable="featureImage1" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY_1, RENDITION_KEY)" [alt]="featureImage1.altText" [title]="featureImage1.asset.fileName"  onError="this.alt='Image is not available yet';">
+      <div class=" featureImage large-6 columns grid-container">
+        <wch-placeholder wchEditable="featureImage1">
+          <img *ngIf="featureImage1.url" wchEditable="featureImage1" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY_1, RENDITION_KEY)"
+            [alt]="featureImage1.altText" [title]="featureImage1.asset.fileName" onError="this.alt='Image is not available yet';">
+          <wch-placeholder-icon class="wch-placeholder" type="image" width="800" height="300" wchEditable="featureImage1">
+          </wch-placeholder-icon>
+        </wch-placeholder>
       </div>
     </div>
-
+    
     <div class="hide-for-large feature-section grid-x">
-      <div *ngIf="featureImage1.url" class=" featureImage grid-container" >
-        <img  class="featureImage grid-container" wchEditable="featureImage1" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY_1, RENDITION_KEY)" [alt]="featureImage1.altText" [title]="featureImage1.asset.fileName"  onError="this.alt='Image is not available yet';">
-      </div>  
+      <div class=" featureImage grid-container">
+        <wch-placeholder wchEditable="featureImage1">
+          <img *ngIf="featureImage1.url" class="featureImage grid-container" wchEditable="featureImage1" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY_1, RENDITION_KEY)"
+            [alt]="featureImage1.altText" [title]="featureImage1.asset.fileName" onError="this.alt='Image is not available yet';">
+          <wch-placeholder-icon class="wch-placeholder" type="image" width="800" height="300" wchEditable="featureImage1">
+          </wch-placeholder-icon>
+        </wch-placeholder>
+      </div>
       <div class="featureText grid-container">
-        <h2 *ngIf="featureHeadline1" class="featureHeadline" wchEditable="featureHeadline1" wchFormat></h2>
-        <div *ngIf="feature1" class="featureBody section" wchEditable="feature1" wchFormat></div>
+        <h2 class="featureHeadline" wchEditable="featureHeadline1" wchFormat></h2>
+        <div class="featureBody section" wchEditable="feature1" wchFormat></div>
       </div>
     </div>
   </div>
   <div class="section grid-container cell">
     <div class="show-for-large feature-section grid-x">
-      <div *ngIf="featureImage2.url" class=" featureImage large-6 columns grid-container" >
-        <img  wchEditable="featureImage2" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY_2, RENDITION_KEY)"[alt]="featureImage2.altText" [title]="featureImage2.asset.fileName"  onError="this.alt='Image is not available yet';">
+      <div class=" featureImage large-6 columns grid-container">
+        <wch-placeholder wchEditable="featureImage2">
+          <img *ngIf="featureImage2.url" wchEditable="featureImage2" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY_2, RENDITION_KEY)"
+            [alt]="featureImage2.altText" [title]="featureImage2.asset.fileName" onError="this.alt='Image is not available yet';">
+          <wch-placeholder-icon class="wch-placeholder" type="image" width="800" height="300" wchEditable="featureImage2">
+          </wch-placeholder-icon>
+        </wch-placeholder>
       </div>
       <div class="featureText large-6 columns grid-container">
-        <h2 *ngIf="featureHeadline2" class="featureHeadline" wchEditable="featureHeadline2" wchFormat></h2>
-        <div *ngIf="feature2" class="featureBody section" wchEditable="feature2" wchFormat></div>
+        <h2 class="featureHeadline" wchEditable="featureHeadline2" wchFormat></h2>
+        <div class="featureBody section" wchEditable="feature2" wchFormat></div>
       </div>
     </div>
 
     <div class="hide-for-large feature-section grid-x">
-      <div *ngIf="featureImage2.url" class=" featureImage grid-container" >
-        <img wchEditable="featureImage2" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY_2, RENDITION_KEY)" [alt]="featureImage2.altText" [title]="featureImage2.asset.fileName"  onError="this.alt='Image is not available yet';">
+      <div class=" featureImage grid-container">
+        <wch-placeholder wchEditable="featureImage2">
+          <img *ngIf="featureImage2.url" wchEditable="featureImage2" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY_2, RENDITION_KEY)"
+            [alt]="featureImage2.altText" [title]="featureImage2.asset.fileName" onError="this.alt='Image is not available yet';">
+          <wch-placeholder-icon class="wch-placeholder" type="image" width="800" height="300" wchEditable="featureImage2">
+          </wch-placeholder-icon>
+        </wch-placeholder>
       </div>
       <div class="featureText grid-container">
-        <h2 *ngIf="featureHeadline2" class="featureHeadline" wchEditable="featureHeadline2" wchFormat></h2>
-        <div *ngIf="feature2" class="featureBody section" wchEditable="feature2" wchFormat></div>
+        <h2 class="featureHeadline" wchEditable="featureHeadline2" wchFormat></h2>
+        <div class="featureBody section" wchEditable="feature2" wchFormat></div>
       </div>
     </div>
   </div>
   <div class="section grid-container cell">
     <div class="show-for-large feature-section grid-x">
       <div class="featureText large-6 columns grid-container">
-        <h2 *ngIf="featureHeadline3" class="featureHeadline" wchEditable="featureHeadline3" wchFormat></h2>
-        <div *ngIf="feature3" class="featureBody section" wchEditable="feature3" wchFormat></div>
+        <h2 class="featureHeadline" wchEditable="featureHeadline3" wchFormat></h2>
+        <div class="featureBody section" wchEditable="feature3" wchFormat></div>
       </div>
-      <div *ngIf="featureImage3.url" class=" featureImage large-6 columns grid-container" >
-        <img wchEditable="featureImage3" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY_3, RENDITION_KEY)" [alt]="featureImage3.altText" [title]="featureImage3.asset.fileName"  onError="this.alt='Image is not available yet';">
-      </div>     
+      <div class=" featureImage large-6 columns grid-container">
+        <wch-placeholder wchEditable="featureImage3">
+          <img *ngIf="featureImage3.url" wchEditable="featureImage3" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY_3, RENDITION_KEY)"
+            [alt]="featureImage3.altText" [title]="featureImage3.asset.fileName" onError="this.alt='Image is not available yet';">
+          <wch-placeholder-icon class="wch-placeholder" type="image" width="800" height="300" wchEditable="featureImage3">
+          </wch-placeholder-icon>
+        </wch-placeholder>
+      </div>
     </div>
 
     <div class="hide-for-large feature-section grid-x">
-      <div *ngIf="featureImage3.url" class=" featureImage grid-container" >
-        <img  class="featureImage grid-container" wchEditable="featureImage3" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY_3, RENDITION_KEY)" [alt]="featureImage3.altText" [title]="featureImage3.asset.fileName"  onError="this.alt='Image is not available yet';">
+      <div class=" featureImage grid-container">
+        <wch-placeholder wchEditable="featureImage3">
+          <img *ngIf="featureImage3.url" class="featureImage grid-container" wchEditable="featureImage3" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY_3, RENDITION_KEY)"
+            [alt]="featureImage3.altText" [title]="featureImage3.asset.fileName" onError="this.alt='Image is not available yet';">
+          <wch-placeholder-icon class="wch-placeholder" type="image" width="800" height="300" wchEditable="featureImage3">
+          </wch-placeholder-icon>
+        </wch-placeholder>
       </div>
       <div class="featureText grid-container">
-        <h2 *ngIf="featureHeadline3" class="featureHeadline" wchEditable="featureHeadline3" wchFormat></h2>
-        <div *ngIf="feature3" class="featureBody section" wchEditable="feature3" wchFormat></div>
+        <h2 class="featureHeadline" wchEditable="featureHeadline3" wchFormat></h2>
+        <div class="featureBody section" wchEditable="feature3" wchFormat></div>
       </div>
     </div>
   </div>
@@ -95,4 +130,3 @@
     </div>
   </div>
 </div>
-

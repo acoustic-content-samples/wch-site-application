@@ -14,66 +14,82 @@
  * limitations under the License.
  *******************************************************************************/
 import {
-	Component, ViewContainerRef, Input, OnChanges, OnDestroy, ViewChild, SimpleChanges } from '@angular/core';
-import {RenderingContext} from '@ibm-wch-sdk/ng';
-import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+	Component,
+	ViewContainerRef,
+	Input,
+	OnChanges,
+	OnDestroy,
+	ViewChild,
+	SimpleChanges,
+} from '@angular/core';
+import { RenderingContext } from '@ibm-wch-sdk/ng';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 declare var window: any;
 
 @Component({
 	selector: 'app-share-social',
 	templateUrl: './share-social.component.html',
-	styleUrls: ['./share-social.component.scss']
+	styleUrls: ['./share-social.component.scss'],
 })
 export class ShareSocialComponent implements OnChanges, OnDestroy {
-
 	facebookLink: SafeResourceUrl;
 	twitterLink: SafeResourceUrl;
 	rc: RenderingContext;
 
-
-	@ViewChild('twitter', {read: ViewContainerRef}) twitterContainer;
+	@ViewChild('twitter', { read: ViewContainerRef })
+	twitterContainer;
 
 	@Input()
 	public set renderingContext(aValue: RenderingContext) {
 		this.rc = aValue;
 	}
 
-	constructor(private sanitizer: DomSanitizer) {
-	}
-
+	constructor(private sanitizer: DomSanitizer) {}
 
 	ngOnChanges(changes: SimpleChanges) {
 		// change the iFrame when the article changes
-		if (changes['renderingContext'].currentValue !== changes['renderingContext'].previousValue) {
-
+		if (
+			changes['renderingContext'].currentValue !==
+			changes['renderingContext'].previousValue
+		) {
 			if (this.rc.elements.heading.value) {
 				const tweetOptions = {
-					baseUrl: 'https://platform.twitter.com/widgets/tweet_button.html',
+					baseUrl:
+						'https://platform.twitter.com/widgets/tweet_button.html',
 					url: encodeURIComponent(window.location.href),
 					hashtags: `${this.rc.elements.author.value}`,
 					text: `${this.rc.elements.heading.value}`,
-					buttonSize: 's'
+					buttonSize: 's',
 				};
 
 				const facebookOptions = {
-					baseUrl: 'https://www.facebook.com/plugins/share_button.php',
+					baseUrl:
+						'https://www.facebook.com/plugins/share_button.php',
 					url: `${encodeURIComponent(window.location.href)}`,
 					layout: 'button',
 					size: 'small',
-					mobile_iframe: false
+					mobile_iframe: false,
 				};
 
 				// build the iFrame urls for the social media links
-				this.facebookLink = this.sanitizer.bypassSecurityTrustResourceUrl(`${facebookOptions.baseUrl}?href=${facebookOptions.url}&layout=${facebookOptions.layout}&size=${facebookOptions.size}&mobile_iframe=${facebookOptions.mobile_iframe}&appId`);
-				this.twitterLink = this.sanitizer.bypassSecurityTrustResourceUrl(`${tweetOptions.baseUrl}?size=${tweetOptions.buttonSize}&url=${tweetOptions.url}&text=${tweetOptions.text}&hashtags=${tweetOptions.hashtags}`);
+				this.facebookLink = this.sanitizer.bypassSecurityTrustResourceUrl(
+					`${facebookOptions.baseUrl}?href=${
+						facebookOptions.url
+					}&layout=${facebookOptions.layout}&size=${
+						facebookOptions.size
+					}&mobile_iframe=${facebookOptions.mobile_iframe}&appId`
+				);
+				this.twitterLink = this.sanitizer.bypassSecurityTrustResourceUrl(
+					`${tweetOptions.baseUrl}?size=${
+						tweetOptions.buttonSize
+					}&url=${tweetOptions.url}&text=${
+						tweetOptions.text
+					}&hashtags=${tweetOptions.hashtags}`
+				);
 			}
 		}
-
 	}
 
-	ngOnDestroy() {
-	}
-
-
+	ngOnDestroy() {}
 }

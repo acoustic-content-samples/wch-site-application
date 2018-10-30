@@ -17,97 +17,94 @@
  * Do not modify this file, it will be auto-generated.
  */
 import {
-    Image,
-    Link,
-    RenderingContextBinding,
-    AbstractRenderingComponent
+	Image,
+	Link,
+	RenderingContextBinding,
+	AbstractRenderingComponent,
 } from '@ibm-wch-sdk/ng';
-import {
-    Observable
-} from 'rxjs';
+import { Observable } from 'rxjs';
 
 /**
  * @name Sign up
  * @id 58fd2ad1-df13-4a75-9918-6b34852539ab
  */
 export abstract class AbstractSignUpComponent extends AbstractRenderingComponent {
+	/**
+	 * {
+	 *   "acceptType": [
+	 *     "jpg",
+	 *     "jpeg",
+	 *     "png",
+	 *     "gif"
+	 *   ],
+	 *   "elementType": "image",
+	 *   "fieldLabel": "Image",
+	 *   "imageProfileId": "763cc433-46d8-4a1e-9155-878ae8cf4dbc",
+	 *   "key": "backgroundImage",
+	 *   "label": "Background image"
+	 * }
+	 */
+	@RenderingContextBinding('image.backgroundImage')
+	readonly onBackgroundImage: Observable<Image>;
 
-    /**
-     * {
-     *   "acceptType": [
-     *     "jpg",
-     *     "jpeg",
-     *     "png",
-     *     "gif"
-     *   ],
-     *   "elementType": "image",
-     *   "fieldLabel": "Image",
-     *   "imageProfileId": "763cc433-46d8-4a1e-9155-878ae8cf4dbc",
-     *   "key": "backgroundImage",
-     *   "label": "Background image"
-     * }
-     */
-    @RenderingContextBinding('image.backgroundImage')
-    readonly onBackgroundImage: Observable<Image>;
+	/**
+	 * @see #onBackgroundImage
+	 */
+	@RenderingContextBinding()
+	readonly backgroundImage: Image;
 
-    /**
-     * @see #onBackgroundImage
-     */
-    @RenderingContextBinding()
-    readonly backgroundImage: Image;
+	/**
+	 * {
+	 *   "elementType": "text",
+	 *   "fieldLabel": "Text",
+	 *   "key": "text",
+	 *   "label": "Headline text"
+	 * }
+	 */
+	@RenderingContextBinding('text.text', '')
+	readonly onText: Observable<string>;
 
-    /**
-     * {
-     *   "elementType": "text",
-     *   "fieldLabel": "Text",
-     *   "key": "text",
-     *   "label": "Headline text"
-     * }
-     */
-    @RenderingContextBinding('text.text', '')
-    readonly onText: Observable<string>;
+	/**
+	 * @see #onText
+	 */
+	@RenderingContextBinding()
+	readonly text: string;
 
-    /**
-     * @see #onText
-     */
-    @RenderingContextBinding()
-    readonly text: string;
+	/**
+	 * {
+	 *   "elementType": "link",
+	 *   "fieldLabel": "Link",
+	 *   "key": "link",
+	 *   "label": "Call to action"
+	 * }
+	 */
+	@RenderingContextBinding('link.link')
+	readonly onLink: Observable<Link>;
 
-    /**
-     * {
-     *   "elementType": "link",
-     *   "fieldLabel": "Link",
-     *   "key": "link",
-     *   "label": "Call to action"
-     * }
-     */
-    @RenderingContextBinding('link.link')
-    readonly onLink: Observable<Link>;
+	/**
+	 * @see #onLink
+	 */
+	@RenderingContextBinding()
+	readonly link: Link;
 
-    /**
-     * @see #onLink
-     */
-    @RenderingContextBinding()
-    readonly link: Link;
+	/**
+	 * {
+	 *   "elementType": "formattedtext",
+	 *   "fieldLabel": "Formatted Text",
+	 *   "key": "dialogMessage",
+	 *   "label": "Confirmation message"
+	 * }
+	 */
+	@RenderingContextBinding('formattedtext.dialogMessage', '')
+	readonly onDialogMessage: Observable<string>;
 
-    /**
-     * {
-     *   "elementType": "formattedtext",
-     *   "fieldLabel": "Formatted Text",
-     *   "key": "dialogMessage",
-     *   "label": "Confirmation message"
-     * }
-     */
-    @RenderingContextBinding('formattedtext.dialogMessage', '')
-    readonly onDialogMessage: Observable<string>;
+	/**
+	 * @see #onDialogMessage
+	 */
+	@RenderingContextBinding()
+	readonly dialogMessage: string;
 
-    /**
-     * @see #onDialogMessage
-     */
-    @RenderingContextBinding()
-    readonly dialogMessage: string;
-
-    protected constructor() {
-        super();
-    }
+	protected constructor() {
+		super();
+	}
 }

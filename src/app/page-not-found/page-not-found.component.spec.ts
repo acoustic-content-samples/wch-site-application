@@ -16,61 +16,59 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ConfigServiceService } from '@ibm-wch/components-ng-shared-utilities';
 import { PageNotFoundComponent } from './page-not-found.component';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
-import {AuthService} from '@ibm-wch/components-ng-shared-utilities';
-import {WchInfoService} from '@ibm-wch-sdk/ng';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { AuthService } from '@ibm-wch/components-ng-shared-utilities';
+import { WchInfoService } from '@ibm-wch-sdk/ng';
 import { NavigationStart, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
 class MockRouter {
-    public url: string = '/';
-    navigate = jasmine.createSpy('navigate');
-    navigateByUrl = jasmine.createSpy('navigate');
-    start = new NavigationStart(0, '/home');
-    end = new NavigationEnd(1, '/home', '/signin');
-    events = new Observable(observer => {
-      observer.next(this.start);
-      observer.next(this.end);
-      observer.complete();
-    });
-    initialNavigation = jasmine.createSpy('navigate');
+	public url: string = '/';
+	navigate = jasmine.createSpy('navigate');
+	navigateByUrl = jasmine.createSpy('navigate');
+	start = new NavigationStart(0, '/home');
+	end = new NavigationEnd(1, '/home', '/signin');
+	events = new Observable(observer => {
+		observer.next(this.start);
+		observer.next(this.end);
+		observer.complete();
+	});
+	initialNavigation = jasmine.createSpy('navigate');
 }
 
 class MockWchInfoService {
-  constructor() {}
+	constructor() {}
 }
 
 describe('PageNotFoundComponent', () => {
-  let component: PageNotFoundComponent;
-  let fixture: ComponentFixture<PageNotFoundComponent>;
+	let component: PageNotFoundComponent;
+	let fixture: ComponentFixture<PageNotFoundComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ PageNotFoundComponent ],
-      imports: [
-        HttpClientModule
-      ],
-      providers: [
-        ConfigServiceService,
-        AuthService,
-        { provide: WchInfoService, useClass: MockWchInfoService },
-        { provide: Router, useClass: MockRouter}
-      ]
-    });
-  }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [PageNotFoundComponent],
+			imports: [HttpClientModule],
+			providers: [
+				ConfigServiceService,
+				AuthService,
+				{ provide: WchInfoService, useClass: MockWchInfoService },
+				{ provide: Router, useClass: MockRouter },
+			],
+		});
+	}));
 
-  beforeEach(() => {
-    fixture = TestBed.overrideComponent(PageNotFoundComponent, {
-      set: {
-        template: 'TODO'
-      }})
-      .createComponent(PageNotFoundComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.overrideComponent(PageNotFoundComponent, {
+			set: {
+				template: 'TODO',
+			},
+		}).createComponent(PageNotFoundComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
-  });
+	it('should be created', () => {
+		expect(component).toBeTruthy();
+	});
 });

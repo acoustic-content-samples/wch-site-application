@@ -17,80 +17,77 @@
  * Do not modify this file, it will be auto-generated.
  */
 import {
-    Image,
-    RenderingContextBinding,
-    AbstractRenderingComponent
+	Image,
+	RenderingContextBinding,
+	AbstractRenderingComponent,
 } from '@ibm-wch-sdk/ng';
-import {
-    Observable
-} from 'rxjs';
+import { Observable } from 'rxjs';
 
 /**
  * @name Lead image with information
  * @id fe31fbf4-4bc4-4ffa-9b27-615af51d23fe
  */
 export abstract class AbstractLeadImageWithInformationComponent extends AbstractRenderingComponent {
+	/**
+	 * {
+	 *   "acceptType": [
+	 *     "jpg",
+	 *     "jpeg",
+	 *     "png",
+	 *     "gif"
+	 *   ],
+	 *   "elementType": "image",
+	 *   "fieldLabel": "Image",
+	 *   "imageProfileId": "3428916c-b356-4b47-aeb2-5eb8e3494b00",
+	 *   "key": "leadImage",
+	 *   "label": "Lead image",
+	 *   "required": true
+	 * }
+	 */
+	@RenderingContextBinding('image.leadImage')
+	readonly onLeadImage: Observable<Image>;
 
-    /**
-     * {
-     *   "acceptType": [
-     *     "jpg",
-     *     "jpeg",
-     *     "png",
-     *     "gif"
-     *   ],
-     *   "elementType": "image",
-     *   "fieldLabel": "Image",
-     *   "imageProfileId": "3428916c-b356-4b47-aeb2-5eb8e3494b00",
-     *   "key": "leadImage",
-     *   "label": "Lead image",
-     *   "required": true
-     * }
-     */
-    @RenderingContextBinding('image.leadImage')
-    readonly onLeadImage: Observable<Image>;
+	/**
+	 * @see #onLeadImage
+	 */
+	@RenderingContextBinding()
+	readonly leadImage: Image;
 
-    /**
-     * @see #onLeadImage
-     */
-    @RenderingContextBinding()
-    readonly leadImage: Image;
+	/**
+	 * {
+	 *   "elementType": "text",
+	 *   "fieldLabel": "Text",
+	 *   "key": "leadImageCaption",
+	 *   "label": "Lead image caption"
+	 * }
+	 */
+	@RenderingContextBinding('text.leadImageCaption', '')
+	readonly onLeadImageCaption: Observable<string>;
 
-    /**
-     * {
-     *   "elementType": "text",
-     *   "fieldLabel": "Text",
-     *   "key": "leadImageCaption",
-     *   "label": "Lead image caption"
-     * }
-     */
-    @RenderingContextBinding('text.leadImageCaption', '')
-    readonly onLeadImageCaption: Observable<string>;
+	/**
+	 * @see #onLeadImageCaption
+	 */
+	@RenderingContextBinding()
+	readonly leadImageCaption: string;
 
-    /**
-     * @see #onLeadImageCaption
-     */
-    @RenderingContextBinding()
-    readonly leadImageCaption: string;
+	/**
+	 * {
+	 *   "elementType": "text",
+	 *   "fieldLabel": "Text",
+	 *   "key": "leadImageCredit",
+	 *   "label": "Lead image credit"
+	 * }
+	 */
+	@RenderingContextBinding('text.leadImageCredit', '')
+	readonly onLeadImageCredit: Observable<string>;
 
-    /**
-     * {
-     *   "elementType": "text",
-     *   "fieldLabel": "Text",
-     *   "key": "leadImageCredit",
-     *   "label": "Lead image credit"
-     * }
-     */
-    @RenderingContextBinding('text.leadImageCredit', '')
-    readonly onLeadImageCredit: Observable<string>;
+	/**
+	 * @see #onLeadImageCredit
+	 */
+	@RenderingContextBinding()
+	readonly leadImageCredit: string;
 
-    /**
-     * @see #onLeadImageCredit
-     */
-    @RenderingContextBinding()
-    readonly leadImageCredit: string;
-
-    protected constructor() {
-        super();
-    }
+	protected constructor() {
+		super();
+	}
 }

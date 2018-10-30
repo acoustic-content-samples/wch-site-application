@@ -13,52 +13,48 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-import {
-    LayoutComponent, RenderingContext
-} from '@ibm-wch-sdk/ng';
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { LayoutComponent, RenderingContext } from '@ibm-wch-sdk/ng';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TypeHeroImageComponent } from '../../components/hero-image/typeHeroImageComponent';
-import {UtilsService} from '@ibm-wch/components-ng-shared-utilities';
+import { UtilsService } from '@ibm-wch/components-ng-shared-utilities';
 
 /**
  * @name heroImageLayout
  * @id hero-image-layout
  */
 @LayoutComponent({
-    selector: 'hero-image-layout'
+	selector: 'hero-image-layout',
 })
 @Component({
-  selector: 'app-hero-image-layout-component',
-  templateUrl: './heroImageLayout.html',
-  styleUrls: ['./heroImageLayout.scss']
+	selector: 'app-hero-image-layout-component',
+	templateUrl: './heroImageLayout.html',
+	styleUrls: ['./heroImageLayout.scss'],
 })
-export class HeroImageLayoutComponent extends TypeHeroImageComponent implements OnInit, OnDestroy {
+export class HeroImageLayoutComponent extends TypeHeroImageComponent
+	implements OnInit, OnDestroy {
+	rContext: RenderingContext;
 
-    rContext: RenderingContext;
+	public readonly IMAGE_KEY: string = 'image';
 
-    public readonly IMAGE_KEY: string = 'image';
+	userouterLink = false;
 
-    userouterLink = false;
+	constructor(public utilService: UtilsService) {
+		super();
+	}
 
-    constructor(public utilService: UtilsService) {
-        super();
-    }
+	ngOnInit() {
+		super.ngOnInit();
 
-    ngOnInit() {
-        super.ngOnInit();
+		this.safeSubscribe(this.onRenderingContext, renderingContext => {
+			this.rContext = renderingContext;
+		});
 
-        this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
-            this.rContext = renderingContext;
-        });
+		this.safeSubscribe(this.onLink, link => {
+			this.userouterLink = this.utilService.useRouterLink(link);
+		});
+	}
 
-        this.safeSubscribe(this.onLink, (link) => {
-												this.userouterLink = this.utilService.useRouterLink(link);
-								});
-
-    }
-
-    ngOnDestroy() {
-        super.ngOnDestroy();
-    }
-
+	ngOnDestroy() {
+		super.ngOnDestroy();
+	}
 }

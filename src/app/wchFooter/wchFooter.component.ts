@@ -13,22 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
-import {RenderingContext} from '@ibm-wch-sdk/ng';
-import {ConfigServiceService} from '@ibm-wch/components-ng-shared-utilities';
-import {Constants} from '../Constants';
-import {Subscription} from 'rxjs';
+import { RenderingContext } from '@ibm-wch-sdk/ng';
+import { ConfigServiceService } from '@ibm-wch/components-ng-shared-utilities';
+import { Constants } from '../Constants';
+import { Subscription } from 'rxjs';
+import {take} from 'rxjs/operators';
 
 @Component({
 	selector: 'wch-footer',
 	styleUrls: ['./wch-footer.scss'],
 	templateUrl: './wch-footer.html',
 })
-
-
 export class WchFooterComponent implements OnInit, OnDestroy {
-
 	pages: any[] = [];
 
 	configSub: Subscription;
@@ -38,15 +36,29 @@ export class WchFooterComponent implements OnInit, OnDestroy {
 	public readonly EMAIL_KEY: string = 'emailAddress';
 	public readonly SALES_LABEL_KEY: string = 'labelForSales';
 	public readonly SALES_NUMBER_KEY: string = 'salesNumber';
-	public readonly CUSTOMER_SERVICE_LABEL_KEY: string = 'labelForCustomerService';
-	public readonly CUSTOMER_SERVICE_NUMBER_KEY: string = 'customerServiceContactNumber';
-
+	public readonly CUSTOMER_SERVICE_LABEL_KEY: string =
+		'labelForCustomerService';
+	public readonly CUSTOMER_SERVICE_NUMBER_KEY: string =
+		'customerServiceContactNumber';
 
 	// copyright date
 	currentYear: number = new Date().getFullYear();
 
 	@Input()
 	public set renderingContext(aValue: RenderingContext) {
+    if ( aValue && aValue.context && aValue.context.site) {
+      this.configSub = this.configService.getConfig(Constants.FOOTER_CONFIG.concat(':', aValue.context.site.name)).subscribe((context) => {
+        if (context && context.id) {
+          this.footerConfig = context;
+        } else {
+          this.configService.getConfig(Constants.FOOTER_CONFIG).pipe(take(1)).subscribe((defaultContext) => {
+            if (defaultContext && defaultContext.id) {
+              this.footerConfig = defaultContext;
+            }
+          });
+        }
+      });
+    }
 		this.rc = aValue;
 	}
 
@@ -54,26 +66,27 @@ export class WchFooterComponent implements OnInit, OnDestroy {
 	footerConfig: any;
 	salesTel: string;
 	serviceTel: string;
+  configService: ConfigServiceService;
 
-	constructor(configService: ConfigServiceService) {
-		this.configSub = configService.getConfig(Constants.FOOTER_CONFIG).subscribe((context) => {
-			this.footerConfig = context;
-			this.salesTel = this.convertToTelURL(this.SALES_NUMBER_KEY);
-			this.serviceTel = this.convertToTelURL(this.CUSTOMER_SERVICE_NUMBER_KEY);
-		});
+	constructor (configService: ConfigServiceService) {
+    this.configService = configService;
 	}
 
-	trackByPageId (index, page) {
+	trackByPageId(index, page) {
 		return page.id;
 	}
 
 	isImageURLAvailable(elem): boolean {
-		return (this.rc && this.footerConfig && this.footerConfig.elements && this.footerConfig.elements[elem]);
+		return (
+			this.rc &&
+			this.footerConfig &&
+			this.footerConfig.elements &&
+			this.footerConfig.elements[elem]
+		);
 	}
 
 	ngOnInit() {
 		// this.pages = (this.renderingContext.context['site']) ? this.renderingContext.context['site'].children : [];
-
 	}
 
 	ngOnDestroy() {
@@ -82,11 +95,13 @@ export class WchFooterComponent implements OnInit, OnDestroy {
 
 	getURL(img) {
 		// TODO add fallback logic for rendition
-		return this.rc.context.hub.deliveryUrl['origin'] + this.footerConfig.elements[img].renditions.default.url;
+		return (
+			this.rc.context.hub.deliveryUrl['origin'] +
+			this.footerConfig.elements[img].renditions.default.url
+		);
 	}
 
 	getElementValue(elem): string {
-
 		if (this.footerConfig && this.footerConfig.elements[elem]) {
 			return this.footerConfig.elements[elem].value;
 		}
@@ -94,8 +109,15 @@ export class WchFooterComponent implements OnInit, OnDestroy {
 	}
 
 	convertToTelURL(field): string {
-		if (this.footerConfig && this.footerConfig.elements && this.footerConfig.elements[field]) {
-			return `+${this.footerConfig.elements[field].value.replace(/\D/g, '')}`;
+		if (
+			this.footerConfig &&
+			this.footerConfig.elements &&
+			this.footerConfig.elements[field]
+		) {
+			return `+${this.footerConfig.elements[field].value.replace(
+				/\D/g,
+				''
+			)}`;
 		}
 		return '';
 	}

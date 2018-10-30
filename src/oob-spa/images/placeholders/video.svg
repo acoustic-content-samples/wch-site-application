@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>video</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="video" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="video-peretz" transform="translate(0.000000, 4.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <polygon id="Shape" points="11 8 11 18 21 13"></polygon>
+            <path d="M0,0 L0,23 L30,23 L30,0 L0,0 Z M28,21 L2,21 L2,5 L28,5 L28,21 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

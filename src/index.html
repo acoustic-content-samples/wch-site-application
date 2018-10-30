@@ -8,15 +8,10 @@
 		const tenantIdRegexStr = `[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}`;
 		const baseUrlRegex = new RegExp(`^(?:\\/api)?(?:\\/(${tenantIdRegexStr}))?(?:(?:\\/${dxSites}\\/)(${siteIdRegexStr}+))?(?:\\/)?(?:.*)$`);
 		const [total, tenantId, siteId] = baseUrlRegex.exec(document.location.pathname);
-		const baseUrl = tenantId ? siteId
-			? `/${tenantId}/${dxSites}/${siteId}/`	// site and tenant
-			: `/${tenantId}/`						// just tenant
-		: siteId
-			? `/${dxSites}/${siteId}/`				// just site
-			: '/';									// no IDs
+		const resourceUrl = tenantId ? `/${tenantId}/` : '/';
 
-		console.warn(`index.html: site id is "${siteId}", tenant id is "${tenantId}", and base url is "${baseUrl}"`);
-		document.write('<base href="' + baseUrl + '">');
+		console.log(`index.html: resource url is "${resourceUrl}"` + (tenantId ? `, tenant id is "${tenantId}"` : '') + (siteId ? `, site id is "${siteId}"` : ''));
+		document.write(`<base href="${resourceUrl}">`);
 	</script>
 
 	<meta charset="utf-8">

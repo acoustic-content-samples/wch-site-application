@@ -13,17 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-export class Constants {    
-	// static readonly DOMAIN_NAME = 'your-domain-name.com';
-	// static readonly CONTENT_HUB_ID = '0000000-0000-0000-0000-000000000000';
+export class Constants {
+  // static readonly DOMAIN_NAME = 'your-domain-name.com';
+  // static readonly CONTENT_HUB_ID = '0000000-0000-0000-0000-000000000000';
+  // static readonly SITE_ID = '00000000-0000-0000-0000-000000000000';
 
 	static readonly PROTOCOL = 'https:';
-	static readonly apiUrl = `${Constants.PROTOCOL}//${Constants['DOMAIN_NAME']}/api/${Constants['CONTENT_HUB_ID']}`;
-	static readonly deliveryUrl = `${Constants.PROTOCOL}//${Constants['DOMAIN_NAME']}/${Constants['CONTENT_HUB_ID']}`;
+	static readonly urlSuffix = Constants['SITE_ID']
+		? `/dxsites/${Constants['SITE_ID']}`
+		: '';
+	static readonly apiUrl = `${Constants.PROTOCOL}//${
+		Constants['DOMAIN_NAME']
+	}/api/${Constants['CONTENT_HUB_ID']}${Constants['urlSuffix']}`;
+	static readonly deliveryUrl = `${Constants.PROTOCOL}//${
+		Constants['DOMAIN_NAME']
+	}/${Constants['CONTENT_HUB_ID']}${Constants['urlSuffix']}`;
 
 	static readonly FOOTER_CONFIG = 'footerConfig';
 	static readonly HEADER_CONFIG = 'headerConfig';
-
 
 	/*Layout modes */
 	static readonly DETAIL = 'default';
@@ -49,12 +56,8 @@ export class Constants {
 	static readonly DESIGNERS = 'Designers';
 	static readonly EVENTS = 'Event';
 
-
 	/* Sort field type */
 	static readonly DATETIME = 'datetime';
-
-	/* The page that sends web message to SPA's iframe */
-	static readonly SITE_MANAGER_URL = 'http://localhost:8000';
 
 	/* Page types that will be searched in the search results */
 	static readonly PAGE_TYPES_SEARCHED = ['Design Page'];
@@ -63,7 +66,4 @@ export class Constants {
 	static readonly SEARCH_RESULTS_PAGE_PATH = '/searchresults';
 
 	static readonly SIGN_IN_PAGE = '/sign-in';
-
 }
-
-

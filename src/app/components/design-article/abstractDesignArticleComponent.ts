@@ -1,31 +1,36 @@
 /**
  * Do not modify this file, it is auto-generated.
  */
-import {
-    Observable
-} from 'rxjs';
+import { Observable } from 'rxjs';
 import { ImageWithInformationType } from './../../elements/image-with-information/imageWithInformationType';
 import { LeadImageWithInformationType } from './../../elements/lead-image-with-information/leadImageWithInformationType';
-import { DesignArticleRenderingContext, assertDesignArticleRenderingContext, isDesignArticleRenderingContext } from './designArticleRenderingContext';
-import { AbstractRenderingComponent, RenderingContext, RenderingContextBinding } from '@ibm-wch-sdk/ng';
+import {
+	DesignArticleRenderingContext,
+	assertDesignArticleRenderingContext,
+	isDesignArticleRenderingContext,
+} from './designArticleRenderingContext';
+import {
+	AbstractRenderingComponent,
+	RenderingContext,
+	RenderingContextBinding,
+} from '@ibm-wch-sdk/ng';
 
 /*
  * @name Design article
  * @id a8fa51a3-4919-4308-a0b3-6cd31ae15d7e
  */
 abstract class AbstractDesignArticleComponent extends AbstractRenderingComponent {
+	/**
+	 * Strongly typed stream of the rendering contexts
+	 */
+	readonly onRenderingContext: Observable<RenderingContext>;
 
-    /**
-    * Strongly typed stream of the rendering contexts
-    */
-    readonly onRenderingContext: Observable<RenderingContext>;
+	/**
+	 * Strongly typed rendering context
+	 */
+	renderingContext: RenderingContext;
 
-    /**
-    * Strongly typed rendering context
-    */
-    renderingContext: RenderingContext;
-
-    /*
+	/*
      * {
      *   "elementType": "text",
      *   "fieldLabel": "Text",
@@ -35,16 +40,16 @@ abstract class AbstractDesignArticleComponent extends AbstractRenderingComponent
      *   "required": true
      * }
      */
-    @RenderingContextBinding('text.heading')
-    readonly onHeading: Observable<string>;
+	@RenderingContextBinding('text.heading')
+	readonly onHeading: Observable<string>;
 
-    /*
+	/*
      * @see #onHeading
      */
-    @RenderingContextBinding()
-    readonly heading: string;
+	@RenderingContextBinding()
+	readonly heading: string;
 
-    /*
+	/*
      * {
      *   "elementType": "group",
      *   "key": "mainImage",
@@ -55,16 +60,16 @@ abstract class AbstractDesignArticleComponent extends AbstractRenderingComponent
      *   }
      * }
      */
-    @RenderingContextBinding('group.mainImage')
-    readonly onMainImage: Observable<LeadImageWithInformationType>;
+	@RenderingContextBinding('group.mainImage')
+	readonly onMainImage: Observable<LeadImageWithInformationType>;
 
-    /*
+	/*
      * @see #onMainImage
      */
-    @RenderingContextBinding()
-    readonly mainImage: LeadImageWithInformationType;
+	@RenderingContextBinding()
+	readonly mainImage: LeadImageWithInformationType;
 
-    /*
+	/*
      * {
      *   "elementType": "text",
      *   "fieldLabel": "Text",
@@ -73,16 +78,16 @@ abstract class AbstractDesignArticleComponent extends AbstractRenderingComponent
      *   "label": "Author name"
      * }
      */
-    @RenderingContextBinding('text.author', '')
-    readonly onAuthor: Observable<string>;
+	@RenderingContextBinding('text.author', '')
+	readonly onAuthor: Observable<string>;
 
-    /*
+	/*
      * @see #onAuthor
      */
-    @RenderingContextBinding()
-    readonly author: string;
+	@RenderingContextBinding()
+	readonly author: string;
 
-    /*
+	/*
      * {
      *   "elementType": "datetime",
      *   "fieldLabel": "Date",
@@ -93,16 +98,16 @@ abstract class AbstractDesignArticleComponent extends AbstractRenderingComponent
      *   "required": true
      * }
      */
-    @RenderingContextBinding('datetime.date')
-    readonly onDate: Observable<Date>;
+	@RenderingContextBinding('datetime.date')
+	readonly onDate: Observable<Date>;
 
-    /*
+	/*
      * @see #onDate
      */
-    @RenderingContextBinding()
-    readonly date: Date;
+	@RenderingContextBinding()
+	readonly date: Date;
 
-    /*
+	/*
      * {
      *   "allowMultipleValues": true,
      *   "elementType": "formattedtext",
@@ -114,16 +119,16 @@ abstract class AbstractDesignArticleComponent extends AbstractRenderingComponent
      *   "required": true
      * }
      */
-    @RenderingContextBinding('formattedtexts.body')
-    readonly onBody: Observable<string[]>;
+	@RenderingContextBinding('formattedtexts.body')
+	readonly onBody: Observable<string[]>;
 
-    /*
+	/*
      * @see #onBody
      */
-    @RenderingContextBinding()
-    readonly body: string[];
+	@RenderingContextBinding()
+	readonly body: string[];
 
-    /*
+	/*
      * {
      *   "allowMultipleValues": true,
      *   "elementType": "group",
@@ -137,16 +142,16 @@ abstract class AbstractDesignArticleComponent extends AbstractRenderingComponent
      *   }
      * }
      */
-    @RenderingContextBinding('groups.bodyImage')
-    readonly onBodyImage: Observable<ImageWithInformationType[]>;
+	@RenderingContextBinding('groups.bodyImage')
+	readonly onBodyImage: Observable<ImageWithInformationType[]>;
 
-    /*
+	/*
      * @see #onBodyImage
      */
-    @RenderingContextBinding()
-    readonly bodyImage: ImageWithInformationType[];
+	@RenderingContextBinding()
+	readonly bodyImage: ImageWithInformationType[];
 
-    /*
+	/*
      * {
      *   "elementType": "reference",
      *   "fieldLabel": "Content item",
@@ -159,26 +164,26 @@ abstract class AbstractDesignArticleComponent extends AbstractRenderingComponent
      *   ]
      * }
      */
-    @RenderingContextBinding('reference.authorBio')
-    readonly onAuthorBio: Observable<RenderingContext>;
+	@RenderingContextBinding('reference.authorBio')
+	readonly onAuthorBio: Observable<RenderingContext>;
 
-    /*
+	/*
      * @see #onAuthorBio
      */
-    @RenderingContextBinding()
-    readonly authorBio: RenderingContext;
+	@RenderingContextBinding()
+	readonly authorBio: RenderingContext;
 
-    protected constructor() {
-        super();
-    }
+	protected constructor() {
+		super();
+	}
 }
 
 /**
-* 18acd1c9-888e-4c44-bd2c-a38c5a62bf45
-*/
+ * 18acd1c9-888e-4c44-bd2c-a38c5a62bf45
+ */
 export {
-    DesignArticleRenderingContext,
-    isDesignArticleRenderingContext,
-    assertDesignArticleRenderingContext,
-    AbstractDesignArticleComponent
+	DesignArticleRenderingContext,
+	isDesignArticleRenderingContext,
+	assertDesignArticleRenderingContext,
+	AbstractDesignArticleComponent,
 };

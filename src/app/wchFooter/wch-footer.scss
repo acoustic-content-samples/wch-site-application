@@ -37,10 +37,14 @@ $footer-anchor-color: #dadada;
 	}
 
 	ul {
-    margin: 0;
+		margin: 0;
 		list-style: none;
 		margin-top: 30px;
 	}
+
+  .footer-link-text {
+    margin-left: 15px;
+  }
 }
 
 .footer-logo {
@@ -96,7 +100,6 @@ $footer-anchor-color: #dadada;
 		}
 	}
 }
-
 
 .follow-us,
 .contact-us,

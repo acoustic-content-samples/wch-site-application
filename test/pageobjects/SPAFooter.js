@@ -13,95 +13,92 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-'use strict'
+'use strict';
 
 /**
  * SPA footer pageobject class
  * <br/><img src='./doc-files/SPAFooter.png'/>
  */
 class SPAFooter {
+	constructor () {
+		// Turn off waiting off for angular
+		browser.waitForAngularEnabled(false);
 
-  constructor() {
+		// Footer container
+		this.footerContainer = $('.wch-footer');
 
-    // Turn off waiting off for angular
-    browser.waitForAngularEnabled(false);
+		// Footer logo
+		this.footerLogoContainer = $('.footer-logo a img');
 
-    // Footer container
-    this.footerContainer = $('.wch-footer');
+		// Footer menu
+		this.footerMenu = this.footerContainer.$('.footer-nav');
 
-    // Footer logo
-    this.footerLogoContainer = $('.footer-logo a img');
+		// Footer menu pages
+		this.footerMenuPages = this.footerMenu.all(by.css('ul li'));
 
-    // Footer menu
-    this.footerMenu = this.footerContainer.$('.footer-nav');
+		// Contact us container
+		this.footerContactUs = this.footerContainer.$('.contact-us');
 
-    // Footer menu pages
-    this.footerMenuPages = this.footerMenu.all(by.css("ul li"));
+		//Sales number
+		//Customer service
+		//email
+		this.footerContactUsAll = this.footerContactUs.all(by.css('ul li a'));
 
-    // Contact us container
-    this.footerContactUs = this.footerContainer.$('.contact-us');
+		// Follow us container
+		this.footerFollowUs = this.footerContainer.$('.follow-us');
 
-    //Sales number
-    //Customer service
-    //email
-    this.footerContactUsAll = this.footerContactUs.all(by.css("ul li a"));
+		//Facebook
+		//Twitter
+		//Instagram
+		this.footerContactUsInfo = this.footerFollowUs.all(by.css('ul li a'));
 
-    // Follow us container
-    this.footerFollowUs = this.footerContainer.$('.follow-us');
+		// Wait for footer logo
+		waitForElement(this.footerLogoContainer);
+	}
 
-    //Facebook
-    //Twitter
-    //Instagram
-    this.footerContactUsInfo = this.footerFollowUs.all(by.css("ul li a"));
+	/**
+	 * Returns the source value of the logo displayed in the footer
+	 * @returns {String} Source value of the logo
+	 */
+	logo () {
+		return this.footerLogoContainer
+			.getAttribute('src')
+			.then(function (value) {
+				return value;
+			});
+	}
 
-    // Wait for footer logo
-    waitForElement(this.footerLogoContainer);
+	/**
+	 * Get all the SPA pages in the footer menu
+	 * @returns {String} all the pages in the footer menu
+	 */
+	allPages () {
+		return this.footerMenuPages.getText();
+	}
 
-  }
+	/**
+	 * Sales Nummber in the footer menu
+	 * @returns {String} sales number in the footer menu
+	 */
+	salesNumber () {
+		return this.footerContactUsAll.get(0).getText();
+	}
 
+	/**
+	 * Customer service number in the footer menu
+	 * @returns {String} customer service number in the footer menu
+	 */
+	customerServiceNumber () {
+		return this.footerContactUsAll.get(1).getText();
+	}
 
-  /**
-   * Returns the source value of the logo displayed in the footer
-   * @returns {String} Source value of the logo
-   */
-  logo() {
-    return this.footerLogoContainer.getAttribute("src").then(function(value) {
-      return value;
-    });
-  }
-
-  /**
-   * Get all the SPA pages in the footer menu
-   * @returns {String} all the pages in the footer menu
-   */
-  allPages() {
-    return this.footerMenuPages.getText();
-  }
-
-  /**
-   * Sales Nummber in the footer menu
-   * @returns {String} sales number in the footer menu
-   */
-  salesNumber() {
-    return this.footerContactUsAll.get(0).getText();
-  }
-
-  /**
-   * Customer service number in the footer menu
-   * @returns {String} customer service number in the footer menu
-   */
-  customerServiceNumber() {
-    return this.footerContactUsAll.get(1).getText();
-  }
-
-  /**
-   * Email info in the footer menu
-   * @returns {String} email info the footer menu
-   */
-  email() {
-    return this.footerContactUsAll.get(2).getText();
-  }
-
+	/**
+	 * Email info in the footer menu
+	 * @returns {String} email info the footer menu
+	 */
+	email () {
+		return this.footerContactUsAll.get(2).getText();
+	}
 }
 
 module.exports = SPAFooter;

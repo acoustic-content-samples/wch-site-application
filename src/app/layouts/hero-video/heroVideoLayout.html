@@ -1,13 +1,13 @@
-<div [ngClass]="{'video-not-set': !isVideoSet()}">
-	<div [id]="renderingContext.id" wchEditable="video" class="wch-hero-video responsive-embed widescreen">
-		<video
-				[id]="itemId"
-				controls
-				class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9">
-			<!-- Supporting WebM and MP4 is the recommended way for best browser coverage. -->
-			<source [src]="renderingContext?.context.hub.deliveryUrl.origin + videoNewChanges?.url"
-					[type]="mediaType">
-			Your browser doesn't support HTML5 video.
-		</video>
-	</div>
+<div>
+	<wch-placeholder wchEditable="video">
+		<div [id]="renderingContext.id" wchEditable="video" class="wch-hero-video responsive-embed widescreen" [ngClass]="{'video-not-set': !isVideoSet()}">
+			<video [id]="itemId" controls class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9">
+				<!-- Supporting WebM and MP4 is the recommended way for best browser coverage. -->
+				<source [src]="renderingContext?.context.hub.deliveryUrl.origin + videoNewChanges?.url" [type]="mediaType">
+				Your browser doesn't support HTML5 video.
+			</video>
+		</div>
+		<wch-placeholder-icon class="wch-placeholder" width="720" height="480" type="video" wchEditable="video">
+		</wch-placeholder-icon>
+	</wch-placeholder>
 </div>

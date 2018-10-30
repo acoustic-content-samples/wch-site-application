@@ -17,38 +17,35 @@
  * Do not modify this file, it will be auto-generated.
  */
 import {
-    RenderingContextBinding,
-    Video,
-    AbstractRenderingComponent
+	RenderingContextBinding,
+	Video,
+	AbstractRenderingComponent,
 } from '@ibm-wch-sdk/ng';
-import {
-    Observable
-} from 'rxjs';
+import { Observable } from 'rxjs';
 
 /**
  * @name Hero video
  * @id a47af09a-9315-4a01-ad30-cd998d341b0b
  */
 export abstract class AbstractHeroVideoComponent extends AbstractRenderingComponent {
+	/**
+	 * {
+	 *   "elementType": "video",
+	 *   "fieldLabel": "Video",
+	 *   "key": "video",
+	 *   "label": "Video"
+	 * }
+	 */
+	@RenderingContextBinding('video.video')
+	readonly onVideo: Observable<Video>;
 
-    /**
-     * {
-     *   "elementType": "video",
-     *   "fieldLabel": "Video",
-     *   "key": "video",
-     *   "label": "Video"
-     * }
-     */
-    @RenderingContextBinding('video.video')
-    readonly onVideo: Observable<Video>;
+	/**
+	 * @see #onVideo
+	 */
+	@RenderingContextBinding()
+	readonly video: Video;
 
-    /**
-     * @see #onVideo
-     */
-    @RenderingContextBinding()
-    readonly video: Video;
-
-    protected constructor() {
-        super();
-    }
+	protected constructor() {
+		super();
+	}
 }

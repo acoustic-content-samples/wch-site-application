@@ -18,30 +18,30 @@ import {
 	Input,
 	OnDestroy,
 	AfterViewInit,
-	ViewEncapsulation, Output, EventEmitter
+	ViewEncapsulation,
+	Output,
+	EventEmitter,
 } from '@angular/core';
-
-
-
-
-
 
 @Component({
 	selector: 'wch-menu',
 	styleUrls: ['./wch-menu.scss'],
 	templateUrl: './wch-menu.html',
-	encapsulation: ViewEncapsulation.None
+	encapsulation: ViewEncapsulation.None,
 })
 export class WCHMenuComponent implements AfterViewInit, OnDestroy {
-	@Input() pages: any[];
-	@Input() level: number;
-	@Output() onMenuItemSelected = new EventEmitter<any>();
-	
+	@Input()
+	pages: any[];
+	@Input()
+	level: number;
+	@Output()
+	onMenuItemSelected = new EventEmitter<any>();
+
 	constructor() {
 		this.level = this.level || 1;
 	}
 
-	trackByPageId(index, page){
+	trackByPageId(index, page) {
 		return `${page.id}:${page.url}`;
 	}
 
@@ -49,13 +49,11 @@ export class WCHMenuComponent implements AfterViewInit, OnDestroy {
 	 * when a menu item is selected an event will be emitted to the original caller of the wch-menu component.
 	 * This allows the caller to close the mobile nav toggle when navigating to a page.
 	 */
-	menuItemSelected(){
+	menuItemSelected() {
 		this.onMenuItemSelected.emit();
 	}
 
-	ngOnDestroy() {
-	}
+	ngOnDestroy() {}
 
-	ngAfterViewInit() {
-	}
+	ngAfterViewInit() {}
 }

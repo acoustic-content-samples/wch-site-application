@@ -15,46 +15,58 @@
  *******************************************************************************/
 import { LAYOUTS } from './layouts';
 import { SAMPLE_MODULE } from './sample.module';
-import {NgModule, ViewEncapsulation} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { NgModule, ViewEncapsulation } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {FormsModule} from '@angular/forms';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
-import {RouterModule, Routes} from '@angular/router';
-import {AngularSvgIconModule} from 'angular-svg-icon';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 import { Ng2LoggerFactory } from './common/Ng2LoggerFactory';
 
 import 'jquery';
 import 'foundation-sites';
 
-import {WchNgModule, PageComponent, SiteBootstrap, Site, WchLoggerFactory} from '@ibm-wch-sdk/ng';
-import {WchNgEditModule} from '@ibm-wch-sdk/ng-edit';
+import {
+	WchNgModule,
+	PageComponent,
+	SiteBootstrap,
+	Site,
+	WchLoggerFactory,
+	SelectFirstRootPageGuard,
+} from '@ibm-wch-sdk/ng';
+import { WchNgEditModule } from '@ibm-wch-sdk/ng-edit';
 
-import {WchFooterComponent} from './wchFooter/wchFooter.component';
+import { WchPlaceholderIconComponent } from './wch-placeholder-icon/wch-placeholder-icon.component';
+
+import { WchFooterComponent } from './wchFooter/wchFooter.component';
 import { ResponsiveHeaderModule } from './responsiveHeader/responsiveMenu.module';
-import {AppComponent} from './app.component';
-import {environment} from './environment/environment';
-import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import { AppComponent } from './app.component';
+import { environment } from './environment/environment';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HighlightService } from '@ibm-wch/components-ng-shared-utilities';
-
 
 import { DesignArticleSummaryComponent } from './layouts/design-article-summary/design-article-summary.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import {LoginFormLayoutComponent} from './login-form/loginFormLayout';
-import {PreviewComponent} from './preview-component/preview.component';
+import { LoginFormLayoutComponent } from './login-form/loginFormLayout';
+import { PreviewComponent } from './preview-component/preview.component';
 import { ShareSocialComponent } from './components/share-social/share-social.component';
 import { SiteCommonModule } from '@ibm-wch/components-ng-shared-utilities';
 import { SPASharedComponentModule } from '@ibm-wch/components-ng-shared-components';
 
-
 const pageRoutes: Routes = [
-	{path: '', redirectTo: '/home', pathMatch: 'full'},
-	{path: 'sign-in', component: LoginFormLayoutComponent},
-	{path: 'component-preview', component: PreviewComponent},
-	{path: '**', component: PageComponent}
+	{
+		path: '',
+		pathMatch: 'full',
+		canActivate: [SelectFirstRootPageGuard],
+		component: PageComponent,
+	},
+	{ path: 'sign-in', component: LoginFormLayoutComponent },
+	{ path: 'component-preview', component: PreviewComponent },
+	{ path: '**', component: PageComponent },
 ];
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -70,7 +82,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 		HttpClientModule,
 		WchNgModule.forRoot(environment),
 		WchNgEditModule.forRoot({
-			defaultPlaceholderText: 'Enter some text'
+			defaultPlaceholderText: 'Insert text here',
 		}),
 		BrowserAnimationsModule,
 		ResponsiveHeaderModule,
@@ -79,8 +91,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 			loader: {
 				provide: TranslateLoader,
 				useFactory: HttpLoaderFactory,
-				deps: [ HttpClient ]
-			}
+				deps: [HttpClient],
+			},
 		}),
 		SiteCommonModule,
 		SPASharedComponentModule,
@@ -88,27 +100,24 @@ export function HttpLoaderFactory(http: HttpClient) {
 	declarations: [
 		AppComponent,
 		LoginFormLayoutComponent,
+		WchPlaceholderIconComponent,
 		WchFooterComponent,
 		PageNotFoundComponent,
 		PreviewComponent,
 		DesignArticleSummaryComponent,
-    ShareSocialComponent,
-    ...LAYOUTS
-  ],
+		ShareSocialComponent,
+		...LAYOUTS,
+	],
 	providers: [
-		{provide: WchLoggerFactory, useClass: Ng2LoggerFactory},
-		 HighlightService
+		{ provide: WchLoggerFactory, useClass: Ng2LoggerFactory },
+		HighlightService,
 	],
-	entryComponents: [
-		PageNotFoundComponent
-	, ...LAYOUTS
-	],
-	bootstrap: [AppComponent]
+	entryComponents: [PageNotFoundComponent, ...LAYOUTS],
+	bootstrap: [AppComponent],
 })
 export class AppModule {
-
 	// cleue: add some fallback content
-/*	@SiteBootstrap()
+	/*	@SiteBootstrap()
 	static defaultSite: Site = {
 		id: 'default',
 		pages: [{

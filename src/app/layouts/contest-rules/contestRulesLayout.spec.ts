@@ -15,36 +15,36 @@
  *******************************************************************************/
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ContestRulesLayoutComponent } from './contestRulesLayout';
-import {WchInfoService} from '@ibm-wch-sdk/ng';
+import { WchInfoService } from '@ibm-wch-sdk/ng';
 
 class MockWchInfoService {
-  constructor() {}
+	constructor() {}
 }
 
 describe('ContestRulesLayoutComponent', () => {
-  let component: ContestRulesLayoutComponent;
-  let fixture: ComponentFixture<ContestRulesLayoutComponent>;
+	let component: ContestRulesLayoutComponent;
+	let fixture: ComponentFixture<ContestRulesLayoutComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ContestRulesLayoutComponent ],
-      providers: [
-        { provide: WchInfoService, useClass: MockWchInfoService },
-      ]
-    })
-  }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [ContestRulesLayoutComponent],
+			providers: [
+				{ provide: WchInfoService, useClass: MockWchInfoService },
+			],
+		});
+	}));
 
-  beforeEach(() => {
-    fixture = TestBed.overrideComponent(ContestRulesLayoutComponent, {
-      set: {
-        template: 'TODO'
-      }})
-      .createComponent(ContestRulesLayoutComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.overrideComponent(ContestRulesLayoutComponent, {
+			set: {
+				template: 'TODO',
+			},
+		}).createComponent(ContestRulesLayoutComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
-  });
+	it('should be created', () => {
+		expect(component).toBeTruthy();
+	});
 });

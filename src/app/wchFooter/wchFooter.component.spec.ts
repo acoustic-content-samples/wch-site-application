@@ -23,10 +23,12 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { WchFooterComponent } from './wchFooter.component';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { ConfigServiceService } from '@ibm-wch/components-ng-shared-utilities';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {
-	HttpClient, HttpClientModule} from '@angular/common/http';
-import { XHRBackend, ResponseOptions,
-	Response, BaseRequestOptions
+	XHRBackend,
+	ResponseOptions,
+	Response,
+	BaseRequestOptions,
 } from '@angular/http';
 
 describe('WchFooterComponent', () => {
@@ -39,12 +41,15 @@ describe('WchFooterComponent', () => {
 				HttpClientModule,
 				CommonModule,
 				RouterTestingModule.withRoutes([
-					{ path: 'test/page/home', component: RouterMockTestComponent }
-				])
+					{
+						path: 'test/page/home',
+						component: RouterMockTestComponent,
+					},
+				]),
 			],
 			declarations: [WchFooterComponent, RouterMockTestComponent],
-			providers: [ConfigServiceService]
-		})
+			providers: [ConfigServiceService],
+		});
 	}));
 
 	beforeEach(() => {
@@ -62,15 +67,13 @@ describe('WchFooterComponent', () => {
 	template: `
     <a routerLink="/test/page/{{pageName}}">link</a>
     <router-outlet></router-outlet>
-  `
+  `,
 })
-
 @Component({
-	template: ''
+	template: '',
 })
 
 /**
  * Mocks routerLink
  */
-class RouterMockTestComponent {
-}
+class RouterMockTestComponent {}

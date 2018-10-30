@@ -2,13 +2,11 @@
  * Do not modify this file, it will be auto-generated.
  */
 import {
-    RenderingContext,
-    RenderingContextBinding,
-    AbstractRenderingComponent
+	RenderingContext,
+	RenderingContextBinding,
+	AbstractRenderingComponent,
 } from '@ibm-wch-sdk/ng';
-import {
-    Observable
-} from 'rxjs';
+import { Observable } from 'rxjs';
 
 /*
  * @name Standard page
@@ -16,8 +14,7 @@ import {
  * @description Standard page has a one column layout which includes multiple sections for greater flexibility.  In the Oslo site, it's used for the Home, Events, and About us pages.
  */
 export abstract class AbstractStandardPageComponent extends AbstractRenderingComponent {
-
-    /*
+	/*
      * {
      *   "allowMultipleValues": true,
      *   "elementType": "reference",
@@ -28,16 +25,16 @@ export abstract class AbstractStandardPageComponent extends AbstractRenderingCom
      *   "minimumValues": 0
      * }
      */
-    @RenderingContextBinding('references.banner', [])
-    readonly onBanner: Observable<RenderingContext[]>;
+	@RenderingContextBinding('references.banner', [])
+	readonly onBanner: Observable<RenderingContext[]>;
 
-    /*
+	/*
      * @see #onBanner
      */
-    @RenderingContextBinding()
-    readonly banner: RenderingContext[];
+	@RenderingContextBinding()
+	readonly banner: RenderingContext[];
 
-    /*
+	/*
      * {
      *   "allowMultipleValues": true,
      *   "elementType": "reference",
@@ -48,16 +45,16 @@ export abstract class AbstractStandardPageComponent extends AbstractRenderingCom
      *   "minimumValues": 0
      * }
      */
-    @RenderingContextBinding('references.sectionOne', [])
-    readonly onSectionOne: Observable<RenderingContext[]>;
+	@RenderingContextBinding('references.sectionOne', [])
+	readonly onSectionOne: Observable<RenderingContext[]>;
 
-    /*
+	/*
      * @see #onSectionOne
      */
-    @RenderingContextBinding()
-    readonly sectionOne: RenderingContext[];
+	@RenderingContextBinding()
+	readonly sectionOne: RenderingContext[];
 
-    /*
+	/*
      * {
      *   "allowMultipleValues": true,
      *   "elementType": "reference",
@@ -68,16 +65,16 @@ export abstract class AbstractStandardPageComponent extends AbstractRenderingCom
      *   "minimumValues": 0
      * }
      */
-    @RenderingContextBinding('references.sectionTwo', [])
-    readonly onSectionTwo: Observable<RenderingContext[]>;
+	@RenderingContextBinding('references.sectionTwo', [])
+	readonly onSectionTwo: Observable<RenderingContext[]>;
 
-    /*
+	/*
      * @see #onSectionTwo
      */
-    @RenderingContextBinding()
-    readonly sectionTwo: RenderingContext[];
+	@RenderingContextBinding()
+	readonly sectionTwo: RenderingContext[];
 
-    protected constructor() {
-        super();
-    }
+	protected constructor() {
+		super();
+	}
 }

@@ -1,9 +1,7 @@
-import {
-    RenderingContext
-} from '@ibm-wch-sdk/ng';
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { RenderingContext } from '@ibm-wch-sdk/ng';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractLandingPageComponent } from './abstractLandingPageComponent';
-import {Subscription} from 'rxjs';
+import { Subscription } from 'rxjs';
 
 /** Useful imports */
 // import 'rxjs/add/operator/map';
@@ -22,34 +20,33 @@ import {Subscription} from 'rxjs';
   preserveWhitespaces: false
 })
 */
-export class TypeLandingPageComponent extends AbstractLandingPageComponent implements OnInit, OnDestroy  {
-
-    /*
+export class TypeLandingPageComponent extends AbstractLandingPageComponent
+	implements OnInit, OnDestroy {
+	/*
      * TODO add custom fields here. These fields should be those
      * common to all layouts.
      */
 
-  public readonly IMAGE_KEY_1: string = 'featureImage1';
-  public readonly IMAGE_KEY_2: string = 'featureImage2';
-  public readonly IMAGE_KEY_3: string = 'featureImage3';
-  public readonly RENDITION_KEY: string = 'large';
+	public readonly IMAGE_KEY_1: string = 'featureImage1';
+	public readonly IMAGE_KEY_2: string = 'featureImage2';
+	public readonly IMAGE_KEY_3: string = 'featureImage3';
+	public readonly RENDITION_KEY: string = 'large';
 
-  rContext: RenderingContext;
-  rcSub: Subscription;
+	rContext: RenderingContext;
+	rcSub: Subscription;
 
-  constructor() {
-        super();
-    }
+	constructor() {
+		super();
+	}
 
-  ngOnInit() {
-    super.ngOnInit();
-    this.rcSub = this.onRenderingContext.subscribe((renderingContext) => {
-      this.rContext = renderingContext;
-    });
-  }
+	ngOnInit() {
+		super.ngOnInit();
+		this.rcSub = this.onRenderingContext.subscribe(renderingContext => {
+			this.rContext = renderingContext;
+		});
+	}
 
-  ngOnDestroy() {
-    this.rcSub.unsubscribe();
-  }
-
+	ngOnDestroy() {
+		this.rcSub.unsubscribe();
+	}
 }

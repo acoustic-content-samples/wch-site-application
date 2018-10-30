@@ -36,9 +36,8 @@ $sign-up-header-color: #fff;
 			font-weight: 800;
 			color: $sign-up-header-color;
 			text-transform: uppercase;
-			transition: font-size .2s ease-in-out;
+			transition: font-size 0.2s ease-in-out;
 		}
-
 	}
 
 	.wrap-inputs {
@@ -48,7 +47,7 @@ $sign-up-header-color: #fff;
 		background: $sign-up-input-bg-color;
 		padding: 4px 10px;
 		border: 1px solid rgba(155, 155, 155, 40);
-		transition: width .3s ease-in-out;
+		transition: width 0.3s ease-in-out;
 
 		form {
 			display: flex;
@@ -60,7 +59,7 @@ $sign-up-header-color: #fff;
 			border: 0;
 			box-shadow: none;
 			flex-grow: 1;
-			transition: height .3s ease-in-out;
+			transition: height 0.3s ease-in-out;
 		}
 	}
 
@@ -72,7 +71,6 @@ $sign-up-header-color: #fff;
 		line-height: 30px;
 		margin-bottom: 0;
 	}
-
 }
 
 @include breakpoint(medium) {
@@ -93,7 +91,7 @@ $sign-up-header-color: #fff;
 			padding: 6px 20px;
 		}
 
-		[type=text] {
+		[type='text'] {
 			text-indent: 20px;
 			background: url('./icon-email.png') no-repeat 0 50%;
 		}
@@ -112,8 +110,8 @@ $sign-up-header-color: #fff;
 
 		.wrap-inputs {
 			width: 60.41666667%;
-  		}
-  	}
+		}
+	}
 }
 
 @include breakpoint(small only) {

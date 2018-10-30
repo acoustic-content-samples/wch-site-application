@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-import {
-	RenderingContext
-} from '@ibm-wch-sdk/ng';
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AbstractDesignPageComponent} from './abstractDesignPageComponent';
-import {UtilsService} from '@ibm-wch/components-ng-shared-utilities';
-import {Subscription} from 'rxjs';
-import {Constants} from '../../Constants';
+import { RenderingContext } from '@ibm-wch-sdk/ng';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AbstractDesignPageComponent } from './abstractDesignPageComponent';
+import { UtilsService } from '@ibm-wch/components-ng-shared-utilities';
+import { Subscription } from 'rxjs';
+import { Constants } from '../../Constants';
+import { luceneEscapeTerm } from '@ibm-wch-sdk/utils';
+
 
 /**
  * @name Design page
@@ -34,7 +34,8 @@ import {Constants} from '../../Constants';
  styleUrls: ['./typeDesignPageComponent.scss']
  })
  */
-export class TypeDesignPageComponent extends AbstractDesignPageComponent implements OnInit, OnDestroy {
+export class TypeDesignPageComponent extends AbstractDesignPageComponent
+	implements OnInit, OnDestroy {
 	rContext: RenderingContext;
 	layoutMode: string;
 
@@ -47,7 +48,7 @@ export class TypeDesignPageComponent extends AbstractDesignPageComponent impleme
 	ngOnInit() {
 		super.ngOnInit();
 
-		this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
+		this.safeSubscribe(this.onRenderingContext, renderingContext => {
 			this.layoutMode = this.layoutMode || this.constants.DETAIL;
 			this.rContext = renderingContext;
 		});
@@ -58,7 +59,10 @@ export class TypeDesignPageComponent extends AbstractDesignPageComponent impleme
 	}
 
 	navLink() {
-		return this.utils.getNavLink(this.renderingContext, this.renderingContext.id);
+		const decodedLink = decodeURIComponent(this.utils.getNavLink(
+			this.renderingContext,
+			this.renderingContext.id
+		));
+		return decodedLink;
 	}
-
 }

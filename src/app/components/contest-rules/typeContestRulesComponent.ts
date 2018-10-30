@@ -1,6 +1,4 @@
-import {
-    RenderingContext
-} from '@ibm-wch-sdk/ng';
+import { RenderingContext } from '@ibm-wch-sdk/ng';
 import { Component } from '@angular/core';
 import { AbstractContestRulesComponent } from './abstractContestRulesComponent';
 
@@ -22,15 +20,14 @@ import { AbstractContestRulesComponent } from './abstractContestRulesComponent';
 })
 */
 export class TypeContestRulesComponent extends AbstractContestRulesComponent {
-
-    /*
+	/*
      * TODO add custom fields here. These fields should be those
      * common to all layouts.
      */
 
-    constructor() {
-        super();
-        /*
+	constructor() {
+		super();
+		/*
          * TODO initialize your custom fields here, note that
          * you can refer to the values bound via @RenderingContextBinding from
          * your super class.
@@ -38,12 +35,11 @@ export class TypeContestRulesComponent extends AbstractContestRulesComponent {
          * Make sure to call 'this.safeSubscribe' if you plan to subscribe to observables
          */
 
-         /*
+		/*
           * Sample
           *
           * const that = this;
           * const onDestroy = that.onOnDestroy;
           */
-    }
-
+	}
 }

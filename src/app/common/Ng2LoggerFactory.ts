@@ -14,24 +14,25 @@
  * limitations under the License.
  *******************************************************************************/
 
-import {environment} from '../../environments/environment';
+import { environment } from '../../environments/environment';
 
-import {Level, Log} from 'ng2-logger/client';
-import {Logger, LoggerFactory} from '@ibm-wch-sdk/ng';
+import { Level, Log } from 'ng2-logger/client';
+import { Logger, LoggerFactory } from '@ibm-wch-sdk/ng';
 
 export class Ng2LoggerFactory implements LoggerFactory {
-
 	private _loggingCookies: Map<string, Array<string>> = new Map();
 	private modules: string;
 	private level: string;
 
-
-	_getCookie = (cookie) => {
+	_getCookie = cookie => {
 		if (!this._loggingCookies.has(cookie)) {
 			// check for cookie logging
 			const cookieVal = encodeURIComponent(cookie);
 			let ret = null;
-			const regexp = new RegExp('(?:^' + cookie + '|;\\s*' + cookie + ')=(.*?)(?:;|$)', 'g');
+			const regexp = new RegExp(
+				'(?:^' + cookie + '|;\\s*' + cookie + ')=(.*?)(?:;|$)',
+				'g'
+			);
 			const matches = regexp.exec(document.cookie);
 			if (matches && matches.length >= 2) {
 				ret = decodeURIComponent(matches[1]);
@@ -44,19 +45,16 @@ export class Ng2LoggerFactory implements LoggerFactory {
 
 	public create = (name: string) => {
 		return Log.create(name) as Logger;
-
 	};
 
 	constructor() {
-
-		this.level = this._getCookie('wch.sites.logging.level'),
-			this.modules = this._getCookie('wch.sites.logging.modules');
+		(this.level = this._getCookie('wch.sites.logging.level')),
+			(this.modules = this._getCookie('wch.sites.logging.modules'));
 		const levelsEnum = [];
 
 		if (this.modules) {
 			Log.onlyModules(...this.modules.split(','));
 		}
-
 
 		// DATA,INFO,WARN,ERROR
 		// document.cookie = 'wch.sites.logging.level=info';
@@ -86,6 +84,4 @@ export class Ng2LoggerFactory implements LoggerFactory {
 			Log.onlyLevel(Level.ERROR, Level.WARN);
 		}
 	}
-
-
 }

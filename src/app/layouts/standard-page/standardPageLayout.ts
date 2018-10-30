@@ -13,10 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-import {
-	LayoutComponent, RenderingContext
-} from '@ibm-wch-sdk/ng';
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { LayoutComponent, RenderingContext } from '@ibm-wch-sdk/ng';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TypeStandardPageComponent } from '../../components/standard-page/typeStandardPageComponent';
 
 /**
@@ -24,14 +22,15 @@ import { TypeStandardPageComponent } from '../../components/standard-page/typeSt
  * @id standard-page-layout
  */
 @LayoutComponent({
-	selector: 'standard-page-layout'
+	selector: 'standard-page-layout',
 })
 @Component({
-  selector: 'app-standard-page-layout-component',
-  templateUrl: './standardPageLayout.html',
-  styleUrls: ['./standardPageLayout.scss']
+	selector: 'app-standard-page-layout-component',
+	templateUrl: './standardPageLayout.html',
+	styleUrls: ['./standardPageLayout.scss'],
 })
-export class StandardPageLayoutComponent extends TypeStandardPageComponent implements OnInit, OnDestroy {
+export class StandardPageLayoutComponent extends TypeStandardPageComponent
+	implements OnInit, OnDestroy {
 	rContext: RenderingContext;
 
 	constructor() {
@@ -41,13 +40,12 @@ export class StandardPageLayoutComponent extends TypeStandardPageComponent imple
 	ngOnInit() {
 		super.ngOnInit();
 
-		this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
+		this.safeSubscribe(this.onRenderingContext, renderingContext => {
 			this.rContext = renderingContext;
-		})
+		});
 	}
 
-	ngOnDestroy () {
+	ngOnDestroy() {
 		super.ngOnDestroy();
 	}
-
 }

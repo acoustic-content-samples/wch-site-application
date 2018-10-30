@@ -13,12 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
+import { LayoutComponent, RenderingContext } from '@ibm-wch-sdk/ng';
 import {
-    LayoutComponent, RenderingContext
-} from '@ibm-wch-sdk/ng';
-import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+	AfterViewInit,
+	Component,
+	ElementRef,
+	OnDestroy,
+	OnInit,
+	ViewChild,
+} from '@angular/core';
 import { TypeSignUpComponent } from '../../components/sign-up/typeSignUpComponent';
-import {UtilsService} from '@ibm-wch/components-ng-shared-utilities';
+import { UtilsService } from '@ibm-wch/components-ng-shared-utilities';
 
 import * as $ from 'jquery';
 
@@ -27,73 +32,72 @@ import * as $ from 'jquery';
  * @id sign-up-layout
  */
 @LayoutComponent({
-    selector: 'sign-up-layout'
+	selector: 'sign-up-layout',
 })
 @Component({
-  selector: 'app-sign-up-layout-component',
-  templateUrl: './signUpLayout.html',
-  styleUrls: ['./signUpLayout.scss']
+	selector: 'app-sign-up-layout-component',
+	templateUrl: './signUpLayout.html',
+	styleUrls: ['./signUpLayout.scss'],
 })
-export class SignUpLayoutComponent extends TypeSignUpComponent implements OnInit, OnDestroy, AfterViewInit {
+export class SignUpLayoutComponent extends TypeSignUpComponent
+	implements OnInit, OnDestroy, AfterViewInit {
+	@ViewChild('revealModal')
+	revealModal: ElementRef;
 
-    @ViewChild('revealModal') revealModal: ElementRef;
+	emailAddress = '';
 
-    emailAddress = '';
+	rContext: RenderingContext;
+	itemId: string;
+	reveal: any;
 
-    rContext: RenderingContext;
-    itemId: string;
-    reveal: any;
+	readonly BACKGROUND_IMG_KEY: string = 'backgroundImage';
+	readonly HEADLINE_KEY: string = 'text';
+	readonly CALL_TO_ACTION_KEY: string = 'link';
+	readonly CONFIRMATION_KEY: string = 'dialogMessage';
 
-    readonly BACKGROUND_IMG_KEY: string = 'backgroundImage';
-    readonly HEADLINE_KEY: string = 'text';
-    readonly CALL_TO_ACTION_KEY: string = 'link';
-    readonly CONFIRMATION_KEY: string = 'dialogMessage';
+	constructor(public utilsService: UtilsService) {
+		super();
+	}
 
+	ngOnInit() {
+		super.ngOnInit();
 
-    constructor(public utilsService: UtilsService) {
-        super();
-    }
+		this.safeSubscribe(this.onRenderingContext, renderingContext => {
+			this.rContext = renderingContext;
+			this.itemId = `signup-${this.rContext.id}`;
+		});
+	}
 
-    ngOnInit() {
-        super.ngOnInit();
+	ngAfterViewInit() {
+		super.ngAfterViewInit();
+		try {
+			this.reveal = new Foundation.Reveal($(`#${this.itemId}`));
+		} catch (e) {
+			console.error('error in signup layout afterview init ', e);
+		}
+	}
 
-        this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
-            this.rContext = renderingContext;
-            this.itemId = `signup-${this.rContext.id}`;
-        })
-    }
+	ngOnDestroy() {
+		// clean up reveal modal
+		try {
+			const elem = this.reveal.$element.foundation('destroy');
+			$(elem).remove();
+		} catch (e) {
+			console.error('error in signup layout ondestroy ', e);
+		}
+		super.ngOnDestroy();
+	}
 
-    ngAfterViewInit() {
-    	super.ngAfterViewInit();
-    	try {
-						this.reveal = new Foundation.Reveal($(`#${this.itemId}`));
-					} catch (e) {
-    		console.error('error in signup layout afterview init ', e);
-					}
-    }
+	openModal() {
+		this.addEmail();
+		try {
+			$(this.revealModal.nativeElement).foundation('open');
+		} catch (e) {
+			console.error('error in signup layout openModal ', e);
+		}
+	}
 
-    ngOnDestroy() {
-        // clean up reveal modal
-					try {
-						const elem = this.reveal.$element.foundation('destroy');
-						$(elem).remove();
-					} catch (e) {
-						console.error('error in signup layout ondestroy ', e);
-					}
-    	super.ngOnDestroy();
-    }
-
-    openModal() {
-        this.addEmail();
-					try {
-						$(this.revealModal.nativeElement).foundation('open');
-					} catch (e) {
-						console.error('error in signup layout openModal ', e);
-					}
-    }
-
-    addEmail() {
-        return;
-    }
-
+	addEmail() {
+		return;
+	}
 }

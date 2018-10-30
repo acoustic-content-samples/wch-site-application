@@ -17,13 +17,11 @@
  * Do not modify this file, it will be auto-generated.
  */
 import {
-    RenderingContext,
-    RenderingContextBinding,
-    AbstractRenderingComponent
+	RenderingContext,
+	RenderingContextBinding,
+	AbstractRenderingComponent,
 } from '@ibm-wch-sdk/ng';
-import {
-    Observable
-} from 'rxjs';
+import { Observable } from 'rxjs';
 
 /**
  * @name Design page
@@ -31,54 +29,53 @@ import {
  * @description Design topic uses a two column layout with options for the column widths.  Decide if you want a 75/25% split in column width or 25/75% split in column width.
  */
 export abstract class AbstractDesignPageComponent extends AbstractRenderingComponent {
+	/**
+	 * {
+	 *   "elementType": "reference",
+	 *   "fieldLabel": "Content item",
+	 *   "helpText": "Design page uses a two column layout with options for the column widths.  Decide if you want a 75/25% split in column width or 25/75% split in column width.",
+	 *   "key": "designTopic",
+	 *   "label": "Design article",
+	 *   "required": true,
+	 *   "restrictTypes": [
+	 *     {
+	 *       "id": "a8fa51a3-4919-4308-a0b3-6cd31ae15d7e"
+	 *     }
+	 *   ]
+	 * }
+	 */
+	@RenderingContextBinding('reference.designTopic', '')
+	readonly onDesignTopic: Observable<RenderingContext>;
 
-    /**
-     * {
-     *   "elementType": "reference",
-     *   "fieldLabel": "Content item",
-     *   "helpText": "Design page uses a two column layout with options for the column widths.  Decide if you want a 75/25% split in column width or 25/75% split in column width.",
-     *   "key": "designTopic",
-     *   "label": "Design article",
-     *   "required": true,
-     *   "restrictTypes": [
-     *     {
-     *       "id": "a8fa51a3-4919-4308-a0b3-6cd31ae15d7e"
-     *     }
-     *   ]
-     * }
-     */
-    @RenderingContextBinding('reference.designTopic', '')
-    readonly onDesignTopic: Observable<RenderingContext>;
+	/**
+	 * @see #onDesignTopic
+	 */
+	@RenderingContextBinding()
+	readonly designTopic: RenderingContext;
 
-    /**
-     * @see #onDesignTopic
-     */
-    @RenderingContextBinding()
-    readonly designTopic: RenderingContext;
+	/**
+	 * {
+	 *   "elementType": "reference",
+	 *   "fieldLabel": "Content item",
+	 *   "key": "relatedArticles",
+	 *   "label": "Related articles",
+	 *   "restrictTypes": [
+	 *     {
+	 *       "id": "9aeeecef-85ce-4d41-a797-1ad27735d0cb"
+	 *     }
+	 *   ]
+	 * }
+	 */
+	@RenderingContextBinding('reference.relatedArticles', '')
+	readonly onRelatedArticles: Observable<RenderingContext>;
 
-    /**
-     * {
-     *   "elementType": "reference",
-     *   "fieldLabel": "Content item",
-     *   "key": "relatedArticles",
-     *   "label": "Related articles",
-     *   "restrictTypes": [
-     *     {
-     *       "id": "9aeeecef-85ce-4d41-a797-1ad27735d0cb"
-     *     }
-     *   ]
-     * }
-     */
-    @RenderingContextBinding('reference.relatedArticles', '')
-    readonly onRelatedArticles: Observable<RenderingContext>;
+	/**
+	 * @see #onRelatedArticles
+	 */
+	@RenderingContextBinding()
+	readonly relatedArticles: RenderingContext;
 
-    /**
-     * @see #onRelatedArticles
-     */
-    @RenderingContextBinding()
-    readonly relatedArticles: RenderingContext;
-
-    protected constructor() {
-        super();
-    }
+	protected constructor() {
+		super();
+	}
 }

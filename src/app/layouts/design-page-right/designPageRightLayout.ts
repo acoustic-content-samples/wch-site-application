@@ -14,27 +14,25 @@
  * limitations under the License.
  *******************************************************************************/
 import { LayoutComponent } from '@ibm-wch-sdk/ng';
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TypeDesignPageComponent } from '../../components/design-page/typeDesignPageComponent';
-import {UtilsService} from '@ibm-wch/components-ng-shared-utilities';
+import { UtilsService } from '@ibm-wch/components-ng-shared-utilities';
 
 /**
  * @name designPageRight
  * @id design-page-right
  */
 @LayoutComponent({
-    selector: 'design-page-right'
+	selector: 'design-page-right',
 })
 @Component({
-  selector: 'app-design-page-right-layout-component',
-  templateUrl: './designPageRightLayout.html',
-  styleUrls: ['./designPageRightLayout.scss']
+	selector: 'app-design-page-right-layout-component',
+	templateUrl: './designPageRightLayout.html',
+	styleUrls: ['./designPageRightLayout.scss'],
 })
-export class DesignPageRightLayoutComponent extends TypeDesignPageComponent implements OnInit, OnDestroy {
-
-    constructor(utilService: UtilsService) {
-        super(utilService);
-    }
-
-
+export class DesignPageRightLayoutComponent extends TypeDesignPageComponent
+	implements OnInit, OnDestroy {
+	constructor(utilService: UtilsService) {
+		super(utilService);
+	}
 }

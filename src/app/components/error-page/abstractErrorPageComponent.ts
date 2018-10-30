@@ -17,56 +17,53 @@
  * Do not modify this file, it will be auto-generated.
  */
 import {
-    Link,
-    RenderingContextBinding,
-    AbstractRenderingComponent
+	Link,
+	RenderingContextBinding,
+	AbstractRenderingComponent,
 } from '@ibm-wch-sdk/ng';
-import {
-    Observable
-} from 'rxjs';
+import { Observable } from 'rxjs';
 
 /**
  * @name Error page
  * @id 16f3938f-90a7-44e9-baf0-751d861a6164
  */
 export abstract class AbstractErrorPageComponent extends AbstractRenderingComponent {
+	/**
+	 * {
+	 *   "elementType": "formattedtext",
+	 *   "fieldLabel": "Formatted Text",
+	 *   "key": "errorMessage",
+	 *   "label": "Error message",
+	 *   "required": true
+	 * }
+	 */
+	@RenderingContextBinding('formattedtext.errorMessage')
+	readonly onErrorMessage: Observable<string>;
 
-    /**
-     * {
-     *   "elementType": "formattedtext",
-     *   "fieldLabel": "Formatted Text",
-     *   "key": "errorMessage",
-     *   "label": "Error message",
-     *   "required": true
-     * }
-     */
-    @RenderingContextBinding('formattedtext.errorMessage')
-    readonly onErrorMessage: Observable<string>;
+	/**
+	 * @see #onErrorMessage
+	 */
+	@RenderingContextBinding()
+	readonly errorMessage: string;
 
-    /**
-     * @see #onErrorMessage
-     */
-    @RenderingContextBinding()
-    readonly errorMessage: string;
+	/**
+	 * {
+	 *   "elementType": "link",
+	 *   "fieldLabel": "Link",
+	 *   "key": "goHomeButton",
+	 *   "label": "Go home button"
+	 * }
+	 */
+	@RenderingContextBinding('link.goHomeButton')
+	readonly onGoHomeButton: Observable<Link>;
 
-    /**
-     * {
-     *   "elementType": "link",
-     *   "fieldLabel": "Link",
-     *   "key": "goHomeButton",
-     *   "label": "Go home button"
-     * }
-     */
-    @RenderingContextBinding('link.goHomeButton')
-    readonly onGoHomeButton: Observable<Link>;
+	/**
+	 * @see #onGoHomeButton
+	 */
+	@RenderingContextBinding()
+	readonly goHomeButton: Link;
 
-    /**
-     * @see #onGoHomeButton
-     */
-    @RenderingContextBinding()
-    readonly goHomeButton: Link;
-
-    protected constructor() {
-        super();
-    }
+	protected constructor() {
+		super();
+	}
 }

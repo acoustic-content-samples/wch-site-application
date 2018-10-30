@@ -31,6 +31,13 @@ Instructions on how to update Oslo to the latest can be found here: [Updating yo
 7. [Updating your Oslo sample](https://developer.ibm.com/customer-engagement/tutorials/updating-oslo-sample/)
 
 ## Updates
+
+At the end of October we have updated the Oslo starter site with the following features:
+
+-   Support for multiple sites
+-   Support for templates
+- Added placeholders for images
+
 At the beginning of September we have updated the Oslo starter site with the following features:
 - Transitioned some content types to custom elements. For more information see: https://www.ibm.com/support/knowledgecenter/en/SS3UMF/wch_q_a_watson_assistant/content_types.html#concept_km5_qd3_4cb
 - Added text placeholders
@@ -201,6 +208,52 @@ Note: Since the sample manifest files only work for the default Oslo starter sit
 5. Open the live site of your tenant, you will see a starter site with only minimum reusable artifacts. Follow the instruction in the page to create your own content and page for your SPA site.
 
 Note: If you have older site in your tenant, you have to delete it first before pushing the Oslo minimum template. `wchtools delete -A -v --all` would be helpful if you want to clean up your tenant. 
+
+## Add and configure custom site styles
+
+Different styles can be applied to the application, depending on which site is loaded.
+To configure your site with custom styles, follow these following steps:
+
+1. Go to the `src/oob-spa/styles` directory.
+2. In that directory, add a new `.scss` file, where the file name matches the site ID that you want to customize (e.g. `<site-id>.scss`).
+3. Add your custom styles to the newly created `.scss` file.
+4. In the `angular.json` file at the root directory, update the `styles` property, adding your new style as an object with these properties and values:
+
+```
+{
+  ...
+  "projects":{
+    "wch-site-application": {
+      "architect": {
+        "build": {
+          ...
+          "options": {
+            ...
+            "styles": [
+              "src/styles.css",
+              // start new style configuration
+              {
+                "input": "src/oob-spa/styles/<site-id>.scss",
+                "lazy": true,
+                "bundleName": "oob-spa/styles/<site-id>"
+              }
+              // end new style configuration
+            ],
+            ...
+          },
+          ...
+        },
+        ...
+      },
+      ...
+    },
+    ...
+  },
+  ...
+}
+```
+
+That's it! Now, any styles that are added to `<site-id>.scss` will be applied to the SPA, when rendering the site with a matching ID. You can preview your style changes by running `npm start` to view the preview server. When ready, you can deploy the changes to the tenant by running `npm run build-deploy`
 
 ## Resources
 Find more details on the WCH development environment, technical documentation, sample applications, APIs and other information to jumpstart your development project.

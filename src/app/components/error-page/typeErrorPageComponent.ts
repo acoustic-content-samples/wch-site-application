@@ -13,9 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-import {
-    RenderingContext
-} from '@ibm-wch-sdk/ng';
+import { RenderingContext } from '@ibm-wch-sdk/ng';
 import { Component } from '@angular/core';
 import { AbstractErrorPageComponent } from './abstractErrorPageComponent';
 
@@ -31,21 +29,19 @@ import { AbstractErrorPageComponent } from './abstractErrorPageComponent';
 })
 */
 export class TypeErrorPageComponent extends AbstractErrorPageComponent {
+	/**
+	 * TODO add custom fields here. These fields should be those
+	 * common to all layouts.
+	 */
 
-    /**
-     * TODO add custom fields here. These fields should be those
-     * common to all layouts.
-     */
-
-    constructor() {
-        super();
-        /**
-        * TODO initialize your custom fields here, note that
-        * you can refer to the values bound via @RenderingContextBinding from
-        * your super class.
-        *
-        * Make sure to call 'this.safeSubscribe' if you plan to subscribe to observables
-        */
-    }
-
+	constructor() {
+		super();
+		/**
+		 * TODO initialize your custom fields here, note that
+		 * you can refer to the values bound via @RenderingContextBinding from
+		 * your super class.
+		 *
+		 * Make sure to call 'this.safeSubscribe' if you plan to subscribe to observables
+		 */
+	}
 }

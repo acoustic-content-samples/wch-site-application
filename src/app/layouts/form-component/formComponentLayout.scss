@@ -1,44 +1,41 @@
 @import '~foundation-sites/scss/foundation';
 
-.form-component{
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.form-component {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-  .headline{
-    color: #45567A;
-    text-align: center;
-  }
+	.headline {
+		color: #45567a;
+		text-align: center;
+	}
 
-  form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	form {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
-    .input-group{
-      display: inline-block;
-      margin-left: 0.5rem;
-      margin-right: 0.5rem;
-    }
+		.input-group {
+			display: inline-block;
+			margin-left: 0.5rem;
+			margin-right: 0.5rem;
+		}
 
-    .button{
-      background-color: #45567A;
-      border: none;
-      color: white;
-    }
+		.button {
+			background-color: #45567a;
+			border: none;
+			color: white;
+		}
+	}
 
-
-  }
-
-  @include breakpoint(small only) {
-    .reveal {
-      margin: 0 auto;
-      position: relative;
-      width: 75vw;
-      max-height: 30vh;
-      min-height: 10vh;
-    }
-  }
+	@include breakpoint(small only) {
+		.reveal {
+			margin: 0 auto;
+			position: relative;
+			width: 75vw;
+			max-height: 30vh;
+			min-height: 10vh;
+		}
+	}
 }
-

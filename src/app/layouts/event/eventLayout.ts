@@ -14,14 +14,22 @@
  * limitations under the License.
  *******************************************************************************/
 import {
-	LayoutComponent, RenderingContext, RenderingContextBinding
+	LayoutComponent,
+	RenderingContext,
+	RenderingContextBinding,
 } from '@ibm-wch-sdk/ng';
 import {
-	AfterViewInit, Component, ElementRef, OnChanges, OnDestroy, OnInit, SimpleChanges,
-	ViewChild
+	AfterViewInit,
+	Component,
+	ElementRef,
+	OnChanges,
+	OnDestroy,
+	OnInit,
+	SimpleChanges,
+	ViewChild,
 } from '@angular/core';
-import {TypeEventComponent} from '../../components/event/typeEventComponent';
-import {Subscription} from 'rxjs';
+import { TypeEventComponent } from '../../components/event/typeEventComponent';
+import { Subscription } from 'rxjs';
 
 import * as $ from 'jquery';
 
@@ -30,21 +38,21 @@ import * as $ from 'jquery';
  * @id event-layout
  */
 @LayoutComponent({
-	selector: 'event-layout'
+	selector: 'event-layout',
 })
 @Component({
 	selector: 'app-event-layout-component',
 	templateUrl: './eventLayout.html',
-	styleUrls: ['./eventLayout.scss']
+	styleUrls: ['./eventLayout.scss'],
 })
-export class EventLayoutComponent extends TypeEventComponent implements OnInit, OnDestroy, AfterViewInit {
-
-	@ViewChild('event') eventElem: ElementRef;
+export class EventLayoutComponent extends TypeEventComponent
+	implements OnInit, OnDestroy, AfterViewInit {
+	@ViewChild('event')
+	eventElem: ElementRef;
 
 	rContext: RenderingContext;
 	eventId: any;
 	reveal: any;
-
 
 	constructor() {
 		super();
@@ -53,7 +61,7 @@ export class EventLayoutComponent extends TypeEventComponent implements OnInit, 
 	ngOnInit() {
 		super.ngOnInit();
 
-		this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
+		this.safeSubscribe(this.onRenderingContext, renderingContext => {
 			this.rContext = renderingContext;
 			this.eventId = `event-card-${this.rContext.id}`;
 		});
@@ -66,9 +74,7 @@ export class EventLayoutComponent extends TypeEventComponent implements OnInit, 
 		} catch (e) {
 			console.error('error in eventLayout reveal ', e);
 		}
-
 	}
-
 
 	ngOnDestroy() {
 		try {
@@ -79,6 +85,4 @@ export class EventLayoutComponent extends TypeEventComponent implements OnInit, 
 		}
 		super.ngOnDestroy();
 	}
-
-
 }

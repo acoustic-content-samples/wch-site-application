@@ -1,40 +1,34 @@
-
-
-
 .wch-menu {
-  position: absolute;
-  z-index: 1004;
-  width: 80%;
-  display: flex;
-  list-style: none;
-  flex-wrap: wrap;
-  flex-direction: row;
+	position: absolute;
+	z-index: 1004;
+	width: 80%;
+	display: flex;
+	list-style: none;
+	flex-wrap: wrap;
+	flex-direction: row;
 }
 
 .wch-menu.wch-sub-menu {
-  width:100%;
-  position: relative;
-  width: inherit;
+	width: 100%;
+	position: relative;
+	width: inherit;
 }
 
 /* Large and up */
 @media screen and (min-width: 64em) {
-  wch-menu {
-	min-width: 60%;
+	wch-menu {
+		min-width: 60%;
 
-	.wch-menu {
-	  flex-wrap: wrap;
-	  flex-direction: row;
-	  position: relative;
-	  //min-width: 67%;
-	  width: 100%;
+		.wch-menu {
+			flex-wrap: wrap;
+			flex-direction: row;
+			position: relative;
+			//min-width: 67%;
+			width: 100%;
+		}
+
+		.wch-sub-menu {
+			position: absolute;
+		}
 	}
-
-	.wch-sub-menu {
-	  position: absolute;
-	}
-
-  }
 }
-
-

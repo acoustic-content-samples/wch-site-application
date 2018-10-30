@@ -18,31 +18,31 @@ import {
 	Input,
 	OnDestroy,
 	AfterViewInit,
-	ViewEncapsulation, EventEmitter, Output
+	ViewEncapsulation,
+	EventEmitter,
+	Output,
 } from '@angular/core';
 
-
-
-
-
-import {RenderingContext} from '@ibm-wch-sdk/ng';
-import {Constants} from '../../Constants';
-import {Subscription} from 'rxjs';
+import { RenderingContext } from '@ibm-wch-sdk/ng';
+import { Constants } from '../../Constants';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'wch-menu-item',
 	styleUrls: ['./wch-menu-item.scss'],
 	templateUrl: './wch-menu-item.html',
-	encapsulation: ViewEncapsulation.None
+	encapsulation: ViewEncapsulation.None,
 })
 export class WCHMenuItemComponent implements AfterViewInit, OnDestroy {
 	@Input()
-	public set aPage(aValue){
+	public set aPage(aValue) {
 		this.page = aValue;
 		this.cachedChildren = new Map<string, any[]>();
 	}
-	@Input() level: number;
-	@Output() onMenuItemSelected = new EventEmitter<boolean>();
+	@Input()
+	level: number;
+	@Output()
+	onMenuItemSelected = new EventEmitter<boolean>();
 
 	cachedChildren = new Map<string, any[]>();
 	pageToggles = new Map<string, boolean>();
@@ -52,12 +52,9 @@ export class WCHMenuItemComponent implements AfterViewInit, OnDestroy {
 	/* The maximum level of navigation to display  */
 	maxNavigationDepth = 2;
 
+	constructor() {}
 
-	constructor() {
-
-	}
-
-	trackByPageId(index, page){
+	trackByPageId(index, page) {
 		return `${page.id}:${page.url}`;
 	}
 
@@ -69,17 +66,14 @@ export class WCHMenuItemComponent implements AfterViewInit, OnDestroy {
 		this.onMenuItemSelected.emit(true);
 	}
 
-	ngOnDestroy() {
-
-	}
-
+	ngOnDestroy() {}
 
 	/*
 	 Toggle submenu by parent page,  on mouseleave we want to force the submenu to close
 	 */
 	toggleSubmenu(page, forceClose) {
-		if(this.hasVisibleChildren(page)) {
-			if(forceClose){
+		if (this.hasVisibleChildren(page)) {
+			if (forceClose) {
 				this._setPageToggle(page, false);
 			} else {
 				this._setPageToggle(page, !this.getPageToggle(page));
@@ -87,7 +81,7 @@ export class WCHMenuItemComponent implements AfterViewInit, OnDestroy {
 		}
 	}
 
-	getPageToggle(page){
+	getPageToggle(page) {
 		return this.pageToggles.get(page) || false;
 	}
 
@@ -95,36 +89,33 @@ export class WCHMenuItemComponent implements AfterViewInit, OnDestroy {
 		this.pageToggles.set(page, value);
 	}
 
-
 	getRouteURL(url) {
 		return decodeURI(url);
 	}
 
 	/* We also need to consider the maximum navigation levels to display when determining visible children */
 	hasVisibleChildren(page) {
-		return this.getVisibleChildren(page).length > 0  && this.level < this.maxNavigationDepth;
-
+		return (
+			this.getVisibleChildren(page).length > 0 &&
+			this.level < this.maxNavigationDepth
+		);
 	}
 
 	getVisibleChildren(page): any[] {
-		if(this.cachedChildren.get(page.id)){
+		if (this.cachedChildren.get(page.id)) {
 			return this.cachedChildren.get(page.id);
 		} else {
-			let visibleChildren = page.children.filter((child) => {
+			let visibleChildren = page.children.filter(child => {
 				return !child.hideFromNavigation;
 			});
 			this.cachedChildren.set(page.id, visibleChildren);
-			return visibleChildren
+			return visibleChildren;
 		}
 	}
-
 
 	displaySubmenu(page) {
 		return this.hasVisibleChildren(page) && this.getPageToggle(page);
 	}
 
-
-	ngAfterViewInit() {
-
-	}
+	ngAfterViewInit() {}
 }

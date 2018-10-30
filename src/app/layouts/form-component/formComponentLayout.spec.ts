@@ -15,60 +15,60 @@
  *******************************************************************************/
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormComponentLayoutComponent } from './formComponentLayout';
-import {WchInfoService} from '@ibm-wch-sdk/ng';
+import { WchInfoService } from '@ibm-wch-sdk/ng';
 
 class MockWchInfoService {
-  constructor() {}
+	constructor() {}
 }
 
 describe('FormComponentLayoutComponent', () => {
-  let component: FormComponentLayoutComponent;
-  let fixture: ComponentFixture<FormComponentLayoutComponent>;
+	let component: FormComponentLayoutComponent;
+	let fixture: ComponentFixture<FormComponentLayoutComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ FormComponentLayoutComponent ],
-      providers: [
-        { provide: WchInfoService, useClass: MockWchInfoService },
-      ]
-    })
-  }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [FormComponentLayoutComponent],
+			providers: [
+				{ provide: WchInfoService, useClass: MockWchInfoService },
+			],
+		});
+	}));
 
-  beforeEach(() => {
-    fixture = TestBed.overrideComponent(FormComponentLayoutComponent, {
-      set: {
-        template: 'TODO'
-      }})
-      .createComponent(FormComponentLayoutComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.overrideComponent(FormComponentLayoutComponent, {
+			set: {
+				template: 'TODO',
+			},
+		}).createComponent(FormComponentLayoutComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
-  });
+	it('should be created', () => {
+		expect(component).toBeTruthy();
+	});
 
-  it('form can be submitted', () => {
-    component.nameValue = 'test';
-    component.emailValue = 'test@test.com';
-    expect(component.submitForm()).toBeTruthy();
-  });
+	it('form can be submitted', () => {
+		component.nameValue = 'test';
+		component.emailValue = 'test@test.com';
+		expect(component.submitForm()).toBeTruthy();
+	});
 
-  it('form cannot be submitted when name is unavailable', () => {
-    component.nameValue = '';
-    component.emailValue = 'test@test.com';
-    expect(component.submitForm()).toBeFalsy();
-  });
+	it('form cannot be submitted when name is unavailable', () => {
+		component.nameValue = '';
+		component.emailValue = 'test@test.com';
+		expect(component.submitForm()).toBeFalsy();
+	});
 
-  it('form cannot be submitted when email is unavailable', () => {
-    component.nameValue = 'test';
-    component.emailValue = '';
-    expect(component.submitForm()).toBeFalsy();
-  });
+	it('form cannot be submitted when email is unavailable', () => {
+		component.nameValue = 'test';
+		component.emailValue = '';
+		expect(component.submitForm()).toBeFalsy();
+	});
 
-  it('form cannot be submitted when name and email are unavailable', () => {
-    component.nameValue = '';
-    component.emailValue = '';
-    expect(component.submitForm()).toBeFalsy();
-  });
+	it('form cannot be submitted when name and email are unavailable', () => {
+		component.nameValue = '';
+		component.emailValue = '';
+		expect(component.submitForm()).toBeFalsy();
+	});
 });

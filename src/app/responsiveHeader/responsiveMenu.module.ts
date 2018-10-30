@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 
-import {FormsModule} from '@angular/forms';
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import { } from 'flex-layout';
+import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import {} from 'flex-layout';
 
 import { ResponsiveHeaderComponent } from './responsiveHeader.component';
 import { WCHMenuComponent } from './wch-menu/wchMenu.component';
@@ -26,10 +26,7 @@ import { WCHMenuItemComponent } from './wch-menu-item/wchMenuItem.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SiteCommonModule } from '@ibm-wch/components-ng-shared-utilities';
-import {AngularSvgIconModule} from 'angular-svg-icon';
-
-
-
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({
 	imports: [
@@ -38,19 +35,15 @@ import {AngularSvgIconModule} from 'angular-svg-icon';
 		RouterModule,
 		HttpClientModule,
 		SiteCommonModule,
-		AngularSvgIconModule
+		AngularSvgIconModule,
 	],
 	declarations: [
 		ResponsiveHeaderComponent,
 		SearchBoxComponent,
 		WCHMenuComponent,
-		WCHMenuItemComponent
+		WCHMenuItemComponent,
 	],
-	providers: [
-	],
-	exports: [
-		ResponsiveHeaderComponent
-	]
+	providers: [],
+	exports: [ResponsiveHeaderComponent],
 })
-export class ResponsiveHeaderModule {
-}
+export class ResponsiveHeaderModule {}

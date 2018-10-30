@@ -1,5 +1,9 @@
 <div *ngIf="rContext" [className]="getImageClass()" class="wrap-text-left">
-	<img wchEditable="image" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY, imageSizeStr)" [alt]="rContext.elements[IMAGE_KEY].altText" [title]="rContext.elements[IMAGE_KEY].altText">
+	<wch-placeholder wchEditable="image">
+		<img *ngIf="image && image.url" wchEditable="image" [src]="utilsService.getImageUrl(rContext, IMAGE_KEY, imageSizeStr)" [alt]="rContext.elements[IMAGE_KEY].altText" [title]="rContext.elements[IMAGE_KEY].altText">
+		<wch-placeholder-icon class="wch-placeholder" type="image" width="800" height="300" wchEditable="image">			
+		</wch-placeholder-icon>
+	</wch-placeholder>
 	<div wchEditable="imageCaption" class="caption" wchFormat></div>
 	<div wchEditable="imageCredit" class="caption" wchFormat></div>
 </div>

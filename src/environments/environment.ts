@@ -5,7 +5,7 @@
 import { SDK_VERSION } from '@ibm-wch-sdk/ng';
 
 export const environment = {
-  production: false,
-  version: JSON.stringify((new Date()).toString().substr(0,10)),
-  sdkVersion: JSON.stringify(SDK_VERSION.version.full)
+	production: false,
+	version: JSON.stringify(new Date().toString().substr(0, 10)),
+	sdkVersion: JSON.stringify(SDK_VERSION.version.full),
 };

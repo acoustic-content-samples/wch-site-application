@@ -1,6 +1,11 @@
 <div class="about-the-author">
-	<div *ngIf="profilePicture" class="profile-picture-div">
-		<img wchEditable="profilePicture" [src]="getImageUrl()" [alt]="profilePicture.altText ? (onProfilePicture | async).altText : ''" [title]="profilePicture.altText ? (onProfilePicture | async).altText : ''"/>
+	<div class="profile-picture-div">
+		<wch-placeholder wchEditable="profilePicture">
+			<img wchEditable="profilePicture" [src]="getImageUrl()" [alt]="profilePicture.altText ? (onProfilePicture | async).altText : ''"
+			 [title]="profilePicture.altText ? (onProfilePicture | async).altText : ''" />
+			<wch-placeholder-icon class="wch-placeholder" type="image" width="60" height="60" wchEditable="profilePicture">
+			</wch-placeholder-icon>
+		</wch-placeholder>
 	</div>
 	<div>
 		<h5 wchEditable="name" wchFormat></h5>

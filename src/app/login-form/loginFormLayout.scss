@@ -1,40 +1,37 @@
 @import '../settings';
 
 .login-form > div {
-  margin: auto;
+	margin: auto;
 }
 
 .login-form > div > h3 {
-  text-align: center;
-  font-size: 1.875rem;
+	text-align: center;
+	font-size: 1.875rem;
 }
 
 .login-form {
+	align-items: center;
+	height: 25rem;
 
-  align-items: center;
-  height: 25rem;
-
-  .invalid-login {
-	color: $form-alert;
-	font-weight: bold;
-	margin-bottom: 20px;
-  }
-
-  button[disabled] {
-	background-color: #dbdbdb;
-	opacity: 1;
-  }
-
-  .preview-msg-container {
-	margin-top: 40px;
-	border-top: 1px solid rgb(202, 202, 202);
-
-	p {
-	  text-align: center;
-	  padding: 2.5rem 0;
-	  margin-bottom: 0;
+	.invalid-login {
+		color: $form-alert;
+		font-weight: bold;
+		margin-bottom: 20px;
 	}
 
-  }
+	button[disabled] {
+		background-color: #dbdbdb;
+		opacity: 1;
+	}
 
+	.preview-msg-container {
+		margin-top: 40px;
+		border-top: 1px solid rgb(202, 202, 202);
+
+		p {
+			text-align: center;
+			padding: 2.5rem 0;
+			margin-bottom: 0;
+		}
+	}
 }

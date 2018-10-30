@@ -15,31 +15,30 @@
  *******************************************************************************/
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DesignArticleSummaryComponent } from './design-article-summary.component';
-import {UtilsService} from '@ibm-wch/components-ng-shared-utilities';
-
+import { UtilsService } from '@ibm-wch/components-ng-shared-utilities';
 
 describe('DesignArticleSummaryComponent', () => {
-  let component: DesignArticleSummaryComponent;
-  let fixture: ComponentFixture<DesignArticleSummaryComponent>;
+	let component: DesignArticleSummaryComponent;
+	let fixture: ComponentFixture<DesignArticleSummaryComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ DesignArticleSummaryComponent ],
-      providers: [UtilsService]
-    })
-  }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [DesignArticleSummaryComponent],
+			providers: [UtilsService],
+		});
+	}));
 
-  beforeEach(() => {
-    fixture = TestBed.overrideComponent(DesignArticleSummaryComponent, {
-      set: {
-        template: 'TODO'
-      }})
-      .createComponent(DesignArticleSummaryComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.overrideComponent(DesignArticleSummaryComponent, {
+			set: {
+				template: 'TODO',
+			},
+		}).createComponent(DesignArticleSummaryComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  xit('should be created', () => {
-    expect(component).toBeTruthy();
-  });
+	xit('should be created', () => {
+		expect(component).toBeTruthy();
+	});
 });

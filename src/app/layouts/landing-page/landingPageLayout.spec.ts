@@ -15,38 +15,38 @@
  *******************************************************************************/
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LandingPageLayoutComponent } from './landingPageLayout';
-import {WchInfoService} from '@ibm-wch-sdk/ng';
-import {UtilsService} from '@ibm-wch/components-ng-shared-utilities';
+import { WchInfoService } from '@ibm-wch-sdk/ng';
+import { UtilsService } from '@ibm-wch/components-ng-shared-utilities';
 
 class MockWchInfoService {
-  constructor() {}
+	constructor() {}
 }
 
 describe('LandingPageLayoutComponent', () => {
-  let component: LandingPageLayoutComponent;
-  let fixture: ComponentFixture<LandingPageLayoutComponent>;
+	let component: LandingPageLayoutComponent;
+	let fixture: ComponentFixture<LandingPageLayoutComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ LandingPageLayoutComponent ],
-      providers: [
-        { provide: WchInfoService, useClass: MockWchInfoService },
-        UtilsService
-      ]
-    })
-  }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [LandingPageLayoutComponent],
+			providers: [
+				{ provide: WchInfoService, useClass: MockWchInfoService },
+				UtilsService,
+			],
+		});
+	}));
 
-  beforeEach(() => {
-    fixture = TestBed.overrideComponent(LandingPageLayoutComponent, {
-      set: {
-        template: 'TODO'
-      }})
-      .createComponent(LandingPageLayoutComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.overrideComponent(LandingPageLayoutComponent, {
+			set: {
+				template: 'TODO',
+			},
+		}).createComponent(LandingPageLayoutComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
-  });
+	it('should be created', () => {
+		expect(component).toBeTruthy();
+	});
 });

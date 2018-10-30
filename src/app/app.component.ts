@@ -14,14 +14,21 @@
  * limitations under the License.
  *******************************************************************************/
 import { environment } from '../environments/environment';
+import { take } from 'rxjs/operators';
 
-import {Component, OnDestroy, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {RenderingContext, ActivePageService} from '@ibm-wch-sdk/ng';
+import {
+	Component,
+	OnDestroy,
+	OnInit,
+	Output,
+	ViewEncapsulation,
+} from '@angular/core';
+import { RenderingContext, ActivePageService } from '@ibm-wch-sdk/ng';
 import 'rxjs/add/operator/filter';
 
-import {Observable, Subscription} from 'rxjs';
-import {NavigationEnd, Router} from '@angular/router';
-import {HighlightService} from '@ibm-wch/components-ng-shared-utilities';
+import { Observable, Subscription } from 'rxjs';
+import { NavigationEnd, Router } from '@angular/router';
+import { HighlightService } from '@ibm-wch/components-ng-shared-utilities';
 import { TranslateService } from '@ngx-translate/core';
 import { Ng2LoggerFactory } from './common/Ng2LoggerFactory';
 import { Logger } from '@ibm-wch-sdk/ng';
@@ -30,8 +37,7 @@ import { Logger } from '@ibm-wch-sdk/ng';
 	encapsulation: ViewEncapsulation.None,
 	selector: 'app',
 	styleUrls: ['app.scss'],
-	templateUrl: './app.component.html'
-
+	templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit, OnDestroy {
 	@Output()
@@ -41,32 +47,36 @@ export class AppComponent implements OnInit, OnDestroy {
 	logger: Logger = new Ng2LoggerFactory().create('AppComponent');
 	soloMode = false;
 	lazyLoadFooter = true;
-	activePage = new ActivePageService() ;
+	activePage = new ActivePageService();
 	readonly LANDING_PAGE_KIND = 'landing-page';
 
-	constructor(router: Router, private highlightService: HighlightService, private translate: TranslateService) {
+	constructor(
+		router: Router,
+		private highlightService: HighlightService,
+		private translate: TranslateService
+	) {
 		console.info(`Build date: ${environment.version}`);
 		console.info(`SDK version: ${environment.sdkVersion}`);
 		this.routerSub = router.events
 			.filter(event => event instanceof NavigationEnd)
-			.subscribe(( event: NavigationEnd ) => {
+			.subscribe((event: NavigationEnd) => {
 				this.logger.info('SPA navigation changed', event.url);
-        this.lazyLoadFooter = true;
+				this.lazyLoadFooter = true;
 			});
 
 		this.activePage.onRenderingContext.subscribe(() => {
-      setTimeout(() => {
-        this.lazyLoadFooter = false;
-      }, 1000);
-    });
+			setTimeout(() => {
+				this.lazyLoadFooter = false;
+			}, 1000);
+		});
 	}
 
-	ngOnInit () {
+	ngOnInit() {
 		this.translate.setDefaultLang('en');
 		this.translate.use('en');
 	}
 
-	ngOnDestroy () {
+	ngOnDestroy() {
 		this.routerSub.unsubscribe();
 		this.rcontextSub.unsubscribe();
 	}
@@ -78,11 +88,27 @@ export class AppComponent implements OnInit, OnDestroy {
 			this.soloMode = false;
 			this.rcontextSub = this.onRenderingContext
 				.filter((rContext: any) => {
-					return (rContext && rContext.kind) ? rContext.kind.indexOf(this.LANDING_PAGE_KIND) > -1 : false;
+					return rContext && rContext.kind
+						? rContext.kind.indexOf(this.LANDING_PAGE_KIND) > -1
+						: false;
 				})
-				.subscribe((isLandingPage) => {
+				.subscribe(isLandingPage => {
 					this.soloMode = isLandingPage;
 				});
+
+      this.onRenderingContext.filter((rContext: any) => {
+			  return rContext && rContext.context && rContext.context.site && rContext.context.site.id;
+			}).pipe(take(1)).subscribe(
+        (rContextWithSiteName) => {
+                const head  = document.getElementsByTagName('head')[0];
+                const link  = document.createElement('link');
+                link.rel  = 'stylesheet';
+                link.type = 'text/css';
+                link.href = 'oob-spa/styles/' + encodeURI(rContextWithSiteName.context.site.id) + '.css';
+                link.media = 'all';
+                head.appendChild(link);
+            }
+      );
 		}
 	}
 
@@ -97,5 +123,4 @@ export class AppComponent implements OnInit, OnDestroy {
 		}
 		button.addEventListener('click',clickHandler,false);
 		*/
-
 }

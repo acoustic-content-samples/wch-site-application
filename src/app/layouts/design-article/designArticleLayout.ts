@@ -13,33 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-import {
-	LayoutComponent, RenderingContext
-} from '@ibm-wch-sdk/ng';
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import { LayoutComponent, RenderingContext } from '@ibm-wch-sdk/ng';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { TypeDesignArticleComponent } from '../../components/design-article/typeDesignArticleComponent';
 import { UtilsService } from '@ibm-wch/components-ng-shared-utilities';
-import {Constants} from '../../Constants';
+import { Constants } from '../../Constants';
 
 /**
  * @name designArticleLayout
  * @id design-article-layout
  */
 @LayoutComponent({
-	selector: 'design-article-layout'
+	selector: 'design-article-layout',
 })
 @Component({
 	selector: 'app-design-article-layout-component',
 	templateUrl: './designArticleLayout.html',
-	styleUrls: ['./designArticleLayout.scss']
+	styleUrls: ['./designArticleLayout.scss'],
 })
-export class DesignArticleLayoutComponent extends TypeDesignArticleComponent implements OnInit, OnDestroy {
-
+export class DesignArticleLayoutComponent extends TypeDesignArticleComponent
+	implements OnInit, OnDestroy {
 	rContext: RenderingContext;
 	matchingBodyImages: any[];
 	leftoverBodyImages: any[];
 	constants: any = Constants;
-	
+
 	public numOfBodyTexts: number;
 	public readonly LEAD_IMAGE_KEY: string = 'leadImage';
 	public readonly IMAGE_KEY: string = 'image';
@@ -48,11 +46,8 @@ export class DesignArticleLayoutComponent extends TypeDesignArticleComponent imp
 	public readonly CREDIT_KEY: string = 'imageCredit';
 	public readonly IMAGE_PLACEMENT_KEY: string = 'imagePlacement';
 
-
-
-
-
-	@Input() layoutMode: string;
+	@Input()
+	layoutMode: string;
 
 	constructor(public utilsService: UtilsService) {
 		super();
@@ -61,10 +56,9 @@ export class DesignArticleLayoutComponent extends TypeDesignArticleComponent imp
 	ngOnInit() {
 		super.ngOnInit();
 
-		this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
+		this.safeSubscribe(this.onRenderingContext, renderingContext => {
 			this.rContext = renderingContext;
 			this.layoutMode = this.layoutMode || this.constants.DETAIL;
-
 			this.matchingBodyImages = [];
 			// in draft the formattedtexts may not be populated
 			if (this.body) {
@@ -73,36 +67,59 @@ export class DesignArticleLayoutComponent extends TypeDesignArticleComponent imp
 				if (this.bodyImage) {
 					const numOfBodyImages = this.bodyImage.length;
 					if (this.numOfBodyTexts > 0) {
-						this.matchingBodyImages = this.bodyImage.slice(0, this.numOfBodyTexts);
+						this.matchingBodyImages = this.bodyImage.slice(
+							0,
+							this.numOfBodyTexts
+						);
 					}
 					if (numOfBodyImages > this.numOfBodyTexts) {
-						this.leftoverBodyImages = this.bodyImage.slice(this.numOfBodyTexts);
+						this.leftoverBodyImages = this.bodyImage.slice(
+							this.numOfBodyTexts
+						);
 					}
 				}
 			}
 		});
 	}
 
-	ngOnDestroy () {
+	ngOnDestroy() {
 		super.ngOnDestroy();
 	}
 
 	getImageClass(imageContext) {
-		if (imageContext){
-			const imagePlacement = this.utilsService.getFirstCategoryValue(imageContext[this.IMAGE_PLACEMENT_KEY], 'left').toLowerCase();
-			const imageSize = this.utilsService.getFirstCategoryValue(imageContext[this.IMAGE_SIZE_KEY], 'medium').toLowerCase();
+		if (imageContext) {
+			const imagePlacement = this.utilsService
+				.getFirstCategoryValue(
+					imageContext[this.IMAGE_PLACEMENT_KEY],
+					'left'
+				)
+				.toLowerCase();
+			const imageSize = this.utilsService
+				.getFirstCategoryValue(
+					imageContext[this.IMAGE_SIZE_KEY],
+					'medium'
+				)
+				.toLowerCase();
 			return `article-${imageSize}-image place-image-${imagePlacement}`;
 		}
 		return '';
-		
 	}
 
-	getBodyImageURL(imageContext){
-		if (imageContext){
-			const imageSize = this.utilsService.getFirstCategoryValue(imageContext[this.IMAGE_SIZE_KEY], 'medium').toLowerCase();
-			return this.utilsService.getBodyImageUrl(this.rContext, imageContext, this.IMAGE_KEY, imageSize);
+	getBodyImageURL(imageContext) {
+		if (imageContext) {
+			const imageSize = this.utilsService
+				.getFirstCategoryValue(
+					imageContext[this.IMAGE_SIZE_KEY],
+					'medium'
+				)
+				.toLowerCase();
+			return this.utilsService.getBodyImageUrl(
+				this.rContext,
+				imageContext,
+				this.IMAGE_KEY,
+				imageSize
+			);
 		}
 		return '';
 	}
-
 }

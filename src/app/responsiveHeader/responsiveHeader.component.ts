@@ -18,39 +18,48 @@ import {
 	Input,
 	OnDestroy,
 	AfterViewInit,
-	ViewEncapsulation
+	ViewEncapsulation,
 } from '@angular/core';
 
-
-
-
-
-import {RenderingContext} from '@ibm-wch-sdk/ng';
-import {ConfigServiceService} from '@ibm-wch/components-ng-shared-utilities';
-import {Constants} from '../Constants';
-import {Subscription} from 'rxjs';
-import {AuthService} from '@ibm-wch/components-ng-shared-utilities';
-import {Router} from "@angular/router";
-import {RefreshService} from '@ibm-wch-sdk/ng';
+import { RenderingContext } from '@ibm-wch-sdk/ng';
+import { ConfigServiceService } from '@ibm-wch/components-ng-shared-utilities';
+import { Constants } from '../Constants';
+import { Subscription } from 'rxjs';
+import { AuthService } from '@ibm-wch/components-ng-shared-utilities';
+import { Router } from '@angular/router';
+import { RefreshService } from '@ibm-wch-sdk/ng';
+import { take } from 'rxjs/operators';
 
 @Component({
 	selector: 'responsive-header',
 	styleUrls: ['./responsive-header.scss'],
 	templateUrl: './responsive-header.html',
-	encapsulation: ViewEncapsulation.None
+	encapsulation: ViewEncapsulation.None,
 })
 export class ResponsiveHeaderComponent implements AfterViewInit, OnDestroy {
 	@Input()
-	public set renderingContext(aValue: RenderingContext) {
+	public set renderingContext (aValue: RenderingContext) {
+	  if ( aValue && aValue.context && aValue.context.site) {
+      this.configSub = this.configService.getConfig(Constants.HEADER_CONFIG.concat(':', aValue.context.site.name)).subscribe((context) => {
+        if (context && context.id) {
+          this.headerConfig = context;
+        } else {
+           this.configService.getConfig(Constants.HEADER_CONFIG).pipe(take(1)).subscribe((defaultContext) => {
+            if (defaultContext && defaultContext.id) {
+              this.headerConfig = defaultContext;
+            }
+          });
+        }
+      });
+    }
 		this.rc = aValue;
-		if(aValue) {
-			if(this._hasPagesChanged(aValue.context.site.pages)){
+		if (aValue) {
+			if (this._hasPagesChanged(aValue.context.site.pages)) {
 				this.pages = aValue.context.site.pages;
 			}
 		}
 		this.cachedChildren = new Map<string, any[]>();
 	}
-
 
 	rc: RenderingContext;
 	headerConfig: any;
@@ -58,35 +67,41 @@ export class ResponsiveHeaderComponent implements AfterViewInit, OnDestroy {
 	configSub: Subscription;
 	cachedChildren = new Map<string, any[]>();
 	pageToggles = new Map<string, boolean>();
-	mobileNavToggle:boolean = false;
+	mobileNavToggle: boolean = false;
 	pages: Array<any> = [];
+	configService: ConfigServiceService;
 
+	constructor (
+		configService: ConfigServiceService,
+		public authService: AuthService,
+		private router: Router,
+		private SDKRefreshService: RefreshService
+	) {
+	  this.configService = configService;
 
-	constructor(configService: ConfigServiceService, public authService: AuthService, private router: Router, private SDKRefreshService: RefreshService) {
-		this.configSub = configService.getConfig(Constants.HEADER_CONFIG).subscribe((context) => {
-			this.headerConfig = context;
+		authService.getCurrentUser().subscribe(res => {
+			const name = res && res.externalId ? res.externalId : 'no user';
 		});
-
-
-		authService.getCurrentUser().subscribe((res) => {
-			const name = (res && res.externalId) ? res.externalId : 'no user';
-		});
-
 	}
 
-	_hasPagesChanged(newPages){
+	_hasPagesChanged(newPages) {
 		let current = newPages || [];
 		let previous = this.pages || [];
 
-		return (JSON.stringify(current) != JSON.stringify(previous));
+		return JSON.stringify(current) != JSON.stringify(previous);
 	}
 
-	trackByPageId(index, page){
+	trackByPageId(index, page) {
 		return `${page.id}:${page.url}`;
 	}
 
 	isImageURLAvailable(elem): boolean {
-		return (this.rc && this.headerConfig && this.headerConfig.elements && this.headerConfig.elements[elem]);
+		return (
+			this.rc &&
+			this.headerConfig &&
+			this.headerConfig.elements &&
+			this.headerConfig.elements[elem]
+		);
 	}
 
 	ngOnDestroy() {
@@ -99,18 +114,21 @@ export class ResponsiveHeaderComponent implements AfterViewInit, OnDestroy {
 	}
 
 	logout() {
-		this.authService.logout().subscribe((res) => {
-      this.SDKRefreshService.refresh();
-      console.log('SDK is refreshed after logging out');
-    });
+		this.authService.logout().subscribe(res => {
+			this.SDKRefreshService.refresh();
+			console.log('SDK is refreshed after logging out');
+		});
 	}
 
 	getURL(img) {
 		// TODO add fallback logic for rendition
-		return this.rc.context.hub.deliveryUrl['origin'] + this.headerConfig.elements[img].renditions.default.url;
+		return (
+			this.rc.context.hub.deliveryUrl['origin'] +
+			this.headerConfig.elements[img].renditions.default.url
+		);
 	}
 
-	toggleMobileNav(){
+	toggleMobileNav() {
 		this.mobileNavToggle = !this.mobileNavToggle;
 	}
 
@@ -125,8 +143,8 @@ export class ResponsiveHeaderComponent implements AfterViewInit, OnDestroy {
 		Toggle submenu by parent page,  on mouseleave we want to force the submenu to close
 	 */
 	toggleSubmenu(page, forceClose) {
-		if(this.hasVisibleChildren(page)) {
-			if(forceClose){
+		if (this.hasVisibleChildren(page)) {
+			if (forceClose) {
 				this._setPageToggle(page, false);
 			} else {
 				this._setPageToggle(page, !this.getPageToggle(page));
@@ -134,7 +152,7 @@ export class ResponsiveHeaderComponent implements AfterViewInit, OnDestroy {
 		}
 	}
 
-	getPageToggle(page){
+	getPageToggle(page) {
 		return this.pageToggles.get(page) || false;
 	}
 
@@ -146,30 +164,25 @@ export class ResponsiveHeaderComponent implements AfterViewInit, OnDestroy {
 		this.toggleMobileNav();
 	}
 
-
 	getRouteURL(url) {
 		return decodeURI(url);
 	}
 
 	hasVisibleChildren(page) {
 		return this.getVisibleChildren(page).length > 0;
-
 	}
 
 	getVisibleChildren(page): any[] {
-		if(this.cachedChildren.get(page.id)){
+		if (this.cachedChildren.get(page.id)) {
 			return this.cachedChildren.get(page.id);
 		} else {
-			let visibleChildren = page.children.filter((child) => {
+			let visibleChildren = page.children.filter(child => {
 				return !child.hideFromNavigation;
 			});
 			this.cachedChildren.set(page.id, visibleChildren);
-			return visibleChildren
+			return visibleChildren;
 		}
 	}
 
-
-	ngAfterViewInit() {
-
-	}
+	ngAfterViewInit() {}
 }

@@ -15,36 +15,36 @@
  *******************************************************************************/
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SocialComponentLayoutComponent } from './socialComponentLayout';
-import {WchInfoService} from '@ibm-wch-sdk/ng';
+import { WchInfoService } from '@ibm-wch-sdk/ng';
 
 class MockWchInfoService {
-  constructor() {}
+	constructor() {}
 }
 
 describe('SocialComponentLayoutComponent', () => {
-  let component: SocialComponentLayoutComponent;
-  let fixture: ComponentFixture<SocialComponentLayoutComponent>;
+	let component: SocialComponentLayoutComponent;
+	let fixture: ComponentFixture<SocialComponentLayoutComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SocialComponentLayoutComponent ],
-      providers: [
-        { provide: WchInfoService, useClass: MockWchInfoService },
-      ]
-    })
-  }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [SocialComponentLayoutComponent],
+			providers: [
+				{ provide: WchInfoService, useClass: MockWchInfoService },
+			],
+		});
+	}));
 
-  beforeEach(() => {
-    fixture = TestBed.overrideComponent(SocialComponentLayoutComponent, {
-      set: {
-        template: 'TODO'
-      }})
-      .createComponent(SocialComponentLayoutComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.overrideComponent(SocialComponentLayoutComponent, {
+			set: {
+				template: 'TODO',
+			},
+		}).createComponent(SocialComponentLayoutComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
-  });
+	it('should be created', () => {
+		expect(component).toBeTruthy();
+	});
 });

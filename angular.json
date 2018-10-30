@@ -31,6 +31,7 @@
               "src/oob-spa",
               "src/favicon.ico"
             ],
+            "extractCss": true,
             "index": "src/index.html",
             "main": "src/main.ts",
             "outputPath": "dist/assets",
@@ -39,7 +40,17 @@
               "node_modules/jquery/dist/jquery.min.js"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+							{
+								"input": "src/oob-spa/styles/default.scss",
+								"lazy": true,
+								"bundleName": "oob-spa/styles/default"
+							},
+							{
+								"input": "src/oob-spa/styles/d2065ae0-2ee9-4d19-80b1-502b79833cb3.scss",
+								"lazy": true,
+								"bundleName": "oob-spa/styles/d2065ae0-2ee9-4d19-80b1-502b79833cb3"
+							}
             ],
             "tsConfig": "src/tsconfig.app.json"
           }

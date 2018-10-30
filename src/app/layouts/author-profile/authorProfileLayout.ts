@@ -13,52 +13,53 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-import {
-    LayoutComponent, RenderingContext
-} from '@ibm-wch-sdk/ng';
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { LayoutComponent, RenderingContext } from '@ibm-wch-sdk/ng';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TypeAuthorProfileComponent } from '../../components/author-profile/typeAuthorProfileComponent';
-import {Constants} from '../../Constants';
-import {Subscription} from 'rxjs';
-import {UtilsService} from '@ibm-wch/components-ng-shared-utilities';
+import { Constants } from '../../Constants';
+import { Subscription } from 'rxjs';
+import { UtilsService } from '@ibm-wch/components-ng-shared-utilities';
 
 /**
  * @name authorProfileLayout
  * @id author-profile-layout
  */
 @LayoutComponent({
-    selector: 'author-profile-layout'
+	selector: 'author-profile-layout',
 })
 @Component({
-  selector: 'app-author-profile-layout-component',
-  templateUrl: './authorProfileLayout.html',
-  styleUrls: ['./authorProfileLayout.scss']
+	selector: 'app-author-profile-layout-component',
+	templateUrl: './authorProfileLayout.html',
+	styleUrls: ['./authorProfileLayout.scss'],
 })
-export class AuthorProfileLayoutComponent extends TypeAuthorProfileComponent implements OnInit, OnDestroy {
+export class AuthorProfileLayoutComponent extends TypeAuthorProfileComponent
+	implements OnInit, OnDestroy {
+	rContext: RenderingContext;
+	constants: any = Constants;
 
-    rContext: RenderingContext;
-    constants: any = Constants;
+	readonly AUTHOR_PICTURE_KEY: string = 'profilePicture';
+	readonly AUTHOR_PICTURE_RENDITION_KEY: string = 'closeUp';
 
-    readonly AUTHOR_PICTURE_KEY: string = 'profilePicture';
-    readonly AUTHOR_PICTURE_RENDITION_KEY: string = 'closeUp';
+	constructor(private utilsService: UtilsService) {
+		super();
+	}
 
-    constructor(private utilsService: UtilsService) {
-        super();
-    }
+	ngOnInit() {
+		super.ngOnInit();
+		this.safeSubscribe(this.onRenderingContext, renderingContext => {
+			this.rContext = renderingContext;
+		});
+	}
 
-    ngOnInit() {
-        super.ngOnInit();
-        this.safeSubscribe(this.onRenderingContext, (renderingContext) => {
-            this.rContext = renderingContext;
-        })
-    }
+	ngOnDestroy() {
+		super.ngOnDestroy();
+	}
 
-    ngOnDestroy () {
-        super.ngOnDestroy();
-    }
-
-    getImageUrl(): string {
-        return this.utilsService.getImageUrl(this.rContext, this.AUTHOR_PICTURE_KEY, this.AUTHOR_PICTURE_RENDITION_KEY);
-    }
-
+	getImageUrl(): string {
+		return this.utilsService.getImageUrl(
+			this.rContext,
+			this.AUTHOR_PICTURE_KEY,
+			this.AUTHOR_PICTURE_RENDITION_KEY
+		);
+	}
 }

@@ -13,61 +13,69 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {ComponentsService, LayoutComponent, RenderingContext} from '@ibm-wch-sdk/ng';
-import {ConfigServiceService} from '@ibm-wch/components-ng-shared-utilities';
-import {Subscription} from 'rxjs';
-import {AuthService} from '@ibm-wch/components-ng-shared-utilities';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+	ComponentsService,
+	LayoutComponent,
+	RenderingContext,
+} from '@ibm-wch-sdk/ng';
+import { ConfigServiceService } from '@ibm-wch/components-ng-shared-utilities';
+import { Subscription } from 'rxjs';
+import { AuthService } from '@ibm-wch/components-ng-shared-utilities';
 
 @LayoutComponent({
-  selector: ComponentsService.PAGE_NOT_FOUND_LAYOUT
+	selector: ComponentsService.PAGE_NOT_FOUND_LAYOUT,
 })
-
 @Component({
-  selector: 'app-page-not-found',
-  templateUrl: './page-not-found.component.html',
-  styleUrls: ['./page-not-found.component.scss']
+	selector: 'app-page-not-found',
+	templateUrl: './page-not-found.component.html',
+	styleUrls: ['./page-not-found.component.scss'],
 })
 export class PageNotFoundComponent implements OnInit, OnDestroy {
+	@Input()
+	public set renderingContext(aValue: RenderingContext) {
+		this.rc = aValue;
+	}
 
-  @Input()
-  public set renderingContext(aValue: RenderingContext) {
-    this.rc = aValue;
-  }
+	context: any;
+	configSub: Subscription;
+	rc: RenderingContext;
 
-  context: any;
-  configSub: Subscription;
-  rc: RenderingContext;
+	constructor(
+		configService: ConfigServiceService,
+		public authService: AuthService
+	) {
+		this.configSub = configService
+			.getConfig('404 Error page')
+			.subscribe(context => {
+				this.context = context;
+			});
+	}
 
-  constructor(configService: ConfigServiceService, public authService: AuthService) {
+	ngOnInit() {}
 
-    this.configSub = configService.getConfig('404 Error page').subscribe((context) => {
-      this.context = context;
-    });
+	ngOnDestroy() {
+		this.configSub.unsubscribe();
+	}
 
-  }
+	//Check if home page exists
+	checkHomepage() {
+		const homeUrl =
+			this.context &&
+			this.context.elements &&
+			this.context.elements.goHomeButton
+				? this.context.elements.goHomeButton.linkURL
+				: null;
+		if (!this.rc.context.site.pages || !this.context || !homeUrl) {
+			return false;
+		}
 
-  ngOnInit() {
-  }
-
-  ngOnDestroy() {
-    this.configSub.unsubscribe();
-  }
-
-  //Check if home page exists
-  checkHomepage(){
-    const homeUrl = (this.context && this.context.elements && this.context.elements.goHomeButton) ? this.context.elements.goHomeButton.linkURL : null;
-    if (!this.rc.context.site.pages || !this.context || !homeUrl){
-      return false;
-    }
-
-    for (let i = 0; i < this.rc.context.site.pages.length; i++ ){
-      //check if there is a page that matches link in goHomeButton. In default, the link is /home
-      if (this.rc.context.site.pages[i]['path'] === homeUrl){
-        return true;
-      }
-    }
-    return false;
-  }
-
+		for (let i = 0; i < this.rc.context.site.pages.length; i++) {
+			//check if there is a page that matches link in goHomeButton. In default, the link is /home
+			if (this.rc.context.site.pages[i]['path'] === homeUrl) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

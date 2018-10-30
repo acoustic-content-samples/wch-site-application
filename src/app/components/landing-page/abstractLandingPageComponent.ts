@@ -2,49 +2,48 @@
  * Do not modify this file, it is auto-generated.
  */
 import {
-    Image,
-    Link,
-    RenderingContext,
-    RenderingContextBinding,
-    isFormattedTextElement,
-    isImageElement,
-    isLinkElement,
-    isReferenceElement,
-    isTextElement,
-    AbstractRenderingComponent
+	Image,
+	Link,
+	RenderingContext,
+	RenderingContextBinding,
+	isFormattedTextElement,
+	isImageElement,
+	isLinkElement,
+	isReferenceElement,
+	isTextElement,
+	AbstractRenderingComponent,
 } from '@ibm-wch-sdk/ng';
-import {
-    Observable
-} from 'rxjs';
-import {
-    LandingPageRenderingContext
-} from './landingPageRenderingContext';
+import { Observable } from 'rxjs';
+import { LandingPageRenderingContext } from './landingPageRenderingContext';
 
 /** Validates that the context is indeed of the desired type
  *
  * @param aContext instance of the {@link RenderingContext} to check
  * @return true if the context is a {@link LandingPageRenderingContext } else false
  */
-function isLandingPageRenderingContext(aContext: RenderingContext): aContext is LandingPageRenderingContext {
-    // cache access to the elements
-    const el = aContext ? aContext.elements || [] : [];
-    return !!aContext
-        && isImageElement(el['heroImage'])
-            && isFormattedTextElement(el['heroHeadline'])
-            && (!el['heroLink'] || isLinkElement(el['heroLink']))
-            && isTextElement(el['featureHeadline1'])
-            && isFormattedTextElement(el['feature1'])
-            && isImageElement(el['featureImage1'])
-            && isTextElement(el['featureHeadline2'])
-            && isFormattedTextElement(el['feature2'])
-            && isImageElement(el['featureImage2'])
-            && isTextElement(el['featureHeadline3'])
-            && isFormattedTextElement(el['feature3'])
-            && isImageElement(el['featureImage3'])
-            && (!el['entryComponent'] || isReferenceElement(el['entryComponent']))
-            && (!el['shareComponent'] || isReferenceElement(el['shareComponent']))
-            && (!el['contestRules'] || isReferenceElement(el['contestRules']))
-    ;
+function isLandingPageRenderingContext(
+	aContext: RenderingContext
+): aContext is LandingPageRenderingContext {
+	// cache access to the elements
+	const el = aContext ? aContext.elements || [] : [];
+	return (
+		!!aContext &&
+		isImageElement(el['heroImage']) &&
+		isFormattedTextElement(el['heroHeadline']) &&
+		(!el['heroLink'] || isLinkElement(el['heroLink'])) &&
+		isTextElement(el['featureHeadline1']) &&
+		isFormattedTextElement(el['feature1']) &&
+		isImageElement(el['featureImage1']) &&
+		isTextElement(el['featureHeadline2']) &&
+		isFormattedTextElement(el['feature2']) &&
+		isImageElement(el['featureImage2']) &&
+		isTextElement(el['featureHeadline3']) &&
+		isFormattedTextElement(el['feature3']) &&
+		isImageElement(el['featureImage3']) &&
+		(!el['entryComponent'] || isReferenceElement(el['entryComponent'])) &&
+		(!el['shareComponent'] || isReferenceElement(el['shareComponent'])) &&
+		(!el['contestRules'] || isReferenceElement(el['contestRules']))
+	);
 }
 
 /** Provides a type assertion that can be used to validate and convert a generic {@link RenderingContext}
@@ -55,13 +54,15 @@ function isLandingPageRenderingContext(aContext: RenderingContext): aContext is 
  *
  * @example this.onRenderingContext.map(assertLandingPageRenderingContext);
  */
-function assertLandingPageRenderingContext(aContext: RenderingContext): LandingPageRenderingContext {
-    // test if the context is as expected
-    if (isLandingPageRenderingContext(aContext)) {
-        return aContext;
-    }
-    // type failure
-    throw new TypeError('LandingPageRenderingContext');
+function assertLandingPageRenderingContext(
+	aContext: RenderingContext
+): LandingPageRenderingContext {
+	// test if the context is as expected
+	if (isLandingPageRenderingContext(aContext)) {
+		return aContext;
+	}
+	// type failure
+	throw new TypeError('LandingPageRenderingContext');
 }
 
 /*
@@ -69,18 +70,17 @@ function assertLandingPageRenderingContext(aContext: RenderingContext): LandingP
  * @id 5cd736ef-d01c-4dd9-9794-14b2473e9239
  */
 abstract class AbstractLandingPageComponent extends AbstractRenderingComponent {
+	/**
+	 * Strongly typed stream of the rendering contexts
+	 */
+	readonly onRenderingContext: Observable<LandingPageRenderingContext>;
 
-    /**
-    * Strongly typed stream of the rendering contexts
-    */
-    readonly onRenderingContext: Observable<LandingPageRenderingContext>;
+	/**
+	 * Strongly typed rendering context
+	 */
+	renderingContext: LandingPageRenderingContext;
 
-    /**
-    * Strongly typed rendering context
-    */
-    renderingContext: LandingPageRenderingContext;
-
-    /*
+	/*
      * {
      *   "acceptType": [
      *     "jpg",
@@ -95,16 +95,16 @@ abstract class AbstractLandingPageComponent extends AbstractRenderingComponent {
      *   "required": true
      * }
      */
-    @RenderingContextBinding('image.heroImage')
-    readonly onHeroImage: Observable<Image>;
+	@RenderingContextBinding('image.heroImage')
+	readonly onHeroImage: Observable<Image>;
 
-    /*
+	/*
      * @see #onHeroImage
      */
-    @RenderingContextBinding()
-    readonly heroImage: Image;
+	@RenderingContextBinding()
+	readonly heroImage: Image;
 
-    /*
+	/*
      * {
      *   "elementType": "formattedtext",
      *   "key": "heroHeadline",
@@ -112,32 +112,32 @@ abstract class AbstractLandingPageComponent extends AbstractRenderingComponent {
      *   "required": true
      * }
      */
-    @RenderingContextBinding('formattedtext.heroHeadline')
-    readonly onHeroHeadline: Observable<string>;
+	@RenderingContextBinding('formattedtext.heroHeadline')
+	readonly onHeroHeadline: Observable<string>;
 
-    /*
+	/*
      * @see #onHeroHeadline
      */
-    @RenderingContextBinding()
-    readonly heroHeadline: string;
+	@RenderingContextBinding()
+	readonly heroHeadline: string;
 
-    /*
+	/*
      * {
      *   "elementType": "link",
      *   "key": "heroLink",
      *   "label": "Hero link"
      * }
      */
-    @RenderingContextBinding('link.heroLink')
-    readonly onHeroLink: Observable<Link>;
+	@RenderingContextBinding('link.heroLink')
+	readonly onHeroLink: Observable<Link>;
 
-    /*
+	/*
      * @see #onHeroLink
      */
-    @RenderingContextBinding()
-    readonly heroLink: Link;
+	@RenderingContextBinding()
+	readonly heroLink: Link;
 
-    /*
+	/*
      * {
      *   "elementType": "text",
      *   "key": "featureHeadline1",
@@ -146,16 +146,16 @@ abstract class AbstractLandingPageComponent extends AbstractRenderingComponent {
      *   "required": true
      * }
      */
-    @RenderingContextBinding('text.featureHeadline1')
-    readonly onFeatureHeadline1: Observable<string>;
+	@RenderingContextBinding('text.featureHeadline1')
+	readonly onFeatureHeadline1: Observable<string>;
 
-    /*
+	/*
      * @see #onFeatureHeadline1
      */
-    @RenderingContextBinding()
-    readonly featureHeadline1: string;
+	@RenderingContextBinding()
+	readonly featureHeadline1: string;
 
-    /*
+	/*
      * {
      *   "elementType": "formattedtext",
      *   "key": "feature1",
@@ -163,16 +163,16 @@ abstract class AbstractLandingPageComponent extends AbstractRenderingComponent {
      *   "required": true
      * }
      */
-    @RenderingContextBinding('formattedtext.feature1')
-    readonly onFeature1: Observable<string>;
+	@RenderingContextBinding('formattedtext.feature1')
+	readonly onFeature1: Observable<string>;
 
-    /*
+	/*
      * @see #onFeature1
      */
-    @RenderingContextBinding()
-    readonly feature1: string;
+	@RenderingContextBinding()
+	readonly feature1: string;
 
-    /*
+	/*
      * {
      *   "acceptType": [
      *     "jpg",
@@ -187,16 +187,16 @@ abstract class AbstractLandingPageComponent extends AbstractRenderingComponent {
      *   "required": true
      * }
      */
-    @RenderingContextBinding('image.featureImage1')
-    readonly onFeatureImage1: Observable<Image>;
+	@RenderingContextBinding('image.featureImage1')
+	readonly onFeatureImage1: Observable<Image>;
 
-    /*
+	/*
      * @see #onFeatureImage1
      */
-    @RenderingContextBinding()
-    readonly featureImage1: Image;
+	@RenderingContextBinding()
+	readonly featureImage1: Image;
 
-    /*
+	/*
      * {
      *   "elementType": "text",
      *   "key": "featureHeadline2",
@@ -205,16 +205,16 @@ abstract class AbstractLandingPageComponent extends AbstractRenderingComponent {
      *   "required": true
      * }
      */
-    @RenderingContextBinding('text.featureHeadline2')
-    readonly onFeatureHeadline2: Observable<string>;
+	@RenderingContextBinding('text.featureHeadline2')
+	readonly onFeatureHeadline2: Observable<string>;
 
-    /*
+	/*
      * @see #onFeatureHeadline2
      */
-    @RenderingContextBinding()
-    readonly featureHeadline2: string;
+	@RenderingContextBinding()
+	readonly featureHeadline2: string;
 
-    /*
+	/*
      * {
      *   "elementType": "formattedtext",
      *   "key": "feature2",
@@ -222,16 +222,16 @@ abstract class AbstractLandingPageComponent extends AbstractRenderingComponent {
      *   "required": true
      * }
      */
-    @RenderingContextBinding('formattedtext.feature2')
-    readonly onFeature2: Observable<string>;
+	@RenderingContextBinding('formattedtext.feature2')
+	readonly onFeature2: Observable<string>;
 
-    /*
+	/*
      * @see #onFeature2
      */
-    @RenderingContextBinding()
-    readonly feature2: string;
+	@RenderingContextBinding()
+	readonly feature2: string;
 
-    /*
+	/*
      * {
      *   "acceptType": [
      *     "jpg",
@@ -246,16 +246,16 @@ abstract class AbstractLandingPageComponent extends AbstractRenderingComponent {
      *   "required": true
      * }
      */
-    @RenderingContextBinding('image.featureImage2')
-    readonly onFeatureImage2: Observable<Image>;
+	@RenderingContextBinding('image.featureImage2')
+	readonly onFeatureImage2: Observable<Image>;
 
-    /*
+	/*
      * @see #onFeatureImage2
      */
-    @RenderingContextBinding()
-    readonly featureImage2: Image;
+	@RenderingContextBinding()
+	readonly featureImage2: Image;
 
-    /*
+	/*
      * {
      *   "elementType": "text",
      *   "key": "featureHeadline3",
@@ -264,16 +264,16 @@ abstract class AbstractLandingPageComponent extends AbstractRenderingComponent {
      *   "required": true
      * }
      */
-    @RenderingContextBinding('text.featureHeadline3')
-    readonly onFeatureHeadline3: Observable<string>;
+	@RenderingContextBinding('text.featureHeadline3')
+	readonly onFeatureHeadline3: Observable<string>;
 
-    /*
+	/*
      * @see #onFeatureHeadline3
      */
-    @RenderingContextBinding()
-    readonly featureHeadline3: string;
+	@RenderingContextBinding()
+	readonly featureHeadline3: string;
 
-    /*
+	/*
      * {
      *   "elementType": "formattedtext",
      *   "key": "feature3",
@@ -281,16 +281,16 @@ abstract class AbstractLandingPageComponent extends AbstractRenderingComponent {
      *   "required": true
      * }
      */
-    @RenderingContextBinding('formattedtext.feature3')
-    readonly onFeature3: Observable<string>;
+	@RenderingContextBinding('formattedtext.feature3')
+	readonly onFeature3: Observable<string>;
 
-    /*
+	/*
      * @see #onFeature3
      */
-    @RenderingContextBinding()
-    readonly feature3: string;
+	@RenderingContextBinding()
+	readonly feature3: string;
 
-    /*
+	/*
      * {
      *   "acceptType": [
      *     "jpg",
@@ -305,16 +305,16 @@ abstract class AbstractLandingPageComponent extends AbstractRenderingComponent {
      *   "required": true
      * }
      */
-    @RenderingContextBinding('image.featureImage3')
-    readonly onFeatureImage3: Observable<Image>;
+	@RenderingContextBinding('image.featureImage3')
+	readonly onFeatureImage3: Observable<Image>;
 
-    /*
+	/*
      * @see #onFeatureImage3
      */
-    @RenderingContextBinding()
-    readonly featureImage3: Image;
+	@RenderingContextBinding()
+	readonly featureImage3: Image;
 
-    /*
+	/*
      * {
      *   "elementType": "reference",
      *   "key": "entryComponent",
@@ -326,16 +326,16 @@ abstract class AbstractLandingPageComponent extends AbstractRenderingComponent {
      *   ]
      * }
      */
-    @RenderingContextBinding('reference.entryComponent')
-    readonly onEntryComponent: Observable<RenderingContext>;
+	@RenderingContextBinding('reference.entryComponent')
+	readonly onEntryComponent: Observable<RenderingContext>;
 
-    /*
+	/*
      * @see #onEntryComponent
      */
-    @RenderingContextBinding()
-    readonly entryComponent: RenderingContext;
+	@RenderingContextBinding()
+	readonly entryComponent: RenderingContext;
 
-    /*
+	/*
      * {
      *   "elementType": "reference",
      *   "key": "shareComponent",
@@ -347,16 +347,16 @@ abstract class AbstractLandingPageComponent extends AbstractRenderingComponent {
      *   ]
      * }
      */
-    @RenderingContextBinding('reference.shareComponent')
-    readonly onShareComponent: Observable<RenderingContext>;
+	@RenderingContextBinding('reference.shareComponent')
+	readonly onShareComponent: Observable<RenderingContext>;
 
-    /*
+	/*
      * @see #onShareComponent
      */
-    @RenderingContextBinding()
-    readonly shareComponent: RenderingContext;
+	@RenderingContextBinding()
+	readonly shareComponent: RenderingContext;
 
-    /*
+	/*
      * {
      *   "elementType": "reference",
      *   "key": "contestRules",
@@ -368,26 +368,26 @@ abstract class AbstractLandingPageComponent extends AbstractRenderingComponent {
      *   ]
      * }
      */
-    @RenderingContextBinding('reference.contestRules')
-    readonly onContestRules: Observable<RenderingContext>;
+	@RenderingContextBinding('reference.contestRules')
+	readonly onContestRules: Observable<RenderingContext>;
 
-    /*
+	/*
      * @see #onContestRules
      */
-    @RenderingContextBinding()
-    readonly contestRules: RenderingContext;
+	@RenderingContextBinding()
+	readonly contestRules: RenderingContext;
 
-    protected constructor() {
-        super();
-    }
+	protected constructor() {
+		super();
+	}
 }
 
 /**
-* 18acd1c9-888e-4c44-bd2c-a38c5a62bf45
-*/
+ * 18acd1c9-888e-4c44-bd2c-a38c5a62bf45
+ */
 export {
-    LandingPageRenderingContext,
-    isLandingPageRenderingContext,
-    assertLandingPageRenderingContext,
-    AbstractLandingPageComponent
+	LandingPageRenderingContext,
+	isLandingPageRenderingContext,
+	assertLandingPageRenderingContext,
+	AbstractLandingPageComponent,
 };

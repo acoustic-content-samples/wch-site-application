@@ -26,14 +26,14 @@ $hero-image-button-bg-color: #fff;
 	img {
 		width: 100%;
 		/*transform:scale(2);*/
-		transition: transform .3s ease-in;
+		transition: transform 0.3s ease-in;
+		min-height: 150px;
 	}
 
 	.section {
 		padding-top: 0;
 		display: flex;
 	}
-
 }
 
 .hero-message {
@@ -51,21 +51,20 @@ $hero-image-button-bg-color: #fff;
 
 	h1 {
 		width: 90%;
-		margin-bottom: .25em;
+		margin-bottom: 0.25em;
 	}
 }
 
 .hero-button {
 	background-color: $hero-image-button-bg-color;
-	font-size: .8rem;
-	padding: .75em 1.5em;
+	font-size: 0.8rem;
+	padding: 0.75em 1.5em;
 	border: 0;
 
 	&:hover {
 		background-color: $hero-image-button-bg-color;
 	}
 }
-
 
 .text-hero {
 	font-size: 1.75rem; /*28px*/
@@ -83,7 +82,7 @@ $hero-image-button-bg-color: #fff;
 	}
 
 	.wch-hero-image img {
-	/*transform:scale(1.5);*/
+		/*transform:scale(1.5);*/
 	}
 
 	.hero-message h1 {
@@ -91,16 +90,14 @@ $hero-image-button-bg-color: #fff;
 	}
 
 	.hero-button {
-		font-size: .9rem;
+		font-size: 0.9rem;
 		padding: 1.25em 2.625em;
 	}
-
-
 }
 
 @include breakpoint(large) {
 	.wch-hero-image img {
-	/*transform:scale(1);*/
+		/*transform:scale(1);*/
 	}
 
 	h1,
@@ -111,7 +108,7 @@ $hero-image-button-bg-color: #fff;
 	.hero-message h1 {
 		max-width: 1200px;
 	}
-	
+
 	.hero-message > .button {
 		margin-top: 64px;
 	}
@@ -119,6 +116,4 @@ $hero-image-button-bg-color: #fff;
 	.hero-button {
 		font-size: 1rem;
 	}
-
 }
-

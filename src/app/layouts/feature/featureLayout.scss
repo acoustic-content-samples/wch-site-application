@@ -18,7 +18,8 @@
 .feature-img {
 	text-align: center;
 
-	img {
+	img,
+	.wch-placeholder {
 		max-width: 100%;
 
 		&:hover {
@@ -53,7 +54,8 @@
 }
 
 @media (min-width: 414px) {
-	.feature-copy { /*Vertically and horizontally centering the inner text box.*/
+	.feature-copy {
+		/*Vertically and horizontally centering the inner text box.*/
 		display: flex;
 		justify-content: center;
 		align-items: center;

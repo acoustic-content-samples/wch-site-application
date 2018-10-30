@@ -13,134 +13,141 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-'use strict'
+'use strict';
 
 /**
  * SPAStandardPage pageobject class
  * <br/><img src='./doc-files/SPAStandardPage.png'/>
  */
 class SPAStandardPage {
+	constructor () {
+		// Turn off waiting off for angular
+		browser.waitForAngularEnabled(false);
 
-  constructor() {
+		// Page content placeholder
+		this.pageContentPlaceholder = $('wch-page wch-contentref');
 
-    // Turn off waiting off for angular
-    browser.waitForAngularEnabled(false);
+		// Hero Image section
+		this.heroImageSection = $('app-hero-image-layout-component');
 
-    // Page content placeholder
-    this.pageContentPlaceholder = $('wch-page wch-contentref')
+		// Hero Image info
+		this.heroImg = this.heroImageSection.$('.wch-hero-image img');
 
-    // Hero Image section
-    this.heroImageSection = $('app-hero-image-layout-component');
+		// Hero image message container
+		this.heroMsg = this.heroImageSection.$('.hero-message');
 
-    // Hero Image info
-    this.heroImg = this.heroImageSection.$('.wch-hero-image img');
+		// Hero image message value
+		this.heroMsgText = this.heroMsg.$('.text-hero');
 
-    // Hero image message container
-    this.heroMsg = this.heroImageSection.$('.hero-message');
+		// Hero image message button
+		this.heroMsgButton = this.heroMsg.$('.hero-button');
 
-    // Hero image message value
-    this.heroMsgText = this.heroMsg.$('.text-hero');
+		// Hero video container
+		this.heroVideoSection = $('app-hero-video-layout-component');
 
-    // Hero image message button
-    this.heroMsgButton = this.heroMsg.$('.hero-button');
+		// Hero video info
+		this.heroVideoInfo = this.heroVideoSection.$(
+			'.wch-hero-video .vjs-tech'
+		);
 
-    // Hero video container
-    this.heroVideoSection = $('app-hero-video-layout-component');
+		// 404 error page
+		this.errorPage = $('.error-wrapper .error-code');
 
-    // Hero video info
-    this.heroVideoInfo = this.heroVideoSection.$('.wch-hero-video .vjs-tech');
+		//TODO add additional elements
 
-    // 404 error page
-    this.errorPage = $('.error-wrapper .error-code');
+		// Waits for page content to be loaded
+		waitForElement(this.pageContentPlaceholder);
+	}
 
-    //TODO add additional elements
+	/**
+	 * Returns hero image source value
+	 * @returns {String} hero image source value
+	 */
+	heroImage () {
+		waitForElement(this.heroImg);
+		return this.heroImg.getAttribute('src').then(function (value) {
+			return value;
+		});
+	}
 
-    // Waits for page content to be loaded
-    waitForElement(this.pageContentPlaceholder);
+	/**
+	 * Returns hero image message text value
+	 * @returns {String} hero image source value
+	 */
+	heroMessage () {
+		return this.heroMsgText.getText();
+	}
 
-  }
+	/**
+	 * Hero image message button
+	 */
+	heroButton () {
+		this.heroMsgButton.click();
+		//TODO return design page - if clicked from home
+	}
 
-  /**
-   * Returns hero image source value
-   * @returns {String} hero image source value
-   */
-  heroImage() {
-    waitForElement(this.heroImg);
-    return this.heroImg.getAttribute("src").then(function(value) {
-      return value;
-    });
-  }
+	/**
+	 * Hero image message button
+	 * @returns {String} hero image message button text
+	 */
+	heroButtonText () {
+		return this.heroMsgButton.getText();
+	}
 
-  /**
-   * Returns hero image message text value
-   * @returns {String} hero image source value
-   */
-  heroMessage() {
-    return this.heroMsgText.getText();
-  }
+	/**
+	 * Returns hero video source value
+	 * @returns {String} hero video source value
+	 */
+	heroVideo () {
+		waitForElement(this.heroVideoInfo);
+		return this.heroVideoInfo.getAttribute('src').then(function (value) {
+			return value;
+		});
+	}
 
-  /**
-   * Hero image message button
-   */
-  heroButton() {
-    this.heroMsgButton.click();
-    //TODO return design page - if clicked from home
-  }
+	/**
+	 * Checks if it is a 404 page
+	 * @returns {Boolean} True - 404 page is visilbe else False
+	 */
+	is404Page () {
+		return this.errorPage.isDisplayed().then(
+			function (errorPage) {
+				console.log('404 Error page is displayed');
+				return true;
+			},
+			function (error) {
+				console.log('404 page not found');
+				return false;
+			}
+		);
+	}
 
-  /**
-   * Hero image message button
-   * @returns {String} hero image message button text
-   */
-  heroButtonText() {
-    return this.heroMsgButton.getText();
-  }
-
-  /**
-   * Returns hero video source value
-   * @returns {String} hero video source value
-   */
-  heroVideo() {
-    waitForElement(this.heroVideoInfo);
-    return this.heroVideoInfo.getAttribute("src").then(function(value) {
-      return value;
-    });
-  }
-
-  /**
-   * Checks if it is a 404 page
-   * @returns {Boolean} True - 404 page is visilbe else False
-   */
-  is404Page() {
-    return this.errorPage.isDisplayed().then(function(errorPage) {
-      console.log("404 Error page is displayed");
-      return true;
-    }, function(error) {
-      console.log("404 page not found");
-      return false;
-    })
-
-  }
-
-  /**
-   * Checks if the page is visible
-   * @returns {Boolean} True - page is visilbe else False - page is either empty or contains 404 error page
-   */
-  isPageVisible() {
-    var that = this;
-    return this.pageContentPlaceholder.isDisplayed().then(function(isVisible) {
-      console.log("Checking if there is no 404 error page");
-      return that.errorPage.isDisplayed().then(function(errorPage) {
-        console.log("404 Error page is displayed");
-        return false;
-      }, function(error) {
-        console.log("Page is visible");
-        return true;
-      })
-    }, function(error) {
-      console.log("Page is not visible");
-      return false;
-    })
-  }
+	/**
+	 * Checks if the page is visible
+	 * @returns {Boolean} True - page is visilbe else False - page is either empty or contains 404 error page
+	 */
+	isPageVisible () {
+		var that = this;
+		return this.pageContentPlaceholder.isDisplayed().then(
+			function (isVisible) {
+				console.log('Checking if there is no 404 error page');
+				return that.errorPage.isDisplayed().then(
+					function (errorPage) {
+						console.log('404 Error page is displayed');
+						return false;
+					},
+					function (error) {
+						console.log('Page is visible');
+						return true;
+					}
+				);
+			},
+			function (error) {
+				console.log('Page is not visible');
+				return false;
+			}
+		);
+	}
 }
 
 module.exports = SPAStandardPage;

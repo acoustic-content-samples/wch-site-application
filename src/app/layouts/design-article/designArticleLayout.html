@@ -1,15 +1,18 @@
-
 <div id="{{rContext.id}}" [ngSwitch]="layoutMode">
 	<div *ngSwitchCase="constants.SUMMARY">
 		<app-design-article-summary [renderingContext]='onRenderingContext|async'></app-design-article-summary>
 	</div>
 	<div *ngSwitchCase="constants.DETAIL">
 		<div class="article-lead-image">
-			<div class="image-container">
-				<img wchEditable="mainImage.leadImage" *ngIf="mainImage && mainImage.leadImage.url"  [src]="utilsService.getImageUrl(rContext, LEAD_IMAGE_KEY, 'lead', 'mainImage')" [alt]="mainImage.leadImage.altText"
-					 [title]="mainImage.leadImage.altText">
-			</div>
-			<div *ngIf="layoutMode === constants.DETAIL" class="caption" >
+			<wch-placeholder wchEditable="mainImage.leadImage">
+				<div class="image-container">
+					<img *ngIf="mainImage && mainImage.leadImage.url" wchEditable="mainImage.leadImage"  [src]="utilsService.getImageUrl(rContext, LEAD_IMAGE_KEY, 'lead', 'mainImage')"
+					 [alt]="mainImage.leadImage.altText" [title]="mainImage.leadImage.altText">
+				</div>			
+				<wch-placeholder-icon class="wch-placeholder" type="image" width="800" height="300" wchEditable="mainImage.leadImage">
+				</wch-placeholder-icon>
+			</wch-placeholder>
+			<div *ngIf="layoutMode === constants.DETAIL" class="caption">
 				<span wchEditable="mainImage.leadImageCaption" wchFormat></span>
 				<span wchEditable="mainImage.leadImageCredit" wchFormat></span>
 			</div>
@@ -17,14 +20,20 @@
 		<h2 wchEditable="heading" class="headline" wchFormat></h2>
 		<div class="article-details">
 			<div class="byline-and-date">
-				<span *ngIf="author">By <b wchEditable="author" class="author" wchFormat></b>, </span> <span wchEditable="date">{{ date | date:'MMMM d, y'}}</span>
+				<span>By <b wchEditable="author" class="author" wchFormat></b>, </span> <span wchEditable="date">{{ date |
+					date:'MMMM d, y'}}</span>
 			</div>
 			<app-share-social [renderingContext]="rContext"></app-share-social>
 		</div>
 		<div class="article-body" *ngFor="let item of body; let idx = index">
 			<div [wchEditable]="'body[' + idx + ']'" wchFormat></div>
 			<div *ngIf="matchingBodyImages[idx]" [className]="getImageClass(matchingBodyImages[idx], idx)" class="wrap-text-left">
-				<img *ngIf="matchingBodyImages[idx].image && matchingBodyImages[idx].image.url" [wchEditable]="'elements.bodyImage.values[' + idx + '].image'" [src]="getBodyImageURL(matchingBodyImages[idx])" [alt]="matchingBodyImages[idx][CAPTION_KEY]" [title]="matchingBodyImages[idx][CREDIT_KEY]">
+				<wch-placeholder wchEditable="'elements.bodyImage.values[' + idx + '].image'">
+					<img *ngIf="matchingBodyImages[idx].image && matchingBodyImages[idx].image.url" [wchEditable]="'elements.bodyImage.values[' + idx + '].image'" [src]="getBodyImageURL(matchingBodyImages[idx])"
+					 [alt]="matchingBodyImages[idx][CAPTION_KEY]" [title]="matchingBodyImages[idx][CREDIT_KEY]">
+					<wch-placeholder-icon class="wch-placeholder" type="image" width="800" height="300" wchEditable="'elements.bodyImage.values[' + idx + '].image'">
+					</wch-placeholder-icon>
+				</wch-placeholder>
 				<div class="caption">
 					<span [wchEditable]="'elements.bodyImage.values[' + idx + '].imageCaption.value'" wchFormat></span>
 					<span [wchEditable]="'elements.bodyImage.values[' + idx + '].imageCredit.value'" wchFormat></span>
@@ -32,15 +41,19 @@
 			</div>
 		</div>
 		<div class="article-medium-image" *ngFor="let item of leftoverBodyImages; let idx = index">
-			<div *ngIf="item" [className]="getImageClass(item)" class="wrap-text-left">
-				<img *ngIf="item.image && item.image.url" [wchEditable]="'elements.bodyImage.values[' + (idx + numOfBodyTexts) + '].image'" [src]="getBodyImageURL(item)" [alt]="item[CAPTION_KEY]" [title]="item[CREDIT_KEY]">
+			<div [className]="getImageClass(item)" class="wrap-text-left">
+				<wch-placeholder wchEditable="'elements.bodyImage.values[' + (idx + numOfBodyTexts) + '].image'">
+					<img *ngIf="item.image && item.image.url" [wchEditable]="'elements.bodyImage.values[' + (idx + numOfBodyTexts) + '].image'" [src]="getBodyImageURL(item)"
+					 [alt]="item[CAPTION_KEY]" [title]="item[CREDIT_KEY]">
+					<wch-placeholder-icon class="wch-placeholder" type="image" width="800" height="300" wchEditable="'elements.bodyImage.values[' + (idx + numOfBodyTexts) + '].image'">
+					</wch-placeholder-icon>
+				</wch-placeholder>
 				<div class="caption">
-						<span [wchEditable]="'elements.bodyImage.values[' + (idx + numOfBodyTexts) + '].imageCaption.value'" wchFormat></span>
-						<span [wchEditable]="'elements.bodyImage.values[' + (idx + numOfBodyTexts) + '].imageCredit.value'" wchFormat></span>
+					<span [wchEditable]="'elements.bodyImage.values[' + (idx + numOfBodyTexts) + '].imageCaption.value'" wchFormat></span>
+					<span [wchEditable]="'elements.bodyImage.values[' + (idx + numOfBodyTexts) + '].imageCredit.value'" wchFormat></span>
 				</div>
-			</div>			
+			</div>
 		</div>
 		<wch-contentref *ngIf="authorBio" [renderingContext]="onAuthorBio | async"></wch-contentref>
 	</div>
 </div>
-

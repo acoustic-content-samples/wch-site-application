@@ -1,6 +1,4 @@
-import {
-    RenderingContext
-} from '@ibm-wch-sdk/ng';
+import { RenderingContext } from '@ibm-wch-sdk/ng';
 import { Component } from '@angular/core';
 import { AbstractDesignArticleComponent } from './abstractDesignArticleComponent';
 
@@ -20,15 +18,14 @@ import { AbstractDesignArticleComponent } from './abstractDesignArticleComponent
 })
 */
 export class TypeDesignArticleComponent extends AbstractDesignArticleComponent {
-
-    /*
+	/*
      * TODO add custom fields here. These fields should be those
      * common to all layouts.
      */
 
-    constructor() {
-        super();
-        /*
+	constructor() {
+		super();
+		/*
          * TODO initialize your custom fields here, note that
          * you can refer to the values bound via @RenderingContextBinding from
          * your super class.
@@ -37,12 +34,11 @@ export class TypeDesignArticleComponent extends AbstractDesignArticleComponent {
          * and subscribe from the template via the async pipe.
          */
 
-         /*
+		/*
           * Sample
           *
           * const that = this;
           * const onDestroy = that.onOnDestroy;
           */
-    }
-
+	}
 }

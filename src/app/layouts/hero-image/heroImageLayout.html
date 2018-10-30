@@ -1,9 +1,14 @@
 <div [id]="rContext.id" class="wch-hero-image">
-	<img wchEditable="image" [src]="utilService.getImageUrl(rContext, IMAGE_KEY, 'short')" [alt]="image.altText ? (onImage | async).altText : ''" [title]="image.altText ? (onImage | async).altText : ''" />
-
+	<wch-placeholder wchEditable="image">
+		<img *ngIf="utilService.getImageUrl(rContext, IMAGE_KEY, 'short') !== 'undefined'" wchEditable="image" [src]="utilService.getImageUrl(rContext, IMAGE_KEY, 'short')"
+		 [alt]="image.altText ? (onImage | async).altText : ''" [title]="image.altText ? (onImage | async).altText : ''" />
+		<wch-placeholder-icon class="wch-placeholder" type="image" width="800" height="300" wchEditable="image"></wch-placeholder-icon>
+	</wch-placeholder>
 	<div class="hero-message">
 		<h1 wchEditable="text" class="text-hero" wchFormat></h1>
-		<a wchEditable="link" *ngIf="link.linkURL && userouterLink" [routerLink]="(onLink | async).linkURL" class="button hero-button">{{(onLink | async).linkText}}</a>
-		<a wchEditable="link" *ngIf="link.linkURL && !userouterLink" target='_blank' [href]="(onLink | async).linkURL" class="button hero-button">{{(onLink | async).linkText}}</a>
+		<a wchEditable="link" *ngIf="link.linkURL && userouterLink" [routerLink]="(onLink | async).linkURL" class="button hero-button">{{(onLink
+			| async).linkText}}</a>
+		<a wchEditable="link" *ngIf="link.linkURL && !userouterLink" target='_blank' [href]="(onLink | async).linkURL" class="button hero-button">{{(onLink
+			| async).linkText}}</a>
 	</div>
 </div>

@@ -13,26 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-import {Component, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
-import {AbstractRenderingComponent, LayoutComponent, RenderingContext} from '@ibm-wch-sdk/ng';
-import {TypeDesignArticleComponent} from '../../components/design-article/typeDesignArticleComponent';
-import {Constants} from '../../Constants';
-import {UtilsService} from '@ibm-wch/components-ng-shared-utilities';
-import {Subscription} from 'rxjs';
-
+import {
+	Component,
+	Input,
+	OnDestroy,
+	OnInit,
+	ViewEncapsulation,
+} from '@angular/core';
+import {
+	AbstractRenderingComponent,
+	LayoutComponent,
+	RenderingContext,
+} from '@ibm-wch-sdk/ng';
+import { TypeDesignArticleComponent } from '../../components/design-article/typeDesignArticleComponent';
+import { Constants } from '../../Constants';
+import { UtilsService } from '@ibm-wch/components-ng-shared-utilities';
+import { Subscription } from 'rxjs';
 
 @LayoutComponent({
-	selector: 'design-article-summary'
+	selector: 'design-article-summary',
 })
-
 @Component({
 	encapsulation: ViewEncapsulation.None,
 	selector: 'app-design-article-summary',
 	templateUrl: './design-article-summary.component.html',
-	styleUrls: ['./design-article-summary.component.scss']
+	styleUrls: ['./design-article-summary.component.scss'],
 })
-export class DesignArticleSummaryComponent extends TypeDesignArticleComponent implements OnInit, OnDestroy {
-
+export class DesignArticleSummaryComponent extends TypeDesignArticleComponent
+	implements OnInit, OnDestroy {
 	rContext: RenderingContext;
 	constants: any = Constants;
 	rcSub: Subscription;
@@ -40,10 +48,8 @@ export class DesignArticleSummaryComponent extends TypeDesignArticleComponent im
 	readonly TOPIC_TITLE_KEY: string = 'heading';
 	readonly LEAD_IMG_KEY: string = 'mainImage';
 
-
-
-
-	@Input() layoutMode: string;
+	@Input()
+	layoutMode: string;
 
 	constructor(public utils: UtilsService) {
 		super();
@@ -51,7 +57,7 @@ export class DesignArticleSummaryComponent extends TypeDesignArticleComponent im
 
 	ngOnInit() {
 		super.ngOnInit();
-		this.rcSub = this.onRenderingContext.subscribe((renderingContext) => {
+		this.rcSub = this.onRenderingContext.subscribe(renderingContext => {
 			this.rContext = renderingContext;
 			this.layoutMode = this.layoutMode || this.constants.SUMMARY;
 		});
@@ -60,9 +66,4 @@ export class DesignArticleSummaryComponent extends TypeDesignArticleComponent im
 	ngOnDestroy() {
 		this.rcSub.unsubscribe();
 	}
-
-	navLink() {
-		return this.utils.getNavLink(this.renderingContext, this.renderingContext.id);
-	}
-
 }

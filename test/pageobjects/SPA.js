@@ -13,84 +13,87 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-'use strict'
+'use strict';
 
 /**
  *  The SPA entrypoint pageobject class
  */
 class SPA {
+	constructor () {}
 
-  constructor() {}
+	/**
+	 * Gives access to SPA header functions
+	 * @returns {SPAHeader}
+	 */
+	header () {
+		var SPAHeader = require('./SPAHeader');
+		return new SPAHeader();
+	}
 
-  /**
-   * Gives access to SPA header functions
-   * @returns {SPAHeader}
-   */
-  header() {
-    var SPAHeader = require('./SPAHeader');
-    return new SPAHeader();
-  }
+	/**
+	 * Gives access to SPA standard page functions
+	 * @returns {SPAStandardPage}
+	 */
+	standardPage () {
+		var SPAStandardPage = require('./SPAStandardPage');
+		return new SPAStandardPage();
+	}
 
-  /**
-   * Gives access to SPA standard page functions
-   * @returns {SPAStandardPage}
-   */
-  standardPage() {
-    var SPAStandardPage = require('./SPAStandardPage');
-    return new SPAStandardPage();
-  }
+	/**
+	 * Gives access to SPA design page functions
+	 * @returns {SPADesignPage}
+	 */
+	designPage () {
+		//TODO
+	}
 
-  /**
-   * Gives access to SPA design page functions
-   * @returns {SPADesignPage}
-   */
-  designPage() {
-    //TODO
-  }
+	/**
+	 * Gives access to SPA footer functions
+	 * @returns {SPAFooter}
+	 */
+	footer () {
+		var SPAFooter = require('./SPAFooter');
+		return new SPAFooter();
+	}
 
-  /**
-   * Gives access to SPA footer functions
-   * @returns {SPAFooter}
-   */
-  footer() {
-    var SPAFooter = require('./SPAFooter');
-    return new SPAFooter();
-  }
+	/**
+	 * Switches to preview iframe
+	 * @returns {SPA} this
+	 */
+	switchToPreview () {
+		browser.switchTo().frame($('#site-preview').getWebElement());
+		browser.waitForAngularEnabled(false);
 
-  /**
-   * Switches to preview iframe
-   * @returns {SPA} this
-   */
-  switchToPreview() {
-    browser.switchTo().frame($("#site-preview").getWebElement());
-    browser.waitForAngularEnabled(false);
+		return this;
+	}
 
-    return this;
-  }
+	/**
+	 * Leave preview iframe
+	 * @returns {SPA} this
+	 */
+	switchToDefault () {
+		browser.switchTo().defaultContent();
+		browser.waitForAngularEnabled(true);
+	}
 
-  /**
-   * Leave preview iframe
-   * @returns {SPA} this
-   */
-  switchToDefault() {
-    browser.switchTo().defaultContent();
-    browser.waitForAngularEnabled(true);
-  }
-
-  /**
-   * Checks if it is preview is visible
-   * @returns {Boolean} True - 404 page is visilbe else False
-   */
-  isPreviewVisible() {
-    var that = this;
-    return $('wch-page wch-contentref').isDisplayed().then(function(isVisible) {
-      console.log("Page is visible: " + isVisible);
-      return isVisible;
-    }, function(error) {
-      console.log("Page is not visible");
-      return false;
-    })
-  }
-
+	/**
+	 * Checks if it is preview is visible
+	 * @returns {Boolean} True - 404 page is visilbe else False
+	 */
+	isPreviewVisible () {
+		var that = this;
+		return $('wch-page wch-contentref')
+			.isDisplayed()
+			.then(
+				function (isVisible) {
+					console.log('Page is visible: ' + isVisible);
+					return isVisible;
+				},
+				function (error) {
+					console.log('Page is not visible');
+					return false;
+				}
+			);
+	}
 }
 module.exports = SPA;

@@ -13,438 +13,611 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-'use strict'
+'use strict';
 
 /**
  * SPA Header pageobject class
  * <br/><img src='./doc-files/SPAHeader.png'/>
  */
 class SPAHeader {
+	constructor () {
+		// Turn off waiting off for angular
+		browser.waitForAngularEnabled(false);
 
-  constructor() {
+		// Header section
+		this.header = $('responsive-header nav');
 
-    // Turn off waiting off for angular
-    browser.waitForAngularEnabled(false);
+		// ***********************
+		// vertical header
+		// ***********************
 
-    // Header section
-    this.header = $('responsive-header nav');
+		// Responsive header
+		this.titleBarNarrow = this.header.$('#wch-toggleMenu');
+		//this.titleBar = this.header.$('#wch-toggleMenu');
 
-    // ***********************
-    // vertical header
-    // ***********************
+		// Responsive navigation
+		this.hamburgerMenuButton = this.titleBarNarrow.$('.menu-icon');
 
-    // Responsive header
-    this.titleBarNarrow = this.header.$('#wch-toggleMenu');
-    //this.titleBar = this.header.$('#wch-toggleMenu');
+		// The logo container - Responsive
+		this.logoContainerNarrow = this.titleBarNarrow.$(
+			'.logo-container .logo'
+		);
 
-    // Responsive navigation
-    this.hamburgerMenuButton = this.titleBarNarrow.$('.menu-icon');
+		// menu items
+		this.verticalMenu = $(
+			'.vertical.medium-horizontal.menu.accordion-menu'
+		);
 
-    // The logo container - Responsive
-    this.logoContainerNarrow = this.titleBarNarrow.$(".logo-container .logo");
+		// vertical nav menu dropdown
+		this.vnmenuItemDropDown = $('.first-sub.is-active');
 
-    // menu items
-    this.verticalMenu = $('.vertical.medium-horizontal.menu.accordion-menu');
+		// ***********************
+		// end vertical header
+		// ***********************
 
-    // vertical nav menu dropdown
-    this.vnmenuItemDropDown = $(".first-sub.is-active");
+		// ***********************
+		// horizontal header
+		// ***********************
 
-    // ***********************
-    // end vertical header
-    // ***********************
+		// Non-responsive nav menu container
+		this.navMenuWide = this.header.$('#wch-nav-menu');
 
-    // ***********************
-    // horizontal header
-    // ***********************
+		// Left side header container
+		this.leftHeader = this.navMenuWide.$('.top-bar-left');
 
-    // Non-responsive nav menu container
-    this.navMenuWide = this.header.$('#wch-nav-menu');
+		// Right side header container
+		this.rightHeader = this.navMenuWide.$('.top-bar-right');
 
-    // Left side header container
-    this.leftHeader = this.navMenuWide.$('.top-bar-left');
+		// The logo container - Non-responsive
+		this.logoContainerWide = this.leftHeader.$('.logo-container .logo');
 
-    // Right side header container
-    this.rightHeader = this.navMenuWide.$('.top-bar-right');
+		// ***********************
+		// end horizontal header
+		// ***********************
 
-    // The logo container - Non-responsive
-    this.logoContainerWide = this.leftHeader.$(".logo-container .logo");
+		// menu item
+		this.firstTopLevelNavItem = element
+			.all(by.css('.limit-page-name'))
+			.first();
 
-    // ***********************
-    // end horizontal header
-    // ***********************
+		// All pages in the nav menu
+		this.allPagesFirstLevel = element.all(by.css('.limit-page-name'));
 
-    // menu item
-    this.firstTopLevelNavItem = element.all(by.css(".limit-page-name")).first();
+		this.allParentAccordionSubMenu = element.all(
+			by.css('.top-level-nav-item.is-accordion-submenu-parent')
+		);
 
-    // All pages in the nav menu
-    this.allPagesFirstLevel = element.all(by.css(".limit-page-name"));
+		// Horizontal nav menu dropdown
+		this.hnmenuItemDropDown = $('.first-sub.js-dropdown-active');
 
+		//search
+		this.searchContainer = $('.searchBox');
+		this.searchFormContainer = this.searchContainer.$('#search-form');
+		this.searchInput = this.searchFormContainer.$('.ng-valid');
+		this.searchButton = this.searchFormContainer.$('.search-button');
+		this.searchInputClear = this.searchFormContainer.$(
+			'.search-input-clear'
+		);
 
-    this.allParentAccordionSubMenu = element.all(by.css(".top-level-nav-item.is-accordion-submenu-parent"));
+		// Wait for Non-responsive logo
+		waitForElement(this.header, 30000);
+	}
 
-    // Horizontal nav menu dropdown
-    this.hnmenuItemDropDown = $(".first-sub.js-dropdown-active");
+	/**
+	 *  @param {String} searchTerm The term to use to search with
+	 *  @returns {SPASearchResults} The Search Results page
+	 */
+	search (searchTerm) {
+		var that = this;
+		this.searchInput
+			.clear()
+			.sendKeys(searchTerm)
+			.then(function () {
+				console.log('Searching for ' + searchTerm);
+				that.searchButton.click();
+			});
 
-    //search
-    this.searchContainer = $('.searchBox');
-    this.searchFormContainer = this.searchContainer.$('#search-form');
-    this.searchInput = this.searchFormContainer.$('.ng-valid');
-    this.searchButton = this.searchFormContainer.$('.search-button');
-    this.searchInputClear = this.searchFormContainer.$('.search-input-clear');
+		var SPASearchResults = require('./SPASearchResults');
+		return new SPASearchResults();
+	}
 
+	/**
+	 * Returns the source/style value of the logo displayed in the header
+	 * @returns {String} Source value of the logo
+	 */
+	logo () {
+		let that = this;
+		return this.isVerticalNavMenu().then(function (isVMenu) {
+			if (isVMenu) {
+				waitForElement(that.logoContainerNarrow);
+				return that.logoContainerNarrow
+					.getAttribute('style')
+					.then(function (value) {
+						return value;
+					});
+			} else {
+				waitForElement(that.logoContainerWide);
+				return that.logoContainerWide
+					.getAttribute('style')
+					.then(function (value) {
+						return value;
+					});
+			}
+		});
+	}
 
-    // Wait for Non-responsive logo
-    waitForElement(this.header, 30000);
+	/**
+	 * Get all the SPA pages in the first level nav menu or child pages(if parent name given)
+	 * @param parentName(optional) - Parent page name
+	 * @returns {String} all the SPA pages
+	 */
+	allPages (parentName) {
+		var EC = protractor.ExpectedConditions;
+		var parentPageElementMenu;
+		browser.wait(
+			EC.visibilityOf(this.firstTopLevelNavItem),
+			10000,
+			'Top level pages is still not displayed in the nav item'
+		);
+		var that = this;
+		if (parentName) {
+			return this.isVerticalNavMenu().then(function (isVMenu) {
+				if (isVMenu) {
+					return that
+						.getParentAccordionMenu(parentName)
+						.then(function (parentMenu) {
+							parentPageElementMenu = parentMenu;
+							return that
+								.isDropDownMenuOpen(parentMenu)
+								.then(function (isDMOpen) {
+									if (!isDMOpen) {
+										return browser
+											.actions()
+											.mouseMove(
+												that.rightHeader.element(
+													by.linkText(parentName)
+												),
+												{
+													x: '150',
+													y: '0',
+												}
+											)
+											.click()
+											.perform()
+											.then(function () {
+												console.log(
+													'Opening ' +
+														parentName +
+														' dropdown menu'
+												);
 
-  }
+												browser
+													.wait(
+														EC.visibilityOf(
+															element(
+																by.linkText(
+																	'parentName'
+																)
+															)
+														),
+														2000
+													)
+													.then(
+														() => {
+															console.log(
+																'Closing'
+															);
+														},
+														() => {
+															console.log(
+																'Dropdown menu opened'
+															);
+														}
+													);
 
+												console.log(
+													'Getting all the child pages of the parenat page: ' +
+														parentName
+												);
+												var parentPageElement = element
+													.all(
+														by.linkText(parentName)
+													)
+													.first();
+												var allChildPagesElement = parentPageElementMenu.all(
+													by.css(
+														'.is-submenu-item .limit-page-name'
+													)
+												);
+												browser
+													.wait(
+														EC.visibilityOf(
+															parentPageElement
+														),
+														10000,
+														'Parent page is still not displayed in the nav item'
+													)
+													.then(function () {
+														browser.wait(
+															EC.presenceOf(
+																allChildPagesElement
+															),
+															10000,
+															'Child page is still not displayed in the nav item'
+														);
+													});
 
-  /**
-   *  @param {String} searchTerm The term to use to search with
-   *  @returns {SPASearchResults} The Search Results page
-   */
-  search(searchTerm) {
-    var that = this;
-    this.searchInput.clear().sendKeys(searchTerm).then(function() {
-      console.log("Searching for " + searchTerm);
-      that.searchButton.click();
-    })
+												return allChildPagesElement.getText();
+											});
+									}
+								});
+						});
+				} else {
+					return browser
+						.actions()
+						.mouseMove(
+							that.rightHeader.element(by.linkText(parentName))
+						)
+						.perform()
+						.then(function () {
+							console.log('Hovering on the ' + parentName);
+							parentPageElementMenu = that.hnmenuItemDropDown;
+							waitForElement(that.hnmenuItemDropDown);
 
-    var SPASearchResults = require('./SPASearchResults');
-    return new SPASearchResults();
-  }
+							console.log(
+								'Getting all the child pages of the parenat page: ' +
+									parentName
+							);
+							var parentPageElement = element
+								.all(by.linkText(parentName))
+								.first();
+							var allChildPagesElement = parentPageElementMenu.all(
+								by.css('.is-submenu-item .limit-page-name')
+							);
+							browser
+								.wait(
+									EC.visibilityOf(parentPageElement),
+									10000,
+									'Parent page is still not displayed in the nav item'
+								)
+								.then(function () {
+									browser.wait(
+										EC.presenceOf(allChildPagesElement),
+										10000,
+										'Child page is still not displayed in the nav item'
+									);
+								});
 
-  /**
-   * Returns the source/style value of the logo displayed in the header
-   * @returns {String} Source value of the logo
-   */
-  logo() {
-    let that = this;
-    return this.isVerticalNavMenu().then(function(isVMenu) {
-      if (isVMenu) {
-        waitForElement(that.logoContainerNarrow);
-        return that.logoContainerNarrow.getAttribute("style").then(function(value) {
-          return value;
-        });
-      } else {
-        waitForElement(that.logoContainerWide);
-        return that.logoContainerWide.getAttribute("style").then(function(value) {
-          return value;
-        });
-      }
-    })
-  }
+							return allChildPagesElement.getText();
+						});
+				}
+			});
+		} else {
+			return this.allPagesFirstLevel.getText();
+		}
+	}
 
-  /**
-   * Get all the SPA pages in the first level nav menu or child pages(if parent name given)
-   * @param parentName(optional) - Parent page name
-   * @returns {String} all the SPA pages
-   */
-  allPages(parentName) {
-    var EC = protractor.ExpectedConditions;
-    var parentPageElementMenu;
-    browser.wait(EC.visibilityOf(this.firstTopLevelNavItem), 10000, 'Top level pages is still not displayed in the nav item');
-    var that = this;
-    if (parentName) {
+	/**
+	 * Navigate to the specified SPA page (Non-responsive only)
+	 * @param destination - SPA page name to navigate to
+	 * @param child(optional) - SPA child page of the destination
+	 */
+	navigateTo (destination, child) {
+		var that = this;
+		var self = this;
+		if (child) {
+			this.isVerticalNavMenu().then(function (isVMenu) {
+				if (isVMenu) {
+					that.getParentAccordionMenu(destination).then(function (
+						parentMenu
+					) {
+						that.isDropDownMenuOpen(parentMenu).then(function (
+							isDMOpen
+						) {
+							if (!isDMOpen) {
+								browser
+									.actions()
+									.mouseMove(
+										that.rightHeader.element(
+											by.linkText(destination)
+										),
+										{
+											x: '150',
+											y: '0',
+										}
+									)
+									.click()
+									.perform()
+									.then(function () {
+										console.log(
+											'Opening ' +
+												destination +
+												' dropdown menu'
+										);
+										waitForElement(
+											parentMenu.element(
+												by.linkText(child)
+											),
+											5000
+										);
+									});
+							}
+							parentMenu
+								.element(by.linkText(child))
+								.$('span')
+								.click()
+								.then(function () {
+									console.log('Navigating to ' + child);
+								});
+						});
+					});
+				} else {
+					browser
+						.actions()
+						.mouseMove(
+							that.rightHeader.element(by.linkText(destination))
+						)
+						.perform()
+						.then(function () {
+							console.log('Hovering on the ' + destination);
 
-      return this.isVerticalNavMenu().then(function(isVMenu) {
-        if (isVMenu) {
-          return that.getParentAccordionMenu(parentName).then(function(parentMenu) {
-            parentPageElementMenu = parentMenu;
-            return that.isDropDownMenuOpen(parentMenu).then(function(isDMOpen) {
-              if (!isDMOpen) {
-                return browser.actions()
-                  .mouseMove(that.rightHeader.element(by.linkText(parentName)), {
-                    x: "150",
-                    y: "0"
-                  })
-                  .click()
-                  .perform().then(function() {
-                    console.log("Opening " + parentName + " dropdown menu");
+							waitForElement(that.hnmenuItemDropDown);
 
-                    browser.wait(EC.visibilityOf(element(by.linkText("parentName"))), 2000)
-                      .then(() => {
-                          console.log("Closing");
-                        },
-                        () => {
-                          console.log("Dropdown menu opened");
-                        })
+							that.rightHeader
+								.element(by.linkText(child))
+								.$('span')
+								.click()
+								.then(function () {
+									console.log('Navigating to ' + child);
+								});
+						});
+				}
+			});
+		} else {
+			this.rightHeader
+				.element(by.linkText(destination))
+				.$('span')
+				.click()
+				.then(function () {
+					console.log('Navigating to ' + destination);
+				});
+		}
 
-                    console.log("Getting all the child pages of the parenat page: " + parentName);
-                    var parentPageElement = element.all(by.linkText(parentName)).first();
-                    var allChildPagesElement = parentPageElementMenu.all(by.css(".is-submenu-item .limit-page-name"));
-                    browser.wait(EC.visibilityOf(parentPageElement), 10000, 'Parent page is still not displayed in the nav item').then(function() {
-                      browser.wait(EC.presenceOf(allChildPagesElement), 10000, 'Child page is still not displayed in the nav item');
-                    })
+		//better screenshots
+		browser.executeScript(
+			'arguments[0].scrollIntoView(true)',
+			this.header.getWebElement()
+		);
 
-                    return allChildPagesElement.getText();
+		return this;
+	}
 
-                  })
-              }
-            })
-          })
+	/**
+	 * Opens navigation menu
+	 */
+	navigation () {
+		var that = this;
+		this.isVerticalNavMenu().then(function (isVMenu) {
+			if (isVMenu) {
+				that.isMenuOpen().then(function (isOpen) {
+					if (!isOpen) {
+						that.openMenu();
+					}
+				});
+			}
+		});
 
-        } else {
-          return browser.actions().mouseMove(that.rightHeader.element(by.linkText(parentName))).perform().then(function() {
-            console.log("Hovering on the " + parentName);
-            parentPageElementMenu = that.hnmenuItemDropDown;
-            waitForElement(that.hnmenuItemDropDown);
+		return this;
+	}
 
-            console.log("Getting all the child pages of the parenat page: " + parentName);
-            var parentPageElement = element.all(by.linkText(parentName)).first();
-            var allChildPagesElement = parentPageElementMenu.all(by.css(".is-submenu-item .limit-page-name"));
-            browser.wait(EC.visibilityOf(parentPageElement), 10000, 'Parent page is still not displayed in the nav item').then(function() {
-              browser.wait(EC.presenceOf(allChildPagesElement), 10000, 'Child page is still not displayed in the nav item');
-            })
+	waitForPageToDisappear (pageName, errorMessage, timeout) {
+		var that = this;
+		var EC = protractor.ExpectedConditions;
+		return browser
+			.wait(
+				function () {
+					//for some reason, allPagesFirstLevel doesn't work here -- stale element err
+					return element
+						.all(by.css('.limit-page-name'))
+						.getText()
+						.then(function (pages) {
+							if (pages.includes(pageName)) {
+								return false;
+							} else {
+								return true;
+							}
+						});
+				},
+				timeout,
+				errorMessage
+			)
+			.then(function () {
+				console.log('Page not found in SPA');
+			});
+	}
 
-            return allChildPagesElement.getText();
+	waitForPage (pageName, errorMessage, timeout) {
+		var that = this;
+		var EC = protractor.ExpectedConditions;
+		return browser
+			.wait(
+				function () {
+					//for some reason, allPagesFirstLevel doesn't work here -- stale element err
+					return element
+						.all(by.css('.limit-page-name'))
+						.getText()
+						.then(function (pages) {
+							console.log('Waiting for ' + pageName);
 
-          })
-        }
-      })
+							//sometimes the page is expanded so the array contains its children as well
+							for (let i = 0; i < pages.length; i++) {
+								if (pages[i].includes(pageName)) {
+									return true;
+								}
+							}
+							return false;
+						});
+				},
+				timeout,
+				errorMessage
+			)
+			.then(function () {
+				console.log('Page found in SPA');
+			});
+	}
 
-    } else {
-      return this.allPagesFirstLevel.getText();
-    }
+	/**
+	 * Waits for the header logo to be updated
+	 * @param {String} logoResourceId the logo to wait for
+	 * @param {String} errorMessage the error message to display if not updated
+	 * @param {Number} timeout how long to wait for the update
+	 * @returns {String} Source value of the logo
+	 */
+	waitForLogoToUpdate (logoResourceId, errorMessage, timeout) {
+		let that = this;
+		return browser.wait(
+			function () {
+				return that.isVerticalNavMenu().then(function (isVMenu) {
+					if (isVMenu) {
+						waitForElement(that.logoContainerNarrow);
+						return that.logoContainerNarrow
+							.getAttribute('style')
+							.then(function (value) {
+								let currentLogoResourceId = value
+									.split('/')
+									.pop()
+									.replace('");', '');
+								console.log(
+									'Expecting ' +
+										currentLogoResourceId +
+										' to equal ' +
+										logoResourceId
+								);
+								return currentLogoResourceId == logoResourceId;
+							});
+					} else {
+						waitForElement(that.logoContainerWide);
+						return that.logoContainerWide
+							.getAttribute('style')
+							.then(function (value) {
+								let currentLogoResourceId = value
+									.split('/')
+									.pop()
+									.replace('");', '');
+								console.log(
+									'Expecting ' +
+										currentLogoResourceId +
+										' to equal ' +
+										logoResourceId
+								);
+								return currentLogoResourceId == logoResourceId;
+							});
+					}
+				});
+			},
+			timeout,
+			errorMessage
+		);
+	}
 
-  }
+	openMenu () {
+		this.hamburgerMenuButton.click().then(function () {
+			console.log('Opening navigation menu');
+		});
+	}
 
-  /**
-   * Navigate to the specified SPA page (Non-responsive only)
-   * @param destination - SPA page name to navigate to
-   * @param child(optional) - SPA child page of the destination
-   */
-  navigateTo(destination, child) {
-    var that = this;
-    var self = this;
-    if (child) {
-      this.isVerticalNavMenu().then(function(isVMenu) {
-        if (isVMenu) {
+	/**
+	 * Helper function
+	 */
+	isVerticalNavMenu () {
+		var that = this;
+		return this.hamburgerMenuButton.isDisplayed().then(
+			function (isMenuBtnDisplayed) {
+				if (isMenuBtnDisplayed) {
+					console.log('Responsive navigation menu');
+					return true;
+				} else {
+					console.log('Non-responsive navigation menu');
+					return false;
+				}
+			},
+			function (error) {
+				return false;
+			}
+		);
+	}
 
-          that.getParentAccordionMenu(destination).then(function(parentMenu) {
-            that.isDropDownMenuOpen(parentMenu).then(function(isDMOpen) {
-              if (!isDMOpen) {
-                browser.actions()
-                  .mouseMove(that.rightHeader.element(by.linkText(destination)), {
-                    x: "150",
-                    y: "0"
-                  })
-                  .click()
-                  .perform().then(function() {
-                    console.log("Opening " + destination + " dropdown menu");
-                    waitForElement(parentMenu.element(by.linkText(child)), 5000);
-                  })
-              }
-              parentMenu.element(by.linkText(child)).$("span").click().then(function() {
-                console.log("Navigating to " + child);
-              })
+	/**
+	 * Helper function
+	 */
+	isMenuOpen () {
+		var that = this;
+		return this.navMenuWide.isDisplayed().then(
+			function (isMenuOpen) {
+				if (isMenuOpen) {
+					console.log('Navigation menu is already open');
+					return true;
+				} else {
+					console.log('Navigation menu is not opened');
+					return false;
+				}
+			},
+			function (error) {
+				return false;
+			}
+		);
+	}
 
-            })
-          })
+	/**
+	 * Helper function
+	 */
+	isDropDownMenuOpen (pMenu) {
+		var that = this;
+		return pMenu.getAttribute('aria-expanded').then(function (value) {
+			if (value == 'true') {
+				console.log('Dropdown menu is already opened');
+				return true;
+			} else {
+				console.log('Dropdown menu is not open');
+				return false;
+			}
+		});
+	}
 
-        } else {
-          browser.actions().mouseMove(that.rightHeader.element(by.linkText(destination))).perform().then(function() {
-            console.log("Hovering on the " + destination);
+	getParentAccordionMenu (destination) {
+		var that = this;
+		return this.allParentAccordionMenu().then(function (parentMenu) {
+			console.log('Parent Menus ' + parentMenu);
+			var index = parentMenu.indexOf(destination);
+			if (index > -1) {
+				return that.allParentAccordionSubMenu.get(index);
+			} else {
+				log.error('No parent page ' + destination + ' exists');
+				return null;
+			}
+		});
+	}
 
-            waitForElement(that.hnmenuItemDropDown);
+	getParentDropDownMenu (destination) {
+		var that = this;
+		return this.allParentAccordionMenu().then(function (parentMenu) {
+			var index = parentMenu.indexOf(destination);
+			if (index > -1) {
+				return that.allParentAccordionSubMenu.get(index);
+			} else {
+				log.error('No parent page ' + destination + ' exists');
+				return null;
+			}
+		});
+	}
 
-            that.rightHeader.element(by.linkText(child)).$("span").click().then(function() {
-              console.log("Navigating to " + child);
-            })
-          })
-        }
-      })
-    } else {
-      this.rightHeader.element(by.linkText(destination)).$("span").click().then(function() {
-        console.log("Navigating to " + destination);
-      })
-    }
-
-    //better screenshots
-    browser.executeScript('arguments[0].scrollIntoView(true)', this.header.getWebElement());
-
-    return this;
-  }
-
-  /**
-   * Opens navigation menu
-   */
-  navigation() {
-    var that = this;
-    this.isVerticalNavMenu().then(function(isVMenu) {
-      if (isVMenu) {
-        that.isMenuOpen().then(function(isOpen) {
-          if (!isOpen) {
-            that.openMenu();
-          }
-        })
-      }
-    })
-
-    return this;
-  }
-
-  waitForPageToDisappear(pageName, errorMessage, timeout) {
-    var that = this;
-    var EC = protractor.ExpectedConditions;
-    return browser.wait(function() {
-      //for some reason, allPagesFirstLevel doesn't work here -- stale element err
-      return element.all(by.css(".limit-page-name")).getText().then(function(pages) {
-        if (pages.includes(pageName)) {
-          return false;
-        } else {
-          return true;
-        }
-      })
-    }, timeout, errorMessage).then(function() {
-      console.log('Page not found in SPA');
-    });
-  }
-
-  waitForPage(pageName, errorMessage, timeout) {
-    var that = this;
-    var EC = protractor.ExpectedConditions;
-    return browser.wait(function() {
-      //for some reason, allPagesFirstLevel doesn't work here -- stale element err
-      return element.all(by.css(".limit-page-name")).getText().then(function(pages) {
-        console.log("Waiting for " + pageName)
-
-        //sometimes the page is expanded so the array contains its children as well
-        for (let i = 0; i < pages.length; i++) {
-          if (pages[i].includes(pageName)) {
-            return true;
-          }
-        }
-        return false;
-      })
-    }, timeout, errorMessage).then(function() {
-      console.log('Page found in SPA');
-    });
-  }
-
-  /**
-   * Waits for the header logo to be updated
-   * @param {String} logoResourceId the logo to wait for
-   * @param {String} errorMessage the error message to display if not updated
-   * @param {Number} timeout how long to wait for the update
-   * @returns {String} Source value of the logo
-   */
-  waitForLogoToUpdate(logoResourceId, errorMessage, timeout) {
-    let that = this;
-    return browser.wait(function() {
-      return that.isVerticalNavMenu().then(function(isVMenu) {
-        if (isVMenu) {
-          waitForElement(that.logoContainerNarrow);
-          return that.logoContainerNarrow.getAttribute("style").then(function(value) {
-            let currentLogoResourceId = value.split("/").pop().replace('");', '');
-            console.log("Expecting " + currentLogoResourceId + " to equal " + logoResourceId);
-            return currentLogoResourceId == logoResourceId;
-          });
-        } else {
-          waitForElement(that.logoContainerWide);
-          return that.logoContainerWide.getAttribute("style").then(function(value) {
-            let currentLogoResourceId = value.split("/").pop().replace('");', '');
-            console.log("Expecting " + currentLogoResourceId + " to equal " + logoResourceId);
-            return currentLogoResourceId == logoResourceId;
-          });
-        }
-      })
-    }, timeout, errorMessage);
-  }
-
-  openMenu() {
-    this.hamburgerMenuButton.click().then(function() {
-      console.log("Opening navigation menu");
-    })
-  }
-
-  /**
-   * Helper function
-   */
-  isVerticalNavMenu() {
-    var that = this;
-    return this.hamburgerMenuButton.isDisplayed().then(function(isMenuBtnDisplayed) {
-      if (isMenuBtnDisplayed) {
-        console.log("Responsive navigation menu");
-        return true;
-      } else {
-        console.log("Non-responsive navigation menu");
-        return false;
-      }
-    }, function(error) {
-      return false;
-    })
-  }
-
-  /**
-   * Helper function
-   */
-  isMenuOpen() {
-    var that = this;
-    return this.navMenuWide.isDisplayed().then(function(isMenuOpen) {
-      if (isMenuOpen) {
-        console.log("Navigation menu is already open");
-        return true;
-      } else {
-        console.log("Navigation menu is not opened");
-        return false;
-      }
-    }, function(error) {
-      return false;
-    })
-  }
-
-  /**
-   * Helper function
-   */
-  isDropDownMenuOpen(pMenu) {
-    var that = this;
-    return pMenu.getAttribute("aria-expanded").then(function(value) {
-      if (value == "true") {
-        console.log("Dropdown menu is already opened");
-        return true;
-      } else {
-        console.log("Dropdown menu is not open");
-        return false;
-      }
-    });
-  }
-
-  getParentAccordionMenu(destination) {
-    var that = this;
-    return this.allParentAccordionMenu().then(function(parentMenu) {
-      console.log("Parent Menus " + parentMenu);
-      var index = parentMenu.indexOf(destination);
-      if (index > -1) {
-        return that.allParentAccordionSubMenu.get(index);
-      } else {
-        log.error("No parent page " + destination + " exists");
-        return null;
-      }
-    });
-  }
-
-  getParentDropDownMenu(destination) {
-    var that = this;
-    return this.allParentAccordionMenu().then(function(parentMenu) {
-      var index = parentMenu.indexOf(destination);
-      if (index > -1) {
-        return that.allParentAccordionSubMenu.get(index);
-      } else {
-        log.error("No parent page " + destination + " exists");
-        return null;
-      }
-    });
-  }
-
-  /**
-   *  Returns a list of all parent accordion-menu
-   *  @returns {List<String>} All parent accordion-menu
-   */
-  allParentAccordionMenu() {
-    return this.allParentAccordionSubMenu.getText();
-  }
-
+	/**
+	 *  Returns a list of all parent accordion-menu
+	 *  @returns {List<String>} All parent accordion-menu
+	 */
+	allParentAccordionMenu () {
+		return this.allParentAccordionSubMenu.getText();
+	}
 }
 
 module.exports = SPAHeader;
