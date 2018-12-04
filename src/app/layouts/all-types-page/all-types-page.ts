@@ -14,37 +14,53 @@
  * limitations under the License.
  *******************************************************************************/
 
-import { LayoutComponent } from '@ibm-wch-sdk/ng';
+import {
+    LayoutComponent
+} from '@ibm-wch-sdk/ng';
 import { Component } from '@angular/core';
-import { TypeStandardPageComponent } from '../../components/standard-page/typeStandardPageComponent';
+import { TypeAllTypesPageComponent } from './../../components/all-types-page/typeAllTypesPageComponent';
+
+/** Useful imports */
+// import { map, takeUntil, distinctUntilChanged } from 'rxjs/operators';
 
 /*
- * @name standardPageHero4Blocks
- * @id standard-page-hero-4-blocks
+ * @name One column
+ * @id all-types-page-layout
  */
 @LayoutComponent({
-	selector: 'standard-page-hero-4-blocks',
+    selector: 'all-types-page-layout'
 })
 @Component({
-	selector: 'app-standard-page-hero-4-blocks-layout-component',
-	templateUrl: './standardPageHero4BlocksLayout.html',
-	styleUrls: ['./standardPageHero4BlocksLayout.scss'],
-	preserveWhitespaces: false,
+  /**
+  * Consider to code your component such that all elements will be immutable and that it only
+  * depends on its inputs. This can e.g. be achieved by basing all state changes on observables.
+  *
+  * @see https://angular-2-training-book.rangle.io/handout/change-detection/change_detection_strategy_onpush.html
+  *
+  * import { ChangeDetectionStrategy } from '@angular/core';
+  */
+  // changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-all-types-page-layout-component',
+  templateUrl: './all-types-page.html',
+  styleUrls: ['./all-types-page.scss'],
+  preserveWhitespaces: false
 })
-export class StandardPageHero4BlocksLayoutComponent extends TypeStandardPageComponent {
-	/*
+export class AllTypesPageLayoutComponent extends TypeAllTypesPageComponent {
+
+    /*
      * TODO add custom fields here. These fields should be those
      * specific to this layout.
      */
 
-	constructor() {
-		super();
-		/*
+    constructor() {
+        super();
+        /*
          * TODO initialize your custom fields here, note that
          * you can refer to the values bound via @RenderingContextBinding from
          * your super class.
          *
          * Make sure to call 'this.safeSubscribe' if you plan to subscribe to observables
          */
-	}
+    }
+
 }

@@ -88,19 +88,26 @@ export class DesignArticleLayoutComponent extends TypeDesignArticleComponent
 
 	getImageClass(imageContext) {
 		if (imageContext) {
-			const imagePlacement = this.utilsService
-				.getFirstCategoryValue(
-					imageContext[this.IMAGE_PLACEMENT_KEY],
-					'left'
-				)
-				.toLowerCase();
 			const imageSize = this.utilsService
 				.getFirstCategoryValue(
 					imageContext[this.IMAGE_SIZE_KEY],
 					'medium'
 				)
 				.toLowerCase();
-			return `article-${imageSize}-image place-image-${imagePlacement}`;
+			return `article-${imageSize}-image`;
+		}
+		return '';
+	}
+
+	getImageContainerClass(imageContext) {
+		if (imageContext) {
+			const imagePlacement = this.utilsService
+				.getFirstCategoryValue(
+					imageContext[this.IMAGE_PLACEMENT_KEY],
+					'left'
+				)
+				.toLowerCase();
+			return `article-image-container place-image-${imagePlacement}`;
 		}
 		return '';
 	}

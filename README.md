@@ -1,5 +1,6 @@
 # wch-site-application
-Source code for the Watson Content Hub starter site application - Oslo. 
+
+Source code for the Watson Content Hub starter site application - Oslo.
 
 ## Prerequisites
 
@@ -31,6 +32,12 @@ Instructions on how to update Oslo to the latest can be found here: [Updating yo
 7. [Updating your Oslo sample](https://developer.ibm.com/customer-engagement/tutorials/updating-oslo-sample/)
 
 ## Updates
+At the beginning of December we have updated the Oslo starter site with the following features:
+
+-   Included the new All Types page that allows any reference type to be used.
+-   The Standard page was updated to only allow a limited set of types to be used on it.
+
+
 
 At the end of October we have updated the Oslo starter site with the following features:
 
@@ -99,6 +106,28 @@ From your cli make sure to install project dependencies by running `npm install`
 You can set the tenant information, by changing the values in `src/app/Constants.ts`.
 This file determines from which tenant site and layout information gets served
 from.
+
+Inside `src/app/Constants.ts`, uncomment these three lines and replace the values:
+
+```
+// static readonly DOMAIN_NAME = 'your-domain-name.com';
+// static readonly CONTENT_HUB_ID = '0000000-0000-0000-0000-000000000000';
+// static readonly SITE_ID = '00000000-0000-0000-0000-000000000000';
+```
+
+-   The domain name can be extracted from the delivery URL of your site (see steps below). (e.g. https://**\<domain-name\>**/\<content-hub-id\>/dxsites/\<site-id\>/)
+-   The Content Hub ID can be retrieved from the Hub information dialog.
+    1. Log in to your Watson Content Hub and hover over the 'About' tab.
+    2. Click the 'Hub information option'.
+    3. Copy the Content Hub ID from the modal.
+-   The site ID can be extracted from the delivery URL of your site (see steps below). (e.g. https://\<domain-name\>/\<content-hub-id\>/dxsites/**\<site-id\>**/)
+    -   Note: the ID of the 'Oslo' out-of-the-box site is 'default'
+
+Steps to retrieve the delivery URL for a site:
+
+1. Log in to your Watson Content Hub and navigate to the Websites tab.
+2. Click the arrow button on your site to flip over the card.
+3. Copy the delivery URL on the back of the card.
 
 ## Development server
 

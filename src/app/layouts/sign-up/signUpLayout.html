@@ -14,8 +14,7 @@
 					<form name="emailForm">
 						<input type="text" (keyup.enter)="openModal()" [(ngModel)]="emailAddress" class="text-content" placeholder="Email address"
 						 name="emailAddr" />
-						<button wchEditable="link" (click)="addEmail()" type="button" class="button news-btn float-right" id="newsletter-subscribe"
-						 [attr.data-open]="itemId">{{(onLink | async).linkText}}</button>
+						<button wchEditable="link" (click)="openModal()" type="button" class="button news-btn float-right" id="newsletter-subscribe">{{(onLink | async).linkText}}</button>
 					</form>
 				</div>
 			</div>
@@ -27,8 +26,7 @@
 					<form name="emailForm">
 						<input type="text" (keyup.enter)="openModal()" [(ngModel)]="emailAddress" class="text-content" placeholder="Email address"
 						 name="emailAddr" />
-						<button wchEditable="link" (click)="addEmail()" type="button" class="button news-btn float-right" id="newsletter-subscribe"
-						 [attr.data-open]="itemId">{{(onLink | async).linkText}}</button>
+						<button wchEditable="link" (click)="openModal()" type="button" class="button news-btn float-right" id="newsletter-subscribe">{{(onLink | async).linkText}}</button>
 					</form>
 				</div>
 			</div>

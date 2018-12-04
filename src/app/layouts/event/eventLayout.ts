@@ -70,7 +70,9 @@ export class EventLayoutComponent extends TypeEventComponent
 	ngAfterViewInit() {
 		super.ngAfterViewInit();
 		try {
-			this.reveal = new Foundation.Reveal($(`#${this.eventId}`));
+			if (this.reveal) {
+				this.reveal = new Foundation.Reveal($(`#${this.eventId}`));
+			}
 		} catch (e) {
 			console.error('error in eventLayout reveal ', e);
 		}
@@ -78,8 +80,10 @@ export class EventLayoutComponent extends TypeEventComponent
 
 	ngOnDestroy() {
 		try {
-			const elem = this.reveal.$element.foundation('destroy');
-			$(elem).remove();
+			if (this.reveal) {
+				const elem = this.reveal.$element.foundation('destroy');
+				$(elem).remove();
+			}
 		} catch (e) {
 			console.error('error in eventLayout on destroy ', e);
 		}

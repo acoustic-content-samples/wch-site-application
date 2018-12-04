@@ -71,7 +71,9 @@ export class SignUpLayoutComponent extends TypeSignUpComponent
 	ngAfterViewInit() {
 		super.ngAfterViewInit();
 		try {
-			this.reveal = new Foundation.Reveal($(`#${this.itemId}`));
+			if (this.reveal) {
+				this.reveal = new Foundation.Reveal($(`#${this.itemId}`));
+			}
 		} catch (e) {
 			console.error('error in signup layout afterview init ', e);
 		}
@@ -80,8 +82,10 @@ export class SignUpLayoutComponent extends TypeSignUpComponent
 	ngOnDestroy() {
 		// clean up reveal modal
 		try {
-			const elem = this.reveal.$element.foundation('destroy');
-			$(elem).remove();
+			if (this.reveal) {
+				const elem = this.reveal.$element.foundation('destroy');
+				$(elem).remove();
+			}
 		} catch (e) {
 			console.error('error in signup layout ondestroy ', e);
 		}
@@ -92,6 +96,9 @@ export class SignUpLayoutComponent extends TypeSignUpComponent
 		this.addEmail();
 		try {
 			$(this.revealModal.nativeElement).foundation('open');
+			$('a.close-button').on('click', () => {
+				$(this.revealModal.nativeElement).foundation('close');
+			  });
 		} catch (e) {
 			console.error('error in signup layout openModal ', e);
 		}
