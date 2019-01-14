@@ -31,28 +31,21 @@ const baseUrl = tenantId
 		? `/${dxSites}/${siteId}/` // just site
 		: '/'; // no IDs
 
+export function getApiUrl () {
+	return typeof window === 'undefined' ||
+		window.location.hostname === 'localhost'
+		? Constants['apiUrl']
+		: `${window.location.protocol}//${window.location.hostname}/api${baseUrl}`;
+}
+
+
 export const environment = {
 	production: env.production ? true : false,
-	apiUrl:
-		window.location.hostname === 'localhost'
-			? new URL(Constants['apiUrl'])
-			: new URL(
-					`${window.location.protocol}//${
-						window.location.hostname
-					}/api${baseUrl}`
-			  ),
-	deliveryUrl:
-		window.location.hostname === 'localhost'
-			? new URL(Constants['deliveryUrl'])
-			: new URL(
-					`${window.location.protocol}//${
-						window.location.hostname
-					}${baseUrl}`
-			  ),
+	apiUrl: getApiUrl,
 	httpOptions: {
 		pollTime: 999999,
-		retries: 5,
-	},
+		retries: 5
+	}
 };
 
 console.log('environment: %o', environment);

@@ -8,8 +8,8 @@
 				<div class="medium-3 cell footer-nav">
 					<h5>Menu</h5>
 					<ul>
-						<li *ngFor="let page of rc?.context?.site.pages; trackBy: trackByPageId">
-							<a *ngIf="!page.hideFromNavigation" href="javascript:void(0);" [routerLink]="page.route" title="{{page.name}}">{{page.name}}</a>
+						<li *ngFor="let page of pages; trackBy: trackByPageId">
+							<a *ngIf="!page.hideFromNavigation && page.name && page.route" href="javascript:void(0);" [routerLink]="page.route" title="{{page.name}}">{{page.name}}</a>
 						</li>
 					</ul>
 				</div>

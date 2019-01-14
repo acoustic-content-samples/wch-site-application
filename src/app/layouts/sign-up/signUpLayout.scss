@@ -79,7 +79,7 @@ $sign-up-header-color: #fff;
 		padding-top: 25%; /* (300/1200)*100=25 */
 
 		.call-to-action {
-			margin-top: -17.5%;
+			margin-top: -45.5%;
 
 			h4 {
 				font-size: 20px;
@@ -101,7 +101,7 @@ $sign-up-header-color: #fff;
 @include breakpoint(large) {
 	.newsletter {
 		.call-to-action {
-			margin-top: -17%;
+			margin-top: -45%;
 
 			h4 {
 				font-size: 31.5px;

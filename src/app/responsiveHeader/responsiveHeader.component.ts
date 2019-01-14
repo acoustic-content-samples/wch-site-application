@@ -71,13 +71,13 @@ export class ResponsiveHeaderComponent implements AfterViewInit, OnDestroy {
 	pages: Array<any> = [];
 	configService: ConfigServiceService;
 
-	constructor (
+	constructor(
 		configService: ConfigServiceService,
 		public authService: AuthService,
 		private router: Router,
 		private SDKRefreshService: RefreshService
 	) {
-	  this.configService = configService;
+		this.configService = configService;
 
 		authService.getCurrentUser().subscribe(res => {
 			const name = res && res.externalId ? res.externalId : 'no user';
@@ -105,7 +105,9 @@ export class ResponsiveHeaderComponent implements AfterViewInit, OnDestroy {
 	}
 
 	ngOnDestroy() {
-		this.configSub.unsubscribe();
+		if (this.configSub) {
+			this.configSub.unsubscribe();
+		}
 	}
 
 	login() {

@@ -55,7 +55,9 @@ export class PageNotFoundComponent implements OnInit, OnDestroy {
 	ngOnInit() {}
 
 	ngOnDestroy() {
-		this.configSub.unsubscribe();
+		if (this.configSub) {
+			this.configSub.unsubscribe();
+		}
 	}
 
 	//Check if home page exists

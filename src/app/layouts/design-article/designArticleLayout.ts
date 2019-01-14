@@ -18,6 +18,8 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { TypeDesignArticleComponent } from '../../components/design-article/typeDesignArticleComponent';
 import { UtilsService } from '@ibm-wch/components-ng-shared-utilities';
 import { Constants } from '../../Constants';
+import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 /**
  * @name designArticleLayout
@@ -35,6 +37,7 @@ export class DesignArticleLayoutComponent extends TypeDesignArticleComponent
 	implements OnInit, OnDestroy {
 	rContext: RenderingContext;
 	matchingBodyImages: any[];
+	matchingBodyImages$: Observable<any[]>;
 	leftoverBodyImages: any[];
 	constants: any = Constants;
 
@@ -51,7 +54,35 @@ export class DesignArticleLayoutComponent extends TypeDesignArticleComponent
 
 	constructor(public utilsService: UtilsService) {
 		super();
-	}
+    this.matchingBodyImages$ = this.onRenderingContext.pipe(map(renderingContext => {
+      const body = renderingContext.elements.body;
+      const bodyImage = renderingContext.elements.bodyImage;
+      let returnValue = [];
+      if (body && body.values && bodyImage && bodyImage.values) {
+        const numOfBodyTexts = body.values.length;
+
+
+        const numOfBodyImages = bodyImage.values.length;
+        if (numOfBodyTexts > 0) {
+
+          returnValue = bodyImage.values.slice(
+            0,
+            numOfBodyTexts
+          );
+        }
+
+        if (numOfBodyImages > numOfBodyTexts) {
+          this.leftoverBodyImages = this.bodyImage.slice(
+            this.numOfBodyTexts
+          );
+        }
+
+
+      }
+      return returnValue;
+    }));
+
+  }
 
 	ngOnInit() {
 		super.ngOnInit();

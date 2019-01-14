@@ -1,17 +1,7 @@
 <div [id]="rContext.id" class="feature section" [ngClass]="onCssClasses | async">
-	<div *ngIf="image.url" class="feature-copy">
+	<div class="feature-copy">
 		<div class="feature-copy-content">
 			<h2 wchEditable="featureHeadline" wchFormat></h2>
-			<div wchEditable="descriptionOfFeature" class="text-content" wchFormat></div>
-			<a wchEditable="readMoreLink" *ngIf="isButtonLinkSet() && !useRouterLink" class="button" target="_blank" [href]="(onReadMoreLink | async).linkURL">{{(onReadMoreLink
-				| async).linkText}}</a>
-			<a wchEditable="readMoreLink" *ngIf="isButtonLinkSet() && useRouterLink" class="button" [routerLink]="(onReadMoreLink | async).linkURL">{{(onReadMoreLink
-				| async).linkText}}</a>
-		</div>
-	</div>
-	<div *ngIf="!image.url" class="feature-no-image-copy grid-x grid-padding-x">
-		<div class="feature-no-image-copy-content medium-8 cell">
-			<h5 wchEditable="featureHeadline" wchFormat></h5>
 			<div wchEditable="descriptionOfFeature" class="text-content" wchFormat></div>
 			<a wchEditable="readMoreLink" *ngIf="isButtonLinkSet() && !useRouterLink" class="button" target="_blank" [href]="(onReadMoreLink | async).linkURL">{{(onReadMoreLink
 				| async).linkText}}</a>
@@ -23,7 +13,7 @@
 		<wch-placeholder wchEditable="image">
 			<img *ngIf="!getImageUrl().includes('undefined')" wchEditable="image" [src]="getImageUrl()" [alt]="(onImage | async).altText"
 			 [title]="(onImage | async).altText">
-			<wch-placeholder-icon class="wch-placeholder" type="image" width="524" height="383" wchEditable="image">
+			<wch-placeholder-icon class="wch-placeholder" type="image" width="450" height="550" wchEditable="image">
 			</wch-placeholder-icon>
 		</wch-placeholder>
 	</div>

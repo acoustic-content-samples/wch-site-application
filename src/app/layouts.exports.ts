@@ -5,6 +5,7 @@
  */
 export { AbstractAllTypesPageComponent } from './components/all-types-page/abstractAllTypesPageComponent';
 export { AbstractContestRulesComponent } from './components/contest-rules/abstractContestRulesComponent';
+export { AbstractEmailKindComponent } from './components/email-kind/abstractEmailKindComponent';
 export { AbstractSocialComponent } from './components/social-component/abstractSocialComponent';
 export { AbstractStandardPageComponent } from './components/standard-page/abstractStandardPageComponent';
 export { AuthorProfileLayoutComponent } from './layouts/author-profile/authorProfileLayout';
@@ -13,6 +14,7 @@ export { DesignArticleLayoutComponent } from './layouts/design-article/designArt
 export { DesignArticleSummaryComponent } from './layouts/design-article-summary/design-article-summary.component';
 export { DesignPageLeftLayoutComponent } from './layouts/design-page-left/designPageLeftLayout';
 export { DesignPageRightLayoutComponent } from './layouts/design-page-right/designPageRightLayout';
+export { EmailKindLayoutComponent } from './layouts/email-kind/emailKindLayout';
 export { ErrorPageLayoutComponent } from './layouts/error-page/errorPageLayout';
 export { EventLayoutComponent } from './layouts/event/eventLayout';
 export { FeatureLayoutComponent } from './layouts/feature/featureLayout';
@@ -36,6 +38,7 @@ export { StandardPageLayoutComponent } from './layouts/standard-page/standardPag
 export { AllTypesPageHero2BlocksLayoutComponent } from './layouts/all-types-page-hero-2-blocks/all-types-page-hero-2-blocks';
 export { TypeAllTypesPageComponent } from './components/all-types-page/typeAllTypesPageComponent';
 export { TypeContestRulesComponent } from './components/contest-rules/typeContestRulesComponent';
+export { TypeEmailKindComponent } from './components/email-kind/typeEmailKindComponent';
 export { TypeLandingPageComponent } from './components/landing-page/typeLandingPageComponent';
 export { TypeSocialComponent } from './components/social-component/typeSocialComponent';
 export { TypeStandardPageComponent } from './components/standard-page/typeStandardPageComponent';

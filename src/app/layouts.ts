@@ -7,6 +7,7 @@ import { DesignArticleLayoutComponent } from './layouts/design-article/designArt
 import { DesignArticleSummaryComponent } from './layouts/design-article-summary/design-article-summary.component';
 import { DesignPageLeftLayoutComponent } from './layouts/design-page-left/designPageLeftLayout';
 import { DesignPageRightLayoutComponent } from './layouts/design-page-right/designPageRightLayout';
+import { EmailKindLayoutComponent } from './layouts/email-kind/emailKindLayout';
 import { ErrorPageLayoutComponent } from './layouts/error-page/errorPageLayout';
 import { EventLayoutComponent } from './layouts/event/eventLayout';
 import { FeatureLayoutComponent } from './layouts/feature/featureLayout';
@@ -29,7 +30,6 @@ import { StandardPageHero4BlocksLayoutComponent } from './layouts/standard-page-
 import { StandardPageLayoutComponent } from './layouts/standard-page/standardPageLayout';
 import { AllTypesPageHero2BlocksLayoutComponent } from './layouts/all-types-page-hero-2-blocks/all-types-page-hero-2-blocks';
 
-
 export const LAYOUTS = [
   AuthorProfileLayoutComponent,
   ContestRulesLayoutComponent,
@@ -37,6 +37,7 @@ export const LAYOUTS = [
   DesignArticleSummaryComponent,
   DesignPageLeftLayoutComponent,
   DesignPageRightLayoutComponent,
+  EmailKindLayoutComponent,
   ErrorPageLayoutComponent,
   EventLayoutComponent,
   FeatureLayoutComponent,

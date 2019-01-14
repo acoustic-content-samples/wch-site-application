@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 
 import { RenderingContext } from '@ibm-wch-sdk/ng';
 import { ConfigServiceService } from '@ibm-wch/components-ng-shared-utilities';
@@ -26,7 +26,7 @@ import {take} from 'rxjs/operators';
 	styleUrls: ['./wch-footer.scss'],
 	templateUrl: './wch-footer.html',
 })
-export class WchFooterComponent implements OnInit, OnDestroy {
+export class WchFooterComponent implements OnDestroy {
 	pages: any[] = [];
 
 	configSub: Subscription;
@@ -60,16 +60,32 @@ export class WchFooterComponent implements OnInit, OnDestroy {
       });
     }
 		this.rc = aValue;
+
+		// Filter out landing pages and hidden pages from footer
+		if (this.rc && this.rc.context && this.rc.context.site) {
+			const allPages = this.rc.context.site.pages;
+			this.pages = allPages.filter(page => {
+				// Don't show landing page in the footer
+				if (page['kind'] && page['kind'][0] === 'landing-page') {
+					return false;
+				}
+				// Don't show page if hideFromNavigation == true
+				if (page['hideFromNavigation'] === true) {
+					return false;
+				}
+				return true;
+			});
+		 }	
 	}
 
 	rc: RenderingContext;
 	footerConfig: any;
 	salesTel: string;
 	serviceTel: string;
-  configService: ConfigServiceService;
+	configService: ConfigServiceService;
 
-	constructor (configService: ConfigServiceService) {
-    this.configService = configService;
+	constructor(configService: ConfigServiceService) {
+		this.configService = configService;
 	}
 
 	trackByPageId(index, page) {
@@ -85,12 +101,10 @@ export class WchFooterComponent implements OnInit, OnDestroy {
 		);
 	}
 
-	ngOnInit() {
-		// this.pages = (this.renderingContext.context['site']) ? this.renderingContext.context['site'].children : [];
-	}
-
 	ngOnDestroy() {
-		this.configSub.unsubscribe();
+		if (this.configSub) {
+			this.configSub.unsubscribe();
+		}
 	}
 
 	getURL(img) {

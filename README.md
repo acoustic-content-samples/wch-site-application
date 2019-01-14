@@ -4,20 +4,21 @@ Source code for the Watson Content Hub starter site application - Oslo.
 
 ## Prerequisites
 
-* A WCH tenant in Trial or Standard Tier
-* Node.js v8.10.0 or above
-**Note:** We recommend to run npm install after getting the latest from this repository to get the latest prerequisites. 
+-   A WCH tenant in Trial or Standard Tier
+-   Node.js v8.10.0 or above
+    **Note:** We recommend to run npm install after getting the latest from this repository to get the latest prerequisites.
 
 ## Overview
+
 This github repository contains all the source code files like javascript, css and html but not the Oslo artifacts like pages, content types, categories, and content.
 WCH tenants created after September 18th 2017 will have the Oslo artifacts automatically deployed. For older tenants you need to manually deploy the artifacts by downloading the Oslo built artifacts from the home page of your tenant from the "Update the sample site" widget.
-Not sure if you have the Oslo artifacts? 
+Not sure if you have the Oslo artifacts?
 
-* Log in to your tenant and go to the Website menu and check if Oslo is rendering in the preview window.
-* Check SDK and SPA build levels from the browser
-  * Open the dev console
-  * Search for 'Build date' to get the current SPA level
-  * Search for 'SDK version' to get the SDK version included in the SPA
+-   Log in to your tenant and go to the Website menu and check if Oslo is rendering in the preview window.
+-   Check SDK and SPA build levels from the browser
+    -   Open the dev console
+    -   Search for 'Build date' to get the current SPA level
+    -   Search for 'SDK version' to get the SDK version included in the SPA
 
 You can compare the Build date with the date shown in the "Update the sample site" widget on the Home page to see if your deployed sample is older than the latest sample code.
 Instructions on how to update Oslo to the latest can be found here: [Updating your Oslo sample](https://developer.ibm.com/customer-engagement/tutorials/updating-oslo-sample/).
@@ -32,12 +33,13 @@ Instructions on how to update Oslo to the latest can be found here: [Updating yo
 7. [Updating your Oslo sample](https://developer.ibm.com/customer-engagement/tutorials/updating-oslo-sample/)
 
 ## Updates
+At the beginning of January we have updated the Oslo starter site with the following features:
+- Various bug fixes and updates of underlying used packages
+
 At the beginning of December we have updated the Oslo starter site with the following features:
 
 -   Included the new All Types page that allows any reference type to be used.
 -   The Standard page was updated to only allow a limited set of types to be used on it.
-
-
 
 At the end of October we have updated the Oslo starter site with the following features:
 
@@ -115,7 +117,7 @@ Inside `src/app/Constants.ts`, uncomment these three lines and replace the value
 // static readonly SITE_ID = '00000000-0000-0000-0000-000000000000';
 ```
 
--   The domain name can be extracted from the delivery URL of your site (see steps below). (e.g. https://**\<domain-name\>**/\<content-hub-id\>/dxsites/\<site-id\>/)
+-   The domain name can be extracted from the delivery URL of your site (see steps below). (e.g. https://**\<domain-name\>\*\*/\<content-hub-id\>/dxsites/\<site-id\>/)
 -   The Content Hub ID can be retrieved from the Hub information dialog.
     1. Log in to your Watson Content Hub and hover over the 'About' tab.
     2. Click the 'Hub information option'.
@@ -158,21 +160,23 @@ See the included detailed documentation on running tests [Running unit tests and
 
 The Oslo site provides scripting to ease the process of importing 3rd party components.  
 We have provided a set of sample component repositories:
-* [Active Site components: Iframe, Charting Library, Youtube integration](https://github.com/ibm-wch/sample-active-site-components)
-* [Sample Article Layout](https://github.com/ibm-wch/sample-article-layouts)
+
+-   [Active Site components: Iframe, Charting Library, Youtube integration](https://github.com/ibm-wch/sample-active-site-components)
+-   [Sample Article Layout](https://github.com/ibm-wch/sample-article-layouts)
 
 ### Structure of Sample Site Components
-* At the root of the `sample-active-site-components` project/zip, you can find the `content-artifacts` directory and the `site-application-files` directory.  
-* The `content-artifacts` directory contains content/pages required for the components in addition to the layout and layout-mappings files. The directory follows the WCH directory structure. `/catagories` stores assests in "Taxonomies". `/content` stores assests in "Content". `/types` stores content types. `/site` stores Oslo's pages' setting. `/layouts` and `/layout-mappings` store all layout settings created when you run `npm run create-layout`. You could find them in WCH by their "id" or "name" in json files after you deploy them into the tenant.
-* The `site-application-files` stores HTML/CSS/TS files needed for the sample components. You can customize the components by editing files in `site-application-files/src/app/layouts/<COMPONENT NAME>`.
+
+-   At the root of the `sample-active-site-components` project/zip, you can find the `content-artifacts` directory and the `site-application-files` directory.
+-   The `content-artifacts` directory contains content/pages required for the components in addition to the layout and layout-mappings files. The directory follows the WCH directory structure. `/catagories` stores assests in "Taxonomies". `/content` stores assests in "Content". `/types` stores content types. `/site` stores Oslo's pages' setting. `/layouts` and `/layout-mappings` store all layout settings created when you run `npm run create-layout`. You could find them in WCH by their "id" or "name" in json files after you deploy them into the tenant.
+-   The `site-application-files` stores HTML/CSS/TS files needed for the sample components. You can customize the components by editing files in `site-application-files/src/app/layouts/<COMPONENT NAME>`.
 
 ### Installation steps
+
 See the readme of sample-active-site-components for details: https://github.com/ibm-wch/sample-active-site-components
 
 ## HTML5 style URLs
 
-The SPA will now use HTML5 style URLs and routing. 
-
+The SPA will now use HTML5 style URLs and routing.
 
 ## Advanced
 
@@ -186,57 +190,66 @@ also use `ng generate directive|pipe|service|class|module`.
 
 ### Enabling logging
 
-The SPA uses the ng2-logger package for logging.  By default logging will be enabled when running locally and disabled when running in production mode on the tenant.  The logging level can be changed by setting a cookie in the browser.
+The SPA uses the ng2-logger package for logging. By default logging will be enabled when running locally and disabled when running in production mode on the tenant. The logging level can be changed by setting a cookie in the browser.
 The available log levels are <br />
-- info
-- warn
-- error
-- data
 
-Setting the logging level will result in a waterfall effect, for example if setting ```warn``` logging will also be enabled for ```error``` and ```data```.
+-   info
+-   warn
+-   error
+-   data
+
+Setting the logging level will result in a waterfall effect, for example if setting `warn` logging will also be enabled for `error` and `data`.
 
 To change the logging level you can enter the following into the browsers console developer tools<br />
-```document.cookie = 'wch.sites.logging.level=warn'```
+`document.cookie = 'wch.sites.logging.level=warn'`
 
 ## Manage your Oslo starter site template with a manifest
-* Prerequisites: wchtools >= 2.7.1
+
+-   Prerequisites: wchtools >= 2.7.1
 
 To make it easier to remove the default Oslo site either completely or just the out of the box images, content, pages and assets, we created two sample manifest files, `oslo-complete.json` and `oslo-sample-artifacts.json` for the Oslo site. With these two manifest files, you can easily push and delete your Oslo contents listed in the manifest file with wchtools.
 
-* `oslo-complete.json` contains all Oslo code (web assets) and sample site content. 
-* `oslo-sample-artifacts.json` is a subset of oslo-complete.json. This manifest contains only the site assets, renditions, contents and pages. The manifest does not contain the source code, layouts, layout-mappings, content types, image-profiles, categories,  and basic rendering functions.
-* `oslo-minimum.json` contains minimum reusable artifacts that can be used to create your own SPA site. This manifest contains only source code, layouts, layout-mappings, content types, image-profiles, categories, generic components (header and footer), and generic page (404 error page) 
+-   `oslo-complete.json` contains all Oslo code (web assets) and sample site content.
+-   `oslo-sample-artifacts.json` is a subset of oslo-complete.json. This manifest contains only the site assets, renditions, contents and pages. The manifest does not contain the source code, layouts, layout-mappings, content types, image-profiles, categories, and basic rendering functions.
+-   `oslo-minimum.json` contains minimum reusable artifacts that can be used to create your own SPA site. This manifest contains only source code, layouts, layout-mappings, content types, image-profiles, categories, generic components (header and footer), and generic page (404 error page)
 
-To push, pull, and delete content by manifest, please refer to: https://github.com/ibm-wch/wchtools-cli#pushing-pulling-and-deleting-by-manifest 
+To push, pull, and delete content by manifest, please refer to: https://github.com/ibm-wch/wchtools-cli#pushing-pulling-and-deleting-by-manifest
 
-If you want to start with a new site skeleton without all of the Oslo artifacts that are not required you can delete the extra artifacts with the `oslo-sample-artifacts` manifest. The deletion will not remove referenced items in Oslo that are not part of the manifest. So, if you created content or other items that are using Oslo content types, content, or assets, these will not be removed by the delete command. 
+If you want to start with a new site skeleton without all of the Oslo artifacts that are not required you can delete the extra artifacts with the `oslo-sample-artifacts` manifest. The deletion will not remove referenced items in Oslo that are not part of the manifest. So, if you created content or other items that are using Oslo content types, content, or assets, these will not be removed by the delete command.
 
 Note: Since the sample manifest files only work for the default Oslo starter site template, if you add new content to your site, you have to create your own manifest files. Details: https://github.com/ibm-wch/wchtools-cli#creating-a-new-manifest
 
 ### Use cases
+
 ##### You would like to clean out all sample images, renditions, content, and pages associated with Oslo, but leave Oslo layouts, content types and categories so that you can use these to build your custom site. This will leave any additional items that you may have created.
-* `wchtools delete -A -v --server-manifest oslo-sample-artifacts` 
+
+-   `wchtools delete -A -v --server-manifest oslo-sample-artifacts`
 
 ##### You would like to clean out all artifacts associated with Oslo, but leave any items that you have created. Delete all Oslo artifacts in your tenant:
-* `wchtools delete -A -v --server-manifest oslo-complete`
+
+-   `wchtools delete -A -v --server-manifest oslo-complete`
 
 ##### You would like to update the complete Oslo manifest to include additional items that you created. Update `oslo-complete.json` after adding your customized content in your tenant:
-* `wchtools pull -A -v`
-* `wchtools list -A --write-manifest oslo-complete`
-* `wchtools push -w -v -f --path /dxconfig/manifests/`
+
+-   `wchtools pull -A -v`
+-   `wchtools list -A --write-manifest oslo-complete`
+-   `wchtools push -w -v -f --path /dxconfig/manifests/`
 
 ##### You would like to create your own SPA site with reusable artifacts from Oslo :
-* See section [Create your own SPA site based on Oslo minimum template](#create-your-own-spa-site-based-on-oslo-minimum-template)
+
+-   See section [Create your own SPA site based on Oslo minimum template](#create-your-own-spa-site-based-on-oslo-minimum-template)
 
 ## Create your own SPA site based on Oslo minimum template
-* Prerequisites: wchtools >= 2.7.1
+
+-   Prerequisites: wchtools >= 2.7.1
+
 1. Download the latest Oslo sample site artifacts from "Update the sample site" widget in your WCH homepage
 2. Unzip the package you downloaded and use your command line tool to change directory to this unzipped folder
 3. Configure your tenant information by running `wchtools init`
 4. Push Oslo minimum template to your tenant by running `wchtools push -A -v -f --manifest oslo-minimum`
 5. Open the live site of your tenant, you will see a starter site with only minimum reusable artifacts. Follow the instruction in the page to create your own content and page for your SPA site.
 
-Note: If you have older site in your tenant, you have to delete it first before pushing the Oslo minimum template. `wchtools delete -A -v --all` would be helpful if you want to clean up your tenant. 
+Note: If you have older site in your tenant, you have to delete it first before pushing the Oslo minimum template. `wchtools delete -A -v --all` would be helpful if you want to clean up your tenant.
 
 ## Add and configure custom site styles
 
@@ -285,20 +298,31 @@ To configure your site with custom styles, follow these following steps:
 That's it! Now, any styles that are added to `<site-id>.scss` will be applied to the SPA, when rendering the site with a matching ID. You can preview your style changes by running `npm start` to view the preview server. When ready, you can deploy the changes to the tenant by running `npm run build-deploy`
 
 ## Resources
+
 Find more details on the WCH development environment, technical documentation, sample applications, APIs and other information to jumpstart your development project.
+
 ### Tools
-* [WCH tools](https://github.com/ibm-wch/wchtools-cli)
-* [NodeJS](https://developer.ibm.com/node/sdk/v6/)
+
+-   [WCH tools](https://github.com/ibm-wch/wchtools-cli)
+-   [NodeJS](https://developer.ibm.com/node/sdk/v6/)
+
 ### API
-* [API Explorer](https://developer.ibm.com/api/view/id-618:title-IBM_Watson_Content_Hub_API)
+
+-   [API Explorer](https://developer.ibm.com/api/view/id-618:title-IBM_Watson_Content_Hub_API)
+
 ### Documentation
-* [Developer documentation](https://developer.ibm.com/customer-engagement/docs/wch/)
-* [Help](https://www.ibm.com/support/knowledgecenter/SS3UMF/dch/welcome/dch_welcome.html) 
-* [Videos](https://developer.ibm.com/customer-engagement/videos/category/watson-content-hub/)
+
+-   [Developer documentation](https://developer.ibm.com/customer-engagement/docs/wch/)
+-   [Help](https://www.ibm.com/support/knowledgecenter/SS3UMF/dch/welcome/dch_welcome.html)
+-   [Videos](https://developer.ibm.com/customer-engagement/videos/category/watson-content-hub/)
+
 ### Samples
-* [WCH samples](https://developer.ibm.com/customer-engagement/watson-content-hub/samples/)
+
+-   [WCH samples](https://developer.ibm.com/customer-engagement/watson-content-hub/samples/)
+
 ### Support forum
-* [dW Answers](https://developer.ibm.com/answers/smart-spaces/301/watson-content-hub.html)
+
+-   [dW Answers](https://developer.ibm.com/answers/smart-spaces/301/watson-content-hub.html)
 
 ## License
 

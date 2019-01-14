@@ -48,7 +48,7 @@ export class SignUpLayoutComponent extends TypeSignUpComponent
 
 	rContext: RenderingContext;
 	itemId: string;
-	reveal: any;
+	reveal: any = null;
 
 	readonly BACKGROUND_IMG_KEY: string = 'backgroundImage';
 	readonly HEADLINE_KEY: string = 'text';
@@ -71,23 +71,23 @@ export class SignUpLayoutComponent extends TypeSignUpComponent
 	ngAfterViewInit() {
 		super.ngAfterViewInit();
 		try {
-			if (this.reveal) {
-				this.reveal = new Foundation.Reveal($(`#${this.itemId}`));
-			}
+				if (this.reveal === null) {
+					this.reveal = new Foundation.Reveal($(`#${this.itemId}`));
+				}
 		} catch (e) {
-			console.error('error in signup layout afterview init ', e);
+			console.log('error in signup layout reveal on init');
 		}
 	}
 
 	ngOnDestroy() {
 		// clean up reveal modal
 		try {
-			if (this.reveal) {
-				const elem = this.reveal.$element.foundation('destroy');
-				$(elem).remove();
-			}
+				if (this.reveal) {
+					const elem = this.reveal.$element.foundation('destroy');
+					$(elem).remove();
+				}	
 		} catch (e) {
-			console.error('error in signup layout ondestroy ', e);
+			console.log('error in signup layout reveal on destroy ');
 		}
 		super.ngOnDestroy();
 	}

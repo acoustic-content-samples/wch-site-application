@@ -49,6 +49,7 @@ export class AppComponent implements OnInit, OnDestroy {
 	lazyLoadFooter = true;
 	activePage = new ActivePageService();
 	readonly LANDING_PAGE_KIND = 'landing-page';
+	readonly EMAIL_KIND = 'email';
 
 	constructor(
 		router: Router,
@@ -89,11 +90,11 @@ export class AppComponent implements OnInit, OnDestroy {
 			this.rcontextSub = this.onRenderingContext
 				.filter((rContext: any) => {
 					return rContext && rContext.kind
-						? rContext.kind.indexOf(this.LANDING_PAGE_KIND) > -1
+						? rContext.kind.indexOf(this.LANDING_PAGE_KIND) > -1 || rContext.kind.indexOf(this.EMAIL_KIND) > -1
 						: false;
 				})
-				.subscribe(isLandingPage => {
-					this.soloMode = isLandingPage;
+				.subscribe(isSoloMode => {
+					this.soloMode = isSoloMode;
 				});
 
       this.onRenderingContext.filter((rContext: any) => {

@@ -52,7 +52,7 @@ export class EventLayoutComponent extends TypeEventComponent
 
 	rContext: RenderingContext;
 	eventId: any;
-	reveal: any;
+	reveal: any = null;
 
 	constructor() {
 		super();
@@ -70,22 +70,22 @@ export class EventLayoutComponent extends TypeEventComponent
 	ngAfterViewInit() {
 		super.ngAfterViewInit();
 		try {
-			if (this.reveal) {
-				this.reveal = new Foundation.Reveal($(`#${this.eventId}`));
-			}
+				if (this.reveal === null) {
+					this.reveal = new Foundation.Reveal($(`#${this.eventId}`));
+				}
 		} catch (e) {
-			console.error('error in eventLayout reveal ', e);
+			console.log('error in eventLayout reveal on init');
 		}
 	}
 
 	ngOnDestroy() {
 		try {
-			if (this.reveal) {
-				const elem = this.reveal.$element.foundation('destroy');
-				$(elem).remove();
-			}
+				if (this.reveal) {
+					const elem = this.reveal.$element.foundation('destroy');
+					$(elem).remove();
+				}
 		} catch (e) {
-			console.error('error in eventLayout on destroy ', e);
+			console.log('error in eventLayout reveal on destroy ');
 		}
 		super.ngOnDestroy();
 	}
