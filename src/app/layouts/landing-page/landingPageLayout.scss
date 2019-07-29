@@ -4,6 +4,10 @@
 	.hero-section {
 		position: relative;
 
+		.hero-headline{
+			overflow: hidden;
+		}
+
 		.heroImage {
 			margin-top: -35px;
 			position: relative;

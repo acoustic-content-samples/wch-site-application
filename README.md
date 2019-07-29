@@ -22,8 +22,9 @@ Not sure if you have the Oslo artifacts?
 
 You can compare the Build date with the date shown in the "Update the sample site" widget on the Home page to see if your deployed sample is older than the latest sample code.
 Instructions on how to update Oslo to the latest can be found here: [Updating your Oslo sample](https://developer.ibm.com/customer-engagement/tutorials/updating-oslo-sample/).
-  
+
 ## Documentation
+
 1. [Roadmap for developing your own site](https://developer.ibm.com/customer-engagement/tutorials/roadmap-developing-your-own-website/#tocoverview)
 2. [Site structure (Content model-How the sample site is built)](https://developer.ibm.com/customer-engagement/docs/wch/developing-your-own-website/content-model-oslo-website/)
 3. [Programming Model](/doc/README-programming-model.md)
@@ -33,71 +34,87 @@ Instructions on how to update Oslo to the latest can be found here: [Updating yo
 7. [Updating your Oslo sample](https://developer.ibm.com/customer-engagement/tutorials/updating-oslo-sample/)
 
 ## Updates
-At the beginning of January we have updated the Oslo starter site with the following features:
-- Various bug fixes and updates of underlying used packages
 
-At the beginning of December we have updated the Oslo starter site with the following features:
+At the end of July 2019 we have updated the Oslo starter site with the following features:
+
+-   Various bug fixes and updates of underlying used packages
+
+At the beginning of January 2019 we have updated the Oslo starter site with the following features:
+
+-   Various bug fixes and updates of underlying used packages
+
+At the beginning of December 2018 we have updated the Oslo starter site with the following features:
 
 -   Included the new All Types page that allows any reference type to be used.
 -   The Standard page was updated to only allow a limited set of types to be used on it.
 
-At the end of October we have updated the Oslo starter site with the following features:
+At the end of October 2018 we have updated the Oslo starter site with the following features:
 
 -   Support for multiple sites
 -   Support for templates
-- Added placeholders for images
+-   Added placeholders for images
 
-At the beginning of September we have updated the Oslo starter site with the following features:
-- Transitioned some content types to custom elements. For more information see: https://www.ibm.com/support/knowledgecenter/en/SS3UMF/wch_q_a_watson_assistant/content_types.html#concept_km5_qd3_4cb
-- Added text placeholders
-- Included the component gallery developer tool
+At the beginning of September 2018 we have updated the Oslo starter site with the following features:
 
-At the beginning of August we have updated the Oslo starter site with the following features:
-- Moved shared utilities that would not typically be updated from Oslo to https://www.npmjs.com/package/@ibm-wch/components-ng-shared-utilities
-- Moved components like embed-code that would not typically be updated from Oslo to https://www.npmjs.com/package/@ibm-wch/components-ng-shared-components
+-   Transitioned some content types to custom elements. For more information see: https://www.ibm.com/support/knowledgecenter/en/SS3UMF/wch_q_a_watson_assistant/content_types.html#concept_km5_qd3_4cb
+-   Added text placeholders
+-   Included the component gallery developer tool
 
-At the beginning of June we have updated the Oslo starter site with the following features:
-- Upgrade to Angular 6.0
+At the beginning of August 2018 we have updated the Oslo starter site with the following features:
 
-At the end of May we have updated the Oslo starter site with the following features:
-- Added landing page / micro web site support
-- Support for manifests and shipping out of the box manifest files to either delete Oslo completely or remove the sample pages and content
-- Performance improvements
+-   Moved shared utilities that would not typically be updated from Oslo to https://www.npmjs.com/package/@ibm-wch/components-ng-shared-utilities
+-   Moved components like embed-code that would not typically be updated from Oslo to https://www.npmjs.com/package/@ibm-wch/components-ng-shared-components
 
-At the end of April we have updated the Oslo starter site with the following features:
-- Added login and logout and the support for secured content and pages. If a page or content is marked secured 
-you can only see it when being logged in.
-- Added the HTML Edit functionality out of the box (formerly called sample-html-snippet)
-- Preparing the new landing page functionality
+At the beginning of June 2018 we have updated the Oslo starter site with the following features:
 
-At the end of March we have updated the Oslo starter site with the following features:
-- performance improvements - reducing the size of the generated scripts
-- Added support for script applications
+-   Upgrade to Angular 6.0
 
-At the end of February we have updated the Oslo starter site with the following features:
-- upgrade to Angular 5.2
-- leveraging ng build versus separate webpack
-- bug fixes and performance improvements
+At the end of May 2018 we have updated the Oslo starter site with the following features:
 
-At the beginning of February we have updated the Oslo starter site with the following features:
-- added inline editing for links
-- bug fixes and performance improvements
-- also check out our new HTML snippet sample here: https://github.com/ibm-wch/sample-html-snippet
+-   Added landing page / micro web site support
+-   Support for manifests and shipping out of the box manifest files to either delete Oslo completely or remove the sample pages and content
+-   Performance improvements
 
-At the beginning of January we have updated the Oslo starter site with the following features:
-- update of Angular to Angular 4.4.6
-- Introduced a new search component and added search of pages to the functionality - results are displayed on the new search page
-- Introduced the ability to hide pages from the navigation while still available via URL with a new flag that can be set in the page
-- Enhanced Inline Editing support
+At the end of April 2018 we have updated the Oslo starter site with the following features:
 
-At the beginning of December we have updated the Oslo starter site with the following features:
-- Performance improvements
-- bug fixes
-- Support for Google crawling of a given page in Oslo (more features planned in this area)
-- Additional layouts for the Standard page type
-- Removal of # from the URLs and now leveraging HTML 5 mode for URLs (i.e. https://myhost/design-topics/clean-design)
-- Enablement for Inline Editing in the Sites Composer
-- Ability to leverage Angular 5 instead of Angular 4
+-   Added login and logout and the support for secured content and pages. If a page or content is marked secured
+    you can only see it when being logged in.
+-   Added the HTML Edit functionality out of the box (formerly called sample-html-snippet)
+-   Preparing the new landing page functionality
+
+At the end of March 2018 we have updated the Oslo starter site with the following features:
+
+-   performance improvements - reducing the size of the generated scripts
+-   Added support for script applications
+
+At the end of February 2018 we have updated the Oslo starter site with the following features:
+
+-   upgrade to Angular 5.2
+-   leveraging ng build versus separate webpack
+-   bug fixes and performance improvements
+
+At the beginning of February 2018 we have updated the Oslo starter site with the following features:
+
+-   added inline editing for links
+-   bug fixes and performance improvements
+-   also check out our new HTML snippet sample here: https://github.com/ibm-wch/sample-html-snippet
+
+At the beginning of January 2018 we have updated the Oslo starter site with the following features:
+
+-   update of Angular to Angular 4.4.6
+-   Introduced a new search component and added search of pages to the functionality - results are displayed on the new search page
+-   Introduced the ability to hide pages from the navigation while still available via URL with a new flag that can be set in the page
+-   Enhanced Inline Editing support
+
+At the beginning of December 2017 we have updated the Oslo starter site with the following features:
+
+-   Performance improvements
+-   bug fixes
+-   Support for Google crawling of a given page in Oslo (more features planned in this area)
+-   Additional layouts for the Standard page type
+-   Removal of # from the URLs and now leveraging HTML 5 mode for URLs (i.e. https://myhost/design-topics/clean-design)
+-   Enablement for Inline Editing in the Sites Composer
+-   Ability to leverage Angular 5 instead of Angular 4
 
 ## Getting set up
 
