@@ -32,7 +32,7 @@
 					<wch-placeholder [wchEditable]="'elements.bodyImage.values[' + idx + '].image'">
 						<img *ngIf="matchingBodyImages[idx] && matchingBodyImages[idx].image && matchingBodyImages[idx].image.url" [wchEditable]="'elements.bodyImage.values[' + idx + '].image'"
 						 [src]="getBodyImageURL(matchingBodyImages[idx])" [alt]="matchingBodyImages[idx][CAPTION_KEY]" [title]="matchingBodyImages[idx][CREDIT_KEY]">
-						<wch-placeholder-icon class="wch-placeholder" type="image" width="800" height="300" [wchEditable]="'elements.bodyImage.values[' + idx + '].image'">
+						<wch-placeholder-icon class="wch-placeholder" type="image" width="800" height="300" wchEditable="'elements.bodyImage.values[' + idx + '].image'">
 						</wch-placeholder-icon>
 					</wch-placeholder>
 					<div class="caption">
@@ -44,10 +44,10 @@
 		</div>
 		<div class="article-medium-image" *ngFor="let item of leftoverBodyImages; let idx = index">
 			<div [className]="getImageClass(item)" class="wrap-text-left">
-				<wch-placeholder [wchEditable]="'elements.bodyImage.values[' + (idx + numOfBodyTexts) + '].image'">
+				<wch-placeholder wchEditable="'elements.bodyImage.values[' + (idx + numOfBodyTexts) + '].image'">
 					<img *ngIf="item.image && item.image.url" [wchEditable]="'elements.bodyImage.values[' + (idx + numOfBodyTexts) + '].image'"
 					 [src]="getBodyImageURL(item)" [alt]="item[CAPTION_KEY]" [title]="item[CREDIT_KEY]">
-					<wch-placeholder-icon class="wch-placeholder" type="image" width="800" height="300" [wchEditable]="'elements.bodyImage.values[' + (idx + numOfBodyTexts) + '].image'">
+					<wch-placeholder-icon class="wch-placeholder" type="image" width="800" height="300" wchEditable="'elements.bodyImage.values[' + (idx + numOfBodyTexts) + '].image'">
 					</wch-placeholder-icon>
 				</wch-placeholder>
 				<div class="caption">

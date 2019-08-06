@@ -16,7 +16,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ConfigServiceService } from '@ibm-wch/components-ng-shared-utilities';
 import { PageNotFoundComponent } from './page-not-found.component';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AuthService } from '@ibm-wch/components-ng-shared-utilities';
 import { WchInfoService } from '@ibm-wch-sdk/ng';
 import { NavigationStart, NavigationEnd } from '@angular/router';
@@ -48,7 +48,7 @@ describe('PageNotFoundComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [PageNotFoundComponent],
-			imports: [HttpClientModule],
+			imports: [HttpClientTestingModule],
 			providers: [
 				ConfigServiceService,
 				AuthService,

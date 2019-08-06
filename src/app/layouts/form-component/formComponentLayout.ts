@@ -10,6 +10,8 @@ import {
 import { TypeFormComponent } from './../../components/form-component/typeFormComponent';
 import { WchInfoService } from '@ibm-wch-sdk/ng';
 import * as $ from 'jquery';
+import { Foundation } from 'foundation-sites/js/foundation.core';
+
 
 /** Useful imports */
 // import 'rxjs/add/operator/map';
@@ -69,7 +71,10 @@ export class FormComponentLayoutComponent extends TypeFormComponent
 		super.ngAfterViewInit();
 		try {
 			this.reveal = <any>$(`#${this.itemId}`);
-			this.reveal.foundation();
+			if (this.reveal){
+				Foundation.addToJquery($)
+				this.reveal.foundation();
+			}
 		} catch (e) {
 			console.error('error in form layout afterview init ', e);
 		}
@@ -78,8 +83,10 @@ export class FormComponentLayoutComponent extends TypeFormComponent
 	ngOnDestroy() {
 		// clean up reveal modal
 		try {
-			const elem = this.reveal.$element.foundation('destroy');
-			$(elem).remove();
+			if (this.reveal && this.reveal.$element){
+				const elem = this.reveal.$element.foundation('destroy');
+				$(elem).remove();
+			}
 		} catch (e) {
 			console.error('error in form layout ondestroy ', e);
 		}
