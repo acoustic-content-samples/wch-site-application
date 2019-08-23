@@ -35,6 +35,12 @@ Instructions on how to update Oslo to the latest can be found here: [Updating yo
 
 ## Updates
 
+At the end of August 2019 we have updated the Oslo starter site with the following features:
+
+-   Upgraded Typescript to v2.9.2
+-   Fixed several severity vulnerabilities
+-   Various bug fixes
+
 At the end of July 2019 we have updated the Oslo starter site with the following features:
 
 -   Various bug fixes and updates of underlying used packages
