@@ -1,17 +1,17 @@
 # wch-site-application
 
-Source code for the Watson Content Hub starter site application - Oslo.
+Source code for the Acoustic Content (formerly Watson Content Hub) starter site application - Oslo.
 
 ## Prerequisites
 
--   A WCH tenant in Trial or Standard Tier
+-   A Content tenant in Trial or Standard Tier
 -   Node.js v8.10.0 or above
     **Note:** We recommend to run npm install after getting the latest from this repository to get the latest prerequisites.
 
 ## Overview
 
 This github repository contains all the source code files like javascript, css and html but not the Oslo artifacts like pages, content types, categories, and content.
-WCH tenants created after September 18th 2017 will have the Oslo artifacts automatically deployed. For older tenants you need to manually deploy the artifacts by downloading the Oslo built artifacts from the home page of your tenant from the "Update the sample site" widget.
+Content tenants created after September 18th 2017 will have the Oslo artifacts automatically deployed. For older tenants you need to manually deploy the artifacts by downloading the Oslo built artifacts from the home page of your tenant from the "Update the sample site" widget.
 Not sure if you have the Oslo artifacts?
 
 -   Log in to your tenant and go to the Website menu and check if Oslo is rendering in the preview window.
