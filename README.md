@@ -21,17 +21,13 @@ Not sure if you have the Oslo artifacts?
     -   Search for 'SDK version' to get the SDK version included in the SPA
 
 You can compare the Build date with the date shown in the "Update the sample site" widget on the Home page to see if your deployed sample is older than the latest sample code.
-Instructions on how to update Oslo to the latest can be found here: [Updating your Oslo sample](https://developer.ibm.com/customer-engagement/tutorials/updating-oslo-sample/).
+Instructions on how to update Oslo to the latest can be found here: [Updating your Oslo sample](https://developer.goacoustic.com/acoustic-content/docs/roadmap-developing-your-own-website).
 
 ## Documentation
 
-1. [Roadmap for developing your own site](https://developer.ibm.com/customer-engagement/tutorials/roadmap-developing-your-own-website/#tocoverview)
-2. [Site structure (Content model-How the sample site is built)](https://developer.ibm.com/customer-engagement/docs/wch/developing-your-own-website/content-model-oslo-website/)
-3. [Programming Model](/doc/README-programming-model.md)
-4. [Watson Content Hub - Sites Development Overview](https://ibm.box.com/s/0od1ta7hsmkxzl2i8y08o06zqwa0pzbq)
-5. [Customizing the sample website](https://developer.ibm.com/customer-engagement/docs/wch/developing-your-own-website/customizing-sample-site/)
-6. [Resources](#resources)
-7. [Updating your Oslo sample](https://developer.ibm.com/customer-engagement/tutorials/updating-oslo-sample/)
+1. [Roadmap for developing your own site](https://developer.goacoustic.com/acoustic-content/docs/roadmap-developing-your-own-website)
+2. [Programming Model](/doc/README-programming-model.md)
+3. [Resources](#resources)
 
 ## Updates
 
