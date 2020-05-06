@@ -58,7 +58,7 @@ At the end of October 2018 we have updated the Oslo starter site with the follow
 
 At the beginning of September 2018 we have updated the Oslo starter site with the following features:
 
--   Transitioned some content types to custom elements. For more information see: https://www.ibm.com/support/knowledgecenter/en/SS3UMF/wch_q_a_watson_assistant/content_types.html#concept_km5_qd3_4cb
+-   Transitioned some content types to custom elements.
 -   Added text placeholders
 -   Included the component gallery developer tool
 
