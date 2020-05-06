@@ -1,9 +1,9 @@
 ## Acoustic Content Sites Customization Programming Model
 
-This document covers best practices for developing Sites with Watson Content Hub. In the different sections it outlines based on samples how different use cases like for instance referencing an image that is stored in the content type can be implemented.
-For more introductory information on Sites in Watson Content Hub see:
+This document covers best practices for developing Sites with Acoustic Content (formerly Watson Content Hub). In the different sections it outlines based on samples how different use cases like for instance referencing an image that is stored in the content type can be implemented.
+For more introductory information on Sites in Acoustic Content see:
 
-[Developing your own website](https://developer.ibm.com/customer-engagement/docs/watson-marketing/wch/developing-your-own-website/)
+[Developing your own website](https://developer.goacoustic.com/acoustic-content/docs/roadmap-developing-your-own-website)
 
 ## Table of Contents
 
