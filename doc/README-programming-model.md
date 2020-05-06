@@ -1,15 +1,13 @@
-## Watson Content Hub Sites Customization Programming Model
+## Acoustic Content Sites Customization Programming Model
 
 This document covers best practices for developing Sites with Watson Content Hub. In the different sections it outlines based on samples how different use cases like for instance referencing an image that is stored in the content type can be implemented.
 For more introductory information on Sites in Watson Content Hub see:
 
-[Developing your own website](http://developer.ibm.com/customer-engagement/docs/developing-your-own-website/)
-
-[Managing a web site in Watson Content Hub](https://www.ibm.com/support/knowledgecenter/SS3UMF/dch/admin/website_admin_std.html)
+[Developing your own website](https://developer.ibm.com/customer-engagement/docs/watson-marketing/wch/developing-your-own-website/)
 
 ## Table of Contents
 
--   [Watson Content Hub Sites Customization Programming Model](#watson-content-hub-sites-customization-programming-model)
+-   [Acoustic Content Sites Customization Programming Model](#watson-content-hub-sites-customization-programming-model)
 -   [Table of Contents](#table-of-contents)
     -   [Process overview](#process-overview)
     -   [Referencing content elements from layout templates](#referencing-content-elements-from-layout-templates)
@@ -365,7 +363,7 @@ The updated site application source should be stored in a source code management
 
 ### Adding inline edit functionality
 
-The Site Manager in Watson Content Hub offers an edit mode that allows a business user to make inline editing changes directly. The elements in a [Component](https://angular.io/api/core/Component) need the **wchEditable** directive to attach inline edit functionality.
+The Site Manager in Acoustic Content offers an edit mode that allows a business user to make inline editing changes directly. The elements in a [Component](https://angular.io/api/core/Component) need the **wchEditable** directive to attach inline edit functionality.
 
 The directive assumes that the [Component](https://angular.io/api/core/Component) contains a `onRenderingContext` property that exposes the `RenderingContext` of the item currently edited. This contract is fulfilled automatically if the component extends [AbstractRenderingComponent](https://www.npmjs.com/package/@ibm-wch-sdk/ng#_30d66fd25c62891da799936c1e1454566f3770b753be58d94b5621b01603a546).
 
