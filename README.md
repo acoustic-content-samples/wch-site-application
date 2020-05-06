@@ -320,33 +320,14 @@ To configure your site with custom styles, follow these following steps:
 
 That's it! Now, any styles that are added to `<site-id>.scss` will be applied to the SPA, when rendering the site with a matching ID. You can preview your style changes by running `npm start` to view the preview server. When ready, you can deploy the changes to the tenant by running `npm run build-deploy`
 
-## Resources
-
-Find more details on the WCH development environment, technical documentation, sample applications, APIs and other information to jumpstart your development project.
-
-### Tools
-
--   [WCH tools](https://github.com/ibm-wch/wchtools-cli)
--   [NodeJS](https://developer.ibm.com/node/sdk/v6/)
-
-### API
-
--   [API Explorer](https://developer.ibm.com/api/view/id-618:title-IBM_Watson_Content_Hub_API)
-
-### Documentation
-
--   [Developer documentation](https://developer.ibm.com/customer-engagement/docs/wch/)
--   [Help](https://www.ibm.com/support/knowledgecenter/SS3UMF/dch/welcome/dch_welcome.html)
--   [Videos](https://developer.ibm.com/customer-engagement/videos/category/watson-content-hub/)
-
-### Samples
-
--   [WCH samples](https://developer.ibm.com/customer-engagement/watson-content-hub/samples/)
-
-### Support forum
-
--   [dW Answers](https://developer.ibm.com/answers/smart-spaces/301/watson-content-hub.html)
-
 ## License
 
 See the included license file [License](LICENSE) .
+
+## Resources
+
+Acoustic Content developer documentation: https://developer.goacoustic.com/acoustic-content/docs
+
+Acoustic Content API reference documentation: https://developer.goacoustic.com/acoustic-content/reference
+
+Acoustic Content Samples Gallery: https://content-samples.goacoustic.com/
